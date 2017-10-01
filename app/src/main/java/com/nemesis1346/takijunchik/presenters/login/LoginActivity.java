@@ -5,4 +5,5 @@ package com.nemesis1346.takijunchik.presenters.login;
  */
 
 public class LoginActivity {
+
 }
