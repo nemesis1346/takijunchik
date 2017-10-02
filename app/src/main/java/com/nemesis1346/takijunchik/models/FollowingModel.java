@@ -1,5 +1,7 @@
 package com.nemesis1346.takijunchik.models;
 
+import com.nemesis1346.takijunchik.domain.UserSessionManager;
+
 /**
  * Created by nemesis1346 on 01/10/17.
  */
@@ -9,7 +11,9 @@ public class FollowingModel {
     private String userId;
     private String followedId;
 
-    public FollowingModel(){}
+    public FollowingModel(){
+
+    }
 
     public String getFollowId() {
         return followId;
