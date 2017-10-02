@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Takijunchik</string>
+    <string name="user_created_success">Success</string>
 </resources>
