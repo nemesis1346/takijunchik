@@ -14,6 +14,7 @@ import com.google.firebase.storage.StorageReference;
 import com.nemesis1346.takijunchik.R;
 import com.nemesis1346.takijunchik.models.CommentModel;
 import com.nemesis1346.takijunchik.models.FollowingModel;
+import com.nemesis1346.takijunchik.models.TrackModel;
 import com.nemesis1346.takijunchik.models.UserModel;
 
 import java.util.UUID;
@@ -110,4 +111,22 @@ public class FirebaseHandler {
         return result[0];
     }
 
+    public String uploadTrackModel(TrackModel trackModel){
+        String uniqueId=UUID.randomUUID().toString();
+        final String[] result={""};
+        trackModel.setTrackId(uniqueId);
+        mFirebaseDatabaseReference.child(OBJECT_TRACK).child(trackModel.getTrackId()).setValue(trackModel, ServerValue.TIMESTAMP).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                result[0]=mContext.getResources().getString(R.string.track_created_success);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                result[0]=e.getMessage();
+            }
+        });
+        return result[0];
+
+    }
 }

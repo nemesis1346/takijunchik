@@ -3,4 +3,5 @@
     <string name="user_created_success">Success</string>
     <string name="comment_created_success">Comment created succesfully</string>
     <string name="connection_created_success">Connection created successfully</string>
+    <string name="track_created_success">Track creation success</string>
 </resources>
