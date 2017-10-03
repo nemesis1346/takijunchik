@@ -13,6 +13,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.nemesis1346.takijunchik.R;
 import com.nemesis1346.takijunchik.models.CommentModel;
+import com.nemesis1346.takijunchik.models.FollowingModel;
 import com.nemesis1346.takijunchik.models.UserModel;
 
 import java.util.UUID;
@@ -80,16 +81,32 @@ public class FirebaseHandler {
         mFirebaseDatabaseReference.child(OBJECT_COMMENT).child(commentModel.getUserId()).setValue(commentModel, ServerValue.TIMESTAMP).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-
+                result[0] = mContext.getResources().getString(R.string.comment_created_success);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-
+                result[0] = e.getMessage();
             }
         });
         return result[0];
     }
 
-
+    public String uploadFollowingConnection(FollowingModel followingModel) {
+        String uniqueId = UUID.randomUUID().toString();
+        final String[] result = {""};
+        followingModel.setFollowedId(uniqueId);
+        mFirebaseDatabaseReference.child(OBJECT_CONNECTION).child(followingModel.getFollowedId()).setValue(followingModel, ServerValue.TIMESTAMP).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                result[0] = mContext.getResources().getString(R.string.connection_created_success);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                result[0] = e.getMessage();
+            }
+        });
+        return result[0];
+    }
 }
