@@ -12,6 +12,7 @@ import com.google.firebase.database.ServerValue;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.nemesis1346.takijunchik.R;
+import com.nemesis1346.takijunchik.models.CommentModel;
 import com.nemesis1346.takijunchik.models.UserModel;
 
 import java.util.UUID;
@@ -29,7 +30,14 @@ public class FirebaseHandler {
     private FirebaseStorage mFirebaseStorage;
     private StorageReference mStorageRef;
 
-    public static final String OBJECT_USER = "USERS";
+    private static final String OBJECT_USER = "USERS";
+    private static final String OBJECT_COMMENT = "COMMENTS";
+    private static final String OBJECT_POST = "POSTS";
+    private static final String OBJECT_CONNECTION = "CONNECTIONS";
+    private static final String OBJECT_PHOTO = "PHOTOS";
+    private static final String OBJECT_RATE = "RATING";
+    private static final String OBJECT_TRACK = "TRACKS";
+    private static final String OBJECT_VIDEO = "VIDEOS";
 
     private FirebaseHandler(Context context) {
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -60,6 +68,24 @@ public class FirebaseHandler {
             @Override
             public void onFailure(@NonNull Exception e) {
                 result[0] = e.getMessage();
+            }
+        });
+        return result[0];
+    }
+
+    public String uploadCommentModel(CommentModel commentModel) {
+        String uniqueId = UUID.randomUUID().toString();
+        final String[] result = {""};
+        commentModel.setCommentId(uniqueId);
+        mFirebaseDatabaseReference.child(OBJECT_COMMENT).child(commentModel.getUserId()).setValue(commentModel, ServerValue.TIMESTAMP).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
             }
         });
         return result[0];
