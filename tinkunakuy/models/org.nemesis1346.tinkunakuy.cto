@@ -13,6 +13,8 @@ enum UserType{
   o ADMIN
 }
 
+//THESE ARE GENERAL STRUCTURES OF THE EDUCATION PLATFORM
+
 concept StudentRecord{
   --> User user
   --> Exam[] exams
@@ -61,4 +63,86 @@ transaction ExamSubmission {
   --> Exam exam
 }
 
+//THIS SECTION IS STRICTLY FOR MODELING THE DATA OF THE CONTENT OF EACH COURSE
 
+//This is the global classifier of contents
+asset Content identified by contentId{
+  o String contentId
+  --> Course courseStage
+}
+
+concept Conversation{
+  --> Content content
+  --> ConversationMessage[] messages
+}
+
+asset ConversationMessage identified by conversationMessageId{
+  o String conversationMessageId
+  o String emitter
+  o String receiver
+}
+
+concept QuestionsAnswers{
+  --> Content content
+  o String[] questions
+  o String[] answers 
+}
+
+concept Complete{
+  --> Content content
+  --> CompleteUnit[] completeUnits
+}
+
+asset CompleteUnit identified by completeUnitId{
+  o String completeUnitId
+  o String[] descriptionLine
+  o String[] answers
+}
+
+concept Lecture{
+  --> Content content
+  o String descriptionKichwa
+  o String descriptionSpanish
+}
+
+concept ChooseAnswer{
+  --> Content content
+  o String[] options
+  o String answer
+}
+
+//THIS SECTION IS FOR THE TOOLS OF THE PROGRAM
+asset Guide identified by guideId{
+  o String guideId
+  --> Course course
+}
+
+concept Gramatic{
+  o String title
+  o String[] description
+  --> Guide guide
+}
+
+concept GuideIntroduction{
+  o String title
+  o String description
+  --> Guide guide
+}
+
+//THIS SECTION IS TO DEFINE THE VOCABULARY
+
+asset Vocabulary identified by vocabularyId{
+  o String vocabularyId
+  o Word[] words 
+}
+
+enum VocabularyType{
+  o PARTICLES
+  o VERBS
+  o NOUNS
+}
+
+concept Word{
+  o String kichwa
+  o String spanish
+}
