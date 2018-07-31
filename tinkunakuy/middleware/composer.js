@@ -6,6 +6,7 @@ const IdCard = require('composer-common').IdCard;
 const cardname = 'admin@tinkunakuy';
 const networkNamespace = 'org.nemesis1346.tinkunakuy';
 const LOG = winston.loggers.get('application');
+const WordModel = require('../models/wordModel.js');
 
 class Composer {
     constructor() {
@@ -24,45 +25,43 @@ class Composer {
     async init() {
         this.businessNetworkDefinition = await this.bizNetworkConnection.connect(cardname);
         console.log(this.businessNetworkDefinition);
-        LOG.info('Hyperstate:<init>', 'businessNetworkDefinition obtained', this.businessNetworkDefinition.getIdentifier());
+        LOG.info('tinkunakuy:<init>', 'businessNetworkDefinition obtained', this.businessNetworkDefinition.getIdentifier());
     }
 
 
     /**
-     * @description It creates a new track
-     * @return {Promise} A promise that creates a track
+     * @description It creates a new word
+     * @return {Promise} A promise that creates a word
      */
-    async createTrack(requestTrack) {
-        console.log('request: ');
-        console.log(requestTrack);
+    async saveWord(requestWord) {
+        console.log('Request Word: ');
+        console.log(requestWord);
         try {
-            let currentTrack = new TrackModel(
-                requestTrack.isrc,
-                requestTrack.title,
-                requestTrack.revenueTotal,
-                requestTrack.vendorIdentifier,
-                requestTrack.label,
-                requestTrack.author,
-                requestTrack.ownerType,
-                requestTrack.trackShares,
-                requestTrack.uploadOwner
+            let wordModel = new WordModel(
+                requestWord.wordId,
+                requestWord.spanish,
+                requestWord.english,
+                requestWord.kichwa,
+                requestWord.descriptionSpanish,
+                requestWord.descriptionEnglish,
+                requestWord.descriptionKichwa
             );
 
             let businessNetworkConnection = new BusinessNetworkConnection();
             let connection = await businessNetworkConnection.connect(cardname)
-            let assetRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Track');
+            let assetRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Word');
             let factory = connection.getFactory();
-            let track = factory.newResource(networkNamespace, "Track", currentTrack.isrc);
-            track.isrc = currentTrack.isrc;
-            track.title = currentTrack.title;
-            track.revenueTotal = currentTrack.revenueTotal;
-            track.vendorIdentifier = currentTrack.vendorIdentifier;
-            track.label = currentTrack.label;
-            track.author = currentTrack.author;
-            track.ownerType = currentTrack.ownerType;
-            // track.uploadOwner="";
-            // track.trackShares="";
-            await assetRegistry.add(track);
+            
+            let word = factory.newResource(networkNamespace, "Track", currentTrack.isrc);
+            word.wordId = wordModel.wordId;
+            word.spanish = wordModel.spanish;
+            word.english = wordModel.english;
+            word.kichwa = wordModel.kichwa;
+            word.descriptionSpanish = wordModel.descriptionSpanish;
+            word.descriptionEnglish = wordModel.descriptionEnglish;
+            word.descriptionKichwa = wordModel.descriptionKichwa;
+
+            await assetRegistry.add(word);
             await businessNetworkConnection.disconnect();
         } catch (error) {
             console.error(error);

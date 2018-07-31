@@ -142,7 +142,12 @@ enum VocabularyType{
   o NOUNS
 }
 
-concept Word{
-  o String kichwa
+asset Word identified by wordId{
+  o String wordId
   o String spanish
+  o String english optional
+  o String kichwa
+  o String descriptionSpanish
+  o String descriptionEnglish optional
+  o String descriptionKichwa optional
 }

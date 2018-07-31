@@ -37,7 +37,7 @@ const handler = async (request, response) => {
         //Call method
         try {
             switch (url) {
-                case '/createTrader':
+                case '/saveWord':
                     this.composerInstance.createTrader(JSON.parse(body))
                         .then(function () {
                             const responseBody = { headers, method, url, body };
@@ -76,6 +76,7 @@ const handler = async (request, response) => {
 }
 
 app.post('/login', handler);
+app.post('/saveWord', handler);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
