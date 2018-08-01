@@ -1,0 +1,208 @@
+[Info  - 21:02:27] Using tsserver from: /usr/share/code/resources/app/extensions/node_modules/typescript/lib
+[Info  - 21:02:27] Forking TSServer
+PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin 
+[Info  - 21:02:27] Started TSServer
+[Error  - 21:04:49] 'occurrences' request failed with error.
+Error processing request. Debug Failure. False expression.
+Error: Debug Failure. False expression.
+    at Object.assertDefined (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:3829:13)
+    at getExportEqualsLocalSymbol (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:75686:33)
+    at getImport (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:75661:38)
+    at Object.getImportOrExportSymbol (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:75585:68)
+    at getImportOrExportReferences (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:76462:56)
+    at getReferencesAtLocation (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:76405:17)
+    at getReferencesInContainer (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:76357:21)
+    at getReferencedSymbolsForSymbol (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:76049:25)
+    at Object.getReferencedSymbolsForNode (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:75974:57)
+    at Object.getReferenceEntriesForNode (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:75815:58)
+    at getSemanticDocumentHighlights (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:74764:57)
+    at Object.getDocumentHighlights (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:74752:20)
+    at getDocumentHighlights (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:90565:42)
+    at Object.getOccurrencesAtPosition (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:90552:31)
+    at IOSession.Session.getOccurrences (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:96651:64)
+    at Session.handlers.ts.createMapFromTemplate._a.(anonymous function) (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:96230:61)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97580:88
+    at IOSession.Session.executeWithRequestId (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97571:28)
+    at IOSession.Session.executeCommand (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97580:33)
+    at IOSession.Session.onMessage (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97600:35)
+    at Interface.<anonymous> (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:98831:27)
+    at emitOne (events.js:96:13)
+    at Interface.emit (events.js:191:7)
+    at Interface._onLine (readline.js:241:10)
+    at Interface._normalWrite (readline.js:384:12)
+    at Socket.ondata (readline.js:101:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:191:7)
+    at readableAddChunk (_stream_readable.js:178:18)
+    at Socket.Readable.push (_stream_readable.js:136:10)
+    at Pipe.onread (net.js:560:20)
+[Error  - 21:04:49] 'occurrences' request failed with error.
+Error processing request. Debug Failure. False expression.
+Error: Debug Failure. False expression.
+    at Object.assertDefined (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:3829:13)
+    at getExportEqualsLocalSymbol (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:75686:33)
+    at getImport (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:75661:38)
+    at Object.getImportOrExportSymbol (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:75585:68)
+    at getImportOrExportReferences (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:76462:56)
+    at getReferencesAtLocation (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:76405:17)
+    at getReferencesInContainer (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:76357:21)
+    at getReferencedSymbolsForSymbol (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:76049:25)
+    at Object.getReferencedSymbolsForNode (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:75974:57)
+    at Object.getReferenceEntriesForNode (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:75815:58)
+    at getSemanticDocumentHighlights (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:74764:57)
+    at Object.getDocumentHighlights (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:74752:20)
+    at getDocumentHighlights (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:90565:42)
+    at Object.getOccurrencesAtPosition (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:90552:31)
+    at IOSession.Session.getOccurrences (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:96651:64)
+    at Session.handlers.ts.createMapFromTemplate._a.(anonymous function) (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:96230:61)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97580:88
+    at IOSession.Session.executeWithRequestId (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97571:28)
+    at IOSession.Session.executeCommand (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97580:33)
+    at IOSession.Session.onMessage (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97600:35)
+    at Interface.<anonymous> (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:98831:27)
+    at emitOne (events.js:96:13)
+    at Interface.emit (events.js:191:7)
+    at Interface._onLine (readline.js:241:10)
+    at Interface._normalWrite (readline.js:384:12)
+    at Socket.ondata (readline.js:101:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:191:7)
+    at readableAddChunk (_stream_readable.js:178:18)
+    at Socket.Readable.push (_stream_readable.js:136:10)
+    at Pipe.onread (net.js:560:20)
+[Error  - 21:05:58] 'signatureHelp' request failed with error.
+Error processing request. Cannot read property 'emitNode' of undefined
+TypeError: Cannot read property 'emitNode' of undefined
+    at Object.getStartsOnNewLine (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:47531:28)
+    at shouldWriteSeparatingLineTerminator (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:63853:27)
+    at emitNodeList (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:63638:29)
+    at emitList (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:63560:13)
+    at Object.writeList (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:61577:13)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79894:37
+    at Object.mapToDisplayParts (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:71892:13)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79891:49
+    at Object.map (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:1745:29)
+    at createSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79868:28)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79675:108
+    at Object.runWithCancellationToken (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:22999:28)
+    at Object.getSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79675:32)
+    at Object.getSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:90607:37)
+    at IOSession.Session.getSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97156:62)
+    at Session.handlers.ts.createMapFromTemplate._a.(anonymous function) (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:96150:61)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97580:88
+    at IOSession.Session.executeWithRequestId (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97571:28)
+    at IOSession.Session.executeCommand (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97580:33)
+    at IOSession.Session.onMessage (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97600:35)
+    at Interface.<anonymous> (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:98831:27)
+    at emitOne (events.js:96:13)
+    at Interface.emit (events.js:191:7)
+    at Interface._onLine (readline.js:241:10)
+    at Interface._normalWrite (readline.js:384:12)
+    at Socket.ondata (readline.js:101:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:191:7)
+    at readableAddChunk (_stream_readable.js:178:18)
+    at Socket.Readable.push (_stream_readable.js:136:10)
+    at Pipe.onread (net.js:560:20)
+[Error  - 21:06:10] 'signatureHelp' request failed with error.
+Error processing request. Cannot read property 'emitNode' of undefined
+TypeError: Cannot read property 'emitNode' of undefined
+    at Object.getStartsOnNewLine (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:47531:28)
+    at shouldWriteSeparatingLineTerminator (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:63853:27)
+    at emitNodeList (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:63638:29)
+    at emitList (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:63560:13)
+    at Object.writeList (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:61577:13)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79894:37
+    at Object.mapToDisplayParts (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:71892:13)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79891:49
+    at Object.map (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:1745:29)
+    at createSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79868:28)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79675:108
+    at Object.runWithCancellationToken (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:22999:28)
+    at Object.getSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79675:32)
+    at Object.getSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:90607:37)
+    at IOSession.Session.getSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97156:62)
+    at Session.handlers.ts.createMapFromTemplate._a.(anonymous function) (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:96150:61)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97580:88
+    at IOSession.Session.executeWithRequestId (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97571:28)
+    at IOSession.Session.executeCommand (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97580:33)
+    at IOSession.Session.onMessage (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97600:35)
+    at Interface.<anonymous> (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:98831:27)
+    at emitOne (events.js:96:13)
+    at Interface.emit (events.js:191:7)
+    at Interface._onLine (readline.js:241:10)
+    at Interface._normalWrite (readline.js:384:12)
+    at Socket.ondata (readline.js:101:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:191:7)
+    at readableAddChunk (_stream_readable.js:178:18)
+    at Socket.Readable.push (_stream_readable.js:136:10)
+    at Pipe.onread (net.js:560:20)
+[Error  - 21:14:12] 'signatureHelp' request failed with error.
+Error processing request. Cannot read property 'emitNode' of undefined
+TypeError: Cannot read property 'emitNode' of undefined
+    at Object.getStartsOnNewLine (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:47531:28)
+    at shouldWriteSeparatingLineTerminator (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:63853:27)
+    at emitNodeList (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:63638:29)
+    at emitList (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:63560:13)
+    at Object.writeList (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:61577:13)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79894:37
+    at Object.mapToDisplayParts (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:71892:13)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79891:49
+    at Object.map (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:1745:29)
+    at createSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79868:28)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79675:108
+    at Object.runWithCancellationToken (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:22999:28)
+    at Object.getSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79675:32)
+    at Object.getSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:90607:37)
+    at IOSession.Session.getSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97156:62)
+    at Session.handlers.ts.createMapFromTemplate._a.(anonymous function) (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:96150:61)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97580:88
+    at IOSession.Session.executeWithRequestId (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97571:28)
+    at IOSession.Session.executeCommand (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97580:33)
+    at IOSession.Session.onMessage (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97600:35)
+    at Interface.<anonymous> (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:98831:27)
+    at emitOne (events.js:96:13)
+    at Interface.emit (events.js:191:7)
+    at Interface._onLine (readline.js:241:10)
+    at Interface._normalWrite (readline.js:384:12)
+    at Socket.ondata (readline.js:101:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:191:7)
+    at readableAddChunk (_stream_readable.js:178:18)
+    at Socket.Readable.push (_stream_readable.js:136:10)
+    at Pipe.onread (net.js:560:20)
+[Error  - 21:14:15] 'signatureHelp' request failed with error.
+Error processing request. Cannot read property 'emitNode' of undefined
+TypeError: Cannot read property 'emitNode' of undefined
+    at Object.getStartsOnNewLine (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:47531:28)
+    at shouldWriteSeparatingLineTerminator (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:63853:27)
+    at emitNodeList (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:63638:29)
+    at emitList (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:63560:13)
+    at Object.writeList (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:61577:13)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79894:37
+    at Object.mapToDisplayParts (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:71892:13)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79891:49
+    at Object.map (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:1745:29)
+    at createSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79868:28)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79675:108
+    at Object.runWithCancellationToken (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:22999:28)
+    at Object.getSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:79675:32)
+    at Object.getSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:90607:37)
+    at IOSession.Session.getSignatureHelpItems (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97156:62)
+    at Session.handlers.ts.createMapFromTemplate._a.(anonymous function) (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:96150:61)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97580:88
+    at IOSession.Session.executeWithRequestId (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97571:28)
+    at IOSession.Session.executeCommand (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97580:33)
+    at IOSession.Session.onMessage (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:97600:35)
+    at Interface.<anonymous> (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:98831:27)
+    at emitOne (events.js:96:13)
+    at Interface.emit (events.js:191:7)
+    at Interface._onLine (readline.js:241:10)
+    at Interface._normalWrite (readline.js:384:12)
+    at Socket.ondata (readline.js:101:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:191:7)
+    at readableAddChunk (_stream_readable.js:178:18)
+    at Socket.Readable.push (_stream_readable.js:136:10)
+    at Pipe.onread (net.js:560:20)

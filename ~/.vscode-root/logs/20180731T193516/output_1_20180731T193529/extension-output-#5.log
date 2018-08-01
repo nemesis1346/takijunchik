@@ -1,0 +1,11 @@
+[Info  - 21:01:31] ESLint server is running.
+[Info  - 21:01:38] ESLint library loaded from: /home/nemesis1346/Documents/UniversityProjects/takijunchik/react-front-end/node_modules/eslint/lib/api.js
+[Error - 21:01:39] 
+Failed to load plugin prettier: Cannot find module 'eslint-plugin-prettier'
+Happened while validating /home/nemesis1346/Documents/UniversityProjects/takijunchik/react-front-end/src/index.js
+This can happen for a couple of reasons:
+1. The plugin name is spelled incorrectly in an ESLint configuration file (e.g. .eslintrc).
+2. If ESLint is installed globally, then make sure 'eslint-plugin-prettier' is installed globally as well.
+3. If ESLint is installed locally, then 'eslint-plugin-prettier' isn't installed correctly.
+
+Consider running eslint --debug /home/nemesis1346/Documents/UniversityProjects/takijunchik/react-front-end/src/index.js from a terminal to obtain a trace about the configuration files used.
