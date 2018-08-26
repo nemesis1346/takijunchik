@@ -4,6 +4,7 @@ import Validator from "validator";
 import InlineError from "../messages/InlineError";
 import { PropTypes } from 'prop-types';
 class LoginForm extends React.Component {
+    //The following variables are being initialized
     state = {
         data: {},
         loading: false,
@@ -13,11 +14,12 @@ class LoginForm extends React.Component {
         console.log("is getting to onSubmit");
         const errors = this.validate(this.state.data);
         this.setState({ errors });
+        //The condition is that if there is no methods on errors, it is validated
         if (Object.keys(errors).length === 0) {
             this.props.submit(this.state.data);
         }
     }
-
+    //This methos is a series of validations on errors object
     validate = (data) => {
         console.log("is getting here");
         const errors = {};

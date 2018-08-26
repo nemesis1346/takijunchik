@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginForm from '../forms/LoginForm';
+//You can use prop-types to document the intended types of properties passed to components. 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {login} from '../../actions/auth';

@@ -1,4 +1,4 @@
-export class WordModel {
+class WordModel {
     constructor(
         wordId,
         spanish,
@@ -18,4 +18,4 @@ export class WordModel {
     }
 }
 
-module.exports = TokenAccountModel;
+module.exports = WordModel;
