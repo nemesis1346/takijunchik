@@ -6,36 +6,68 @@ const CONSTANTS = require('../resources/constants.js');
 const PORT = '3011';
 const HOST = 'localhost';
 const http = require('http');
+const UUID = require('uuid/v1');
 
-function dataInputRequest() {
+async function mainDataInputProcess() {
+    // await saveWords();
+    try{
+        await getAllWords();
 
-    //TODO:put delay in each transaction iteration 
+    }catch(error){
+        console.error(error);
+        return new Error(error);
+    }
+}
 
-    console.log(CONSTANTS.constant1);
-    data.forEach(element => {
-        const currentWord = new WordModel(
-            element.wordId,
-            element.spanish,
-            element.english,
-            element.kichwa,
-            element.descriptionSpanish,
-            element.descriptionEnglish,
-            element.descriptionKichwa
-        );
-        console.log(currentWord);
-        // we set a delay just in case composer has MVVC problem
-        setTimeout(() => {
-            requestPost('/saveWord', JSON.stringify(currentWord))
-        }, 2000);
+async function getAllWords() {
+    try {
+        let wordsList = [];
+        //TODO: develop method for getting 
+        let response= await requestGet('/getAllWords');
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+        return new Error(error);
+    }
 
-    });
+}
 
+async function saveWords() {
+    try {
+        //TODO:put delay in each transaction iteration 
+        console.log(CONSTANTS.constant1);
+
+        for (let index = 0; index < data.length; index++) {
+            const element = data[index];
+            const currentWord = new WordModel(
+                UUID(),
+                element.spanish,
+                element.english,
+                element.kichwa,
+                element.descriptionSpanish,
+                element.descriptionEnglish,
+                element.descriptionKichwa
+            );
+            console.log(currentWord);
+            // we set a delay just in case composer has MVVC problem
+            try {
+                await requestPost('/saveWord', JSON.stringify(currentWord));
+            } catch (error) {
+                console.error(error);
+                throw new Error(error);
+                break;
+            }
+        }
+    } catch (error) {
+        console.error(error);
+        throw new Error(error);
+    }
 
 }
 /**
  * This is a generic method for post request
  * @param {Its the name of the endpoint or method at the end} endpoint 
- * @param {Its the data, usually should be a json object} word 
+ * @param {Its the data, usually should be a json object} data 
  */
 function requestPost(endpoint, data) {
     // //The following should be in a loop
@@ -43,7 +75,7 @@ function requestPost(endpoint, data) {
     var post_options = {
         host: HOST,
         port: PORT,
-        path: endpoint,//saveWord
+        path: endpoint,
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -54,10 +86,34 @@ function requestPost(endpoint, data) {
     var post_req = http.request(post_options, function (res) {
         res.setEncoding('utf8');
         res.on('data', function (chunk) {
+            console.log('RESPONSE------------');
             console.log(chunk);
         });
     });
     post_req.write(data)
 }
+/**
+ * This is a generic method for get request
+ * @param {Its the name of the endpoint or method at the end} endpoint 
+ */
+function requestGet(endpoint){
+    var get_options = {
+        host: HOST,
+        port: PORT,
+        path: endpoint,
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
 
-dataInputRequest();
+    var get_req = http.request(get_options, function (res) {
+        res.setEncoding('utf8');
+        res.on('data', function (chunk) {
+            console.log('RESPONSE------------');
+            console.log(chunk);
+        });
+    });
+    get_req.end()
+}
+mainDataInputProcess();

@@ -27,7 +27,36 @@ class Composer {
         console.log(this.businessNetworkDefinition);
         LOG.info('tinkunakuy:<init>', 'businessNetworkDefinition obtained', this.businessNetworkDefinition.getIdentifier());
     }
-
+/**
+ * @description It returns the list of all the words
+ * @return {Promise} A promise that returns the list of all the words
+ */
+async getAllWords(){
+    try {
+        let wordsList = [];
+        let businessNetworkConnection = new BusinessNetworkConnection();
+        let connection = await businessNetworkConnection.connect(cardname)
+        let wordRegistry = await businessNetworkConnection.getParticipantRegistry(networkNamespace + '.Word');
+        let words = await wordRegistry.getAll();
+        words.forEach(element => {
+            let currentWord = new WordModel(
+                element.wordId,
+                element.spanish,
+                element.english,
+                element.kichwa,
+                element.descriptionSpanish,
+                element.descriptionEnglish,
+                element.descriptionKichwa
+            );
+            wordsList.push(currentWord);
+        });
+        //console.log(traders);
+        return wordsList;
+    } catch (error) {
+        console.error(error);
+        throw new Error(error);
+    }
+}
 
     /**
      * @description It creates a new word
@@ -48,10 +77,10 @@ class Composer {
             );
 
             let businessNetworkConnection = new BusinessNetworkConnection();
-            let connection = await businessNetworkConnection.connect(cardname)
+            let connection = await businessNetworkConnection.connect(cardname);
             let assetRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Word');
             let factory = connection.getFactory();
-            
+
             let word = factory.newResource(networkNamespace, "Word", wordModel.wordId);
             word.wordId = wordModel.wordId;
             word.spanish = wordModel.spanish;

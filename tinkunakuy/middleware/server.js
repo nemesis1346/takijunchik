@@ -34,9 +34,32 @@ const handler = async (request, response) => {
             switch (url) {
                 case '/saveWord':
                     this.composerInstance.saveWord(JSON.parse(body))
-                        .then(function () {
+                        .then(function (result) {
+                            console.log(result);
+                            console.log('Save Word succesful in server.js');
                             const responseBody = { headers, method, url, body };
+                            console.log(result);
+                            let body = result;
+                            response.write(JSON.stringify(responseBody));
+                            response.end();
+                        }).catch((error) => {
+                            response.statusCode = 400;
+                            let message = error.toString();
+                            console.log(message);
+                            const responseBody = { headers, method, url, body, message };
 
+                            response.write(JSON.stringify(responseBody));
+                            response.end();
+                        });
+                    break;
+                case '/getAllWords':
+                    this.composerInstance.getAllWords()
+                        .then(function (result) {
+                            console.log(result);
+                            console.log('Get All Words succesful in server.js');
+                            const responseBody = { headers, method, url, body };
+                            console.log(result);
+                            let body = result;
                             response.write(JSON.stringify(responseBody));
                             response.end();
                         }).catch((error) => {
@@ -72,6 +95,7 @@ const handler = async (request, response) => {
 
 app.post('/login', handler);
 app.post('/saveWord', handler);
+app.post('/getAllWorlds');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
