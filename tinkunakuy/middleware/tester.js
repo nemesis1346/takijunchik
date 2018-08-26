@@ -2,13 +2,14 @@
 var data = require('../datasample/words.json');
 const WordModel = require('../models/wordModel.js');
 const delay = require('delay');
-const CONSTANTS=require('../resources/constants.js');
-const PORT='3011';
-const HOST='localhost';
+const CONSTANTS = require('../resources/constants.js');
+const PORT = '3011';
+const HOST = 'localhost';
+const http = require('http');
 
 function dataInputRequest() {
 
-    //TODO:processing the json file to a list
+    //TODO:put delay in each transaction iteration 
 
     console.log(CONSTANTS.constant1);
     data.forEach(element => {
@@ -22,8 +23,10 @@ function dataInputRequest() {
             element.descriptionKichwa
         );
         console.log(currentWord);
-
-       setTimeout(requestPost('/saveWord',JSON.stringify(currentWord)),2000);
+        // we set a delay just in case composer has MVVC problem
+        setTimeout(() => {
+            requestPost('/saveWord', JSON.stringify(currentWord))
+        }, 2000);
 
     });
 

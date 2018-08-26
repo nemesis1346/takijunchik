@@ -5,14 +5,9 @@ const port = 3011
 const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const methodOverride = require('method-override')
 const cors = require('cors');
 const Composer = require('./composer.js');
-const Transactions = require('../lib/logic.js');
-const winston = require('winston');
-const http = require('http');
 const UUID = require('uuid/v1');
-const LOG = winston.loggers.get('application');
 const app = express();
 
 
@@ -38,7 +33,7 @@ const handler = async (request, response) => {
         try {
             switch (url) {
                 case '/saveWord':
-                    this.composerInstance.createTrader(JSON.parse(body))
+                    this.composerInstance.saveWord(JSON.parse(body))
                         .then(function () {
                             const responseBody = { headers, method, url, body };
 

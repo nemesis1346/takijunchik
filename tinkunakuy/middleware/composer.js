@@ -52,7 +52,7 @@ class Composer {
             let assetRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Word');
             let factory = connection.getFactory();
             
-            let word = factory.newResource(networkNamespace, "Track", currentTrack.isrc);
+            let word = factory.newResource(networkNamespace, "Word", wordModel.wordId);
             word.wordId = wordModel.wordId;
             word.spanish = wordModel.spanish;
             word.english = wordModel.english;
