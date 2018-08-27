@@ -95,7 +95,7 @@ const handler = async (request, response) => {
 
 app.post('/login', handler);
 app.post('/saveWord', handler);
-app.post('/getAllWorlds');
+app.get('/getAllWords',handler);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

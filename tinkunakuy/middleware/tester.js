@@ -103,7 +103,7 @@ function requestGet(endpoint){
         path: endpoint,
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json'
+            accept: 'application/json'
         }
     };
 
