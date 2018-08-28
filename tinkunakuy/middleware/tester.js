@@ -9,9 +9,9 @@ const http = require('http');
 const UUID = require('uuid/v1');
 
 async function mainDataInputProcess() {
-    // await saveWords();
     try{
-        await getAllWords();
+    //    await getAllWords();
+     await saveWords();
 
     }catch(error){
         console.error(error);
