@@ -3,9 +3,9 @@ import LoginForm from '../forms/LoginForm';
 //You can use prop-types to document the intended types of properties passed to components. 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {login} from '../../actions/auth';
+import { login } from '../../actions/auth';
 class LoginPage extends React.Component {
-    submit = (data) => this.props.login(data).then(() => this.props.history.push("/"));
+    submit = (data) => {return this.props.login(data).then(() => this.props.history.push("/"));}//Then is the function that executes after the promise
     render() {
         return (
             <div>
@@ -21,5 +21,6 @@ LoginPage.propTypes = {
     }).isRequired,
     login: PropTypes.func.isRequired
 };
+
 
 export default connect(null, { login })(LoginPage);

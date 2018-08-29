@@ -18,6 +18,7 @@ const store = createStore(
 
 ReactDOM.render(
     <BrowserRouter>
+    {/* Provider that inside we want to rap our application*/}
         <Provider store={store}><App /></Provider>
     </BrowserRouter>,
     document.getElementById('root'));

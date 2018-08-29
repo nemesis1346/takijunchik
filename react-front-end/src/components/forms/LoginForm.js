@@ -12,16 +12,21 @@ class LoginForm extends React.Component {
     }
     onSubmit = () => {
         console.log("is getting to onSubmit");
-        const errors = this.validate(this.state.data);
-        this.setState({ errors });
+        //TODO: Resolve the validation
+        // const errors = this.validate(this.state.data);
+        // this.setState({ errors });
+
+        //TODO: send actual data
         //The condition is that if there is no methods on errors, it is validated
-        if (Object.keys(errors).length === 0) {
-            this.props.submit(this.state.data);
-        }
+        // if (Object.keys(errors).length === 0) {
+        //this.props.submit(this.state.data);
+        // }
+               this.props.submit(this.state.data);
+
     }
     //This methos is a series of validations on errors object
     validate = (data) => {
-        console.log("is getting here");
+      
         const errors = {};
         if (!Validator.isEmail(data.email)) errors.email = "Invalid email";
         if (!data.password) errors.password = "Cant be blank";
