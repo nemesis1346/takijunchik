@@ -36,7 +36,7 @@ async getAllWords(){
         let wordsList = [];
         let businessNetworkConnection = new BusinessNetworkConnection();
         let connection = await businessNetworkConnection.connect(cardname)
-        let wordRegistry = await businessNetworkConnection.getParticipantRegistry(networkNamespace + '.Word');
+        let wordRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Word');
         let words = await wordRegistry.getAll();
         words.forEach(element => {
             let currentWord = new WordModel(
@@ -50,7 +50,6 @@ async getAllWords(){
             );
             wordsList.push(currentWord);
         });
-        //console.log(traders);
         return wordsList;
     } catch (error) {
         console.error(error);
@@ -89,7 +88,6 @@ async getAllWords(){
             word.descriptionSpanish = wordModel.descriptionSpanish;
             word.descriptionEnglish = wordModel.descriptionEnglish;
             word.descriptionKichwa = wordModel.descriptionKichwa;
-
             await assetRegistry.add(word);
             await businessNetworkConnection.disconnect();
         } catch (error) {

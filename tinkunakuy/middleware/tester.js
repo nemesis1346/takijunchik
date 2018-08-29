@@ -10,8 +10,8 @@ const UUID = require('uuid/v1');
 
 async function mainDataInputProcess() {
     try{
-    //    await getAllWords();
-     await saveWords();
+        await getAllWords();
+     await saveWord();
 
     }catch(error){
         console.error(error);
@@ -32,7 +32,7 @@ async function getAllWords() {
 
 }
 
-async function saveWords() {
+async function saveWord() {
     try {
         //TODO:put delay in each transaction iteration 
         console.log(CONSTANTS.constant1);

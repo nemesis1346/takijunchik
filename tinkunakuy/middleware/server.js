@@ -35,11 +35,10 @@ const handler = async (request, response) => {
                 case '/saveWord':
                     this.composerInstance.saveWord(JSON.parse(body))
                         .then(function (result) {
+                            let body = result;
                             console.log(result);
                             console.log('Save Word succesful in server.js');
                             const responseBody = { headers, method, url, body };
-                            console.log(result);
-                            let body = result;
                             response.write(JSON.stringify(responseBody));
                             response.end();
                         }).catch((error) => {
@@ -55,11 +54,10 @@ const handler = async (request, response) => {
                 case '/getAllWords':
                     this.composerInstance.getAllWords()
                         .then(function (result) {
+                            let body = result;
                             console.log(result);
                             console.log('Get All Words succesful in server.js');
                             const responseBody = { headers, method, url, body };
-                            console.log(result);
-                            let body = result;
                             response.write(JSON.stringify(responseBody));
                             response.end();
                         }).catch((error) => {
