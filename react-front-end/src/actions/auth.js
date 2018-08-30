@@ -7,8 +7,7 @@ export const userLoggedIn = (user) => ({
     user
 })
 //This event is called from the LoginPage to be executed, then is sent to api, so here the credentials are being defined to the api post or get
-export const login = (credentials) => (dispatch) => {
-    console.log('Auth'); 
-    console.log(credentials);       
-    api.user.login(credentials).then(user => dispatch(userLoggedIn(user)));//Here it makes the call to the server
-}
+export const login = (credentials) => (dispatch) => api.user.login(credentials).then(user => dispatch(userLoggedIn(user)));//Here it makes the call to the server
+
+    // console.log('Auth'); 
+    // console.log(credentials);       

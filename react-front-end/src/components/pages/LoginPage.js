@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
 class LoginPage extends React.Component {
+
     submit = (data) => {return this.props.login(data).then(() => this.props.history.push("/"));}//Then is the function that executes after the promise
     render() {
         return (
