@@ -3,14 +3,23 @@ import { Form, Button } from 'semantic-ui-react';
 import Validator from "validator";
 import InlineError from "../messages/InlineError";
 import { PropTypes } from 'prop-types';
+//import {UserModel} from '../../models/userModel.js';
+
 class LoginForm extends React.Component {
     //The following variables are being initialized
+  
     state = {
         data: {},
         loading: false,
         errors: {}
     }
     onSubmit = () => {
+        // const userModel = new UserModel({
+        //      name: 'asf',
+        //     email: 'saf',
+        //     pwd: 'asdf'
+        // });
+        // console.log(userModel);
         console.log("is getting to onSubmit");
         //TODO: Resolve the validation
         // const errors = this.validate(this.state.data);
