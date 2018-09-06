@@ -6,7 +6,7 @@ const IdCard = require('composer-common').IdCard;
 const cardname = 'admin@tinkunakuy';
 const networkNamespace = 'org.nemesis1346.tinkunakuy';
 const LOG = winston.loggers.get('application');
-const WordModel = require('../models/wordModel.js');
+const UserModel = require('../models/userModel.js');
 
 class UserChaincode {
     constructor() {
@@ -36,24 +36,25 @@ class UserChaincode {
         console.log('Request Login in Composer.js: ');
         console.log(requestLogin);
         try {
-            let wordsList = [];
             let businessNetworkConnection = new BusinessNetworkConnection();
-            let connection = await businessNetworkConnection.connect(cardname)
-            let wordRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Word');
-            let words = await wordRegistry.getAll();
-            words.forEach(element => {
-                let currentWord = new WordModel(
-                    element.wordId,
-                    element.spanish,
-                    element.english,
-                    element.kichwa,
-                    element.descriptionSpanish,
-                    element.descriptionEnglish,
-                    element.descriptionKichwa
-                );
-                wordsList.push(currentWord);
-            });
-            return wordsList;
+            let email = requestLogin.email;
+            let pwd = requestLogin.password;
+
+            let query = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.User WHERE (email==_$email AND pwd==_$pwd)');
+
+            let userQuery = await businessNetworkConnection.query(query, { email: email, pwd: pwd });
+            console.log('Login Composer User Response: ');
+            console.log(userQuery.email);
+            let participantRegistry = await businessNetworkConnection.getParticipantRegistry(networkNamespace + '.User');
+
+            let userResult = await participantRegistry.get(userQuery[0].$identifier);
+
+            let result = new UserModel(
+                userResult.name,
+                userResult.email,
+                userResult.userType
+            );
+            return result;
         } catch (error) {
             console.error(error);
             throw new Error(error);
@@ -64,34 +65,31 @@ class UserChaincode {
      * @description It creates a new user
      * @return {Promise} A promise that creates a user
      */
-    async createUser(requestWord) {
-        console.log('Request Word: ');
-        console.log(requestWord);
+    async createUser(requestUser) {
+        console.log('Request User: ');
+        console.log(requestUser);
+        let request = requestUser.params;
         try {
-            let wordModel = new WordModel(
-                requestWord.wordId,
-                requestWord.spanish,
-                requestWord.english,
-                requestWord.kichwa,
-                requestWord.descriptionSpanish,
-                requestWord.descriptionEnglish,
-                requestWord.descriptionKichwa
+            let userModel = new UserModel(
+                request.email,
+                request.name,
+                request.password,
+                request.userType
             );
 
+            console.log(userModel);
             let businessNetworkConnection = new BusinessNetworkConnection();
             let connection = await businessNetworkConnection.connect(cardname);
-            let assetRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Word');
+            let participantRegistry = await businessNetworkConnection.getParticipantRegistry(networkNamespace + '.User');
             let factory = connection.getFactory();
 
-            let word = factory.newResource(networkNamespace, "Word", wordModel.wordId);
-            word.wordId = wordModel.wordId;
-            word.spanish = wordModel.spanish;
-            word.english = wordModel.english;
-            word.kichwa = wordModel.kichwa;
-            word.descriptionSpanish = wordModel.descriptionSpanish;
-            word.descriptionEnglish = wordModel.descriptionEnglish;
-            word.descriptionKichwa = wordModel.descriptionKichwa;
-            await assetRegistry.add(word);
+            let user = factory.newResource(networkNamespace, "User", userModel.email);
+            user.email = userModel.email;
+            user.name = userModel.name;
+            user.userType = userModel.userType;
+            //user.pwd=userModel.pwd;
+
+            await participantRegistry.add(user);
             await businessNetworkConnection.disconnect();
         } catch (error) {
             console.error(error);
