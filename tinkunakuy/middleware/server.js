@@ -6,7 +6,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const cors = require('cors');
-const Composer = require('./composer.js');
+const VocabularyChaincode = require('../chaincode/vocabularyChaincode.js');
+const UserChaincode = require('../chaincode/userChaincode.js');
 const UUID = require('uuid/v1');
 const app = express();
 
@@ -30,45 +31,20 @@ const handler = async (request, response) => {
             console.error(err);
         });
         //Call method
+        let promise;
         try {
             switch (url) {
+                case '/createUser':
+                    promise = this.userChaincode.createUser(JSON.parse(body));
+                    break;
+                case '/login':
+                    promise = this.userChaincode.login(JSON.parse(body));
+                    break;
                 case '/saveWord':
-                    this.composerInstance.saveWord(JSON.parse(body))
-                        .then(function (result) {
-                            let body = result;
-                            console.log(result);
-                            console.log('Save Word succesful in server.js');
-                            const responseBody = { headers, method, url, body };
-                            response.write(JSON.stringify(responseBody));
-                            response.end();
-                        }).catch((error) => {
-                            response.statusCode = 400;
-                            let message = error.toString();
-                            console.log(message);
-                            const responseBody = { headers, method, url, body, message };
-
-                            response.write(JSON.stringify(responseBody));
-                            response.end();
-                        });
+                    promise = this.vocabularyChaincode.saveWord(JSON.parse(body));
                     break;
                 case '/getAllWords':
-                    this.composerInstance.getAllWords()
-                        .then(function (result) {
-                            let body = result;
-                            console.log(result);
-                            console.log('Get All Words succesful in server.js');
-                            const responseBody = { headers, method, url, body };
-                            response.write(JSON.stringify(responseBody));
-                            response.end();
-                        }).catch((error) => {
-                            response.statusCode = 400;
-                            let message = error.toString();
-                            console.log(message);
-                            const responseBody = { headers, method, url, body, message };
-
-                            response.write(JSON.stringify(responseBody));
-                            response.end();
-                        });
+                    promise = this.vocabularyChaincode.getAllWords();
                     break;
                 default:
                     response.statusCode = 405;
@@ -78,6 +54,27 @@ const handler = async (request, response) => {
 
                     response.write(JSON.stringify(responseBody));
                     response.end();
+                    break;
+            }
+
+            //Executing the promise , maybe need POST and GET
+            if (promise != null) {
+                promise.then(function (result) {
+                    let body = result;
+                    console.log(result);
+                    console.log('Promise Successful In Server.js');
+                    const responseBody = { headers, method, url, body };
+                    response.write(JSON.stringify(responseBody));
+                    response.end();
+                }).catch((error) => {
+                    response.statusCode = 400;
+                    let message = error.toString();
+                    console.log(message);
+                    const responseBody = { headers, method, url, body, message };
+
+                    response.write(JSON.stringify(responseBody));
+                    response.end();
+                });
             }
 
         } catch (error) {
@@ -93,7 +90,8 @@ const handler = async (request, response) => {
 
 app.post('/login', handler);
 app.post('/saveWord', handler);
-app.get('/getAllWords',handler);
+app.get('/getAllWords', handler);
+app.post('/createUser', handler);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -106,9 +104,9 @@ app.listen(port, async (err) => {
     }
     try {
         //Instance of the network and transactions
-        this.composerInstance = new Composer();
-        // this.transactions = new Transactions();
-        // console.log(this.transactions);
+        this.vocabularyChaincode = new VocabularyChaincode();
+        this.userChaincode = new UserChaincode();
+
         // setTimeout(clientTest, 1500);
     } catch (error) {
         console.log("Error Composer instance: ", error);

@@ -10,14 +10,17 @@ const UUID = require('uuid/v1');
 
 async function mainDataInputProcess() {
     try{
-        await getAllWords();
+        
      await saveWord();
+     await getAllWords();
+
 
     }catch(error){
         console.error(error);
         return new Error(error);
     }
 }
+
 
 async function getAllWords() {
     try {
