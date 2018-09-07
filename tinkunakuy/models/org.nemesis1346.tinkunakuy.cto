@@ -6,6 +6,13 @@ participant User identified by email {
   o String pwd
   o UserType userType
 }
+asset Object identified by objectId{
+  o String timeSlotId1
+  o String timeSlotId2
+  o String timeValue
+  o String contentValue
+  o String annotationId
+}
 
 enum UserType{
   o STUDENT

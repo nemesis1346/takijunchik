@@ -7,7 +7,7 @@ const cardname = 'admin@tinkunakuy';
 const networkNamespace = 'org.nemesis1346.tinkunakuy';
 const LOG = winston.loggers.get('application');
 const WordModel = require('../models/wordModel.js');
-
+const ObjectModel =require('../models/objectModel.js');
 class VocabularyChaincode {
     constructor() {
         try {
@@ -89,6 +89,41 @@ class VocabularyChaincode {
             word.descriptionEnglish = wordModel.descriptionEnglish;
             word.descriptionKichwa = wordModel.descriptionKichwa;
             await assetRegistry.add(word);
+            await businessNetworkConnection.disconnect();
+        } catch (error) {
+            console.error(error);
+            throw new Error(error);
+        }
+    }
+     /**
+     * @description It creates a new object for storing linguistics project
+     * @return {Promise} A promise that creates a object for storing linguistics project
+     */
+    async saveObject(requestObject) {
+        console.log('Request Object: ');
+        console.log(requestObject);
+        try {
+            let objectModel = new ObjectModel(
+                requestObject.timeSlotId1,
+                requestObject.timeSlotId2,
+                requestObject.timeValue,
+                requestObject.contentValue,
+                requestObject.annotationId
+            );
+
+            let businessNetworkConnection = new BusinessNetworkConnection();
+            let connection = await businessNetworkConnection.connect(cardname);
+            let assetRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Object');
+            let factory = connection.getFactory();
+
+            let object = factory.newResource(networkNamespace, "Object", objectModel.annotationId);
+            object.timeSlotId1 = objectModel.timeSlotId1;
+            object.timeSlotId2 = objectModel.timeSlotId2;
+            object.timeValue = objectModel.timeValue;
+            object.contentValue = objectModel.contentValue;
+            object.annotationId = objectModel.annotationId;
+
+            await assetRegistry.add(object);
             await businessNetworkConnection.disconnect();
         } catch (error) {
             console.error(error);

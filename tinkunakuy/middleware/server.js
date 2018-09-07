@@ -46,6 +46,9 @@ const handler = async (request, response) => {
                 case '/getAllWords':
                     promise = this.vocabularyChaincode.getAllWords();
                     break;
+                case '/saveObject':
+                    promise = this.vocabularyChaincode.saveObject();
+                    break;
                 default:
                     response.statusCode = 405;
                     let message = 'Method not found';
@@ -90,6 +93,7 @@ const handler = async (request, response) => {
 
 app.post('/login', handler);
 app.post('/saveWord', handler);
+app.post('/saveObject', handler);
 app.get('/getAllWords', handler);
 app.post('/createUser', handler);
 app.use(logger('dev'));

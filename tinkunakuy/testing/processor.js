@@ -40,7 +40,7 @@ async function processData() {
                     objectList.forEach(element => {
                         //console.log(element.timeSlotId1);
                         if (element.timeSlotId1 == currentAlignableAnnotation.TIME_SLOT_REF1) {
-                            console.log(currentAlignableAnnotation);
+                            //console.log(currentAlignableAnnotation);
                             element.timeSlotId2 = currentAlignableAnnotation.TIME_SLOT_REF2;
                             element.annotationId = currentAlignableAnnotation.ANNOTATION_ID;
                             element.contentValue=currentAnnotationValue;
