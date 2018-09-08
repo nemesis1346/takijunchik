@@ -18,18 +18,18 @@ class Processor {
     async processData() {
         var xmlfile = "/home/nemesis1346/Documents/UniversityProjects/takijunchik/tinkunakuy/testing/dataTest.eaf";
 
-        fs.readFile(xmlfile, "utf-8", function (error, text) {
+        await fs.readFile(xmlfile, "utf-8", async function (error, text) {
             if (error) {
                 throw error;
             } else {
-                parser.parseString(text, function (err, result) {
+                await parser.parseString(text, async function (err, result) {
                     // console.log(result);
                     let objectList = [];
 
                     let TIME_ORDER_ANNOTATION = result['ANNOTATION_DOCUMENT']['TIME_ORDER'];
                     let TIME_SLOT_LIST = TIME_ORDER_ANNOTATION[0].TIME_SLOT;
 
-                    TIME_SLOT_LIST.forEach(element => {
+                    await TIME_SLOT_LIST.forEach(async element => {
                         let currentElement = element['$'];
                         // THIS IS FOR TIMESLOTID1 AND TIME VALUE
                         let currentObject = new ObjectModel(currentElement.TIME_SLOT_ID, null,
@@ -40,29 +40,28 @@ class Processor {
 
                     let TIER_ANNOTATION = result['ANNOTATION_DOCUMENT']['TIER'];
                     let ANNOTATION_LIST = TIER_ANNOTATION[0]['ANNOTATION'];
-                    ANNOTATION_LIST.forEach(element => {
+                    await ANNOTATION_LIST.forEach(async element => {
                         //console.log(element);
                         let currentAlignableAnnotation = element['ALIGNABLE_ANNOTATION'][0]['$'];
                         let currentAnnotationValue = element['ALIGNABLE_ANNOTATION'][0]['ANNOTATION_VALUE'];
                         //console.log(currentAnnotationValue);
                         //console.log(element['ALIGNABLE_ANNOTATION'][0]['$']);
-                        objectList.forEach(element => {
+                        await objectList.forEach(async element => {
                             //console.log(element.timeSlotId1);
                             if (element.timeSlotId1 == currentAlignableAnnotation.TIME_SLOT_REF1) {
                                 //console.log(currentAlignableAnnotation);
                                 element.timeSlotId2 = currentAlignableAnnotation.TIME_SLOT_REF2;
                                 element.annotationId = currentAlignableAnnotation.ANNOTATION_ID;
                                 element.contentValue = currentAnnotationValue;
-                                console.log(element);
+                                //console.log(element);
                             }
                         });
+                        console.log(objectList);
                     });
                     return objectList;
                 });
             }
         });
-
     }
-
 }
 module.exports = Processor;

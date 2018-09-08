@@ -15,11 +15,20 @@ async function mainDataInputProcess() {
         //await saveWord();
         //await getAllWords();
         let processorInstance = new Processor();
-        let objectList = await processorInstance.processData();
-        console.log(objectList);
-        objectList.forEach(element => {
-            await requestPost('/saveObject', JSON.stringify(element));
+        let objectList = await processorInstance.processData()
+        .then((result)=>{
+            console.log(result);
         });
+        console.log(objectList);
+            // .then((objectList) => {
+            //     console.log(objectList);
+            //     // objectList.forEach(async element => {
+            //     //     await requestPost('/saveObject', JSON.stringify(element));
+            //     // });
+            // }).catch((error) => {
+            //     console.log(error);
+            // });
+
 
     } catch (error) {
         console.error(error);

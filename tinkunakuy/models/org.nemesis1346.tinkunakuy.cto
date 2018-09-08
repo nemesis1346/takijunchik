@@ -6,7 +6,7 @@ participant User identified by email {
   o String pwd
   o UserType userType
 }
-asset Object identified by objectId{
+asset Object identified by annotationId{
   o String timeSlotId1
   o String timeSlotId2
   o String timeValue
