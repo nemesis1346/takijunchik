@@ -7,15 +7,21 @@ const PORT = '3011';
 const HOST = 'localhost';
 const http = require('http');
 const UUID = require('uuid/v1');
+const Processor = require('../testing/processor.js');
 
 async function mainDataInputProcess() {
-    try{
-        
-     await saveWord();
-     await getAllWords();
+    try {
 
+        //await saveWord();
+        //await getAllWords();
+        let processorInstance = new Processor();
+        let objectList = await processorInstance.processData();
+        console.log(objectList);
+        objectList.forEach(element => {
+            await requestPost('/saveObject', JSON.stringify(element));
+        });
 
-    }catch(error){
+    } catch (error) {
         console.error(error);
         return new Error(error);
     }
@@ -26,7 +32,7 @@ async function getAllWords() {
     try {
         let wordsList = [];
         //TODO: develop method for getting 
-        let response= await requestGet('/getAllWords');
+        let response = await requestGet('/getAllWords');
         console.log(response);
     } catch (error) {
         console.error(error);
@@ -99,7 +105,7 @@ function requestPost(endpoint, data) {
  * This is a generic method for get request
  * @param {Its the name of the endpoint or method at the end} endpoint 
  */
-function requestGet(endpoint){
+function requestGet(endpoint) {
     var get_options = {
         host: HOST,
         port: PORT,
