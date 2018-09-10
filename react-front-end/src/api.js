@@ -5,7 +5,11 @@ const instance = axios.create({baseURL: 'http://localhost:3011'})
 export default{
     user:{
         login:credentials=>instance.post('/login',{credentials}).then(res=>res.data.user),
-        signup:params=>instance.post('/createUser',{params}).then(res=>res.data.user)
+        
+        signup:params=>instance.post('/createUser',{params})
+        .then((res)=>{
+            console.log(res.data)
+        })
     },
     vocabulary:{
         translate_kichwa_spanish: word_kichwa=>axios.post('/api/translate_kichwa_spanish',{word_kichwa})

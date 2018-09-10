@@ -77,7 +77,6 @@ class UserChaincode {
                 request.userType
             );
 
-            console.log(userModel);
             let businessNetworkConnection = new BusinessNetworkConnection();
             let connection = await businessNetworkConnection.connect(cardname);
             let participantRegistry = await businessNetworkConnection.getParticipantRegistry(networkNamespace + '.User');
@@ -91,9 +90,10 @@ class UserChaincode {
 
             await participantRegistry.add(user);
             await businessNetworkConnection.disconnect();
+            return 'User '+userModel.email +' saved successfully';
         } catch (error) {
-            console.error(error);
-            throw new Error(error);
+            console.error(error.error);
+            return 'Error Create User: '+error;
         }
     }
 }

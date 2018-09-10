@@ -6,7 +6,16 @@ import { connect } from 'react-redux';
 import { signup } from '../../actions/signup';
 class SignupPage extends React.Component {
 
-    submit = (data) => {return this.props.signup(data).then(() => this.props.history.push("/"));}//Then is the function that executes after the promise
+    submit = (data) => {
+        return this.props.signup(data)
+        .then((result) => {
+            console.log(result);
+            this.props.history.push("/")
+        })
+        .catch((err)=>{
+            console.log(err);
+        });
+    }//Then is the function that executes after the promise
     render() {
         return (
             <div>

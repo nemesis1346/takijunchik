@@ -58,7 +58,7 @@ class SignupForm extends React.Component {
                 <Form.Field error={errors.name}>
                     <label htmlFor="name">Name</label>
                     <input
-                        type="name"
+                        type="text"
                         id="name"
                         name="name"
                         placeholder="Name"
