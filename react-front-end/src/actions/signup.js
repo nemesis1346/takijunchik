@@ -7,4 +7,9 @@ export const userSignIn = (user) => ({
     user
 })
 //This event is called from the SignPage to be executed, then is sent to api, so here the credentials are being defined to the api post or get
-export const signup = (params) => (dispatch) => api.user.signup(params).then(user => dispatch(userSignIn(user)));//Here it makes the call to the server
+export const signup = (params) => (dispatch) =>
+    api.user.signup(params)
+        .then((user) => {
+            console.log(user);
+            dispatch(userSignIn(user))
+        });//Here it makes the call to the server
