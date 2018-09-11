@@ -1,4 +1,5 @@
 #!/bin/bash
+#CAUTION: IF sh command not recognized, execute chmod +x file.sh
 # Get the bna file names
 bnaFiles=()
 versionNum=()
@@ -58,7 +59,7 @@ tinkunakuyBNA=${bnaFiles[$maxIndex]}
 increment_version ()
 {
 
-  declare -a part=( "${1//\./ }" )
+  declare -a part=( ${1//\./ } )
   declare    new
   declare -i carry=1
 
@@ -73,7 +74,7 @@ increment_version ()
   new="${part[*]}"
   echo -e "${new// /.}"
 } 
-  echo "hola"
+  #echo "$tinkunakuyVer"
 
 tinkunakuyNewVer=$(increment_version "$tinkunakuyVer")
 #echo "$tinkunakuyNewVer"
@@ -90,5 +91,8 @@ tinkunakuyNewBNA=${tinkunakuyBNA/$tinkunakuyVer*./$tinkunakuyNewVer.}
 export tinkunakuyVer
 export tinkunakuyBNA
 # new versions
-export tinkunakuyVer
+export tinkunakuyNewVer
 export tinkunakuyNewBNA
+
+echo "Exported: $tinkunakuyNewVer"
+echo "Exported: $tinkunakuyNewBNA"

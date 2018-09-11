@@ -6,6 +6,7 @@ sudo composer archive create -t dir -n ../
 
 # The source command can be used to load any functions file into the current shell script or a command prompt.
 # Gets tinkunakuy version and latest bna file
+sudo chmod +x getLatestBnaAndVer.sh
 source ./getLatestBnaAndVer.sh
 
 echo "Using tinkunakuy version: $tinkunakuyVer "
