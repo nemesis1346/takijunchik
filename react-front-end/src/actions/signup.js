@@ -10,6 +10,7 @@ export const userSignIn = (user) => ({
 export const signup = (params) => (dispatch) =>
     api.user.signup(params)
         .then((user) => {
+            console.log('Signup Action Result');
             console.log(user);
             dispatch(userSignIn(user))
         });//Here it makes the call to the server

@@ -47,7 +47,10 @@ const handler = async (request, response) => {
                     promise = this.vocabularyChaincode.getAllWords();
                     break;
                 case '/saveObject':
-                    promise = this.vocabularyChaincode.saveObject();
+                    promise = this.vocabularyChaincode.saveObject(JSON.parse(body));
+                    break;
+                case '/getObject':
+                    promise = this.vocabularyChaincode.getObject(JSON.parse(body));
                     break;
                 default:
                     response.statusCode = 405;
@@ -96,6 +99,7 @@ app.post('/saveWord', handler);
 app.post('/saveObject', handler);
 app.get('/getAllWords', handler);
 app.post('/createUser', handler);
+app.post('/getObject', handler);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

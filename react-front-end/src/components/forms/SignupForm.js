@@ -6,17 +6,15 @@ import { PropTypes } from 'prop-types';
 
 class SignupForm extends React.Component {
     //The following variables are being initialized
-  
+
     state = {
         data: {},
         loading: false,
         errors: {}
     }
     onSubmit = () => {
-        console.log("is getting to onSubmit");
-
         //TODO: For now eveytone is type PROFESSOR
-      
+
         //TODO: send actual data
         //The condition is that if there is no methods on errors, it is validated
         // if (Object.keys(errors).length === 0) {
@@ -24,12 +22,16 @@ class SignupForm extends React.Component {
         // }
 
         this.state.data.userType = 'PROFESSOR';
-        this.props.submit(this.state.data);
+        this.props.submit(this.state.data)
+            .then((res) => {
+                console.log('Result in SignUpForm');
+                console.log(res);
+            });;
 
     }
     //This methos is a series of validations on errors object
     validate = (data) => {
-      
+
         const errors = {};
         if (!Validator.isEmail(data.email)) errors.email = "Invalid email";
         if (!data.password) errors.password = "Cant be blank";

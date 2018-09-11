@@ -7,7 +7,7 @@ const cardname = 'admin@tinkunakuy';
 const networkNamespace = 'org.nemesis1346.tinkunakuy';
 const LOG = winston.loggers.get('application');
 const WordModel = require('../models/wordModel.js');
-const ObjectModel =require('../models/objectModel.js');
+const ObjectModel = require('../models/objectModel.js');
 class VocabularyChaincode {
     constructor() {
         try {
@@ -27,6 +27,56 @@ class VocabularyChaincode {
         console.log(this.businessNetworkDefinition);
         LOG.info('tinkunakuy:<init>', 'businessNetworkDefinition obtained', this.businessNetworkDefinition.getIdentifier());
     }
+
+    /**
+     * @description It returns a detailed object of the database
+     * @return {Promise} A promise that returns the boject detail
+     */
+    async getObject(requestObject) {
+        console.log('Request Object: ');
+        console.log(requestObject);
+        let input = requestObject.input;
+        try {
+
+            let businessNetworkConnection = new BusinessNetworkConnection();
+            await businessNetworkConnection.connect(cardname)
+            let objectRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Object');
+
+            console.log('Type: '+input.type);
+            
+            //This is for getting the property name
+            switch (input.type) {
+                case 'annotationId':
+                    let existObject = await objectRegistry.exists(input.object);
+                    if (existObject) {
+                        let object = objectRegistry.get(input.object);
+
+                        let currentObject = new ObjectModel(
+                            object.timeSlotId1,
+                            object.timeSlotId2,
+                            object.timeValue,
+                            object.contentValue,
+                            object.annotationId
+                        );
+
+                        return currentObject;
+                    } else {
+                        return 'Object with '+input.annotationId+' doesnt exist';
+                    }
+                case 'contentValue':
+                    break;
+                default:
+                    break;
+            }
+
+
+
+        } catch (error) {
+            console.error(error);
+            throw new Error(error);
+        }
+    }
+
     /**
      * @description It returns the list of all the words
      * @return {Promise} A promise that returns the list of all the words
@@ -95,10 +145,10 @@ class VocabularyChaincode {
             throw new Error(error);
         }
     }
-     /**
-     * @description It creates a new object for storing linguistics project
-     * @return {Promise} A promise that creates a object for storing linguistics project
-     */
+    /**
+    * @description It creates a new object for storing linguistics project
+    * @return {Promise} A promise that creates a object for storing linguistics project
+    */
     async saveObject(requestObject) {
         console.log('Request Object: ');
         console.log(requestObject);

@@ -7,14 +7,17 @@ import { signup } from '../../actions/signup';
 class SignupPage extends React.Component {
 
     submit = (data) => {
+        console.log('Data Request SingUpPage');
+        console.log(data);
         return this.props.signup(data)
-        .then((result) => {
-            console.log(result);
-            this.props.history.push("/")
-        })
-        .catch((err)=>{
-            console.log(err);
-        });
+            .then((result) => {
+                console.log('Result in SignUp Page');
+                console.log(result);
+                this.props.history.push("/")
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }//Then is the function that executes after the promise
     render() {
         return (

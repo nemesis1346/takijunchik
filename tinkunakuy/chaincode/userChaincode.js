@@ -35,26 +35,32 @@ class UserChaincode {
         console.log('************************************');
         console.log('Request Login in Composer.js: ');
         console.log(requestLogin);
+        let request = requestLogin.credentials;
         try {
             let businessNetworkConnection = new BusinessNetworkConnection();
-            let email = requestLogin.email;
-            let pwd = requestLogin.password;
+            let email = request.email;
+            let pwd = request.password;
+            await businessNetworkConnection.connect(cardname)
 
+            console.log(email);
+            console.log(pwd);
             let query = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.User WHERE (email==_$email AND pwd==_$pwd)');
-
             let userQuery = await businessNetworkConnection.query(query, { email: email, pwd: pwd });
             console.log('Login Composer User Response: ');
             console.log(userQuery.email);
-            let participantRegistry = await businessNetworkConnection.getParticipantRegistry(networkNamespace + '.User');
+            if (userQuery.email) {
+                let participantRegistry = await businessNetworkConnection.getParticipantRegistry(networkNamespace + '.User');
 
-            let userResult = await participantRegistry.get(userQuery[0].$identifier);
+                let userResult = await participantRegistry.get(userQuery[0].$identifier);
 
-            let result = new UserModel(
-                userResult.name,
-                userResult.email,
-                userResult.userType
-            );
-            return result;
+                let result = new UserModel(
+                    userResult.name,
+                    userResult.email,
+                    userResult.userType
+                );
+                return result;
+            }
+            return 'Thre is not user with those credentials';
         } catch (error) {
             console.error(error);
             throw new Error(error);
@@ -86,14 +92,14 @@ class UserChaincode {
             user.email = userModel.email;
             user.name = userModel.name;
             user.userType = userModel.userType;
-            //user.pwd=userModel.pwd;
+            user.pwd = userModel.pwd;
 
             await participantRegistry.add(user);
             await businessNetworkConnection.disconnect();
-            return 'User '+userModel.email +' saved successfully';
+            return 'User ' + userModel.email + ' saved successfully';
         } catch (error) {
             console.error(error.error);
-            return 'Error Create User: '+error;
+            return 'Error Create User: ' + error;
         }
     }
 }
