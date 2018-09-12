@@ -7,6 +7,7 @@ const cardname = 'admin@tinkunakuy';
 const networkNamespace = 'org.nemesis1346.tinkunakuy';
 const LOG = winston.loggers.get('application');
 const UserModel = require('../models/userModel.js');
+const DataModel = require('../models/dataModel.js');
 
 class UserChaincode {
     constructor() {
@@ -32,6 +33,7 @@ class UserChaincode {
      * @return {Promise} A promise that returns the object authenticated 
      */
     async login(requestLogin) {
+        let dataModel = new DataModel(null, null, null);
         console.log('************************************');
         console.log('Request Login in Composer.js: ');
         console.log(requestLogin);
@@ -53,14 +55,21 @@ class UserChaincode {
 
                 let userResult = await participantRegistry.get(userQuery[0].$identifier);
 
-                let result = new UserModel(
+                let userModel = new UserModel(
                     userResult.name,
                     userResult.email,
                     userResult.userType
                 );
-                return result;
+                //We set the result of for the response
+                dataModel.data = JSON.stringify(userModel);
+                dataModel.status = '200';
+
+                return dataModel;
+            } else {
+                dataModel.message = 'User with email ' + email + ' doesnt exist';
+                dataModel.status = '300';
+                return dataModel;
             }
-            return 'Thre is not user with those credentials';
         } catch (error) {
             console.error(error);
             throw new Error(error);

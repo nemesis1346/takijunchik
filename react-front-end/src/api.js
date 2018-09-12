@@ -4,11 +4,11 @@ const instance = axios.create({ baseURL: 'http://localhost:3011' })
 
 export default {
     user: {
-        login: credentials => instance.post('/login', { credentials })
-            .then((res) => {
-                console.log('Response in Api Login');
-                res.data
-            }),
+        login: credentials => instance.post('/login', { credentials }),
+            // .then((res) => {
+            //     console.log('Response in Api Login');
+            //     console.log(res);
+            // }),
 
         signup: params => instance.post('/createUser', { params })
             .then((res) => {

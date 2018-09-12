@@ -8,9 +8,8 @@ const logger = require('morgan');
 const cors = require('cors');
 const VocabularyChaincode = require('../chaincode/vocabularyChaincode.js');
 const UserChaincode = require('../chaincode/userChaincode.js');
-const UUID = require('uuid/v1');
 const app = express();
-
+const DataModel = require('../models/dataModel.js');
 
 const handler = async (request, response) => {
     const { headers, method, url } = request;
@@ -32,6 +31,7 @@ const handler = async (request, response) => {
         });
         //Call method
         let promise;
+        let dataModel = new DataModel(null, null, null);
         try {
             switch (url) {
                 case '/createUser':
@@ -66,28 +66,45 @@ const handler = async (request, response) => {
             //Executing the promise , maybe need POST and GET
             if (promise != null) {
                 promise.then(function (result) {
-                    let body = result;
+                    //This is status 200 , everything ok
+                    if (result.status == '200') {
+                        dataModel.data = result;
+                        dataModel.status = '200';
+                    } else {
+                        dataModel.message = result;
+                        dataModel.status = '300';
+                    }
+                    let body = JSON.stringify(dataModel);
+                    console.log('STATUS 200: ');
                     console.log(result);
-                    console.log('Promise Successful In Server.js');
                     const responseBody = { headers, method, url, body };
+
+                    response.statusCode = 200;
                     response.write(JSON.stringify(responseBody));
                     response.end();
                 }).catch((error) => {
-                    response.statusCode = 400;
-                    let message = error.toString();
-                    console.log(message);
-                    const responseBody = { headers, method, url, body, message };
+                    dataModel.message = error.message.toString();
+                    dataModel.status = '400';
+                    let body = JSON.stringify(dataModel);
+                    console.log('ERROR 400:');
+                    console.log(error.message);
+                    const responseBody = { headers, method, url, body };
 
+                    response.statusCode = 400;
                     response.write(JSON.stringify(responseBody));
                     response.end();
                 });
             }
 
         } catch (error) {
-            console.log("Error in switch: ", error);
-            response.statusCode = 400;
-            let message = error.toString;
-            const responseBody = { headers, method, url, body, message };
+            dataModel.message = error.message.toString();
+            dataModel.status = '500';
+            let body = JSON.stringify(dataModel);
+            console.log('ERROR 500:');
+            console.log(error.message);
+            const responseBody = { headers, method, url, body };
+
+            response.statusCode = 500;
             response.write(JSON.stringify(responseBody));
             response.end();
         }

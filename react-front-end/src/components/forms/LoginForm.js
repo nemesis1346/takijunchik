@@ -29,7 +29,11 @@ class LoginForm extends React.Component {
         //TODO: send actual data
         //The condition is that if there is no methods on errors, it is validated
         if (Object.keys(errors).length === 0) {
-            this.props.submit(this.state.data);
+            this.props.submit(this.state.data)
+            .then((res)=>{
+                console.log('Login Form');
+                console.log(res);
+            });
         }
         //      this.props.submit(this.state.data);
 
