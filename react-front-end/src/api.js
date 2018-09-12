@@ -4,16 +4,19 @@ const instance = axios.create({ baseURL: 'http://localhost:3011' })
 
 export default {
     user: {
-        login: credentials => instance.post('/login', { credentials }),
-            // .then((res) => {
-            //     console.log('Response in Api Login');
-            //     console.log(res);
-            // }),
+        login: credentials => instance.post('/login', { credentials })
+            .then((res) => {
+                console.log('Response in Api Login');
+                console.log(res);
+                
+                return parseResponse(res);
+            }),
 
         signup: params => instance.post('/createUser', { params })
             .then((res) => {
                 console.log('Response in Api Signup');
                 console.log(res.data.body)
+                
             })
     },
     vocabulary: {
@@ -29,4 +32,14 @@ export default {
             })
     },
 
+}
+
+//TODO: Improve this parsing 
+function parseResponse(res){
+    let result;
+    if(res.status = '200'){
+        result= res.data.body;
+    }
+    result= res.data.body;
+    return result;
 }

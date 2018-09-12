@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, Input } from 'semantic-ui-react';
+import { Button, Container, Input,Item} from 'semantic-ui-react';
 import Validator from 'validator';
 import InlineError from '../messages/InlineError';
 import { PropTypes } from 'prop-types';
@@ -12,17 +12,18 @@ class TraductorForm extends React.Component {
     }
 
     translate = () => {
-        // const errors = this.validate(this.state.data);
-        // this.setState({ errors });
-        // if (Object.keys()) {
-            this.state.data.type='annotationId';
+        const errors = this.validate(this.state.data);
+        this.setState({ errors });
+        if (Object.keys(errors).length === 0) {
+            //this.state.data.type = 'annotationId';
             this.props.submit(this.state.data);
-       // }
+        }
     }
 
-    vaslidate = () => {
-        const errors = {}
-
+    validate = (data) => {
+        const errors = {};
+        if (!data.object) errors.object = 'Cant be blank';
+        return errors;
     }
 
     onChange = e => this.setState({
@@ -42,10 +43,19 @@ class TraductorForm extends React.Component {
                     onChange={this.onChange} />
                 {errors.object && <InlineError text={errors.object} />}
                 <Button primary onClick={this.translate}>Search</Button>
+               
+                <div>
+                    <Item.Group items = {data.listItem}>
 
+                    </Item.Group>
+                </div>
             </Container>
         );
     }
 }
+
+TraductorForm.propTypes={
+    submit:PropTypes.func.isRequired
+};
 
 export default TraductorForm;
