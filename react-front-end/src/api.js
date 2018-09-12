@@ -17,13 +17,13 @@ export default {
             })
     },
     vocabulary: {
-        translate_kichwa_spanish: word_kichwa => instance.post('/api/translate_kichwa_spanish', { word_kichwa })
+        translate_kichwa_spanish: word_kichwa => instance.post('/translate_kichwa_spanish', { word_kichwa })
             .then(res => {
                 console.log('Response in Api Translate');
                 res.data
             }),
-            getObject: input =>instance.post('/getObject',{input})
-            .then(res=>{
+        getObject: input => instance.post('/getObject', { input })
+            .then(res => {
                 console.log('Response in Api Object');
                 console.log(res.data.body);
             })

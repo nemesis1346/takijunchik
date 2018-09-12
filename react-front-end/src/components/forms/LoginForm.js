@@ -7,7 +7,7 @@ import { PropTypes } from 'prop-types';
 
 class LoginForm extends React.Component {
     //The following variables are being initialized
-  
+
     state = {
         data: {},
         loading: false,
@@ -22,20 +22,20 @@ class LoginForm extends React.Component {
         // console.log(userModel);
         console.log("is getting to onSubmit");
         //TODO: Resolve the validation
-        // const errors = this.validate(this.state.data);
-        // this.setState({ errors });
+        const errors = this.validate(this.state.data);
+        this.setState({ errors });
 
         //TODO: send actual data
         //The condition is that if there is no methods on errors, it is validated
-        // if (Object.keys(errors).length === 0) {
-        //this.props.submit(this.state.data);
-        // }
-               this.props.submit(this.state.data);
+        if (Object.keys(errors).length === 0) {
+            this.props.submit(this.state.data);
+        }
+        //      this.props.submit(this.state.data);
 
     }
     //This methos is a series of validations on errors object
     validate = (data) => {
-      
+
         const errors = {};
         if (!Validator.isEmail(data.email)) errors.email = "Invalid email";
         if (!data.password) errors.password = "Cant be blank";
@@ -54,7 +54,7 @@ class LoginForm extends React.Component {
                     <label htmlFor="email">Email</label>
                     <input
                         type="email"
-                        id="id"
+                        id="email"
                         name="email"
                         placeholder="example@example.com"
                         value={data.email}

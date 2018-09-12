@@ -7,11 +7,10 @@ import { login } from '../../actions/auth';
 class LoginPage extends React.Component {
 
     submit = (data) => {
-        // return this.props.login(data)
-        //     .then(() => {
-                this.props.history.push("/translate")
-            //}
-        //);
+        return this.props.login(data)
+            .then(() => {
+                this.props.history.push("/mainMenu")
+            });
     }//Then is the function that executes after the promise
     render() {
         return (
