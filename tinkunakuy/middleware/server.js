@@ -13,13 +13,13 @@ const DataModel = require('../models/dataModel.js');
 
 const handler = async (request, response) => {
     const { headers, method, url } = request;
-    let body = [];
+    let buffer = [];
     request.on('error', (err) => {
         console.log("Error", err);
     }).on('data', (chunk) => {
-        body.push(chunk);
+        buffer.push(chunk);
     }).on('end', async () => {
-        body = Buffer.concat(body).toString();
+        let bufferContent = Buffer.concat(buffer).toString();
         //Set response
         response.statusCode = 200;
         response.setHeader('Content-Type', 'application/json');
@@ -32,25 +32,26 @@ const handler = async (request, response) => {
         //Call method
         let promise;
         let dataModel = new DataModel(null, null, null);
+
         try {
             switch (url) {
                 case '/createUser':
-                    promise = this.userChaincode.createUser(JSON.parse(body));
+                    promise = this.userChaincode.createUser(JSON.parse(bufferContent));
                     break;
                 case '/login':
-                    promise = this.userChaincode.login(JSON.parse(body));
+                    promise = this.userChaincode.login(JSON.parse(bufferContent));
                     break;
                 case '/saveWord':
-                    promise = this.vocabularyChaincode.saveWord(JSON.parse(body));
+                    promise = this.vocabularyChaincode.saveWord(JSON.parse(bufferContent));
                     break;
                 case '/getAllWords':
                     promise = this.vocabularyChaincode.getAllWords();
                     break;
                 case '/saveObject':
-                    promise = this.vocabularyChaincode.saveObject(JSON.parse(body));
+                    promise = this.vocabularyChaincode.saveObject(JSON.parse(bufferContent));
                     break;
                 case '/getObject':
-                    promise = this.vocabularyChaincode.getObject(JSON.parse(body));
+                    promise = this.vocabularyChaincode.getObject(JSON.parse(bufferContent));
                     break;
                 default:
                     dataModel.message = 'Method not found';
@@ -105,7 +106,7 @@ const handler = async (request, response) => {
             dataModel.status = '500';
             let body = JSON.stringify(dataModel);
             console.log('ERROR 500:');
-            console.log(error.message);
+            console.log(error);
             const responseBody = { headers, method, url, body };
 
             response.statusCode = 500;
