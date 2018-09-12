@@ -53,11 +53,15 @@ const handler = async (request, response) => {
                     promise = this.vocabularyChaincode.getObject(JSON.parse(body));
                     break;
                 default:
-                    response.statusCode = 405;
-                    let message = 'Method not found';
-                    console.log(message);
-                    const responseBody = { headers, method, url, body, message };
+                    dataModel.message = 'Method not found';
+                    dataModel.status = '405';
+                    let body = JSON.stringify(dataModel);
 
+                    console.log('STATUS 405: ');
+                    console.log('Method not found');
+                    const responseBody = { headers, method, url, body };
+
+                    response.statusCode = 405;
                     response.write(JSON.stringify(responseBody));
                     response.end();
                     break;

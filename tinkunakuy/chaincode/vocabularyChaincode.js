@@ -8,6 +8,7 @@ const networkNamespace = 'org.nemesis1346.tinkunakuy';
 const LOG = winston.loggers.get('application');
 const WordModel = require('../models/wordModel.js');
 const ObjectModel = require('../models/objectModel.js');
+const DataModel = require('../models/dataModel.js');
 class VocabularyChaincode {
     constructor() {
         try {
@@ -33,7 +34,10 @@ class VocabularyChaincode {
      * @return {Promise} A promise that returns the boject detail
      */
     async getObject(requestObject) {
-        console.log('Request Object: ');
+        let dataModel = new DataModel(null, null, null);
+
+        console.log('************************************');
+        console.log('Request get Object in Composer: ');
         console.log(requestObject);
         let input = requestObject.input;
         try {
@@ -42,9 +46,10 @@ class VocabularyChaincode {
             await businessNetworkConnection.connect(cardname)
             let objectRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Object');
 
-            console.log('Type: '+input.type);
-            
+            console.log('Type: ' + input.type);
+
             //This is for getting the property name
+            //TODO: MUST BE A QUERY WITH ANY OF THE INPUT
             switch (input.type) {
                 case 'annotationId':
                     let existObject = await objectRegistry.exists(input.object);
@@ -59,9 +64,13 @@ class VocabularyChaincode {
                             object.annotationId
                         );
 
-                        return currentObject;
+                        dataModel.data = currentObject;
+                        dataModel.status = '200';
+                        return dataModel;
                     } else {
-                        return 'Object with '+input.annotationId+' doesnt exist';
+                        dataModel.message = 'Object with ' + input.annotationId + ' doesnt exist';
+                        dataModel.status = '300';
+                        return dataModel;
                     }
                 case 'contentValue':
                     break;
@@ -82,10 +91,14 @@ class VocabularyChaincode {
      * @return {Promise} A promise that returns the list of all the words
      */
     async getAllWords() {
+        let dataModel = new DataModel(null, null, null);
+
+        console.log('************************************');
+        console.log('Request Get All Words in Composer: ');
         try {
             let wordsList = [];
             let businessNetworkConnection = new BusinessNetworkConnection();
-            let connection = await businessNetworkConnection.connect(cardname)
+            await businessNetworkConnection.connect(cardname)
             let wordRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Word');
             let words = await wordRegistry.getAll();
             words.forEach(element => {
@@ -100,7 +113,10 @@ class VocabularyChaincode {
                 );
                 wordsList.push(currentWord);
             });
-            return wordsList;
+
+            dataModel.data = JSON.stringify(words);
+            dataModel.status = '200';
+            return dataModel;
         } catch (error) {
             console.error(error);
             throw new Error(error);
@@ -112,7 +128,9 @@ class VocabularyChaincode {
      * @return {Promise} A promise that creates a word
      */
     async saveWord(requestWord) {
-        console.log('Request Word: ');
+        let dataModel = new DataModel(null, null, null);
+        console.log('************************************');
+        console.log('Request Save Word: ');
         console.log(requestWord);
         try {
             let wordModel = new WordModel(
@@ -140,6 +158,10 @@ class VocabularyChaincode {
             word.descriptionKichwa = wordModel.descriptionKichwa;
             await assetRegistry.add(word);
             await businessNetworkConnection.disconnect();
+
+            dataModel.data = 'Word ' + word.wordId + ' saved successfully'
+            dataModel.status = '200';
+            return dataModel;
         } catch (error) {
             console.error(error);
             throw new Error(error);
@@ -150,7 +172,9 @@ class VocabularyChaincode {
     * @return {Promise} A promise that creates a object for storing linguistics project
     */
     async saveObject(requestObject) {
-        console.log('Request Object: ');
+        let dataModel = new DataModel(null, null, null);
+        console.log('************************************');
+        console.log('Request Save Object: ');
         console.log(requestObject);
         try {
             let objectModel = new ObjectModel(
@@ -175,6 +199,10 @@ class VocabularyChaincode {
 
             await assetRegistry.add(object);
             await businessNetworkConnection.disconnect();
+
+            dataModel.data = 'Object ' + object.annotationId + ' saved successfully'
+            dataModel.status = '200';
+            return dataModel;
         } catch (error) {
             console.error(error);
             throw new Error(error);

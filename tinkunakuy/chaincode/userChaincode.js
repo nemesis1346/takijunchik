@@ -81,7 +81,9 @@ class UserChaincode {
      * @return {Promise} A promise that creates a user
      */
     async createUser(requestUser) {
-        console.log('Request User: ');
+        let dataModel = new DataModel(null, null, null);
+        console.log('************************************');
+        console.log('Request Create User in Composer: ');
         console.log(requestUser);
         let request = requestUser.params;
         try {
@@ -105,7 +107,10 @@ class UserChaincode {
 
             await participantRegistry.add(user);
             await businessNetworkConnection.disconnect();
-            return 'User ' + userModel.email + ' saved successfully';
+
+            dataModel.data='User ' + userModel.email + ' saved successfully'
+            dataModel.status='200';
+            return dataModel;
         } catch (error) {
             console.error(error.error);
             return 'Error Create User: ' + error;
