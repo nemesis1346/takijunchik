@@ -20,7 +20,7 @@ class LoginForm extends React.Component {
         //     pwd: 'asdf'
         // });
         // console.log(userModel);
-        console.log("is getting to onSubmit");
+
         //TODO: Resolve the validation
         const errors = this.validate(this.state.data);
         this.setState({ errors });
@@ -39,13 +39,21 @@ class LoginForm extends React.Component {
         const errors = {};
         if (!Validator.isEmail(data.email)) errors.email = "Invalid email";
         if (!data.password) errors.password = "Cant be blank";
+        if (!data.email) errors.email='Cant be blank';
 
         return errors;
     }
-    onChange = e => this.setState({
-        data: { ...this.state.data, [e.target.name]: e.target.value }
-    });
+    //e stands for event
+    //... is a property spread anotation. It spreads out the properties in props as discrete properties on the Input element
+    //So then onChange is universal
+    onChange = e =>{
+  
+        this.setState({
+            data: { ...this.state.data, [e.target.name]: e.target.value }
+        })
+    };
     render() {
+        //This makes this.state common to all values
         const { data, errors } = this.state;
         return (
 
@@ -59,10 +67,11 @@ class LoginForm extends React.Component {
                         placeholder="example@example.com"
                         value={data.email}
                         onChange={this.onChange} />
+                        {/* && in this context means 'then' */}
                     {errors.email && <InlineError text={errors.email} />}
                 </Form.Field>
-                <Form.Field error={errors.password}>
-                    <label htmlFor="passwornd">Password</label>
+                <Form.Field error={!!errors.password}>
+                    <label htmlFor="password">Password</label>
                     <input
                         type="password"
                         id="password"
@@ -79,7 +88,7 @@ class LoginForm extends React.Component {
         );
     }
 }
-
+//The parent of the component will pass that function 
 LoginForm.propTypes = {
     submit: PropTypes.func.isRequired
 };
