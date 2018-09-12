@@ -7,8 +7,12 @@ import { login } from '../../actions/auth';
 class LoginPage extends React.Component {
 
     submit = (data) => {
+        console.log('Data Request LoginPage');
+        console.log(data);
         return this.props.login(data)
-            .then(() => {
+            .then((result) => {
+                console.log('Result in LoginPage');
+                console.log(result);
                 this.props.history.push("/mainMenu")
             });
     }//Then is the function that executes after the promise

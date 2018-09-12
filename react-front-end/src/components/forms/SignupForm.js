@@ -15,18 +15,23 @@ class SignupForm extends React.Component {
     onSubmit = () => {
         //TODO: For now eveytone is type PROFESSOR
 
-        //TODO: send actual data
+        const errors = this.validate(this.state.data);
+        this.setState({ errors });
         //The condition is that if there is no methods on errors, it is validated
-        // if (Object.keys(errors).length === 0) {
-        //this.props.submit(this.state.data);
-        // }
-
-        this.state.data.userType = 'PROFESSOR';
-        this.props.submit(this.state.data)
-            .then((res) => {
+        if (Object.keys(errors).length === 0) {
+            this.state.data.userType = 'PROFESSOR';
+            this.props.submit(this.state.data).then((res) => {
                 console.log('Result in SignUpForm');
                 console.log(res);
-            });;
+            });
+        }
+
+        // this.state.data.userType = 'PROFESSOR';
+        // this.props.submit(this.state.data)
+        //     .then((res) => {
+        //         console.log('Result in SignUpForm');
+        //         console.log(res);
+        //     });;
 
     }
     //This methos is a series of validations on errors object
@@ -35,12 +40,16 @@ class SignupForm extends React.Component {
         const errors = {};
         if (!Validator.isEmail(data.email)) errors.email = "Invalid email";
         if (!data.password) errors.password = "Cant be blank";
+        if (!data.name) errors.name = 'Cant be blank';
+        if (!data.email) errors.email = 'Cant be blank';
 
         return errors;
     }
-    onChange = e => this.setState({
-        data: { ...this.state.data, [e.target.name]: e.target.value }
-    });
+    onChange = e => {
+        this.setState({
+            data: { ...this.state.data, [e.target.name]: e.target.value }
+        })
+    };
     render() {
         const { data, errors } = this.state;
         return (
@@ -57,7 +66,7 @@ class SignupForm extends React.Component {
                         onChange={this.onChange} />
                     {errors.email && <InlineError text={errors.email} />}
                 </Form.Field>
-                <Form.Field error={errors.name}>
+                <Form.Field error={!!errors.name}>
                     <label htmlFor="name">Name</label>
                     <input
                         type="text"
@@ -68,7 +77,7 @@ class SignupForm extends React.Component {
                         onChange={this.onChange} />
                     {errors.name && <InlineError text={errors.name} />}
                 </Form.Field>
-                <Form.Field error={errors.password}>
+                <Form.Field error={!!errors.password}>
                     <label htmlFor="password">Password</label>
                     <input
                         type="password"

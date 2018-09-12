@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sudo ../../fabric-dev-servers/startFabric.sh
+sudo ../../fabric-dev-servers/createPeerAdminCard.sh
+
 #With this following command we create the bna file
 sudo composer archive create -t dir -n ../
 
@@ -20,3 +23,4 @@ sudo composer network start --networkName tinkunakuy --networkVersion $tinkunaku
 sudo composer card import --file tinkunakuy.card
 #We test that we can communicate with the fabric
 sudo composer network ping --card admin@tinkunakuy
+

@@ -4,6 +4,7 @@ import Validator from "validator";
 import InlineError from "../messages/InlineError";
 import { PropTypes } from 'prop-types';
 //import {UserModel} from '../../models/userModel.js';
+import { Link } from "react-router-dom"
 
 class LoginForm extends React.Component {
     //The following variables are being initialized
@@ -39,15 +40,14 @@ class LoginForm extends React.Component {
         const errors = {};
         if (!Validator.isEmail(data.email)) errors.email = "Invalid email";
         if (!data.password) errors.password = "Cant be blank";
-        if (!data.email) errors.email='Cant be blank';
+        if (!data.email) errors.email = 'Cant be blank';
 
         return errors;
     }
     //e stands for event
     //... is a property spread anotation. It spreads out the properties in props as discrete properties on the Input element
     //So then onChange is universal
-    onChange = e =>{
-  
+    onChange = e => {
         this.setState({
             data: { ...this.state.data, [e.target.name]: e.target.value }
         })
@@ -67,7 +67,7 @@ class LoginForm extends React.Component {
                         placeholder="example@example.com"
                         value={data.email}
                         onChange={this.onChange} />
-                        {/* && in this context means 'then' */}
+                    {/* && in this context means 'then' */}
                     {errors.email && <InlineError text={errors.email} />}
                 </Form.Field>
                 <Form.Field error={!!errors.password}>
@@ -83,6 +83,11 @@ class LoginForm extends React.Component {
 
                 </Form.Field>
                 <Button primary>Login</Button>
+                <Link to="/signup">
+                    <Button primary>
+                        Signup
+                    </Button>
+                </Link>
             </Form>
 
         );
