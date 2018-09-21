@@ -12,9 +12,9 @@ const Processor = require('../testing/processor.js');
 async function mainDataInputProcess() {
     try {
 
-        await saveWord();
-        await getAllWords();
-        //await saveAllWords();
+        //await saveWord();
+        //await getAllWords();
+        await saveAllWords();
 
     } catch (error) {
         console.error(error);
@@ -26,9 +26,9 @@ async function saveAllWords(){
     let processorInstance = new Processor();
     let objectList = await processorInstance.processData()
     .then((result)=>{
-        console.log(result);
+        //console.log(result);
     });
-    console.log(objectList);
+    //console.log(objectList);
         // .then((objectList) => {
         //     console.log(objectList);
         //     // objectList.forEach(async element => {

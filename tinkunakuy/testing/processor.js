@@ -9,6 +9,7 @@ const ObjectModel = require('../models/objectModel.js');
 class Processor {
 
     constructor() {
+        this.processData();
     }
 
     /**
@@ -26,6 +27,7 @@ class Processor {
                     // console.log(result);
                     let objectList = [];
 
+                    //This is for getting the TIME ORDER GROUP
                     let TIME_ORDER_ANNOTATION = result['ANNOTATION_DOCUMENT']['TIME_ORDER'];
                     let TIME_SLOT_LIST = TIME_ORDER_ANNOTATION[0].TIME_SLOT;
 
@@ -33,12 +35,13 @@ class Processor {
                         let currentElement = element['$'];
                         // THIS IS FOR TIMESLOTID1 AND TIME VALUE
                         let currentObject = new ObjectModel(currentElement.TIME_SLOT_ID, null,
-                            currentElement.TIME_VALUE, null, null);
+                            currentElement.TIME_VALUE, null, null,null,null,null,null,null,null);
                         objectList.push(currentObject);
                     });
                     //   console.log(objectList);
 
                     let TIER_ANNOTATION = result['ANNOTATION_DOCUMENT']['TIER'];
+                    console.log(TIER_ANNOTATION);
                     let ANNOTATION_LIST = TIER_ANNOTATION[0]['ANNOTATION'];
                     await ANNOTATION_LIST.forEach(async element => {
                         //console.log(element);
@@ -56,7 +59,7 @@ class Processor {
                                 //console.log(element);
                             }
                         });
-                        console.log(objectList);
+                        //console.log(objectList);
                     });
                     return objectList;
                 });
