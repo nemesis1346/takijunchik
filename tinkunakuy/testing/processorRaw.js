@@ -48,10 +48,10 @@ function processData() {
 
                 let TIER_MEDIA_LENGUA_LIST = TIER_MEDIA_LENGUA_OBJECT['ANNOTATION'];
                 TIER_MEDIA_LENGUA_LIST.forEach(element => {
-                    //console.log(element);
+                   
                     let currentAlignableAnnotation = element['ALIGNABLE_ANNOTATION'][0]['$'];
-                    let currentAnnotationValue = element['ALIGNABLE_ANNOTATION'][0]['ANNOTATION_VALUE'];
-                    //console.log(currentAnnotationValue);
+                    let currentAnnotationValue = element['ALIGNABLE_ANNOTATION'][0]['ANNOTATION_VALUE'][0];
+                    console.log(currentAnnotationValue);
                     //console.log(element['ALIGNABLE_ANNOTATION'][0]['$']);
                     objectList.forEach(element => {
                         //console.log(element.timeSlotId1);
@@ -59,7 +59,10 @@ function processData() {
                             //console.log(currentAlignableAnnotation);
                             element.timeSlotId2 = currentAlignableAnnotation.TIME_SLOT_REF2;
                             element.annotationId = currentAlignableAnnotation.ANNOTATION_ID;
+
+                            //THIS VALUE IS GONNA CHANGE CONSTANTLY
                             element.contentValue = currentAnnotationValue;
+
                             //console.log(element);
                         }
                     });
