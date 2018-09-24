@@ -3,7 +3,7 @@
     "composer": "^0.20.0"
   },
   "name": "tinkunakuy",
-	"version": "0.0.5",
+  "version": "0.0.6",
   "description": "education platform",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/tinkunakuy.bna",
@@ -34,12 +34,15 @@
     "mocha": "latest"
   },
   "dependencies": {
+    "async": "^2.6.1",
     "cors": "^2.8.4",
     "delay": "^3.1.0",
     "dom-parser": "^0.1.5",
     "express": "^4.16.3",
     "http": "0.0.0",
     "morgan": "^1.9.0",
+    "superagent": "^4.0.0-beta.5",
+    "uuid": "^3.3.2",
     "xml2js": "^0.4.19",
     "xmlhttprequest": "^1.8.0"
   }

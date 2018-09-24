@@ -20,6 +20,7 @@ const handler = async (request, response) => {
         buffer.push(chunk);
     }).on('end', async () => {
         let bufferContent = Buffer.concat(buffer).toString();
+        console.log(bufferContent);
         //Set response
         response.statusCode = 200;
         response.setHeader('Content-Type', 'application/json');
@@ -44,14 +45,14 @@ const handler = async (request, response) => {
                 case '/saveWord':
                     promise = this.vocabularyChaincode.saveWord(JSON.parse(bufferContent));
                     break;
-                case '/getAllWords':
-                    promise = this.vocabularyChaincode.getAllWords();
+                case '/getAllObjects':
+                    promise = this.vocabularyChaincode.getAllObjects();
                     break;
                 case '/saveObject':
                     promise = this.vocabularyChaincode.saveObject(JSON.parse(bufferContent));
                     break;
-                case '/getObject':
-                    promise = this.vocabularyChaincode.getObject(JSON.parse(bufferContent));
+                case '/getObjectsByQuery':
+                    promise = this.vocabularyChaincode.getObjectsByQuery(JSON.parse(bufferContent));
                     break;
                 default:
                     dataModel.message = 'Method not found';
@@ -119,9 +120,9 @@ const handler = async (request, response) => {
 app.post('/login', handler);
 app.post('/saveWord', handler);
 app.post('/saveObject', handler);
-app.get('/getAllWords', handler);
+app.get('/getAllObjects', handler);
 app.post('/createUser', handler);
-app.post('/getObject', handler);
+app.post('/getObjectsByQuery', handler);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

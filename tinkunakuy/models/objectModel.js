@@ -1,5 +1,6 @@
 class ObjectModel {
     constructor(
+        objectId,
         //Variables for annotationId
         annotationIdMediaLengua,
         annotationIdSpanish,
@@ -36,6 +37,7 @@ class ObjectModel {
         timeValue1,
         timeValue2
     ) {
+        this.objectId = objectId;
         //Variables for annotationId
         this.annotationIdMediaLengua = annotationIdMediaLengua;
         this.annotationIdSpanish = annotationIdSpanish;

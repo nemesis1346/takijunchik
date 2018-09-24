@@ -24,3 +24,4 @@ sudo composer card import --file tinkunakuy.card
 #We test that we can communicate with the fabric
 sudo composer network ping --card admin@tinkunakuy
 
+sudo node ../middleware/server.js
