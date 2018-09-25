@@ -76,7 +76,14 @@ class VocabularyChaincode {
                 element.glossesContent,
                 element.segmentedContent,
                 element.timeValue1,
-                element.timeValue2
+                element.timeValue2,
+                element.mediaLenguaContentArray,
+                element.spanishContentArray,
+                element.kichwaContentArray,
+                element.elicitSentenceContentArray,
+                element.ipaContentArray,
+                element.glossesContentArray,
+                element.segmentedContentArray
             );
 
             dataModel.data = JSON.stringify(currentObject);
@@ -103,64 +110,76 @@ class VocabularyChaincode {
         //let input = requestObject.input;
 
         try {
-
+            let resultList = [];
             let businessNetworkConnection = new BusinessNetworkConnection();
             await businessNetworkConnection.connect(cardname)
             let objectRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Object');
             //let objectQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (spanishContent CONTAINS [_$input] OR (kichwaContent CONTAINS [_$input])');
 
-            let objectQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (kichwaContentArray CONTAINS _$input)');
+            let objectQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (mediaLenguaContentArray CONTAINS _$input) OR (spanishContentArray CONTAINS _$input) OR (kichwaContentArray CONTAINS _$input) OR (elicitSentenceContentArray CONTAINS _$input) OR (ipaContentArray CONTAINS _$input) OR (glossesContentArray CONTAINS _$input) OR (segmentedContentArray CONTAINS _$input)');
             let objects = await businessNetworkConnection.query(objectQuery, { input: input });
 
             console.log(objects);
-            //if (objects.lenth > 0) { }
+            if (objects.lenth > 0) {
 
-            // objects.forEach(element => {
+                objects.forEach(element => {
+                    let currentObject = new ObjectModel(
+                        element.objectId,
+                        //Variables for annotationId
+                        element.annotationIdMediaLengua,
+                        element.annotationIdSpanish,
+                        element.annotationIdKichwa,
+                        element.annotationIdElicitSentence,
+                        element.annotationIdIpa,
+                        element.annotationIdGlosses,
+                        element.annotationIdSegmented,
+                        //Variables for time slot1
+                        element.timeSlotId1MediaLengua,
+                        element.timeSlotId1Spanish,
+                        element.timeSlotId1Kichwa,
+                        element.timeSlotId1ElicitSentence,
+                        element.timeSlotId1Ipa,
+                        element.timeSlotId1Glosses,
+                        element.timeSlotId1Segmented,
+                        //Variables for times slot2
+                        element.timeSlotId2MediaLengua,
+                        element.timeSlotId2Spanish,
+                        element.timeSlotId2Kichwa,
+                        element.timeSlotId2ElicitSentence,
+                        element.timeSlotId2Ipa,
+                        element.timeSlotId2Glosses,
+                        element.timeSlotId2Segmented,
+                        //Variables for the content
+                        element.mediaLenguaContent,
+                        element.spanishContent,
+                        element.kichwaContent,
+                        element.elicitSentenceContent,
+                        element.ipaContent,
+                        element.glossesContent,
+                        element.segmentedContent,
+                        //Time values
+                        element.timeValue1,
+                        element.timeValue2,
+                        element.mediaLenguaContentArray,
+                        element.spanishContentArray,
+                        element.kichwaContentArray,
+                        element.elicitSentenceContentArray,
+                        element.ipaContentArray,
+                        element.glossesContentArray,
+                        element.segmentedContentArray);
 
-            // });
+                    resultList.push(element);
+                });
 
-            // let currentObject = new ObjectModel(
-            //     element.objectId,
-            //     //Variables for annotationId
-            //     element.annotationIdMediaLengua,
-            //     element.annotationIdSpanish,
-            //     element.annotationIdKichwa,
-            //     element.annotationIdElicitSentence,
-            //     element.annotationIdIpa,
-            //     element.annotationIdGlosses,
-            //     element.annotationIdSegmented,
-            //     //Variables for time slot1
-            //     element.timeSlotId1MediaLengua,
-            //     element.timeSlotId1Spanish,
-            //     element.timeSlotId1Kichwa,
-            //     element.timeSlotId1ElicitSentence,
-            //     element.timeSlotId1Ipa,
-            //     element.timeSlotId1Glosses,
-            //     element.timeSlotId1Segmented,
-            //     //Variables for times slot2
-            //     element.timeSlotId2MediaLengua,
-            //     element.timeSlotId2Spanish,
-            //     element.timeSlotId2Kichwa,
-            //     element.timeSlotId2ElicitSentence,
-            //     element.timeSlotId2Ipa,
-            //     element.timeSlotId2Glosses,
-            //     element.timeSlotId2Segmented,
-            //     //Variables for the content
-            //     element.mediaLenguaContent,
-            //     element.spanishContent,
-            //     element.kichwaContent,
-            //     element.elicitSentenceContent,
-            //     element.ipaContent,
-            //     element.glossesContent,
-            //     element.segmentedContent,
-            //     //Time values
-            //     element.timeValue1,
-            //     element.timeValue2
-            // );
+                dataModel.data = resultList;
+                dataModel.status = '200';
+                return dataModel;
+            } else {
+                dataModel.message = "No results ";
+                dataModel.status = '300';
+                return dataModel;
+            }
 
-            dataModel.data = currentObject;
-            dataModel.status = '200';
-            return dataModel;
 
 
 
@@ -225,7 +244,15 @@ class VocabularyChaincode {
                     element.segmentedContent,
                     //Time values
                     element.timeValue1,
-                    element.timeValue2
+                    element.timeValue2,
+                    //Arrays
+                    element.mediaLenguaContentArray,
+                    element.spanishContentArray,
+                    element.kichwaContentArray,
+                    element.elicitSentenceContentArray,
+                    element.ipaContentArray,
+                    element.glossesContentArray,
+                    element.segmentedContentArray
                 );
                 objectList.push(currentObject);
             });
@@ -331,8 +358,13 @@ class VocabularyChaincode {
                 //Time values
                 requestObject.timeValue1,
                 requestObject.timeValue2,
-                null,
-                null
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
             );
 
             let businessNetworkConnection = new BusinessNetworkConnection();
@@ -378,11 +410,22 @@ class VocabularyChaincode {
             object.timeValue1 = objectModel.timeValue1;
             object.timeValue2 = objectModel.timeValue2;
 
+            let wordsMediaLengua = objectModel.mediaLenguaContent.split(" ");
             let wordsSpanish = objectModel.spanishContent.split(" ");
             let wordsKichwa = objectModel.kichwaContent.split(" ");
+            let wordsElicitSentence = objectModel.elicitSentenceContent.split(" ");
+            let wordsIpa = objectModel.ipaContent.split(" ");
+            let wordsGlosses = objectModel.glossesContent.split(" ");
+            let wordsSegmented = objectModel.segmentedContent.split(" ");
 
+            //Arrays
+            object.mediaLenguaContentArray = wordsMediaLengua;
             object.spanishContentArray = wordsSpanish;
             object.kichwaContentArray = wordsKichwa;
+            object.elicitSentenceContentArray = wordsElicitSentence;
+            object.ipaContentArray = wordsIpa;
+            object.glossesContentArray = wordsGlosses;
+            object.segmentedContentArray = wordsSegmented;
 
             await assetRegistry.add(object);
             await businessNetworkConnection.disconnect();

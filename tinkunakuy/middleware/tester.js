@@ -16,8 +16,8 @@ async function mainDataInputProcess() {
     try {
         //await saveWord();
         //await getAllObjects();
-       //saveAllObjects();
-          queryObject();
+       saveAllObjects();
+          //queryObject();
        // await getObject();
     } catch (error) {
         console.error(error);
@@ -35,7 +35,7 @@ function saveAllObjects() {
         }
         let objectList = JSON.parse(data);
         // objectList=objectList[0-10];
-        objectList = objectList.slice(0, 2);
+        objectList = objectList.slice(0, 20);
         //console.log(objectList);
 
         Async.eachSeries(objectList,
@@ -80,6 +80,11 @@ function saveAllObjects() {
                     //Time values
                     element.timeValue1,
                     element.timeValue2,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
                     null,
                     null
                 );

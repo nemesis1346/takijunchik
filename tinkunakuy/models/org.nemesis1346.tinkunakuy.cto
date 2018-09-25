@@ -38,8 +38,13 @@ asset Object identified by objectId{
   o String segmentedContent optional
   o String timeValue1 optional
   o String timeValue2 optional
+  o String[] mediaLenguaContentArray optional
   o String[] spanishContentArray optional
   o String[] kichwaContentArray optional
+  o String[] elicitSentenceContentArray optional
+  o String[] ipaContentArray optional
+  o String[] glossesContentArray optional
+  o String[] segmentedContentArray optional
 }
 
 enum UserType{

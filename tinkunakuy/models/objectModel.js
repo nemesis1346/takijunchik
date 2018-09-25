@@ -37,8 +37,13 @@ class ObjectModel {
         timeValue1,
         timeValue2,
         //Arrays
-        spanishArray,
-        kichwaArray
+        mediaLenguaContentArray,
+        spanishContentArray,
+        kichwaContentArray,
+        elicitSentenceContentArray,
+        ipaContentArray,
+        glossesContentArray,
+        segmentedContentArray
     ) {
         this.objectId = objectId;
         //Variables for annotationId
@@ -76,8 +81,13 @@ class ObjectModel {
         this.timeValue1 = timeValue1;
         this.timeValue2 = timeValue2;
         //Array
-        this.spanishArray=spanishArray;
-        this.kichwaArray=kichwaArray;
+        this.mediaLenguaContentArray = mediaLenguaContentArray;
+        this.spanishContentArray = spanishContentArray;
+        this.kichwaContentArray = kichwaContentArray;
+        this.elicitSentenceContentArray = elicitSentenceContentArray;
+        this.ipaContentArray = ipaContentArray;
+        this.glossesContentArray = glossesContentArray;
+        this.segmentedContentArray = segmentedContentArray;
     }
 }
 
