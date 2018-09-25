@@ -109,7 +109,7 @@ class VocabularyChaincode {
             let objectRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Object');
             //let objectQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (spanishContent CONTAINS [_$input] OR (kichwaContent CONTAINS [_$input])');
 
-            let objectQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (kichwaContent == _$input)');
+            let objectQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (kichwaContentArray CONTAINS _$input)');
             let objects = await businessNetworkConnection.query(objectQuery, { input: input });
 
             console.log(objects);
@@ -341,42 +341,52 @@ class VocabularyChaincode {
             let factory = connection.getFactory();
 
             let object = factory.newResource(networkNamespace, "Object", objectModel.objectId);
-            object.objectId;
+            object.objectId = objectModel.objectId;
             //Variables for annotationId
-            object.annotationIdMediaLengua;
-            object.annotationIdSpanish;
-            object.annotationIdKichwa;
-            object.annotationIdElicitSentence;
-            object.annotationIdIpa;
-            object.annotationIdGlosses;
-            object.annotationIdSegmented;
+            object.annotationIdMediaLengua = objectModel.annotationIdMediaLengua;
+            object.annotationIdSpanish = object.annotationIdSpanish;
+            object.annotationIdKichwa = objectModel.annotationIdKichwa;
+            object.annotationIdElicitSentence = objectModel.annotationIdElicitSentence;
+            object.annotationIdIpa = objectModel.annotationIdIpa;
+            object.annotationIdGlosses = objectModel.annotationIdGlosses;
+            object.annotationIdSegmented = objectModel.annotationIdSegmented;
             //Variables for time slot1
-            object.timeSlotId1MediaLengua;
-            object.timeSlotId1Spanish;
-            object.timeSlotId1Kichwa;
-            object.timeSlotId1ElicitSentence;
-            object.timeSlotId1Ipa;
-            object.timeSlotId1Glosses;
-            object.timeSlotId1Segmented;
+            object.timeSlotId1MediaLengua = objectModel.timeSlotId1MediaLengua;
+            object.timeSlotId1Spanish = objectModel.timeSlotId1Spanish;
+            object.timeSlotId1Kichwa = objectModel.timeSlotId1Kichwa;
+            object.timeSlotId1ElicitSentence = objectModel.timeSlotId1ElicitSentence;
+            object.timeSlotId1Ipa = objectModel.timeSlotId1Ipa;
+            object.timeSlotId1Glosses = objectModel.timeSlotId1Glosses;
+            object.timeSlotId1Segmented = objectModel.timeSlotId1Segmented;
             //Variables for times slot2
-            object.timeSlotId2MediaLengua;
-            object.timeSlotId2Spanish;
-            object.timeSlotId2Kichwa;
-            object.timeSlotId2ElicitSentence;
-            object.timeSlotId2Ipa;
-            object.timeSlotId2Glosses;
-            object.timeSlotId2Segmented;
+            object.timeSlotId2MediaLengua = objectModel.timeSlotId2MediaLengua;
+            object.timeSlotId2Spanish = objectModel.timeSlotId2Spanish;
+            object.timeSlotId2Kichwa = objectModel.timeSlotId2Kichwa;
+            object.timeSlotId2ElicitSentence = objectModel.timeSlotId2ElicitSentence;
+            object.timeSlotId2Ipa = objectModel.timeSlotId2Ipa;
+            object.timeSlotId2Glosses = objectModel.timeSlotId2Glosses;
+            object.timeSlotId2Segmented = objectModel.timeSlotId2Segmented;
             //Variables for the content
-            object.mediaLenguaContent;
-            object.spanishContent;
-            object.kichwaContent;
-            object.elicitSentenceContent;
-            object.ipaContent;
-            object.glossesContent;
-            object.segmentedContent;
+            object.mediaLenguaContent = objectModel.mediaLenguaContent;
+            object.spanishContent = objectModel.spanishContent;
+            object.kichwaContent = objectModel.kichwaContent;
+            object.elicitSentenceContent = objectModel.elicitSentenceContent;
+            object.ipaContent = objectModel.ipaContent;
+            object.glossesContent = objectModel.glossesContent;
+            object.segmentedContent = objectModel.segmentedContent;
             //Time values
-            object.timeValue1;
-            object.timeValue2;
+            object.timeValue1 = objectModel.timeValue1;
+            object.timeValue2 = objectModel.timeValue2;
+
+            //test 
+            let spanishArray = [];
+            spanishArray.push('hola');
+            spanishArray.push('mundo');
+            let kichwaArray = [];
+            kichwaArray.push('imanalla');
+            kichwaArray.push('mashikuna');
+            object.spanishContentArray = spanishArray;
+            object.kichwaContentArray = kichwaArray;
 
             await assetRegistry.add(object);
             await businessNetworkConnection.disconnect();
