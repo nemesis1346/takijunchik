@@ -20,7 +20,6 @@ const handler = async (request, response) => {
         buffer.push(chunk);
     }).on('end', async () => {
         let bufferContent = Buffer.concat(buffer).toString();
-        console.log(bufferContent);
         //Set response
         response.statusCode = 200;
         response.setHeader('Content-Type', 'application/json');
@@ -47,6 +46,9 @@ const handler = async (request, response) => {
                     break;
                 case '/getAllObjects':
                     promise = this.vocabularyChaincode.getAllObjects();
+                    break;
+                case '/getObject':
+                    promise = this.vocabularyChaincode.getObject(JSON.parse(bufferContent));
                     break;
                 case '/saveObject':
                     promise = this.vocabularyChaincode.saveObject(JSON.parse(bufferContent));
@@ -123,6 +125,7 @@ app.post('/saveObject', handler);
 app.get('/getAllObjects', handler);
 app.post('/createUser', handler);
 app.post('/getObjectsByQuery', handler);
+app.post('/getObject', handler);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

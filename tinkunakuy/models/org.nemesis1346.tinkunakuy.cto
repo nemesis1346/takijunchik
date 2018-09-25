@@ -8,7 +8,6 @@ participant User identified by email {
 }
 asset Object identified by objectId{
   o String objectId
-   //Variables for annotationId
   o String annotationIdMediaLengua optional
   o String annotationIdSpanish optional
   o String annotationIdKichwa optional
@@ -16,7 +15,6 @@ asset Object identified by objectId{
   o String annotationIdIpa optional
   o String annotationIdGlosses optional
   o String annotationIdSegmented optional
-        //Variables for time slot1
   o String timeSlotId1MediaLengua optional
   o String timeSlotId1Spanish optional
   o String timeSlotId1Kichwa optional
@@ -24,7 +22,6 @@ asset Object identified by objectId{
   o String timeSlotId1Ipa optional 
   o String timeSlotId1Glosses optional
   o String timeSlotId1Segmented optional
-        //Variables for times slot2
   o String timeSlotId2MediaLengua optional
   o String timeSlotId2Spanish optional
   o String timeSlotId2Kichwa optional
@@ -32,7 +29,6 @@ asset Object identified by objectId{
   o String timeSlotId2Ipa optional
   o String timeSlotId2Glosses optional
   o String timeSlotId2Segmented optional
-        //Variables for the content
   o String mediaLenguaContent optional
   o String spanishContent optional
   o String kichwaContent optional
@@ -40,7 +36,6 @@ asset Object identified by objectId{
   o String ipaContent optional
   o String glossesContent optional
   o String segmentedContent optional
-        //Time values
   o String timeValue1 optional
   o String timeValue2 optional
 }

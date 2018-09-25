@@ -31,7 +31,67 @@ class VocabularyChaincode {
 
     /**
      * @description It returns a detailed object of the database
-     * @return {Promise} A promise that returns the boject detail
+     * @return {Promise} A promise that returns the object detail
+     */
+    async getObject(objectId) {
+        let dataModel = new DataModel(null, null, null);
+
+        console.log('************************************');
+        console.log('Request get Object in Composer: ');
+        console.log(objectId);
+        try {
+            let businessNetworkConnection = new BusinessNetworkConnection();
+            await businessNetworkConnection.connect(cardname)
+            let assetRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Object');
+
+            let element = await assetRegistry.get(objectId);
+            let currentObject = new ObjectModel(
+                element.objectId,
+                element.annotationIdMediaLengua,
+                element.annotationIdSpanish,
+                element.annotationIdKichwa,
+                element.annotationIdElicitSentence,
+                element.annotationIdIpa,
+                element.annotationIdGlosses,
+                element.annotationIdSegmented,
+                element.timeSlotId1MediaLengua,
+                element.timeSlotId1Spanish,
+                element.timeSlotId1Kichwa,
+                element.timeSlotId1ElicitSentence,
+                element.timeSlotId1Ipa,
+                element.timeSlotId1Glosses,
+                element.timeSlotId1Segmented,
+                element.timeSlotId2MediaLengua,
+                element.timeSlotId2Spanish,
+                element.timeSlotId2Kichwa,
+                element.timeSlotId2ElicitSentence,
+                element.timeSlotId2Ipa,
+                element.timeSlotId2Glosses,
+                element.timeSlotId2Segmented,
+                element.mediaLenguaContent,
+                element.spanishContent,
+                element.kichwaContent,
+                element.elicitSentenceContent,
+                element.ipaContent,
+                element.glossesContent,
+                element.segmentedContent,
+                element.timeValue1,
+                element.timeValue2
+            );
+
+            dataModel.data = JSON.stringify(currentObject);
+            dataModel.status = '200';
+
+            return dataModel;
+        } catch (error) {
+            console.error(error);
+            throw new Error(error);
+        }
+    }
+
+    /**
+     * @description It returns a detailed object of the database
+     * @return {Promise} A promise that returns the object detail
      */
     async getObjectsByQuery(requestObject) {
         let dataModel = new DataModel(null, null, null);
@@ -39,15 +99,17 @@ class VocabularyChaincode {
         console.log('************************************');
         console.log('Request get Object in Composer: ');
         console.log(requestObject);
-        let input = requestObject.input;
+        let input = requestObject;
+        //let input = requestObject.input;
 
         try {
 
             let businessNetworkConnection = new BusinessNetworkConnection();
             await businessNetworkConnection.connect(cardname)
             let objectRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Object');
+            //let objectQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (spanishContent CONTAINS [_$input] OR (kichwaContent CONTAINS [_$input])');
 
-            let objectQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy WHERE (spanishContent CONTAINS [_$input] OR (kichwaContent CONTAINS [_$input])');
+            let objectQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (kichwaContent == _$input)');
             let objects = await businessNetworkConnection.query(objectQuery, { input: input });
 
             console.log(objects);
@@ -119,13 +181,15 @@ class VocabularyChaincode {
         console.log('************************************');
         console.log('Request Get All Objects in Composer: ');
         try {
-            let wordsList = [];
+            let objectList = [];
             let businessNetworkConnection = new BusinessNetworkConnection();
             await businessNetworkConnection.connect(cardname)
-            let wordRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Object');
-            let words = await wordRegistry.getAll();
-            words.forEach(element => {
-                let currentWord = new WordModel(
+            let objectRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Object');
+            let objectListResponse = await objectRegistry.getAll();
+            console.log(objectListResponse);
+
+            objectListResponse.forEach(element => {
+                let currentObject = new ObjectModel(
                     element.objectId,
                     //Variables for annotationId
                     element.annotationIdMediaLengua,
@@ -163,10 +227,10 @@ class VocabularyChaincode {
                     element.timeValue1,
                     element.timeValue2
                 );
-                wordsList.push(currentWord);
+                objectList.push(currentObject);
             });
 
-            dataModel.data = JSON.stringify(words);
+            dataModel.data = JSON.stringify(objectList);
             dataModel.status = '200';
             return dataModel;
         } catch (error) {
@@ -227,7 +291,8 @@ class VocabularyChaincode {
         let dataModel = new DataModel(null, null, null);
         console.log('************************************');
         console.log('Request Save Object: ');
-        console.log(requestObject);
+        console.log(requestObject.timeSlotId1Kichwa);
+
         try {
             let objectModel = new ObjectModel(
                 requestObject.objectId,
@@ -267,6 +332,8 @@ class VocabularyChaincode {
                 requestObject.timeValue1,
                 requestObject.timeValue2
             );
+
+            console.log(objectModel);
 
             let businessNetworkConnection = new BusinessNetworkConnection();
             let connection = await businessNetworkConnection.connect(cardname);

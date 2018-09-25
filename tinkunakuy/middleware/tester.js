@@ -16,8 +16,9 @@ async function mainDataInputProcess() {
     try {
         //await saveWord();
         //await getAllObjects();
-        saveAllObjects();
-
+       // saveAllObjects();
+        //  queryObject();
+        await getObject();
     } catch (error) {
         console.error(error);
         return new Error(error);
@@ -35,14 +36,14 @@ function saveAllObjects() {
         let objectList = JSON.parse(data);
         // objectList=objectList[0-10];
         objectList = objectList.slice(0, 2);
-        console.log(objectList);
+        //console.log(objectList);
 
         Async.eachSeries(objectList,
             (element, callback) => {
                 console.log(element);
                 let uuid = UUID();
 
-                let currentWord = new ObjectModel(
+                let currentObject = new ObjectModel(
                     uuid,
                     //Variables for annotationId
                     element.annotationIdMediaLengua,
@@ -80,13 +81,37 @@ function saveAllObjects() {
                     element.timeValue1,
                     element.timeValue2
                 );
-                requestPost('/saveObject', JSON.stringify(currentWord), callback);
-            }, err => {
-                throw err;
+                //   console.log(currentObject);
+                requestPostArrays('/saveObject', JSON.stringify(currentObject), callback);
             }
         );
     });
 }
+async function queryObject() {
+    try {
+        let wordsList = [];
+        //TODO: develop method for getting 
+        let response = await requestPost('/getObjectsByQuery', JSON.stringify('59 watata charini'));
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+        return new Error(error);
+    }
+}
+
+async function getObject() {
+    try {
+        let wordsList = [];
+        //TODO: develop method for getting 
+        let response = await requestPost('/getObject', JSON.stringify('88131d20-c054-11e8-98aa-ebaeb624bac0'));
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+        return new Error(error);
+    }
+}
+
+
 async function getAllObjects() {
     try {
         let wordsList = [];
@@ -150,10 +175,9 @@ async function saveWord() {
  * @param {Its the name of the endpoint or method at the end} endpoint 
  * @param {Its the data, usually should be a json object} data 
  */
-function requestPost(endpoint, data, callback) {
+function requestPostArrays(endpoint, data, callback) {
     // //The following should be in a loop
     //   // An object of options to indicate where to post to
-
     var post_options = {
         host: HOST,
         port: PORT,
@@ -164,29 +188,41 @@ function requestPost(endpoint, data, callback) {
             'Content-Length': Buffer.byteLength(data) //this is an individual word
         }
     };
-
     var post_req = http.request(post_options, function (res) {
         res.setEncoding('utf8');
         res.on('data', function (chunk) {
             console.log('RESPONSE------------');
             console.log(chunk);
-            callback(null);
+            callback(null,chunk);
         });
     });
     post_req.write(data)
+}
 
-    // console.log(`${HOST}:${PORT}${endpoint}`);
-    // request
-    //     .post(`${HOST}:${PORT}${endpoint}`)
-    //     .set('Content-Type', 'application/json')
-    //     .set('Content-Length', Buffer.byteLength(data))
-    //     .end((err, res) => {
-    //         if(err) {
-    //             return callback(err);
-    //         }
-    //         console.log(res);
-    //         callback(null);
-    //     });
+function requestPost(endpoint, data) {
+    // //The following should be in a loop
+    //   // An object of options to indicate where to post to
+    var post_options = {
+        host: HOST,
+        port: PORT,
+        path: endpoint,
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': Buffer.byteLength(data) //this is an individual word
+        }
+    };
+    var post_req = http.request(post_options, function (res) {
+        res.setEncoding('utf8');
+        res.on('data', function (chunk) {
+            console.log('RESPONSE------------');
+            console.log(chunk);
+        });
+        res.on('error', (e) => {
+            console.error(`problem with request: ${e.message}`);
+        });
+    });
+    post_req.write(data)
 }
 /**
  * This is a generic method for get request
