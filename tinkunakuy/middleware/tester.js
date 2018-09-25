@@ -79,7 +79,9 @@ function saveAllObjects() {
                     element.segmentedContent,
                     //Time values
                     element.timeValue1,
-                    element.timeValue2
+                    element.timeValue2,
+                    null,
+                    null
                 );
                 //   console.log(currentObject);
                 requestPostArrays('/saveObject', JSON.stringify(currentObject), callback);

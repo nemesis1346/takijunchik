@@ -330,10 +330,10 @@ class VocabularyChaincode {
                 requestObject.segmentedContent,
                 //Time values
                 requestObject.timeValue1,
-                requestObject.timeValue2
+                requestObject.timeValue2,
+                null,
+                null
             );
-
-            console.log(objectModel);
 
             let businessNetworkConnection = new BusinessNetworkConnection();
             let connection = await businessNetworkConnection.connect(cardname);
@@ -378,15 +378,11 @@ class VocabularyChaincode {
             object.timeValue1 = objectModel.timeValue1;
             object.timeValue2 = objectModel.timeValue2;
 
-            //test 
-            let spanishArray = [];
-            spanishArray.push('hola');
-            spanishArray.push('mundo');
-            let kichwaArray = [];
-            kichwaArray.push('imanalla');
-            kichwaArray.push('mashikuna');
-            object.spanishContentArray = spanishArray;
-            object.kichwaContentArray = kichwaArray;
+            let wordsSpanish = objectModel.spanishContent.split(" ");
+            let wordsKichwa = objectModel.kichwaContent.split(" ");
+
+            object.spanishContentArray = wordsSpanish;
+            object.kichwaContentArray = wordsKichwa;
 
             await assetRegistry.add(object);
             await businessNetworkConnection.disconnect();

@@ -35,7 +35,10 @@ class ObjectModel {
         segmentedContent,
         //Time values
         timeValue1,
-        timeValue2
+        timeValue2,
+        //Arrays
+        spanishArray,
+        kichwaArray
     ) {
         this.objectId = objectId;
         //Variables for annotationId
@@ -72,6 +75,9 @@ class ObjectModel {
         this.segmentedContent = segmentedContent;
         this.timeValue1 = timeValue1;
         this.timeValue2 = timeValue2;
+        //Array
+        this.spanishArray=spanishArray;
+        this.kichwaArray=kichwaArray;
     }
 }
 
