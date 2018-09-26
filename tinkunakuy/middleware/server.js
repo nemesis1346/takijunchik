@@ -76,19 +76,7 @@ const handler = async (request, response) => {
                 promise.then(function (result) {
                     //This is status 200 , everything ok
                     let body = JSON.stringify(result);
-                    // if (result) {
-                    //     if (result.status == '200') {
-                    //         dataModel.data = result.data;
-                    //         dataModel.status = '200';
-                    //     } else {
-                    //         console.log(dataModel)
-                    //         dataModel.message = result;
-                    //         dataModel.status = '300';
-                    //     }
-                    // } else {
-                    //     console.log('Something went wrong');
-                    //     console.log(result);
-                    // }
+                
                     console.log('STATUS 200: ');
                     console.log(result);
                     const responseBody = { headers, method, url, body };

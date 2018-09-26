@@ -6,8 +6,6 @@ export default {
     user: {
         login: credentials => instance.post('/login', { credentials })
             .then((res) => {
-                console.log('data before parse');
-                console.log(res);
                 console.log('Response in Api Login:');
                 let result = parseResponse(res);
                 console.log(result);
@@ -17,8 +15,9 @@ export default {
         signup: params => instance.post('/createUser', { params })
             .then((res) => {
                 console.log('Response in Api Signup');
-                console.log(res.data.body)
-
+                let result = parseResponse(res);
+                console.log(result);
+                return result;
             })
     },
     vocabulary: {

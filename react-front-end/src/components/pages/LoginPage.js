@@ -21,13 +21,14 @@ class LoginPage extends React.Component {
 
     loginCallback = (closeAlert) => {
         this.setState({
-            "modalOpen": false
+            "modalOpen": closeAlert
         });
     }
     submit = (data) => {
         return this.props.login(data)
             .then((resp) => {
                 console.log('Result in LoginPage');
+                console.log(resp);
                 let errorMessage = this.parseResponse(resp);
                 console.log(errorMessage);
                 if (errorMessage) {
@@ -57,7 +58,7 @@ class LoginPage extends React.Component {
     parseResponse(response) {
         let body = JSON.parse(response);
 
-        if (response.status == '200') {
+        if (body.status == '200') {
             return null;
         } else {
             return body.message;

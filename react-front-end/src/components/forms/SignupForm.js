@@ -6,12 +6,15 @@ import { PropTypes } from 'prop-types';
 
 class SignupForm extends React.Component {
     //The following variables are being initialized
-
-    state = {
-        data: {},
-        loading: false,
-        errors: {}
+    constructor() {
+        super();
+        this.state = {
+            data: {},
+            loading: false,
+            errors: {}
+        }
     }
+
     onSubmit = () => {
         //TODO: For now eveytone is type PROFESSOR
 
@@ -20,15 +23,8 @@ class SignupForm extends React.Component {
         //The condition is that if there is no methods on errors, it is validated
         if (Object.keys(errors).length === 0) {
             this.state.data.userType = 'PROFESSOR';
-            this.props.submit(this.state.data);
+            this.props.submit(this.state.data); //CAUTION: this is the callback on singup page
         }
-
-        // this.state.data.userType = 'PROFESSOR';
-        // this.props.submit(this.state.data)
-        //     .then((res) => {
-        //         console.log('Result in SignUpForm');
-        //         console.log(res);
-        //     });;
 
     }
     //This methos is a series of validations on errors object
