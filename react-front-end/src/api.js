@@ -6,17 +6,19 @@ export default {
     user: {
         login: credentials => instance.post('/login', { credentials })
             .then((res) => {
-                console.log('Response in Api Login');
+                console.log('data before parse');
                 console.log(res);
-                
-                return parseResponse(res);
+                console.log('Response in Api Login:');
+                let result = parseResponse(res);
+                console.log(result);
+                return result;
             }),
 
         signup: params => instance.post('/createUser', { params })
             .then((res) => {
                 console.log('Response in Api Signup');
                 console.log(res.data.body)
-                
+
             })
     },
     vocabulary: {
@@ -35,11 +37,14 @@ export default {
 }
 
 //TODO: Improve this parsing 
-function parseResponse(res){
+function parseResponse(res) {
     let result;
-    if(res.status = '200'){
-        result= res.data.body;
+    if (res.status == '200') {
+        result = res.data.body;
+        return result;
+    } else {
+        result = res.data.message;
+        return result;
     }
-    result= res.data.body;
-    return result;
+
 }

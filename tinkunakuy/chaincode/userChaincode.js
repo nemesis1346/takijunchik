@@ -44,15 +44,11 @@ class UserChaincode {
             let pwd = request.password;
             await businessNetworkConnection.connect(cardname)
 
-            console.log(email);
-            console.log(pwd);
             let query = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.User WHERE (email==_$email AND pwd==_$pwd)');
             let userQuery = await businessNetworkConnection.query(query, { email: email, pwd: pwd });
-            console.log('Login Composer User Response: ');
-            console.log(userQuery.email);
+
             if (userQuery.email) {
                 let participantRegistry = await businessNetworkConnection.getParticipantRegistry(networkNamespace + '.User');
-
                 let userResult = await participantRegistry.get(userQuery[0].$identifier);
 
                 let userModel = new UserModel(

@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from '../forms/LoginForm';
-import AlertMessageModal from '../../tools/AlertMessageModal';
+import AlertMessageModal from '../tools/AlertMessageModal';
 //You can use prop-types to document the intended types of properties passed to components. 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -20,25 +20,24 @@ class LoginPage extends React.Component {
     }
 
     loginCallback = (closeAlert) => {
-        console.log(closeAlert);
         this.setState({
             "modalOpen": false
         });
     }
     submit = (data) => {
-        console.log('Data Request LoginPage');
-        console.log(data);
         return this.props.login(data)
             .then((resp) => {
                 console.log('Result in LoginPage');
-                console.log(resp);
-                let result = this.parseResponse(resp);
-                console.log(result);
-                this.setState({
-                    "modalMessage": result,
-                    "modalOpen": true
-                });
-                //  this.props.history.push("/mainMenu")
+                let errorMessage = this.parseResponse(resp);
+                console.log(errorMessage);
+                if (errorMessage) {
+                    this.setState({
+                        "modalMessage": errorMessage,
+                        "modalOpen": true
+                    });
+                } else {
+                    this.props.history.push("/mainMenu")
+                }
             });
     }//Then is the function that executes after the promise
     render() {
@@ -59,7 +58,7 @@ class LoginPage extends React.Component {
         let body = JSON.parse(response);
 
         if (response.status == '200') {
-            return body.data;
+            return null;
         } else {
             return body.message;
         }

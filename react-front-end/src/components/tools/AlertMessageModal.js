@@ -1,28 +1,25 @@
 import React from 'react';
-import {Modal,Button} from 'semantic-ui-react';
+import { Modal, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 class AlertMessageModal extends React.Component {
     constructor() {
         super();
         this.state = {
-            "message": "",
-            "open": false,
-            "size": ""
+            message: "",
+            open: false,
+            size: ""
         }
-        console.log(this.props);
     }
     show = size => () => this.setState({ size })
 
     close = () => this.setState({ open: false })
 
-    onOkButton=()=>{
+    onOkButton = () => {
         this.props.modalCallback(false);
     }
 
     render() {
-        console.log('ALERT MESSAGE MODAL');
-        console.log(this.props);
         return (
             <div>
                 <Modal size={this.props.modalSize} open={this.props.modalOpen} onClose={this.close}>
@@ -31,7 +28,7 @@ class AlertMessageModal extends React.Component {
                         <p>{this.props.modalMessage}</p>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button positive icon='checkmark' labelPosition='right' content='ok'  onClick={this.onOkButton}/>
+                        <Button positive icon='checkmark' labelPosition='right' content='ok' onClick={this.onOkButton} />
                     </Modal.Actions>
                 </Modal>
             </div>
@@ -45,3 +42,5 @@ AlertMessageModal.propTypes = {
 }
 
 export default AlertMessageModal;
+
+//THE PROPS ARE THE WAY HOW TO PASS DATA FROM PARENT TO CHILD
