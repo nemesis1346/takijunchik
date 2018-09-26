@@ -19,6 +19,12 @@ class LoginPage extends React.Component {
         }
     }
 
+    loginCallback = (closeAlert) => {
+        console.log(closeAlert);
+        this.setState({
+            "modalOpen": false
+        });
+    }
     submit = (data) => {
         console.log('Data Request LoginPage');
         console.log(data);
@@ -43,7 +49,9 @@ class LoginPage extends React.Component {
                 <AlertMessageModal
                     modalMessage={this.state.modalMessage}
                     modalSize={this.state.modalSize}
-                    modalOpen={this.state.modalOpen}></AlertMessageModal>
+                    modalOpen={this.state.modalOpen}
+                    modalCallback={this.loginCallback}>
+                </AlertMessageModal>
             </div>
         );
     }

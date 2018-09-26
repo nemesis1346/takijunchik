@@ -10,11 +10,15 @@ class AlertMessageModal extends React.Component {
             "open": false,
             "size": ""
         }
-     
+        console.log(this.props);
     }
     show = size => () => this.setState({ size })
 
     close = () => this.setState({ open: false })
+
+    onOkButton=()=>{
+        this.props.modalCallback(false);
+    }
 
     render() {
         console.log('ALERT MESSAGE MODAL');
@@ -27,7 +31,7 @@ class AlertMessageModal extends React.Component {
                         <p>{this.props.modalMessage}</p>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button positive icon='checkmark' labelPosition='right' content='ok'/>
+                        <Button positive icon='checkmark' labelPosition='right' content='ok'  onClick={this.onOkButton}/>
                     </Modal.Actions>
                 </Modal>
             </div>
