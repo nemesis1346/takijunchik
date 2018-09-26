@@ -114,15 +114,37 @@ class VocabularyChaincode {
             let businessNetworkConnection = new BusinessNetworkConnection();
             await businessNetworkConnection.connect(cardname)
             let objectRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Object');
-            //let objectQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (spanishContent CONTAINS [_$input] OR (kichwaContent CONTAINS [_$input])');
 
-            let objectQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (mediaLenguaContentArray CONTAINS _$input) OR (spanishContentArray CONTAINS _$input) OR (kichwaContentArray CONTAINS _$input) OR (elicitSentenceContentArray CONTAINS _$input) OR (ipaContentArray CONTAINS _$input) OR (glossesContentArray CONTAINS _$input) OR (segmentedContentArray CONTAINS _$input)');
-            let objects = await businessNetworkConnection.query(objectQuery, { input: input });
+            // let objectQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (mediaLenguaContentArray CONTAINS _$input) OR (spanishContentArray CONTAINS _$input) OR (kichwaContentArray CONTAINS _$input) OR (elicitSentenceContentArray CONTAINS _$input) OR (ipaContentArray CONTAINS _$input) OR (glossesContentArray CONTAINS _$input) OR (segmentedContentArray CONTAINS _$input)');
+            let mediaLenguatQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (mediaLenguaContentArray CONTAINS _$input)');
+            let mediaLenguaObjects = await businessNetworkConnection.query(mediaLenguatQuery, { input: input });
 
-            console.log(objects);
-            if (objects.lenth > 0) {
+            let spanishQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (spanishContentArray CONTAINS _$input)');
+            let spanishObjects = await businessNetworkConnection.query(spanishQuery, { input: input });
 
-                objects.forEach(element => {
+            let kichwaQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (kichwaContentArray CONTAINS _$input)');
+            let kichwaObjects = await businessNetworkConnection.query(kichwaQuery, { input: input });
+
+            let elicitSentenceQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (elicitSentenceContentArray CONTAINS _$input)');
+            let elicitSentenceObjects = await businessNetworkConnection.query(elicitSentenceQuery, { input: input });
+
+            let ipaQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (ipaContentArray CONTAINS _$input)');
+            let ipaObjects = await businessNetworkConnection.query(ipaQuery, { input: input });
+
+            let glossesQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (glossesContentArray CONTAINS _$input)');
+            let glossesObjects = await businessNetworkConnection.query(glossesQuery, { input: input });
+
+            let segmentedQuery = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.Object WHERE (segmentedContentArray CONTAINS _$input)');
+            let segmentedObjects = await businessNetworkConnection.query(segmentedQuery, { input: input });
+
+            let queryObjects = mediaLenguaObjects.concat(spanishObjects.concat(kichwaObjects.concat(elicitSentenceObjects.concat(ipaObjects.concat(glossesObjects.concat(segmentedObjects))))));
+
+            queryObjects = this.removeDuplicates(queryObjects);
+
+            console.log(queryObjects);
+            if (queryObjects.length > 0) {
+
+                queryObjects.forEach(element => {
                     let currentObject = new ObjectModel(
                         element.objectId,
                         //Variables for annotationId
@@ -168,7 +190,7 @@ class VocabularyChaincode {
                         element.glossesContentArray,
                         element.segmentedContentArray);
 
-                    resultList.push(element);
+                    resultList.push(currentObject);
                 });
 
                 dataModel.data = resultList;
@@ -437,6 +459,22 @@ class VocabularyChaincode {
             console.error(error);
             throw new Error(error);
         }
+    }
+    //  MORE EFFICIENT, BUT LESS FUN
+    /**
+     * Remove duplicates from an array of objects in javascript
+     * @param arr - Array of objects
+     * @param prop - Property of each object to compare
+     * @returns {Array}
+     */
+    removeDuplicates(arr, prop) {
+        var obj = {};
+        for (var i = 0, len = arr.length; i < len; i++) {
+            if (!obj[arr[i][prop]]) obj[arr[i][prop]] = arr[i];
+        }
+        var newArr = [];
+        for (var key in obj) newArr.push(obj[key]);
+        return newArr;
     }
 }
 module.exports = VocabularyChaincode;

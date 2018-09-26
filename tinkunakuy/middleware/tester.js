@@ -16,8 +16,8 @@ async function mainDataInputProcess() {
     try {
         //await saveWord();
         //await getAllObjects();
-       saveAllObjects();
-          //queryObject();
+       //saveAllObjects();
+          queryObject();
        // await getObject();
     } catch (error) {
         console.error(error);
@@ -98,7 +98,7 @@ async function queryObject() {
     try {
         let wordsList = [];
         //TODO: develop method for getting 
-        let response = await requestPost('/getObjectsByQuery', JSON.stringify('imanalla'));
+        let response = await requestPost('/getObjectsByQuery', JSON.stringify('hermana'));
         console.log(response);
     } catch (error) {
         console.error(error);
