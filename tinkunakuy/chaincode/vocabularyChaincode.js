@@ -139,7 +139,7 @@ class VocabularyChaincode {
 
             let queryObjects = mediaLenguaObjects.concat(spanishObjects.concat(kichwaObjects.concat(elicitSentenceObjects.concat(ipaObjects.concat(glossesObjects.concat(segmentedObjects))))));
 
-            queryObjects = this.removeDuplicates(queryObjects);
+            queryObjects = this.removeDuplicates(queryObjects,'objectId');
 
             console.log(queryObjects);
             if (queryObjects.length > 0) {

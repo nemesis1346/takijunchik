@@ -98,7 +98,7 @@ async function queryObject() {
     try {
         let wordsList = [];
         //TODO: develop method for getting 
-        let response = await requestPost('/getObjectsByQuery', JSON.stringify('hermana'));
+        let response = await requestPost('/getObjectsByQuery', JSON.stringify('mi'));
         console.log(response);
     } catch (error) {
         console.error(error);
