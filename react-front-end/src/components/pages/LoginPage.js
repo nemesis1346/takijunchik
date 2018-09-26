@@ -1,19 +1,38 @@
 import React from 'react';
 import LoginForm from '../forms/LoginForm';
+import AlertMessageModal from '../../tools/AlertMessageModal';
 //You can use prop-types to document the intended types of properties passed to components. 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
 class LoginPage extends React.Component {
 
+    constructor() {
+        super();
+        this.state = {
+            data: {},
+            loading: false,
+            errors: {},
+            modalMessage: "Default Message",
+            modalOpen: false,
+            modalSize: "tiny"
+        }
+    }
+
     submit = (data) => {
         console.log('Data Request LoginPage');
         console.log(data);
         return this.props.login(data)
-            .then((result) => {
+            .then((resp) => {
                 console.log('Result in LoginPage');
+                console.log(resp);
+                let result = this.parseResponse(resp);
                 console.log(result);
-                this.props.history.push("/mainMenu")
+                this.setState({
+                    "modalMessage": result,
+                    "modalOpen": true
+                });
+                //  this.props.history.push("/mainMenu")
             });
     }//Then is the function that executes after the promise
     render() {
@@ -21,10 +40,27 @@ class LoginPage extends React.Component {
             <div>
                 <h1>Login Page</h1>
                 <LoginForm submit={this.submit} />
+                <AlertMessageModal
+                    modalMessage={this.state.modalMessage}
+                    modalSize={this.state.modalSize}
+                    modalOpen={this.state.modalOpen}></AlertMessageModal>
             </div>
         );
     }
+    parseResponse(response) {
+        let body = JSON.parse(response);
+
+        if (response.status == '200') {
+            return body.data;
+        } else {
+            return body.message;
+        }
+    }
+
 }
+
+//The PropTypes is for validating the props when being passed to the component
+//The inside properties are the props
 LoginPage.propTypes = {
     history: PropTypes.shape({
         push: PropTypes.func.isRequired

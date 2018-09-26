@@ -75,14 +75,7 @@ const handler = async (request, response) => {
             if (promise != null) {
                 promise.then(function (result) {
                     //This is status 200 , everything ok
-                    if (result.status == '200') {
-                        dataModel.data = result;
-                        dataModel.status = '200';
-                    } else {
-                        dataModel.message = result;
-                        dataModel.status = '300';
-                    }
-                    let body = JSON.stringify(dataModel);
+                    let body = JSON.stringify(result);
                     console.log('STATUS 200: ');
                     console.log(result);
                     const responseBody = { headers, method, url, body };
