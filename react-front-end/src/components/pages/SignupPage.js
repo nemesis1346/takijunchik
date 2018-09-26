@@ -6,6 +6,15 @@ import { connect } from 'react-redux';
 import { signup } from '../../actions/signup';
 class SignupPage extends React.Component {
 
+    constructor() {
+        super();
+        this.state = {
+            data: {},
+            loading: false,
+            errors: {}
+        }
+    }
+
     submit = (data) => {
         console.log('Data Request SingUpPage');
         console.log(data);

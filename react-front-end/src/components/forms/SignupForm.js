@@ -20,10 +20,7 @@ class SignupForm extends React.Component {
         //The condition is that if there is no methods on errors, it is validated
         if (Object.keys(errors).length === 0) {
             this.state.data.userType = 'PROFESSOR';
-            this.props.submit(this.state.data).then((res) => {
-                console.log('Result in SignUpForm');
-                console.log(res);
-            });
+            this.props.submit(this.state.data);
         }
 
         // this.state.data.userType = 'PROFESSOR';

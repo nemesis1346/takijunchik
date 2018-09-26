@@ -9,19 +9,16 @@ import { Link } from "react-router-dom"
 class LoginForm extends React.Component {
     //The following variables are being initialized
 
-    state = {
-        data: {},
-        loading: false,
-        errors: {}
+    constructor() {
+        super();
+        this.state = {
+            data: {},
+            loading: false,
+            errors: {}
+        }
     }
-    onSubmit = () => {
-        // const userModel = new UserModel({
-        //      name: 'asf',
-        //     email: 'saf',
-        //     pwd: 'asdf'
-        // });
-        // console.log(userModel);
 
+    onSubmit = () => {
         //TODO: Resolve the validation
         const errors = this.validate(this.state.data);
         this.setState({ errors });
