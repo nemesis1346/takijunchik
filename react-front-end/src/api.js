@@ -1,6 +1,6 @@
 import axios from 'axios';
 //TODO: Beaware where the port is goinf to be
-const instance = axios.create({ baseURL: 'http://localhost:3011' })
+const instance = axios.create({ baseURL: 'http://35.190.131.104:8888' })
 
 export default {
     user: {

@@ -1,6 +1,6 @@
 'use strict';
 
-const port = 3011
+const port = 8888
 //Imports
 const express = require('express');
 const bodyParser = require('body-parser');
