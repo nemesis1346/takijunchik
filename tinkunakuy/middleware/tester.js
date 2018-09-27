@@ -35,7 +35,7 @@ function saveAllObjects() {
         }
         let objectList = JSON.parse(data);
         // objectList=objectList[0-10];
-        objectList = objectList.slice(0, 20);
+        //objectList = objectList.slice(0, 20);
         //console.log(objectList);
 
         Async.eachSeries(objectList,
