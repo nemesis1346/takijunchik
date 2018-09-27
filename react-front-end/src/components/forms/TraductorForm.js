@@ -64,11 +64,11 @@ class TraductorForm extends React.Component {
                     {Children}
                 </List> */}
                 <BootstrapTable data={this.props.objectList} >
-                    <TableHeaderColumn width='150' dataField='mediaLenguaContentArray' isKey>Media Lengua</TableHeaderColumn>
-                    <TableHeaderColumn width='150' dataField='spanishContentArray'>Spanish</TableHeaderColumn>
-                    <TableHeaderColumn width='150' dataField='kichwaContentArray'>Kichwa</TableHeaderColumn>
-                    <TableHeaderColumn width='150' dataField='elicitSentenceContentArray'>Elicit Sentence</TableHeaderColumn>
-                    <TableHeaderColumn width='150' dataField='ipaContentArray'>Ipa</TableHeaderColumn>
+                    <TableHeaderColumn width='200' dataField='mediaLenguaContent' isKey>Media Lengua</TableHeaderColumn>
+                    <TableHeaderColumn width='200' dataField='spanishContent'>Spanish</TableHeaderColumn>
+                    <TableHeaderColumn width='200' dataField='kichwaContent'>Kichwa</TableHeaderColumn>
+                    <TableHeaderColumn width='200' dataField='elicitSentenceContent'>Elicit Sentence</TableHeaderColumn>
+                    <TableHeaderColumn width='200' dataField='ipaContent'>Ipa</TableHeaderColumn>
                 </BootstrapTable>
             </Container>
         );
