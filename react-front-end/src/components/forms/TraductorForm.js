@@ -1,9 +1,10 @@
 import React from 'react';
-import { Button, Container, Input, Item, List } from 'semantic-ui-react';
+import { Button, Container, Input, Item, List, Table } from 'semantic-ui-react';
 import Validator from 'validator';
 import InlineError from '../messages/InlineError';
 import { PropTypes } from 'prop-types';
-
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import '../styles/traductorFormStyle.css';
 
 class TraductorForm extends React.Component {
 
@@ -12,8 +13,10 @@ class TraductorForm extends React.Component {
         this.state = {
             data: {},
             loading: false,
-            errors: {}
+            errors: {},
+            list: []
         }
+
     }
 
 
@@ -39,16 +42,11 @@ class TraductorForm extends React.Component {
         data: { ...this.state.data, [e.target.name]: e.target.value }
     });
 
-    render() {
-        console.log(this.props);
-        const { data, errors } = this.state;
-        let children = [];
-        let Children = null;
 
-        if (this.props.objectList && this.props.objectList.length > 0) {
-            children = this.props.objectList;
-            Children = children.map((child) => <List.Item className="child-list-item" as="a" key={child.objectId}>{child.objectId}</List.Item>);
-        }
+
+    render() {
+        //console.log(this.props.objectList.length);
+        const { data, errors } = this.state;
 
         return (
             <Container>
@@ -62,9 +60,16 @@ class TraductorForm extends React.Component {
                 {errors.object && <InlineError text={errors.object} />}
                 <Button primary onClick={this.translate}>Search</Button>
 
-                <List link divided size={"massive"}>
+                {/* <List link divided size={"massive"}>
                     {Children}
-                </List>
+                </List> */}
+                <BootstrapTable data={this.props.objectList} >
+                    <TableHeaderColumn width='150' dataField='mediaLenguaContentArray' isKey>Media Lengua</TableHeaderColumn>
+                    <TableHeaderColumn width='150' dataField='spanishContentArray'>Spanish</TableHeaderColumn>
+                    <TableHeaderColumn width='150' dataField='kichwaContentArray'>Kichwa</TableHeaderColumn>
+                    <TableHeaderColumn width='150' dataField='elicitSentenceContentArray'>Elicit Sentence</TableHeaderColumn>
+                    <TableHeaderColumn width='150' dataField='ipaContentArray'>Ipa</TableHeaderColumn>
+                </BootstrapTable>
             </Container>
         );
     }

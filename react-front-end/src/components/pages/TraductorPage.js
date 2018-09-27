@@ -9,7 +9,7 @@ class TraductorPage extends React.Component {
     constructor() {
         super();
         this.state = {
-            data: {},
+            data: [],
             loading: false,
             errors: {}
         }
@@ -20,17 +20,20 @@ class TraductorPage extends React.Component {
         console.log(data);
         return this.props.translate(data)
             .then((resp) => {
+                console.log(resp);
                 console.log('Result in Traductor Page');
                 let data = this.parseResponse(resp);
+
                 console.log(data);
 
-                if (data) {
+                if (data && data.length > 0 && typeof data[0] === 'object') {
                     this.setState({
                         "data": data
                     });
                 } else {
-                    //TODO: Make an alert for no results
-                    console.log(data.message);
+                    this.setState({
+                        "data": []
+                    });
                 }
             })
             .catch((err) => {
@@ -42,7 +45,7 @@ class TraductorPage extends React.Component {
         return (
             <div>
                 <h1>Database Page</h1>
-                <TraductorForm submit={this.submit} objectList={this.state.data}/>
+                <TraductorForm submit={this.submit} objectList={this.state.data} />
             </div>
         );
     }
