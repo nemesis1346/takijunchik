@@ -15,11 +15,11 @@ sudo npm uninstall -g composer-rest-server --unsafe-perm
 sudo npm uninstall -g generator-hyperledger-composer --unsafe-perm
 
 #Update composer client
-sudo npm install -g composer-cli@0.20 --unsafe-perm
+sudo npm install -g composer-cli@0.20.1 --unsafe-perm
 #Update composer rest server
-sudo npm install -g composer-rest-server@0.20 --unsafe-perm
+sudo npm install -g composer-rest-server@0.20.1 --unsafe-perm
 #Update generator
-sudo npm install -g generator-hyperledger-composer0.20 --unsafe-perm
+sudo npm install -g generator-hyperledger-composer0.20.1 --unsafe-perm
 #Update YO project generator
 sudo npm install -g yo --unsafe-perm
 #Update Composer Playground
