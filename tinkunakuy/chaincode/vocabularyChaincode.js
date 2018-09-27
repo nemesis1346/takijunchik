@@ -106,7 +106,7 @@ class VocabularyChaincode {
         console.log('************************************');
         console.log('Request get Object in Composer: ');
         console.log(requestObject);
-        let input = requestObject;
+        let input = requestObject.input.object;
         //let input = requestObject.input;
 
         try {
@@ -141,7 +141,7 @@ class VocabularyChaincode {
 
             queryObjects = this.removeDuplicates(queryObjects,'objectId');
 
-            console.log(queryObjects);
+          //  console.log(queryObjects);
             if (queryObjects.length > 0) {
 
                 queryObjects.forEach(element => {

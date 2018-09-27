@@ -10,7 +10,7 @@ class LoginPage extends React.Component {
     constructor() {
         super();
         this.state = {
-            data: {},
+            data: [],
             loading: false,
             errors: {},
             modalMessage: "Default Message",

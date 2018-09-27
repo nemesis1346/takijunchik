@@ -46,8 +46,7 @@ class UserChaincode {
 
             let query = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.User WHERE (email==_$email AND pwd==_$pwd)');
             let userQuery = await businessNetworkConnection.query(query, { email: email, pwd: pwd });
-
-            if (userQuery.email) {
+            if (userQuery.length > 0) {
                 let participantRegistry = await businessNetworkConnection.getParticipantRegistry(networkNamespace + '.User');
                 let userResult = await participantRegistry.get(userQuery[0].$identifier);
 
@@ -104,8 +103,8 @@ class UserChaincode {
             await participantRegistry.add(user);
             await businessNetworkConnection.disconnect();
 
-            dataModel.data='User ' + userModel.email + ' saved successfully'
-            dataModel.status='200';
+            dataModel.data = 'User ' + userModel.email + ' saved successfully'
+            dataModel.status = '200';
             return dataModel;
         } catch (error) {
             console.error(error.error);

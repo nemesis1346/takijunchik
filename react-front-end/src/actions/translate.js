@@ -6,8 +6,4 @@ export const translatedWord = (result) => ({
     result
 })
 
-export const translate = (input) => (dispatch) =>
-    api.vocabulary.getObject(input).then((result) => {
-        console.log(result);
-        dispatch(result)
-    })
+export const translate = (input) => () => api.vocabulary.getObject(input);

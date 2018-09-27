@@ -26,10 +26,12 @@ export default {
                 console.log('Response in Api Translate');
                 res.data
             }),
-        getObject: input => instance.post('/getObject', { input })
+        getObject: input => instance.post('/getObjectsByQuery', { input })
             .then(res => {
-                console.log('Response in Api Object');
-                console.log(res.data.body);
+                console.log('Response in GetObject Login:');
+                let result = parseResponse(res);
+                console.log(result);
+                return result;
             })
     },
 

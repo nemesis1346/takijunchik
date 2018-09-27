@@ -28,8 +28,6 @@ class LoginForm extends React.Component {
         if (Object.keys(errors).length === 0) {
             this.props.submit(this.state.data);
         }
-        //      this.props.submit(this.state.data);
-
     }
     //This methos is a series of validations on errors object
     validate = (data) => {

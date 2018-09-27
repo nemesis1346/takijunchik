@@ -16,8 +16,8 @@ async function mainDataInputProcess() {
     try {
         //await saveWord();
         //await getAllObjects();
-       //saveAllObjects();
-          queryObject();
+       saveAllObjects();
+         // queryObject();
        // await getObject();
     } catch (error) {
         console.error(error);

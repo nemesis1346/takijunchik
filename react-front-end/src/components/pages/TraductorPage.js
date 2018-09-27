@@ -6,14 +6,32 @@ import { translate } from '../../actions/translate';
 
 class TraductorPage extends React.Component {
 
+    constructor() {
+        super();
+        this.state = {
+            data: {},
+            loading: false,
+            errors: {}
+        }
+    }
+
+
     submit = (data) => {
-        console.log('Data Request TraductorPage');
         console.log(data);
         return this.props.translate(data)
-            .then((result) => {
+            .then((resp) => {
                 console.log('Result in Traductor Page');
-                console.log(result);
+                let data = this.parseResponse(resp);
+                console.log(data);
 
+                if (data) {
+                    this.setState({
+                        "data": data
+                    });
+                } else {
+                    //TODO: Make an alert for no results
+                    console.log(data.message);
+                }
             })
             .catch((err) => {
                 console.log(err);
@@ -24,9 +42,19 @@ class TraductorPage extends React.Component {
         return (
             <div>
                 <h1>Database Page</h1>
-                <TraductorForm submit={this.submit} />
+                <TraductorForm submit={this.submit} objectList={this.state.data}/>
             </div>
         );
+    }
+
+    parseResponse(response) {
+        let body = JSON.parse(response);
+
+        if (body.status == '200') {
+            return body.data;
+        } else {
+            return body.message;
+        }
     }
 }
 
