@@ -16,3 +16,5 @@ Npm Version 6.4.0
 git add -A && git commit -m "Your Message"
 #For finding an specific package
 grep -r -l "Composer runtime"
+
+#If I have the conflict composer runtime 0.20.1 with conflict composer-cli 0.20.0, be sure to delete the node_modules folder, install the last version of composer-cli, but be sure that its the same version with the package.json specified!!!!
