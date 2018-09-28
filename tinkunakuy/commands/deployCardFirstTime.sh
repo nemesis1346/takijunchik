@@ -1,7 +1,11 @@
 #!/bin/bash
 
+sudo ../../fabric-dev-servers/stopFabric.sh
+sudo ../../fabric-dev-servers/tearDownAllDocker.sh
+sudo ../../fabric-dev-servers/tearDownFabric.sh
 sudo ../../fabric-dev-servers/startFabric.sh
 sudo ../../fabric-dev-servers/createPeerAdminCard.sh
+
 
 #With this following command we create the bna file
 sudo composer archive create -t dir -n ../

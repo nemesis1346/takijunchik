@@ -1,12 +1,14 @@
 #!/bin/bash
 
-#docker kill $(docker ps -q)
-#docker rm $(docker ps -aq)
-#docker rmi $(docker images dev-* -q)
+docker kill $(docker ps -q)
+docker rm $(docker ps -aq)
+docker rmi $(docker images dev-* -q)
 
 # sudo apt-get update
 # sudo apt-get upgrade
 # sudo apt-get autoremove
+
+sudo rm -rf ../node_modules
 
 sudo npm rebuild --unsafe-perm
 
@@ -15,11 +17,11 @@ sudo npm uninstall -g composer-rest-server --unsafe-perm
 sudo npm uninstall -g generator-hyperledger-composer --unsafe-perm
 
 #Update composer client
-sudo npm install -g composer-cli@0.20.1 --unsafe-perm
+sudo npm install -g composer-cli@0.20.0 --unsafe-perm
 #Update composer rest server
-sudo npm install -g composer-rest-server@0.20.1 --unsafe-perm
+sudo npm install -g composer-rest-server@0.20.0 --unsafe-perm
 #Update generator
-sudo npm install -g generator-hyperledger-composer0.20.1 --unsafe-perm
+sudo npm install -g generator-hyperledger-composer@0.20.0 --unsafe-perm
 #Update YO project generator
 sudo npm install -g yo --unsafe-perm
 #Update Composer Playground
