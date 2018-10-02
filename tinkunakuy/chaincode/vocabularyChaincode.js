@@ -472,7 +472,7 @@ class VocabularyChaincode {
             for (let j = index; j <= entireContent.length; j++) {
                 const currentResult = entireContent.slice(index, j).trim();
                 if (currentResult) {
-                    finalResult.push(currentResult);
+                    finalResult.push(currentResult.toLowerCase());
                 }
             }
         }

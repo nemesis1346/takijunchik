@@ -5,6 +5,7 @@ import InlineError from '../messages/InlineError';
 import { PropTypes } from 'prop-types';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import '../styles/traductorFormStyle.css';
+import MDSpinner from 'react-md-spinner';
 
 class TraductorForm extends React.Component {
 
@@ -48,6 +49,21 @@ class TraductorForm extends React.Component {
         //console.log(this.props.objectList.length);
         const { data, errors } = this.state;
 
+        if (!this.props.objectList.length) {
+            return (
+                <Container>
+                    <Input
+                        placeholder='Kichwa Word'
+                        type='text'
+                        id='object'
+                        name='object'
+                        value={data.object}
+                        onChange={this.onChange} />
+                    {errors.object && <InlineError text={errors.object} />}
+                    <Button primary onClick={this.translate}>Search</Button>
+                </Container>
+            );
+        }
         return (
             <Container>
                 <Input

@@ -17,7 +17,10 @@ class TraductorPage extends React.Component {
 
 
     submit = (data) => {
-        console.log(data);
+        //Eliminate space
+        data.object = String(data.object);
+        data.object = data.object.trim();
+        data.object = data.object.toLowerCase();
         return this.props.translate(data)
             .then((resp) => {
                 console.log(resp);
