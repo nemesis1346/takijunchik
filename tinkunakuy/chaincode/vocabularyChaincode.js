@@ -202,10 +202,6 @@ class VocabularyChaincode {
                 return dataModel;
             }
 
-
-
-
-
         } catch (error) {
             console.error(error);
             throw new Error(error);
@@ -341,7 +337,7 @@ class VocabularyChaincode {
         let dataModel = new DataModel(null, null, null);
         console.log('************************************');
         console.log('Request Save Object: ');
-        console.log(requestObject.timeSlotId1Kichwa);
+        console.log(requestObject);
 
         try {
             let objectModel = new ObjectModel(
@@ -433,22 +429,14 @@ class VocabularyChaincode {
             object.timeValue1 = objectModel.timeValue1;
             object.timeValue2 = objectModel.timeValue2;
 
-            let wordsMediaLengua = objectModel.mediaLenguaContent.split(" ");
-            let wordsSpanish = objectModel.spanishContent.split(" ");
-            let wordsKichwa = objectModel.kichwaContent.split(" ");
-            let wordsElicitSentence = objectModel.elicitSentenceContent.split(" ");
-            let wordsIpa = objectModel.ipaContent.split(" ");
-            let wordsGlosses = objectModel.glossesContent.split(" ");
-            let wordsSegmented = objectModel.segmentedContent.split(" ");
-
             //Arrays
-            object.mediaLenguaContentArray = parseContent(wordsMediaLengua);
-            object.spanishContentArray = parseContent(wordsSpanish);
-            object.kichwaContentArray = parseContent(wordsKichwa);
-            object.elicitSentenceContentArray = parseContent(wordsElicitSentence);
-            object.ipaContentArray = parseContent(wordsIpa);
-            object.glossesContentArray = parseContent(wordsGlosses);
-            object.segmentedContentArray = parseContent(wordsSegmented);
+            object.mediaLenguaContentArray = this.parseContent(objectModel.mediaLenguaContent);
+            object.spanishContentArray = this.parseContent(objectModel.spanishContent);
+            object.kichwaContentArray = this.parseContent(objectModel.kichwaContent);
+            object.elicitSentenceContentArray = this.parseContent(objectModel.elicitSentenceContent);
+            object.ipaContentArray = this.parseContent(objectModel.ipaContent);
+            object.glossesContentArray = this.parseContent(objectModel.glossesContent);
+            object.segmentedContentArray = this.parseContent(objectModel.segmentedContent);
 
             await assetRegistry.add(object);
             await businessNetworkConnection.disconnect();
@@ -479,11 +467,9 @@ class VocabularyChaincode {
         return newArr;
     }
 
-    /**
-     * @description Processing the entire sentence
-     * @param {content} string 
-     */
+ 
     parseContent(content) {
+       // console.log(content);
         let entireContent = content;
         let arrayContent = entireContent.split(" ");
         let finalResult = [];
@@ -509,8 +495,8 @@ class VocabularyChaincode {
         //     }
         // });
 
-        finalResult = removeDuplicates(finalResult);
-        console.log(finalResult.length);
+        finalResult = this.removeDuplicates(finalResult);
+       // console.log(finalResult.length);
         return finalResult;
     }
     /**
