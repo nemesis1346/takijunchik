@@ -139,9 +139,9 @@ class VocabularyChaincode {
 
             let queryObjects = mediaLenguaObjects.concat(spanishObjects.concat(kichwaObjects.concat(elicitSentenceObjects.concat(ipaObjects.concat(glossesObjects.concat(segmentedObjects))))));
 
-            queryObjects = this.removeDuplicates(queryObjects,'objectId');
+            queryObjects = this.removeDuplicates(queryObjects, 'objectId');
 
-          //  console.log(queryObjects);
+            //  console.log(queryObjects);
             if (queryObjects.length > 0) {
 
                 queryObjects.forEach(element => {
@@ -335,6 +335,7 @@ class VocabularyChaincode {
     /**
     * @description It creates a new object for storing linguistics project
     * @return {Promise} A promise that creates a object for storing linguistics project
+    * @param object is the model for the object
     */
     async saveObject(requestObject) {
         let dataModel = new DataModel(null, null, null);
@@ -441,13 +442,13 @@ class VocabularyChaincode {
             let wordsSegmented = objectModel.segmentedContent.split(" ");
 
             //Arrays
-            object.mediaLenguaContentArray = wordsMediaLengua;
-            object.spanishContentArray = wordsSpanish;
-            object.kichwaContentArray = wordsKichwa;
-            object.elicitSentenceContentArray = wordsElicitSentence;
-            object.ipaContentArray = wordsIpa;
-            object.glossesContentArray = wordsGlosses;
-            object.segmentedContentArray = wordsSegmented;
+            object.mediaLenguaContentArray = parseContent(wordsMediaLengua);
+            object.spanishContentArray = parseContent(wordsSpanish);
+            object.kichwaContentArray = parseContent(wordsKichwa);
+            object.elicitSentenceContentArray = parseContent(wordsElicitSentence);
+            object.ipaContentArray = parseContent(wordsIpa);
+            object.glossesContentArray = parseContent(wordsGlosses);
+            object.segmentedContentArray = parseContent(wordsSegmented);
 
             await assetRegistry.add(object);
             await businessNetworkConnection.disconnect();
@@ -460,9 +461,10 @@ class VocabularyChaincode {
             throw new Error(error);
         }
     }
+
     //  MORE EFFICIENT, BUT LESS FUN
     /**
-     * Remove duplicates from an array of objects in javascript
+     * @description Remove duplicates from an array of objects in javascript
      * @param arr - Array of objects
      * @param prop - Property of each object to compare
      * @returns {Array}
@@ -475,6 +477,53 @@ class VocabularyChaincode {
         var newArr = [];
         for (var key in obj) newArr.push(obj[key]);
         return newArr;
+    }
+
+    /**
+     * @description Processing the entire sentence
+     * @param {content} string 
+     */
+    parseContent(content) {
+        let entireContent = content;
+        let arrayContent = entireContent.split(" ");
+        let finalResult = [];
+
+        //Processing for the entire sentence
+        for (let index = 0; index <= entireContent.length; index++) {
+            for (let j = index; j <= entireContent.length; j++) {
+                const currentResult = entireContent.slice(index, j).trim();
+                if (currentResult) {
+                    finalResult.push(currentResult);
+                }
+            }
+        }
+        //Processing for the individual words
+        // arrayContent.forEach(element => {
+        //     for (let index = 0; index <= element.length; index++) {
+        //         for (let j = index; j <= element.length; j++) {
+        //             const currentResult = element.slice(index, j).trim();
+        //             if (currentResult) {
+        //                 finalResult.push(currentResult);
+        //             }
+        //         }
+        //     }
+        // });
+
+        finalResult = removeDuplicates(finalResult);
+        console.log(finalResult.length);
+        return finalResult;
+    }
+    /**
+     * @description Remove duplicates
+     */
+    removeDuplicates(arr) {
+        let unique_array = []
+        for (let i = 0; i < arr.length; i++) {
+            if (unique_array.indexOf(arr[i]) == -1) {
+                unique_array.push(arr[i])
+            }
+        }
+        return unique_array
     }
 }
 module.exports = VocabularyChaincode;
