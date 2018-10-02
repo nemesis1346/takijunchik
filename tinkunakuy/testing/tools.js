@@ -12,17 +12,6 @@ function parseContent(content) {
             }
         }
     }
-    //Processing for the individual words
-    // arrayContent.forEach(element => {
-    //     for (let index = 0; index <= element.length; index++) {
-    //         for (let j = index; j <= element.length; j++) {
-    //             const currentResult = element.slice(index, j).trim();
-    //             if (currentResult) {
-    //                 finalResult.push(currentResult);
-    //             }
-    //         }
-    //     }
-    // });
 
     finalResult = removeDuplicates(finalResult);
     console.log(finalResult.length);

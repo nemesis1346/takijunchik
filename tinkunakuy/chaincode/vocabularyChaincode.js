@@ -11,12 +11,6 @@ const ObjectModel = require('../models/objectModel.js');
 const DataModel = require('../models/dataModel.js');
 class VocabularyChaincode {
     constructor() {
-        try {
-            //this.bizNetworkConnection = new BusinessNetworkConnection();
-            //this.init();
-        } catch (error) {
-            console.log(error);
-        }
     }
 
     /** 
@@ -214,7 +208,6 @@ class VocabularyChaincode {
      */
     async getAllObjects() {
         let dataModel = new DataModel(null, null, null);
-
         console.log('************************************');
         console.log('Request Get All Objects in Composer: ');
         try {
@@ -467,9 +460,9 @@ class VocabularyChaincode {
         return newArr;
     }
 
- 
+
     parseContent(content) {
-       // console.log(content);
+        // console.log(content);
         let entireContent = content;
         let arrayContent = entireContent.split(" ");
         let finalResult = [];
@@ -483,20 +476,8 @@ class VocabularyChaincode {
                 }
             }
         }
-        //Processing for the individual words
-        // arrayContent.forEach(element => {
-        //     for (let index = 0; index <= element.length; index++) {
-        //         for (let j = index; j <= element.length; j++) {
-        //             const currentResult = element.slice(index, j).trim();
-        //             if (currentResult) {
-        //                 finalResult.push(currentResult);
-        //             }
-        //         }
-        //     }
-        // });
 
         finalResult = this.removeDuplicates(finalResult);
-       // console.log(finalResult.length);
         return finalResult;
     }
     /**
