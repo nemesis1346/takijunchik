@@ -15,32 +15,40 @@ class ObjectDetailModal extends React.Component {
 
     show = size => () => this.setState({ size })
 
-    close = () => this.setState({ open: false })
-
-    onOkButton = () => {
-        this.props.modalCallback(false);
+    close = () => {
+        this.props.objectDetailCloseCallback(false);
     }
 
-    onPlay=()=>{
-
+    onPlay = () => {
+        console.log('play');
     }
 
     render() {
         console.log(this.props);
         return (
             <div>
-                <Modal size={this.props.modalSize} open={this.props.modalOpen} onClose={this.close}>
-                    <Modal.Header>Message</Modal.Header>
+                <Modal size={this.props.objectDetailSize} open={this.props.objectDetailOpen} onClose={this.close}>
+                    <Modal.Header>Detalle</Modal.Header>
                     <Modal.Content>
-                        <p>{this.props.modalData.mediaLengua}</p>
-                        <p>{this.props.modalData.spanishContent}</p>
-                        <p>{this.props.modalData.kichwaContent}</p>
-                        <p>{this.props.modalData.elicitSentenceContent}</p>
-                        <p>{this.props.modalData.ipaContent}</p>
+                        <div>
+                            <b>Media Lengua: </b> {this.props.objectDetailData.mediaLenguaContent}
+                        </div>
+                        <div>
+                            <b>Spanish Content: </b>  {this.props.objectDetailData.spanishContent}
+                        </div>
+                        <div>
+                            <b>Kichwa Content: </b> {this.props.objectDetailData.kichwaContent}
+                        </div>
+                        <div>
+                            <b>Elicit Sentence Content: </b> {this.props.objectDetailData.elicitSentenceContent}
+                        </div>
+                        <div>
+                            <b>Ipa Content: </b>  {this.props.objectDetailData.ipaContent}
+                        </div>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button positive icon='checkmark' labelPosition='right' content='Play' onClick={this.onOkButton} />
-                        <Button positive icon='checkmark' labelPosition='left' content='Close' onClick={this.onPlay} />
+                        <Button positive icon='checkmark' labelPosition='right' content='Play' onClick={this.onPlay} />
+                        <Button positive icon='checkmark' labelPosition='right' content='Close' onClick={this.close} />
                     </Modal.Actions>
                 </Modal>
             </div>
@@ -49,8 +57,8 @@ class ObjectDetailModal extends React.Component {
 }
 
 ObjectDetailModal.propTypes = {
-    modalSize: PropTypes.string.isRequired,
-    modalData: PropTypes.object.isRequired
+    objectDetailSize: PropTypes.string.isRequired,
+    objectDetailData: PropTypes.object.isRequired
 }
 
 export default ObjectDetailModal;

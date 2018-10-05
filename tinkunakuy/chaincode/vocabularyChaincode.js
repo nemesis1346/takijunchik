@@ -100,7 +100,7 @@ class VocabularyChaincode {
         console.log('************************************');
         console.log('Request get Object in Composer: ');
         console.log(requestObject);
-        let input = requestObject.input.object;
+        let input = requestObject.input;
         //let input = requestObject.input;
 
         try {

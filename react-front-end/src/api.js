@@ -9,7 +9,7 @@ export default {
             .then((res) => {
                 console.log('Response in Api Login:');
                 let result = parseResponse(res);
-                console.log(result);
+                //console.log(result);
                 return result;
             }),
 
@@ -17,7 +17,7 @@ export default {
             .then((res) => {
                 console.log('Response in Api Signup');
                 let result = parseResponse(res);
-                console.log(result);
+                //console.log(result);
                 return result;
             })
     },
@@ -31,7 +31,7 @@ export default {
             .then(res => {
                 console.log('Response in GetObject Login:');
                 let result = parseResponse(res);
-                console.log(result);
+                //console.log(result);
                 return result;
             })
     },

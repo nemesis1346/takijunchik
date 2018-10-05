@@ -1,11 +1,8 @@
 import React from 'react';
-import { Button, Container, Input, Message } from 'semantic-ui-react';
-import Validator from 'validator';
+import { Button, Container, Input } from 'semantic-ui-react';
 import InlineError from '../messages/InlineError';
 import { PropTypes } from 'prop-types';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import '../styles/traductorFormStyle.css';
-import MDSpinner from 'react-md-spinner';
 
 class TraductorForm extends React.Component {
 
@@ -18,11 +15,6 @@ class TraductorForm extends React.Component {
             list: []
         }
 
-    }
-
-
-    onSubmit = () => {
-        this.props.submit(this.state.data);
     }
 
     translate = () => {
@@ -43,62 +35,33 @@ class TraductorForm extends React.Component {
         data: { ...this.state.data, [e.target.name]: e.target.value }
     });
 
-
-
+    _handleKeyPress=(e) =>{
+        if (e.key === 'Enter') {
+          this.translate();
+        }
+      }
     render() {
         //console.log(this.props.objectList.length);
         const { data, errors } = this.state;
-
-        if (!this.props.objectList.length) {
-            return (
-                <Container>
-                    <Input
-                        placeholder='Kichwa Word'
-                        type='text'
-                        id='object'
-                        name='object'
-                        value={data.object}
-                        onChange={this.onChange} />
-                    {errors.object && <InlineError text={errors.object} />}
-                    <Button primary onClick={this.translate}>Search</Button>
-                    <Message>
-                        <Message.Header>Error</Message.Header>
-                        <p>There is no results</p>
-                    </Message>
-                    <MDSpinner/>
-                </Container>
-            );
-        } else {
-            return (
-                <Container>
-                    <Input
-                        placeholder='Kichwa Word'
-                        type='text'
-                        id='object'
-                        name='object'
-                        value={data.object}
-                        onChange={this.onChange} />
-                    {errors.object && <InlineError text={errors.object} />}
-                    <Button primary onClick={this.translate}>Search</Button>
-
-                    {/* <List link divided size={"massive"}>
-                    {Children}
-                </List> */}
-                    <BootstrapTable data={this.props.objectList} >
-                        <TableHeaderColumn width='200' dataField='mediaLenguaContent' isKey>Media Lengua</TableHeaderColumn>
-                        <TableHeaderColumn width='200' dataField='spanishContent'>Spanish</TableHeaderColumn>
-                        <TableHeaderColumn width='200' dataField='kichwaContent'>Kichwa</TableHeaderColumn>
-                        <TableHeaderColumn width='200' dataField='elicitSentenceContent'>Elicit Sentence</TableHeaderColumn>
-                        <TableHeaderColumn width='200' dataField='ipaContent'>Ipa</TableHeaderColumn>
-                    </BootstrapTable>
-                </Container>
-            );
-        }
+        return (
+            <Container>
+                <Input
+                    placeholder='Kichwa Word'
+                    type='text'
+                    id='object'
+                    name='object'
+                    value={data.object}
+                    onChange={this.onChange}
+                    onKeyPress={this._handleKeyPress}  />
+                {errors.object && <InlineError text={errors.object} />}
+                <Button primary onClick={this.translate}>Search</Button>
+            </Container>
+        );
     }
 }
 
-    TraductorForm.propTypes = {
-        submit: PropTypes.func.isRequired
-    };
+TraductorForm.propTypes = {
+    submit: PropTypes.func.isRequired
+};
 
-    export default TraductorForm;
+export default TraductorForm;

@@ -19,7 +19,7 @@ class LoginPage extends React.Component {
         }
     }
 
-    loginCallback = (closeAlert) => {
+    modalCallback = (closeAlert) => {
         this.setState({
             "modalOpen": closeAlert
         });
@@ -41,6 +41,7 @@ class LoginPage extends React.Component {
                 }
             });
     }//Then is the function that executes after the promise
+    
     render() {
         return (
             <div>
@@ -50,7 +51,7 @@ class LoginPage extends React.Component {
                     modalMessage={this.state.modalMessage}
                     modalSize={this.state.modalSize}
                     modalOpen={this.state.modalOpen}
-                    modalCallback={this.loginCallback}>
+                    modalCallback={this.modalCallback}>
                 </AlertMessageModal>
             </div>
         );
