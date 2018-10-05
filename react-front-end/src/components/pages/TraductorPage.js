@@ -33,7 +33,6 @@ class TraductorPage extends React.Component {
     }
 
     objectDetailCloseCallback = (closeAlert) => {
-        console.log("ALERT VALUE: "+closeAlert);
         this.setState({
             "objectDetailOpen": closeAlert
         });
@@ -41,10 +40,6 @@ class TraductorPage extends React.Component {
 
 
     submit = (data) => {
-        //Eliminate space
-        // data.object = String(data.object);
-        // data.object = ;
-        // data.object = data.object.toLowerCase();
         this.setState({ "hideSpinner": false });
 
         return this.props.translate(data.object.trim().toLowerCase())
@@ -75,7 +70,6 @@ class TraductorPage extends React.Component {
     }
 
     objectSelectedCallback=(objectSelected)=>{
-        console.log(objectSelected);
         this.setState({
             "objectDetailOpen":true,
             "objectDetailData":objectSelected
