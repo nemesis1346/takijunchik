@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, Input, Item, List, Table } from 'semantic-ui-react';
+import { Button, Container, Input, Message } from 'semantic-ui-react';
 import Validator from 'validator';
 import InlineError from '../messages/InlineError';
 import { PropTypes } from 'prop-types';
@@ -61,38 +61,44 @@ class TraductorForm extends React.Component {
                         onChange={this.onChange} />
                     {errors.object && <InlineError text={errors.object} />}
                     <Button primary onClick={this.translate}>Search</Button>
+                    <Message>
+                        <Message.Header>Error</Message.Header>
+                        <p>There is no results</p>
+                    </Message>
+                    <MDSpinner/>
+                </Container>
+            );
+        } else {
+            return (
+                <Container>
+                    <Input
+                        placeholder='Kichwa Word'
+                        type='text'
+                        id='object'
+                        name='object'
+                        value={data.object}
+                        onChange={this.onChange} />
+                    {errors.object && <InlineError text={errors.object} />}
+                    <Button primary onClick={this.translate}>Search</Button>
+
+                    {/* <List link divided size={"massive"}>
+                    {Children}
+                </List> */}
+                    <BootstrapTable data={this.props.objectList} >
+                        <TableHeaderColumn width='200' dataField='mediaLenguaContent' isKey>Media Lengua</TableHeaderColumn>
+                        <TableHeaderColumn width='200' dataField='spanishContent'>Spanish</TableHeaderColumn>
+                        <TableHeaderColumn width='200' dataField='kichwaContent'>Kichwa</TableHeaderColumn>
+                        <TableHeaderColumn width='200' dataField='elicitSentenceContent'>Elicit Sentence</TableHeaderColumn>
+                        <TableHeaderColumn width='200' dataField='ipaContent'>Ipa</TableHeaderColumn>
+                    </BootstrapTable>
                 </Container>
             );
         }
-        return (
-            <Container>
-                <Input
-                    placeholder='Kichwa Word'
-                    type='text'
-                    id='object'
-                    name='object'
-                    value={data.object}
-                    onChange={this.onChange} />
-                {errors.object && <InlineError text={errors.object} />}
-                <Button primary onClick={this.translate}>Search</Button>
-
-                {/* <List link divided size={"massive"}>
-                    {Children}
-                </List> */}
-                <BootstrapTable data={this.props.objectList} >
-                    <TableHeaderColumn width='200' dataField='mediaLenguaContent' isKey>Media Lengua</TableHeaderColumn>
-                    <TableHeaderColumn width='200' dataField='spanishContent'>Spanish</TableHeaderColumn>
-                    <TableHeaderColumn width='200' dataField='kichwaContent'>Kichwa</TableHeaderColumn>
-                    <TableHeaderColumn width='200' dataField='elicitSentenceContent'>Elicit Sentence</TableHeaderColumn>
-                    <TableHeaderColumn width='200' dataField='ipaContent'>Ipa</TableHeaderColumn>
-                </BootstrapTable>
-            </Container>
-        );
     }
 }
 
-TraductorForm.propTypes = {
-    submit: PropTypes.func.isRequired
-};
+    TraductorForm.propTypes = {
+        submit: PropTypes.func.isRequired
+    };
 
-export default TraductorForm;
+    export default TraductorForm;

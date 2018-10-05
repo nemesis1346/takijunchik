@@ -133,8 +133,6 @@ class VocabularyChaincode {
 
             let queryObjects = mediaLenguaObjects.concat(spanishObjects.concat(kichwaObjects.concat(elicitSentenceObjects.concat(ipaObjects.concat(glossesObjects.concat(segmentedObjects))))));
 
-            queryObjects = this.removeDuplicates(queryObjects, 'objectId');
-
             //  console.log(queryObjects);
             if (queryObjects.length > 0) {
 
@@ -186,6 +184,8 @@ class VocabularyChaincode {
 
                     resultList.push(currentObject);
                 });
+
+                resultList = this.removeDuplicatesProp(resultList, 'objectId');
 
                 dataModel.data = resultList;
                 dataModel.status = '200';
@@ -450,21 +450,18 @@ class VocabularyChaincode {
      * @param prop - Property of each object to compare
      * @returns {Array}
      */
-    removeDuplicates(arr, prop) {
-        var obj = {};
-        for (var i = 0, len = arr.length; i < len; i++) {
-            if (!obj[arr[i][prop]]) obj[arr[i][prop]] = arr[i];
-        }
-        var newArr = [];
-        for (var key in obj) newArr.push(obj[key]);
-        return newArr;
+    removeDuplicatesProp(arr, prop) {
+        let obj = {};
+        return Object.keys(arr.reduce((prev, next) => {
+            if (!obj[next[prop]]) obj[next[prop]] = next;
+            return obj;
+        }, obj)).map((i) => obj[i]);
     }
 
 
     parseContent(content) {
         // console.log(content);
         let entireContent = content;
-        let arrayContent = entireContent.split(" ");
         let finalResult = [];
 
         //Processing for the entire sentence
@@ -476,7 +473,6 @@ class VocabularyChaincode {
                 }
             }
         }
-
         finalResult = this.removeDuplicates(finalResult);
         return finalResult;
     }

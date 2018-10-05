@@ -3,6 +3,7 @@ import TraductorForm from '../forms/TraductorForm';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { translate } from '../../actions/translate';
+import ObjectDetailModal from '../tools/ObjectDetailModal';
 
 class TraductorPage extends React.Component {
 
@@ -11,8 +12,24 @@ class TraductorPage extends React.Component {
         this.state = {
             data: [],
             loading: false,
-            errors: {}
+            errors: {},
+            dataSelected:  {
+                mediaLengua: "",
+                spanishContent: "",
+                kichwaContent: "",
+                elicitSentenceContent: "",
+                ipaContent: "" }
+            ,
+            modalOpen: false,
+            modalSize: "tiny",
+
         }
+    }
+
+    closeCallback = (closeAlert) => {
+        this.setState({
+            "modalOpen": closeAlert
+        });
     }
 
 
@@ -49,6 +66,12 @@ class TraductorPage extends React.Component {
             <div>
                 <h1>Database Page</h1>
                 <TraductorForm submit={this.submit} objectList={this.state.data} />
+                <ObjectDetailModal
+                    modalSize={this.state.modalSize}
+                    modalOpen={this.state.modalOpen}
+                    modalData={this.state.dataSelected}
+                    modalCloseCallback={this.closeCallback}>
+                </ObjectDetailModal>
             </div>
         );
     }

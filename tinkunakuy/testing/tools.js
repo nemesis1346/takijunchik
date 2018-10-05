@@ -28,3 +28,8 @@ function removeDuplicates(arr){
 }
 
 parseContent('This is a tool');
+
+const dupObj = [{ objectId: 1, value: 'a' }, { objectId: 2, value: 'b' }, { objectId: 1, value: 'c' }];
+
+const uniKeys = [...(new Set(dupObj.map(({ objectId }) => objectId)))];
+console.log(uniKeys);
