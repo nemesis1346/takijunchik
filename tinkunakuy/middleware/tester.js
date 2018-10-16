@@ -10,13 +10,13 @@ const ObjectModel = require('../models/objectModel.js');
 //const DataCreator = require('../testing/dataCreator');
 let fs = require('fs');
 const Async = require('async');
-const request = require('superagent');
+const superagent = require('superagent');
 
 async function mainDataInputProcess() {
     try {
         //await saveWord();
         //await getAllObjects();
-       saveAllObjects();
+      // saveAllObjects();
          // queryObject();
        // await getObject();
        streamTrack();
@@ -31,8 +31,7 @@ async function mainDataInputProcess() {
  */
 function streamTrack(){
     try {
-       await requestPost('/streamTrack', '');
-        console.log(response);
+        requestPost('/streamTrack', '');
     } catch (error) {
         console.error(error);
         return new Error(error);

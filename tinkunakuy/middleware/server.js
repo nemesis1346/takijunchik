@@ -1,7 +1,6 @@
 'use strict';
-
-const port = 8888
 //Imports
+const port = 8888
 const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
@@ -60,39 +59,6 @@ const handler = async (request, response) => {
                 case '/streamTrack':
                     //promise = this.soundChaincode.streamTrack();
                     promise = null;
-
-                    const file = '/home/nemesis1346/Documents/UniversityProjects/takijunchik/tinkunakuy/soundProcessing/41-Elicitations-2010.mp3';
-                    const stat = fs.statSync(file);
-                    const total = stat.size;
-                    if (req.headers.range) {
-                
-                    }
-                    fs.exists(file, (exists) => {
-                        if (exists) {
-                            const range = req.headers.range;
-                            const parts = range.replace('/bytes=/', '').split('-');
-                            const partialStart = parts[0];
-                            const partialEnd = parts[1];
-                
-                            const start = parseInt(partialStart, 10);
-                            const end = partialEnd ? parseInt(partialEnd, 10) : total - 1;
-                            const chunksize = (end - start) + 1;
-                            const rstream = fs.createReadStream(file, {start: start, end: end});
-                
-                            res.writeHead(206, {
-                                'Content-Range': 'bytes ' + start + '-' + end + '/' + total,
-                                'Accept-Ranges': 'bytes', 'Content-Length': chunksize,
-                                'Content-Type': 'audio/mpeg'
-                            });
-                            rstream.pipe(res);
-                
-                        } else {
-                            res.send('Error - 404');
-                            res.end();
-                            // res.writeHead(200, { 'Content-Length': total, 'Content-Type': 'audio/mpeg' });
-                            // fs.createReadStream(path).pipe(res);
-                        }
-                    });
                     break;
                 default:
                     dataModel.message = 'Method not found';
