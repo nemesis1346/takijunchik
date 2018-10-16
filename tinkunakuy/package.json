@@ -19,19 +19,19 @@
   "email": "marco.maigua1346@gmail.com",
   "license": "Apache-2.0",
   "devDependencies": {
+    "chai": "latest",
+    "chai-as-promised": "latest",
     "composer-admin": "^0.20.0",
     "composer-cli": "^0.20.0",
-    "composer-client": "^0.20.0",
+    "composer-client": "^0.20.2",
     "composer-common": "^0.20.0",
     "composer-connector-embedded": "^0.20.0",
     "composer-cucumber-steps": "^0.20.0",
-    "chai": "latest",
-    "chai-as-promised": "latest",
     "cucumber": "^2.2.0",
     "eslint": "latest",
-    "nyc": "latest",
     "mkdirp": "latest",
-    "mocha": "latest"
+    "mocha": "latest",
+    "nyc": "latest"
   },
   "dependencies": {
     "array-unique": "^0.3.2",

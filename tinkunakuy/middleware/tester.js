@@ -19,6 +19,20 @@ async function mainDataInputProcess() {
        saveAllObjects();
          // queryObject();
        // await getObject();
+       streamTrack();
+    } catch (error) {
+        console.error(error);
+        return new Error(error);
+    }
+}
+
+/**
+ * @description This function is for testing the streaming method
+ */
+function streamTrack(){
+    try {
+       await requestPost('/streamTrack', '');
+        console.log(response);
     } catch (error) {
         console.error(error);
         return new Error(error);
@@ -89,7 +103,7 @@ function saveAllObjects() {
                     null
                 );
                 //   console.log(currentObject);
-                requestPostArrays('/saveObject', JSON.stringify(currentObject), callback);
+                requestPost('/saveObject', JSON.stringify(currentObject));
             }
         );
     });
@@ -182,54 +196,29 @@ async function saveWord() {
  * @param {Its the name of the endpoint or method at the end} endpoint 
  * @param {Its the data, usually should be a json object} data 
  */
-function requestPostArrays(endpoint, data, callback) {
-    // //The following should be in a loop
-    //   // An object of options to indicate where to post to
-    var post_options = {
-        host: HOST,
-        port: PORT,
-        path: endpoint,
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': Buffer.byteLength(data) //this is an individual word
-        }
-    };
-    var post_req = http.request(post_options, function (res) {
-        res.setEncoding('utf8');
-        res.on('data', function (chunk) {
-            console.log('RESPONSE------------');
-            console.log(chunk);
-            callback(null,chunk);
-        });
-    });
-    post_req.write(data)
-}
+async function requestPost(endpoint, data, extraInfo) {
+    let result;
+    try {
+        const res = await superagent
+            .post(`${HOST}:${PORT}${endpoint}`)
+            .set('Content-Type', 'application/json')
+            .set('Content-Length', Buffer.byteLength(data))
+            .send(data);
 
-function requestPost(endpoint, data) {
-    // //The following should be in a loop
-    //   // An object of options to indicate where to post to
-    var post_options = {
-        host: HOST,
-        port: PORT,
-        path: endpoint,
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': Buffer.byteLength(data) //this is an individual word
+        result = JSON.parse(res.res.text)
+        console.log('RESPONSE IN: ' + extraInfo);
+        console.log(result);
+
+    } catch (error) {
+        console.log('THERE WAS AN ERROR IN: ' + extraInfo);
+        if (error.response) {
+            result = JSON.parse(error.response.res.text);
+            console.error(result);
+        } else {
+            console.log(error);
         }
-    };
-    var post_req = http.request(post_options, function (res) {
-        res.setEncoding('utf8');
-        res.on('data', function (chunk) {
-            console.log('RESPONSE------------');
-            console.log(chunk);
-        });
-        res.on('error', (e) => {
-            console.error(`problem with request: ${e.message}`);
-        });
-    });
-    post_req.write(data)
+    }
+    // return result;
 }
 /**
  * This is a generic method for get request

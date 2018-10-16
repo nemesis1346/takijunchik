@@ -1,14 +1,13 @@
 'use strict';
 const BusinessNetworkConnection = require('composer-client').BusinessNetworkConnection;
-const BusinessNetworkDefinition = require('composer-common').BusinessNetworkDefinition;
 const winston = require('winston');
-const IdCard = require('composer-common').IdCard;
 const cardname = 'admin@tinkunakuy';
 const networkNamespace = 'org.nemesis1346.tinkunakuy';
 const LOG = winston.loggers.get('application');
 const WordModel = require('../models/wordModel.js');
 const ObjectModel = require('../models/objectModel.js');
 const DataModel = require('../models/dataModel.js');
+
 class VocabularyChaincode {
     constructor() {
     }

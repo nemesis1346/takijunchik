@@ -10,6 +10,7 @@ const VocabularyChaincode = require('../chaincode/vocabularyChaincode.js');
 const UserChaincode = require('../chaincode/userChaincode.js');
 const app = express();
 const DataModel = require('../models/dataModel.js');
+const fs = require('fs');
 
 const handler = async (request, response) => {
     const { headers, method, url } = request;
@@ -56,6 +57,43 @@ const handler = async (request, response) => {
                 case '/getObjectsByQuery':
                     promise = this.vocabularyChaincode.getObjectsByQuery(JSON.parse(bufferContent));
                     break;
+                case '/streamTrack':
+                    //promise = this.soundChaincode.streamTrack();
+                    promise = null;
+
+                    const file = '/home/nemesis1346/Documents/UniversityProjects/takijunchik/tinkunakuy/soundProcessing/41-Elicitations-2010.mp3';
+                    const stat = fs.statSync(file);
+                    const total = stat.size;
+                    if (req.headers.range) {
+                
+                    }
+                    fs.exists(file, (exists) => {
+                        if (exists) {
+                            const range = req.headers.range;
+                            const parts = range.replace('/bytes=/', '').split('-');
+                            const partialStart = parts[0];
+                            const partialEnd = parts[1];
+                
+                            const start = parseInt(partialStart, 10);
+                            const end = partialEnd ? parseInt(partialEnd, 10) : total - 1;
+                            const chunksize = (end - start) + 1;
+                            const rstream = fs.createReadStream(file, {start: start, end: end});
+                
+                            res.writeHead(206, {
+                                'Content-Range': 'bytes ' + start + '-' + end + '/' + total,
+                                'Accept-Ranges': 'bytes', 'Content-Length': chunksize,
+                                'Content-Type': 'audio/mpeg'
+                            });
+                            rstream.pipe(res);
+                
+                        } else {
+                            res.send('Error - 404');
+                            res.end();
+                            // res.writeHead(200, { 'Content-Length': total, 'Content-Type': 'audio/mpeg' });
+                            // fs.createReadStream(path).pipe(res);
+                        }
+                    });
+                    break;
                 default:
                     dataModel.message = 'Method not found';
                     dataModel.status = '405';
@@ -76,7 +114,7 @@ const handler = async (request, response) => {
                 promise.then(function (result) {
                     //This is status 200 , everything ok
                     let body = JSON.stringify(result);
-                
+
                     console.log('STATUS 200: ');
                     console.log(result);
                     const responseBody = { headers, method, url, body };
@@ -120,6 +158,7 @@ app.get('/getAllObjects', handler);
 app.post('/createUser', handler);
 app.post('/getObjectsByQuery', handler);
 app.post('/getObject', handler);
+app.post('/streamTrack',handler);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
