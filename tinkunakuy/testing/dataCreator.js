@@ -9,7 +9,7 @@ const ProcessorRaw = require('../testing/processorRaw');
 
 
 /**
- * @description Initializes the processing of the data in eaf
+ * @description Initializes the processing of the data in eaf. The processor Instance gives back the processed object list
  * @return {Promise} A promise that gives the list of the processed objects
  */
 function createData() {

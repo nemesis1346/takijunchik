@@ -161,6 +161,7 @@ class ProcessorRaw {
                     const element = objectList[index];
                     if (element.timeSlotId1MediaLengua === currentElement.TIME_SLOT_ID) {
                         objectList[index].timeValue1 = currentElement.TIME_VALUE;
+                        objectList[index].timeValue1Format = this.parseTime(currentElement.TIME_VALUE);
                     }
                 }
 
@@ -172,7 +173,7 @@ class ProcessorRaw {
                 for (let index = 0; index < objectList.length; index++) {
                     const element = objectList[index];
                     if (element.timeSlotId2MediaLengua === currentElement.TIME_SLOT_ID) {
-                        objectList[index].timeValue2 = currentElement.TIME_VALUE;
+                        objectList[index].timeValue2 = this.paseTime(currentElement.TIME_VALUE);
                     }
                 }
 
@@ -181,6 +182,19 @@ class ProcessorRaw {
             callbackProcessData(null, objectList);
         });
     }
+     parseTime(duration) {
+        var milliseconds = parseInt((duration%1000)/100)
+            , seconds = parseInt((duration/1000)%60)
+            , minutes = parseInt((duration/(1000*60))%60)
+            , hours = parseInt((duration/(1000*60*60))%24);
+    
+        hours = (hours < 10) ? "0" + hours : hours;
+        minutes = (minutes < 10) ? "0" + minutes : minutes;
+        seconds = (seconds < 10) ? "0" + seconds : seconds;
+    
+        return "[" +minutes + ":" + seconds + "." + milliseconds9+"]";
+    }
+
 }
 
 module.exports = ProcessorRaw

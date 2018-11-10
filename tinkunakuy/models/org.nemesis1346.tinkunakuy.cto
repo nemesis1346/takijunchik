@@ -37,6 +37,8 @@ asset Object identified by objectId{
   o String glossesContent optional
   o String segmentedContent optional
   o String timeValue1 optional
+  o String timeValue1Format optional
+  o String timeValue2Format optional
   o String timeValue2 optional
   o String[] mediaLenguaContentArray optional
   o String[] spanishContentArray optional
