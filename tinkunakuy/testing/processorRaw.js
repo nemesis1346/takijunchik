@@ -13,7 +13,8 @@ class ProcessorRaw {
      * @description Initializes the processing of the data in eaf
      * @return {Promise} A promise that gives the list of the processed objects
      */
-    processData(callbackProcessData) {
+    processData(callbackProcessData, secondParameter) {
+        console.log(secondParameter);
         var xmlfile = "/home/nemesis1346/Documents/UniversityProjects/takijunchik/tinkunakuy/testing/dataTest.eaf";
         const fileContent = fs.readFileSync(xmlfile, "utf-8");
         parser.parseString(fileContent, function (err, result) {
