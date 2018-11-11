@@ -9,10 +9,14 @@ const ProcessorRaw = require('../testing/processorRaw');
 
 
 /**
- * @description Initializes the processing of the data in eaf. The processor Instance gives back the processed object list
+ * @description Initializes the processing of the data in eaf. The processor Instance gives back the processed object list and divides the mp3 audio files
  * @return {Promise} A promise that gives the list of the processed objects
  */
 function createData() {
+    parseIntoJSON();
+}
+
+function parseIntoJSON(){
     let processorInstance = new ProcessorRaw();
     processorInstance.processData((err, objectList) => {
         if (err) {

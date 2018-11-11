@@ -166,7 +166,6 @@ class ProcessorRaw {
                     }
                 }
             }
-            //}.bind(this));
             //Process slit id 2
             for (const element of TIME_SLOT_LIST) {
                 // TIME_SLOT_LIST.forEach(function (element) {
@@ -180,7 +179,6 @@ class ProcessorRaw {
                     }
                 }
             }
-            // }.bind(this));
             //console.log(objectList);
             callbackProcessData(null, objectList);
         }.bind(this));
