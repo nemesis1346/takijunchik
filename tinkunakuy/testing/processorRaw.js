@@ -13,10 +13,10 @@ class ProcessorRaw {
      * @description Initializes the processing of the data in eaf
      * @return {Promise} A promise that gives the list of the processed objects
      */
-     processData(callbackProcessData) {
+    processData(callbackProcessData) {
         var xmlfile = "/home/nemesis1346/Documents/UniversityProjects/takijunchik/tinkunakuy/testing/dataTest.eaf";
         const fileContent = fs.readFileSync(xmlfile, "utf-8");
-        parser.parseString(fileContent,  function (err, result) {
+        parser.parseString(fileContent, function (err, result) {
             if (err) {
                 return callback(err);
             }
@@ -144,7 +144,7 @@ class ProcessorRaw {
                 currentElement.segmentedContent = segmentedContent;
 
                 //UUID
-                currentElement.objectId=UUID();
+                currentElement.objectId = UUID();
 
                 objectList.push(currentElement);
             }
@@ -154,7 +154,8 @@ class ProcessorRaw {
             let TIME_SLOT_LIST = TIME_ORDER_ANNOTATION[0].TIME_SLOT;
 
             //Process slit id 1
-            TIME_SLOT_LIST.forEach(element => {
+            for (const element of TIME_SLOT_LIST) {
+                // TIME_SLOT_LIST.forEach(function (element) {
                 let currentElement = element['$'];
                 // THIS IS FOR TIMESLOTID1 AND TIME VALUE
                 for (let index = 0; index < objectList.length; index++) {
@@ -164,37 +165,43 @@ class ProcessorRaw {
                         objectList[index].timeValue1Format = this.parseTime(currentElement.TIME_VALUE);
                     }
                 }
-
-            });
+            }
+            //}.bind(this));
             //Process slit id 2
-            TIME_SLOT_LIST.forEach(element => {
+            for (const element of TIME_SLOT_LIST) {
+                // TIME_SLOT_LIST.forEach(function (element) {
                 let currentElement = element['$'];
                 // THIS IS FOR TIMESLOTID1 AND TIME VALUE
                 for (let index = 0; index < objectList.length; index++) {
                     const element = objectList[index];
                     if (element.timeSlotId2MediaLengua === currentElement.TIME_SLOT_ID) {
-                        objectList[index].timeValue2 = this.paseTime(currentElement.TIME_VALUE);
+                        objectList[index].timeValue2 = currentElement.TIME_VALUE;
+                        objectList[index].timeValue2Format = this.parseTime(currentElement.TIME_VALUE);
                     }
                 }
-
-            });
+            }
+            // }.bind(this));
             //console.log(objectList);
             callbackProcessData(null, objectList);
-        });
+        }.bind(this));
     }
-     parseTime(duration) {
-        var milliseconds = parseInt((duration%1000)/100)
-            , seconds = parseInt((duration/1000)%60)
-            , minutes = parseInt((duration/(1000*60))%60)
-            , hours = parseInt((duration/(1000*60*60))%24);
-    
+    /**
+     * @description this is a method for parsing the time input to get the format
+     * @param {*} duration 
+     */
+    parseTime(duration) {
+        var milliseconds = parseInt((duration % 1000) / 100)
+            , seconds = parseInt((duration / 1000) % 60)
+            , minutes = parseInt((duration / (1000 * 60)) % 60)
+            , hours = parseInt((duration / (1000 * 60 * 60)) % 24);
+
         hours = (hours < 10) ? "0" + hours : hours;
         minutes = (minutes < 10) ? "0" + minutes : minutes;
         seconds = (seconds < 10) ? "0" + seconds : seconds;
-    
-        return "[" +minutes + ":" + seconds + "." + milliseconds9+"]";
+
+        return "[" + minutes + ":" + seconds + "." + milliseconds + "]";
     }
 
 }
 
-module.exports = ProcessorRaw
+module.exports = ProcessorRaw;
