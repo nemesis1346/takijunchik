@@ -8,6 +8,18 @@ const WordModel = require('../models/wordModel.js');
 const ObjectModel = require('../models/objectModel.js');
 const DataModel = require('../models/dataModel.js');
 
+const admin = require("firebase-admin");
+
+const serviceAccount = require("../credentials/media-lengua-firebase-adminsdk-y63jq-05ba265775.json");
+
+const defaultApp = admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://media-lengua.firebaseio.com"
+});
+
+const database = defaultApp.database();
+
+
 class VocabularyFirepoint {
     constructor() {
     }
@@ -341,69 +353,21 @@ class VocabularyFirepoint {
                 //Time values
                 requestObject.timeValue1,
                 requestObject.timeValue2,
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
+                //Arrays //Maybe not necesarely
+                this.parseContent(requestObject.mediaLenguaContent),
+                this.parseContent(requestObject.spanishContent),
+               this.parseContent(requestObject.kichwaContent),
+                this.parseContent(requestObject.elicitSentenceContent),
+               this.parseContent(requestObject.ipaContent),
+                this.parseContent(requestObject.glossesContent),
+                this.parseContent(requestObject.segmentedContent),
             );
 
-            let businessNetworkConnection = new BusinessNetworkConnection();
-            let connection = await businessNetworkConnection.connect(cardname);
-            let assetRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Object');
-            let factory = connection.getFactory();
-
-            let object = factory.newResource(networkNamespace, "Object", objectModel.objectId);
-            object.objectId = objectModel.objectId;
-            //Variables for annotationId
-            object.annotationIdMediaLengua = objectModel.annotationIdMediaLengua;
-            object.annotationIdSpanish = object.annotationIdSpanish;
-            object.annotationIdKichwa = objectModel.annotationIdKichwa;
-            object.annotationIdElicitSentence = objectModel.annotationIdElicitSentence;
-            object.annotationIdIpa = objectModel.annotationIdIpa;
-            object.annotationIdGlosses = objectModel.annotationIdGlosses;
-            object.annotationIdSegmented = objectModel.annotationIdSegmented;
-            //Variables for time slot1
-            object.timeSlotId1MediaLengua = objectModel.timeSlotId1MediaLengua;
-            object.timeSlotId1Spanish = objectModel.timeSlotId1Spanish;
-            object.timeSlotId1Kichwa = objectModel.timeSlotId1Kichwa;
-            object.timeSlotId1ElicitSentence = objectModel.timeSlotId1ElicitSentence;
-            object.timeSlotId1Ipa = objectModel.timeSlotId1Ipa;
-            object.timeSlotId1Glosses = objectModel.timeSlotId1Glosses;
-            object.timeSlotId1Segmented = objectModel.timeSlotId1Segmented;
-            //Variables for times slot2
-            object.timeSlotId2MediaLengua = objectModel.timeSlotId2MediaLengua;
-            object.timeSlotId2Spanish = objectModel.timeSlotId2Spanish;
-            object.timeSlotId2Kichwa = objectModel.timeSlotId2Kichwa;
-            object.timeSlotId2ElicitSentence = objectModel.timeSlotId2ElicitSentence;
-            object.timeSlotId2Ipa = objectModel.timeSlotId2Ipa;
-            object.timeSlotId2Glosses = objectModel.timeSlotId2Glosses;
-            object.timeSlotId2Segmented = objectModel.timeSlotId2Segmented;
-            //Variables for the content
-            object.mediaLenguaContent = objectModel.mediaLenguaContent;
-            object.spanishContent = objectModel.spanishContent;
-            object.kichwaContent = objectModel.kichwaContent;
-            object.elicitSentenceContent = objectModel.elicitSentenceContent;
-            object.ipaContent = objectModel.ipaContent;
-            object.glossesContent = objectModel.glossesContent;
-            object.segmentedContent = objectModel.segmentedContent;
-            //Time values
-            object.timeValue1 = objectModel.timeValue1;
-            object.timeValue2 = objectModel.timeValue2;
-
-            //Arrays
-            object.mediaLenguaContentArray = this.parseContent(objectModel.mediaLenguaContent);
-            object.spanishContentArray = this.parseContent(objectModel.spanishContent);
-            object.kichwaContentArray = this.parseContent(objectModel.kichwaContent);
-            object.elicitSentenceContentArray = this.parseContent(objectModel.elicitSentenceContent);
-            object.ipaContentArray = this.parseContent(objectModel.ipaContent);
-            object.glossesContentArray = this.parseContent(objectModel.glossesContent);
-            object.segmentedContentArray = this.parseContent(objectModel.segmentedContent);
-
-            await assetRegistry.add(object);
-            await businessNetworkConnection.disconnect();
+            firebase.database().ref('objectModel/' + requestObject.objectId).set({
+                username: name,
+                email: email,
+                profile_picture : imageUrl
+              });
 
             dataModel.data = 'Object ' + object.annotationId + ' saved successfully'
             dataModel.status = '200';
@@ -460,4 +424,4 @@ class VocabularyFirepoint {
         return unique_array
     }
 }
-module.exports = VocabularyChaincode;
+module.exports = VocabularyFirepoint;
