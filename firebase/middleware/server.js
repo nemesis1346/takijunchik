@@ -1,15 +1,13 @@
 'use strict';
 //Imports
-const port = 8888
+const port = 8889
 const express = require('express');
 const bodyParser = require('body-parser');
-const logger = require('morgan');
 const cors = require('cors');
-const VocabularyFirepoint = require('../chaincode/vocabularyFirepoint.js');
-const UserFirepoint= require('../chaincode/userFirepoint.js');
+const VocabularyFirepoint = require('../endpoints/vocabularyFirepoint.js');
+const UserFirepoint= require('../endpoints/userFirepoint.js');
 const app = express();
 const DataModel = require('../models/dataModel.js');
-const fs = require('fs');
 
 const handler = async (request, response) => {
     const { headers, method, url } = request;
@@ -40,9 +38,6 @@ const handler = async (request, response) => {
                     break;
                 case '/login':
                     promise = this.userFirepoint.login(JSON.parse(bufferContent));
-                    break;
-                case '/saveWord':
-                    promise = this.vocabularyFirepoint.saveWord(JSON.parse(bufferContent));
                     break;
                 case '/getAllObjects':
                     promise = this.vocabularyFirepoint.getAllObjects();
@@ -118,14 +113,12 @@ const handler = async (request, response) => {
 }
 
 app.post('/login', handler);
-app.post('/saveWord', handler);
 app.post('/saveObject', handler);
 app.get('/getAllObjects', handler);
 app.post('/createUser', handler);
 app.post('/getObjectsByQuery', handler);
 app.post('/getObject', handler);
 app.post('/streamTrack',handler);
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());

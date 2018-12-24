@@ -1,10 +1,4 @@
 'use strict';
-const BusinessNetworkConnection = require('composer-client').BusinessNetworkConnection;
-const winston = require('winston');
-const cardname = 'admin@tinkunakuy';
-const networkNamespace = 'org.nemesis1346.tinkunakuy';
-const LOG = winston.loggers.get('application');
-const WordModel = require('../models/wordModel.js');
 const ObjectModel = require('../models/objectModel.js');
 const DataModel = require('../models/dataModel.js');
 
@@ -17,11 +11,12 @@ const defaultApp = admin.initializeApp({
     databaseURL: "https://media-lengua.firebaseio.com"
 });
 
-const database = defaultApp.database();
+//const database = defaultApp.database();
 
 
 class VocabularyFirepoint {
     constructor() {
+        this.database = defaultApp.database();
     }
 
     /** 
@@ -29,9 +24,7 @@ class VocabularyFirepoint {
      * @return {Promise} A promise whose fullfillment means the initialization has completed
      */
     async init() {
-        this.businessNetworkDefinition = await this.bizNetworkConnection.connect(cardname);
-        console.log(this.businessNetworkDefinition);
-        LOG.info('tinkunakuy:<init>', 'businessNetworkDefinition obtained', this.businessNetworkDefinition.getIdentifier());
+        this.database = defaultApp.database();
     }
 
     /**
@@ -45,7 +38,7 @@ class VocabularyFirepoint {
         console.log('Request get Object in Composer: ');
         console.log(objectId);
         try {
-           
+
             //element should be result
 
             let currentObject = new ObjectModel(
@@ -114,7 +107,7 @@ class VocabularyFirepoint {
 
         try {
             let resultList = [];
-        
+
 
             //  Query objects should be the result;
             if (queryObjects.length > 0) {
@@ -261,50 +254,6 @@ class VocabularyFirepoint {
     }
 
     /**
-     * @description It creates a new word
-     * @return {Promise} A promise that creates a word
-     */
-    async saveWord(requestWord) {
-        let dataModel = new DataModel(null, null, null);
-        console.log('************************************');
-        console.log('Request Save Word: ');
-        console.log(requestWord);
-        try {
-            let wordModel = new WordModel(
-                requestWord.wordId,
-                requestWord.spanish,
-                requestWord.english,
-                requestWord.kichwa,
-                requestWord.descriptionSpanish,
-                requestWord.descriptionEnglish,
-                requestWord.descriptionKichwa
-            );
-
-            let businessNetworkConnection = new BusinessNetworkConnection();
-            let connection = await businessNetworkConnection.connect(cardname);
-            let assetRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Word');
-            let factory = connection.getFactory();
-
-            let word = factory.newResource(networkNamespace, "Word", wordModel.wordId);
-            word.wordId = wordModel.wordId;
-            word.spanish = wordModel.spanish;
-            word.english = wordModel.english;
-            word.kichwa = wordModel.kichwa;
-            word.descriptionSpanish = wordModel.descriptionSpanish;
-            word.descriptionEnglish = wordModel.descriptionEnglish;
-            word.descriptionKichwa = wordModel.descriptionKichwa;
-            await assetRegistry.add(word);
-            await businessNetworkConnection.disconnect();
-
-            dataModel.data = 'Word ' + word.wordId + ' saved successfully'
-            dataModel.status = '200';
-            return dataModel;
-        } catch (error) {
-            console.error(error);
-            throw new Error(error);
-        }
-    }
-    /**
     * @description It creates a new object for storing linguistics project
     * @return {Promise} A promise that creates a object for storing linguistics project
     * @param object is the model for the object
@@ -356,20 +305,61 @@ class VocabularyFirepoint {
                 //Arrays //Maybe not necesarely
                 this.parseContent(requestObject.mediaLenguaContent),
                 this.parseContent(requestObject.spanishContent),
-               this.parseContent(requestObject.kichwaContent),
+                this.parseContent(requestObject.kichwaContent),
                 this.parseContent(requestObject.elicitSentenceContent),
-               this.parseContent(requestObject.ipaContent),
+                this.parseContent(requestObject.ipaContent),
                 this.parseContent(requestObject.glossesContent),
                 this.parseContent(requestObject.segmentedContent),
             );
 
-            firebase.database().ref('objectModel/' + requestObject.objectId).set({
-                username: name,
-                email: email,
-                profile_picture : imageUrl
-              });
+            this.database.ref('objectModel/' + requestObject.objectId).set({
+                "objectId": objectModel.objectId,
+                //Variables for annotationId
+                "annotationIdMediaLengua": objectModel.annotationIdMediaLengua,
+                "annotationIdSpanish": objectModel.annotationIdSpanish,
+                "annotationIdKichwa": objectModel.annotationIdKichwa,
+                "annotationIdElicitSentence": objectModel.annotationIdElicitSentence,
+                "annotationIdIpa": objectModel.annotationIdIpa,
+                "annotationIdGlosses": objectModel.annotationIdGlosses,
+                "annotationIdSegmented": objectModel.annotationIdSegmented,
+                //Variables for time slot1
+                "timeSlotId1MediaLengua": objectModel.timeSlotId1MediaLengua,
+                "timeSlotId1Spanish": objectModel.timeSlotId1Spanish,
+                "timeSlotId1Kichwa": objectModel.timeSlotId1Kichwa,
+                "timeSlotId1ElicitSentence": objectModel.timeSlotId1ElicitSentence,
+                "timeSlotId1Ipa": objectModel.timeSlotId1Ipa,
+                "timeSlotId1Glosses": objectModel.timeSlotId1Glosses,
+                "timeSlotId1Segmented": objectModel.timeSlotId1Segmented,
+                //Variables for times slot2
+                "timeSlotId2MediaLengua": objectModel.timeSlotId2MediaLengua,
+                "timeSlotId2Spanish": objectModel.timeSlotId2Spanish,
+                "timeSlotId2Kichwa": objectModel.timeSlotId2Kichwa,
+                "timeSlotId2ElicitSentence": objectModel.timeSlotId2ElicitSentence,
+                "timeSlotId2Ipa": objectModel.timeSlotId2Ipa,
+                "timeSlotId2Glosses": objectModel.timeSlotId2Glosses,
+                "timeSlotId2Segmented": objectModel.timeSlotId2Segmented,
+                //Variables for the content
+                "mediaLenguaContent": objectModel.mediaLenguaContent,
+                "spanishContent": objectModel.spanishContent,
+                "kichwaContent": objectModel.kichwaContent,
+                "elicitSentenceContent": objectModel.elicitSentenceContent,
+                "ipaContent": objectModel.ipaContent,
+                "glossesContent": objectModel.glossesContent,
+                "segmentedContent": objectModel.segmentedContent,
+                //Time values
+                "timeValue1": objectModel.timeValue1,
+                "timeValue2": objectModel.timeValue2,
+                //Arrays
+                "mediaLenguaContentArray": this.parseContent(objectModel.mediaLenguaContent),
+                "spanishContentArray": this.parseContent(objectModel.spanishContent),
+                "kichwaContentArray": this.parseContent(objectModel.kichwaContent),
+                "elicitSentenceContentArray": this.parseContent(objectModel.elicitSentenceContent),
+                "ipaContentArray": this.parseContent(objectModel.ipaContent),
+                "glossesContentArray": this.parseContent(objectModel.glossesContent),
+                "segmentedContentArray": this.parseContent(objectModel.segmentedContent)
+            });
 
-            dataModel.data = 'Object ' + object.annotationId + ' saved successfully'
+            dataModel.data = 'Object ' + objectModel.objectId + ' saved successfully'
             dataModel.status = '200';
             return dataModel;
         } catch (error) {
