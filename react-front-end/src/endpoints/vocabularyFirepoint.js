@@ -1,9 +1,7 @@
 'use strict';
 const ObjectModel = require('../models/objectModel.js');
-const DataModel = require('../models/dataModel.js');
 
 const firebase = require("firebase-admin");
-
 const serviceAccount = require("../credentials/media-lengua-firebase-adminsdk-y63jq-05ba265775.json");
 
 const defaultApp = firebase.initializeApp({
@@ -14,11 +12,12 @@ const defaultApp = firebase.initializeApp({
 
 //const database = defaultApp.database();
 
-class VocabularyFirepoint {
+export class VocabularyFirepoint {
     constructor() {
         console.log('gets here');
+        console.log(defaultApp);
         this.database = defaultApp.database();
-        this.storage = defaultApp.storage();
+        //this.storage = defaultApp.storage();
     }
 
     /** 
@@ -30,7 +29,6 @@ class VocabularyFirepoint {
 
     }
     async uploadMp3(stringData) {
-        let dataModel = new DataModel(null, null, null);
 
         console.log('************************************');
         console.log('Request Upload Mp3 in Composer: ');
@@ -39,9 +37,8 @@ class VocabularyFirepoint {
             let reference = this.storage.child('test.jpg');
             reference.putString(stringData, 'data_url')
                 .then((resp) => {
-                    dataModel.data = JSON.stringify(resp);
-                    dataModel.status = '200';
-                    return dataModel;
+                   
+                    return "test";
                 })
                 .catch((error) => {
                     console.error(error);
@@ -58,60 +55,16 @@ class VocabularyFirepoint {
      * @return {Promise} A promise that returns the object detail
      */
     async getObject(objectId) {
-        let dataModel = new DataModel(null, null, null);
 
         console.log('************************************');
         console.log('Request get Object in Composer: ');
         console.log(objectId);
         try {
 
-            //element should be result
+           
+           
 
-            let currentObject = new ObjectModel(
-                element.objectId,
-                element.annotationIdMediaLengua,
-                element.annotationIdSpanish,
-                element.annotationIdKichwa,
-                element.annotationIdElicitSentence,
-                element.annotationIdIpa,
-                element.annotationIdGlosses,
-                element.annotationIdSegmented,
-                element.timeSlotId1MediaLengua,
-                element.timeSlotId1Spanish,
-                element.timeSlotId1Kichwa,
-                element.timeSlotId1ElicitSentence,
-                element.timeSlotId1Ipa,
-                element.timeSlotId1Glosses,
-                element.timeSlotId1Segmented,
-                element.timeSlotId2MediaLengua,
-                element.timeSlotId2Spanish,
-                element.timeSlotId2Kichwa,
-                element.timeSlotId2ElicitSentence,
-                element.timeSlotId2Ipa,
-                element.timeSlotId2Glosses,
-                element.timeSlotId2Segmented,
-                element.mediaLenguaContent,
-                element.spanishContent,
-                element.kichwaContent,
-                element.elicitSentenceContent,
-                element.ipaContent,
-                element.glossesContent,
-                element.segmentedContent,
-                element.timeValue1,
-                element.timeValue2,
-                element.mediaLenguaContentArray,
-                element.spanishContentArray,
-                element.kichwaContentArray,
-                element.elicitSentenceContentArray,
-                element.ipaContentArray,
-                element.glossesContentArray,
-                element.segmentedContentArray
-            );
-
-            dataModel.data = JSON.stringify(currentObject);
-            dataModel.status = '200';
-
-            return dataModel;
+            return "test";
         } catch (error) {
             console.error(error);
             throw new Error(error);
@@ -123,7 +76,6 @@ class VocabularyFirepoint {
      * @return {Promise} A promise that returns the object detail
      */
     async getObjectsByQuery(requestObject) {
-        let dataModel = new DataModel(null, null, null);
 
         console.log('************************************');
         console.log('Request get Object in Composer: ');
@@ -134,69 +86,12 @@ class VocabularyFirepoint {
         try {
             let resultList = [];
 
-
-            //  Query objects should be the result;
-            if (queryObjects.length > 0) {
-
-                queryObjects.forEach(element => {
-                    let currentObject = new ObjectModel(
-                        element.objectId,
-                        //Variables for annotationId
-                        element.annotationIdMediaLengua,
-                        element.annotationIdSpanish,
-                        element.annotationIdKichwa,
-                        element.annotationIdElicitSentence,
-                        element.annotationIdIpa,
-                        element.annotationIdGlosses,
-                        element.annotationIdSegmented,
-                        //Variables for time slot1
-                        element.timeSlotId1MediaLengua,
-                        element.timeSlotId1Spanish,
-                        element.timeSlotId1Kichwa,
-                        element.timeSlotId1ElicitSentence,
-                        element.timeSlotId1Ipa,
-                        element.timeSlotId1Glosses,
-                        element.timeSlotId1Segmented,
-                        //Variables for times slot2
-                        element.timeSlotId2MediaLengua,
-                        element.timeSlotId2Spanish,
-                        element.timeSlotId2Kichwa,
-                        element.timeSlotId2ElicitSentence,
-                        element.timeSlotId2Ipa,
-                        element.timeSlotId2Glosses,
-                        element.timeSlotId2Segmented,
-                        //Variables for the content
-                        element.mediaLenguaContent,
-                        element.spanishContent,
-                        element.kichwaContent,
-                        element.elicitSentenceContent,
-                        element.ipaContent,
-                        element.glossesContent,
-                        element.segmentedContent,
-                        //Time values
-                        element.timeValue1,
-                        element.timeValue2,
-                        element.mediaLenguaContentArray,
-                        element.spanishContentArray,
-                        element.kichwaContentArray,
-                        element.elicitSentenceContentArray,
-                        element.ipaContentArray,
-                        element.glossesContentArray,
-                        element.segmentedContentArray);
-
-                    resultList.push(currentObject);
-                });
-
+            
                 resultList = this.removeDuplicatesProp(resultList, 'objectId');
 
-                dataModel.data = resultList;
-                dataModel.status = '200';
-                return dataModel;
-            } else {
-                dataModel.message = "No results ";
-                dataModel.status = '300';
-                return dataModel;
-            }
+               
+                return resultList;
+           
 
         } catch (error) {
             console.error(error);
@@ -209,70 +104,13 @@ class VocabularyFirepoint {
      * @return {Promise} A promise that returns the list of all the words
      */
     async getAllObjects() {
-        let dataModel = new DataModel(null, null, null);
         console.log('************************************');
         console.log('Request Get All Objects in Composer: ');
         try {
             let objectList = [];
-            let businessNetworkConnection = new BusinessNetworkConnection();
-            await businessNetworkConnection.connect(cardname)
-            let objectRegistry = await businessNetworkConnection.getAssetRegistry(networkNamespace + '.Object');
-            let objectListResponse = await objectRegistry.getAll();
-            console.log(objectListResponse);
-
-            objectListResponse.forEach(element => {
-                let currentObject = new ObjectModel(
-                    element.objectId,
-                    //Variables for annotationId
-                    element.annotationIdMediaLengua,
-                    element.annotationIdSpanish,
-                    element.annotationIdKichwa,
-                    element.annotationIdElicitSentence,
-                    element.annotationIdIpa,
-                    element.annotationIdGlosses,
-                    element.annotationIdSegmented,
-                    //Variables for time slot1
-                    element.timeSlotId1MediaLengua,
-                    element.timeSlotId1Spanish,
-                    element.timeSlotId1Kichwa,
-                    element.timeSlotId1ElicitSentence,
-                    element.timeSlotId1Ipa,
-                    element.timeSlotId1Glosses,
-                    element.timeSlotId1Segmented,
-                    //Variables for times slot2
-                    element.timeSlotId2MediaLengua,
-                    element.timeSlotId2Spanish,
-                    element.timeSlotId2Kichwa,
-                    element.timeSlotId2ElicitSentence,
-                    element.timeSlotId2Ipa,
-                    element.timeSlotId2Glosses,
-                    element.timeSlotId2Segmented,
-                    //Variables for the content
-                    element.mediaLenguaContent,
-                    element.spanishContent,
-                    element.kichwaContent,
-                    element.elicitSentenceContent,
-                    element.ipaContent,
-                    element.glossesContent,
-                    element.segmentedContent,
-                    //Time values
-                    element.timeValue1,
-                    element.timeValue2,
-                    //Arrays
-                    element.mediaLenguaContentArray,
-                    element.spanishContentArray,
-                    element.kichwaContentArray,
-                    element.elicitSentenceContentArray,
-                    element.ipaContentArray,
-                    element.glossesContentArray,
-                    element.segmentedContentArray
-                );
-                objectList.push(currentObject);
-            });
-
-            dataModel.data = JSON.stringify(objectList);
-            dataModel.status = '200';
-            return dataModel;
+           
+         
+            return "test";
         } catch (error) {
             console.error(error);
             throw new Error(error);
@@ -285,7 +123,6 @@ class VocabularyFirepoint {
     * @param object is the model for the object
     */
     async saveObject(requestObject) {
-        let dataModel = new DataModel(null, null, null);
         console.log('************************************');
         console.log('Request Save Object: ');
         console.log(requestObject);
@@ -385,9 +222,8 @@ class VocabularyFirepoint {
                 "segmentedContentArray": this.parseContent(objectModel.segmentedContent)
             });
 
-            dataModel.data = 'Object ' + objectModel.objectId + ' saved successfully'
-            dataModel.status = '200';
-            return dataModel;
+          
+            return "test";
         } catch (error) {
             console.error(error);
             throw new Error(error);
@@ -440,4 +276,3 @@ class VocabularyFirepoint {
         return unique_array
     }
 }
-module.exports = VocabularyFirepoint;

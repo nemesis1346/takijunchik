@@ -51,6 +51,9 @@ const handler = async (request, response) => {
                 case '/getObjectsByQuery':
                     promise = this.vocabularyFirepoint.getObjectsByQuery(JSON.parse(bufferContent));
                     break;
+                case '/uploadMp3':
+                    promise = this.vocabularyFirepoint.uploadMp3(JSON.parse(bufferContent));
+                    break;
                 case '/streamTrack':
                     //promise = this.soundChaincode.streamTrack();
                     promise = null;
@@ -119,6 +122,7 @@ app.post('/createUser', handler);
 app.post('/getObjectsByQuery', handler);
 app.post('/getObject', handler);
 app.post('/streamTrack',handler);
+app.post('/uploadMp3',handler);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());

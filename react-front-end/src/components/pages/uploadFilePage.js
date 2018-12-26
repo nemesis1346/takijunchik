@@ -3,31 +3,56 @@ import AlertMessageModal from '../tools/AlertMessageModal';
 //You can use prop-types to document the intended types of properties passed to components. 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { uploadMp3 } from '../../actions/translate';
+import { parseResponse } from '../../utils/Utils';
+import {VocabularyFirepoint} from '../../endpoints/vocabularyFirepoint';
+class UploadFilePage extends React.Component {
 
-class UploaFilePage extends React.component{
-
-    constructor(){
-        super();
-        this.state={
+    constructor(props) {
+        super(props);
+        console.log(this.props);
+        this.state = {
         }
     }
-    onChange(e){
-        let files=e.target.files;
-        let reader=new FileReader();
+    onChange=(e) =>{
+        console.log(e);
+        let files = e.target.files;
+        console.warn("data: ", files);
+        let reader = new FileReader();
         reader.readAsDataURL(files[0]);
-        reader.onload = (e)=>{
-console.log("data: "+e.target.result);
-const url
+        reader.onload = (e) => {
+            console.log(e);
+            console.log(this.props);
+            //console.warn("data: ", e.target.result);
+            let data_64 = e.target.result;
+            console.log('above');
+            //let vocabularyFirepoint=new VocabularyFirepoint();
+            console.log('below');
+          //  console.log(vocabularyFirepoint);
+
+            // return this.props.uploadMp3(data_64)
+            //     .then((resp) => {
+            //         console.log(resp);
+            //         let result = this.parseResponse(resp);
+            //         console.log(result);
+            //     })
+            //     .catch((err) => {
+            //         console.log(err);
+            //     });;
         }
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div onSubmit={this.onFormSubmit}>
-    <h1>React js File Upload Tutorial</h1>
-            <input type="file" name="file" onChange={(e)=>this.onChange=(e)}></input>
+                <h1>React js File Upload Tutorial</h1>
+                <input type="file" name="file" onChange={this.onChange}></input>
             </div>
         );
     }
+
 }
-export default UploaFilePage;
+UploadFilePage.propTypes = {
+    uploadMp3: PropTypes.func.isRequired
+}
+export default connect(null, { uploadMp3 })(UploadFilePage);

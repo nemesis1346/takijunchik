@@ -4,6 +4,7 @@ import LoginPage from "./components/pages/LoginPage";
 import SignupPage from './components/pages/SignupPage';
 import TraductorPage from './components/pages/TraductorPage';
 import MainMenuPage from './components/pages/MainMenuPage';
+import UploadFilePage from './components/pages/UploadFilePage';
 import { Route } from 'react-router-dom';
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         <Route path="/signup" exact component={SignupPage} />
         <Route path='/translate' exact component={TraductorPage} />
         <Route path='/mainMenu' exact component={MainMenuPage} />
+        <Route path='/uploadFile' exact component={UploadFilePage}/>
       </div>
     )
   }
