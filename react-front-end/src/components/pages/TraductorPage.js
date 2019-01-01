@@ -82,7 +82,6 @@ class TraductorPage extends React.Component {
 
         return (
             <div>
-                <h1>Database Page</h1>
                 {/* Submit is the callback */}
                 <TraductorForm submit={this.submit} objectList={this.state.data} />
 

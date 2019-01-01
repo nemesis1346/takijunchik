@@ -6,15 +6,11 @@ import '../styles/traductorFormStyle.css';
 
 class TraductorForm extends React.Component {
 
-    constructor() {
-        super();
-        this.state = {
-            data: {},
-            loading: false,
-            errors: {},
-            list: []
-        }
-
+    state = {
+        data: {},
+        loading: false,
+        errors: {},
+        list: []
     }
 
     translate = () => {
@@ -35,27 +31,25 @@ class TraductorForm extends React.Component {
         data: { ...this.state.data, [e.target.name]: e.target.value }
     });
 
-    _handleKeyPress=(e) =>{
-        if (e.key === 'Enter') {
-          this.translate();
-        }
-      }
+
     render() {
         //console.log(this.props.objectList.length);
         const { data, errors } = this.state;
         return (
-            <Container>
-                <Input
-                    placeholder='Kichwa Word'
-                    type='text'
-                    id='object'
-                    name='object'
-                    value={data.object}
-                    onChange={this.onChange}
-                    onKeyPress={this._handleKeyPress}  />
-                {errors.object && <InlineError text={errors.object} />}
-                <Button primary onClick={this.translate}>Search</Button>
-            </Container>
+            <div className='container'>
+                <form onSubmit={this.translate}>
+                    <input
+                        placeholder='Kichwa Word'
+                        type='text'
+                        id='object'
+                        name='object'
+                        value={data.object}
+                        onChange={this.onChange}
+                    />
+                    {errors.object && <InlineError text={errors.object} />}
+                    <Button >Search</Button>
+                </form>
+            </div>
         );
     }
 }

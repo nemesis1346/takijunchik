@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { uploadMp3 } from '../../actions/translate';
 import { parseResponse } from '../../utils/Utils';
-import {VocabularyFirepoint} from '../../endpoints/vocabularyFirepoint';
+import { VocabularyFirepoint } from '../../endpoints/vocabularyFirepoint';
 class UploadFilePage extends React.Component {
 
     constructor(props) {
@@ -14,7 +14,7 @@ class UploadFilePage extends React.Component {
         this.state = {
         }
     }
-    onChange=(e) =>{
+    onChange = (e) => {
         console.log(e);
         let files = e.target.files;
         console.warn("data: ", files);
@@ -28,7 +28,7 @@ class UploadFilePage extends React.Component {
             console.log('above');
             //let vocabularyFirepoint=new VocabularyFirepoint();
             console.log('below');
-          //  console.log(vocabularyFirepoint);
+            //  console.log(vocabularyFirepoint);
 
             // return this.props.uploadMp3(data_64)
             //     .then((resp) => {
@@ -44,9 +44,12 @@ class UploadFilePage extends React.Component {
 
     render() {
         return (
-            <div onSubmit={this.onFormSubmit}>
-                <h1>React js File Upload Tutorial</h1>
-                <input type="file" name="file" onChange={this.onChange}></input>
+            <div className="container" >
+                <h4 className="center">Upload File</h4>
+                <p>This function let the researcher to upload and ipa and mp3 file to process the data</p>
+                <div onSubmit={this.onFormSubmit}>
+                    <input type="file" name="file" onChange={this.onChange}></input>
+                </div>
             </div>
         );
     }

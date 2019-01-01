@@ -14,11 +14,12 @@ import {reactReduxFirebase,getFirebase} from 'react-redux-firebase';
 import firebaseSetup from './firebaseConfig/firebaseSetup';
 const store = createStore(
     rootReducer,
-    compose(
-        applyMiddleware(thunk.withExtraArgument({getFirebase,getFirestore})),
-        reduxFirestore(firebaseSetup),
-        reactReduxFirebase(firebaseSetup)
-    )
+    composeWithDevTools(applyMiddleware(thunk))
+    // compose(
+    //     applyMiddleware(thunk.withExtraArgument({getFirebase,getFirestore})),
+       // reduxFirestore(firebaseSetup),
+        // reactReduxFirebase(firebaseSetup)
+   // )
 );
 
 ReactDOM.render(

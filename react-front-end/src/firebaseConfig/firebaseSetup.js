@@ -15,7 +15,7 @@ const config ={
     "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-y63jq%40media-lengua.iam.gserviceaccount.com"
   }
 
-  firebase.initializeApp(config);
-  firebase.firestore().settings({timestampsInSnapshots:true});
+  // firebase.initializeApp(config);
+  // firebase.firestore().settings({timestampsInSnapshots:true});
   
   export default firebase;
