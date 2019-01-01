@@ -47,8 +47,8 @@ class UploadFilePage extends React.Component {
             <div className="container" >
                 <h4 className="center">Upload File</h4>
                 <p>This function let the researcher to upload and ipa and mp3 file to process the data</p>
-                <div onSubmit={this.onFormSubmit}>
-                    <input type="file" name="file" onChange={this.onChange}></input>
+                <div onSubmit={this.onFormSubmit} className="file-path-wrapper">
+                    <input className="file-path validate"  type="file" name="file" onChange={this.onChange}></input>
                 </div>
             </div>
         );
