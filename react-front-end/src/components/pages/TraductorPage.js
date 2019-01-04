@@ -9,26 +9,26 @@ import { Message } from 'semantic-ui-react'
 import MDSpinner from 'react-md-spinner';
 
 class TraductorPage extends React.Component {
-
+    state = {
+        data: [],
+        loading: false,
+        errors: {},
+        objectDetailData: {
+            mediaLengua: "",
+            spanishContent: "",
+            kichwaContent: "",
+            elicitSentenceContent: "",
+            ipaContent: ""
+        },
+        objectDetailOpen: false,
+        objectDetailSize: "tiny",
+        hideResultMessage: true,
+        hideSpinner: true,
+        hideObjectDetail: true
+    }
     constructor() {
         super();
-        this.state = {
-            data: [],
-            loading: false,
-            errors: {},
-            objectDetailData: {
-                mediaLengua: "",
-                spanishContent: "",
-                kichwaContent: "",
-                elicitSentenceContent: "",
-                ipaContent: ""
-            },
-            objectDetailOpen: false,
-            objectDetailSize: "tiny",
-            hideResultMessage: true,
-            hideSpinner: true,
-            hideObjectDetail: true
-        }
+       
         this.spinnerStyle = { display: 'none' };
     }
 
@@ -82,7 +82,6 @@ class TraductorPage extends React.Component {
 
         return (
             <div>
-                <h1>Database Page</h1>
                 {/* Submit is the callback */}
                 <TraductorForm submit={this.submit} objectList={this.state.data} />
 
@@ -115,7 +114,7 @@ class TraductorPage extends React.Component {
         }
     }
 }
-
+//This is just validation of the props
 TraductorPage.propTypes = {
     translate: PropTypes.func.isRequired
 };

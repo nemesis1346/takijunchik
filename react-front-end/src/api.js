@@ -1,8 +1,9 @@
 import axios from 'axios';
 //TODO: Beaware where the port is goinf to be
 //const instance = axios.create({ baseURL: 'http://35.190.131.104:8888' })
-const instance = axios.create({ baseURL: 'http://localhost:8888' })
-
+//const instance = axios.create({ baseURL: 'http://localhost:8888' }) // this is for blockchain
+const instance = axios.create({ baseURL: 'http://localhost:8889' }); // this is for firebase
+const VocabularyFirepoint=require('./endpoints/vocabularyFirepoint');
 export default {
     user: {
         login: credentials => instance.post('/login', { credentials })
@@ -33,7 +34,13 @@ export default {
                 let result = parseResponse(res);
                 //console.log(result);
                 return result;
-            })
+            }),
+        uploadMp3: input => instance.post('/uploadMp3',{input})
+        .then(res=>{
+            console.log('Response in UploadMp3:');
+            let result = parseResponse(res);
+            return result;
+        })  
     },
 
 }

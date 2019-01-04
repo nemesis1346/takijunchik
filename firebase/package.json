@@ -1,0 +1,18 @@
+{
+  "name": "firebase",
+  "version": "1.0.0",
+  "description": "server that uses firebase",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "marco.maigua1346@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "firebase": "^5.7.1",
+    "firebase-admin": "^6.4.0",
+    "superagent": "^4.0.0"
+  }
+}

@@ -8,6 +8,13 @@
 /captures
 .externalNativeBuild
 tinkunakuy/node_modules
+tinkunakuy/package-lock.json
 react-front-end/node_modules
+react-front-end/package-lock.json
+firebase/node_modules
+firebase/package-lock.json
 tinkunakuy/~
 react-front-end/~
+~
+react-front-end/yarn.lock
+firebase/yarn.lock
