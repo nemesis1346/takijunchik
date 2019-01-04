@@ -1,4 +1,4 @@
-import { TRANSLATE } from '../types';
+import { TRANSLATE } from '../constants/types';
 import api from '../api';
 
 export const translatedWord = (result) => ({

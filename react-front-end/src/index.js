@@ -7,11 +7,12 @@ import "semantic-ui-css/semantic.min.css";
 import { createStore, applyMiddleware,compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import rootReducer from './rootReducer';
+import rootReducer from './reducers/rootReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import {reduxFirestore,getFirestore} from 'redux-firestore';
 import {reactReduxFirebase,getFirebase} from 'react-redux-firebase';
 import firebaseSetup from './firebaseConfig/firebaseSetup';
+
 const store = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(thunk))

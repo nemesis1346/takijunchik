@@ -1,5 +1,5 @@
-import { USER_LOGGED_IN } from "../types";
-import { USER_SIGNED_IN } from '../types';
+import { USER_LOGGED_IN } from "../constants/types";
+import { USER_SIGNED_IN } from '../constants/types';
 
 export default function user(state = {}, action = {}) {
     switch (action.type) {
