@@ -9,6 +9,7 @@ const databaseReducer = (state={}, action={}) => {
             }
         case 'TRANSALTE_FIREBASE':
         //firebase contact
+        console.log('Result in reducer: '+action.input);
         case 'UPLOAD_MP3':
             return {
                 ...state,

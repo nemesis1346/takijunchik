@@ -2,7 +2,7 @@ import React from 'react';
 import TraductorForm from '../forms/TraductorForm';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { TranslateFirebase } from '../../actions/TranslateFirebase';
+import { TranslateFirebaseAction } from '../../actions/TranslateFirebaseAction';
 import ObjectDetailModal from '../tools/ObjectDetailModal';
 import ObjectTable from '../forms/ObjectTable';
 import { Message } from 'semantic-ui-react'
@@ -42,32 +42,37 @@ class TraductorPage extends React.Component {
 
     submit = (data) => {
         this.setState({ "hideSpinner": false });
+        console.log(this.props);
+        console.log('submit on traductor Page: ');
+        console.log(data);
 
-        return this.props.translate(data.object.trim().toLowerCase())
-            .then((resp) => {
-                this.setState({ "hideSpinner": true });
+let test = this.props.TranslateFirebaseAction(data.object.trim().toLowerCase());
+console.log(test);
+        // return this.props.TranslateFirebase(data.object.trim().toLowerCase())
+        //     .then((resp) => {
+        //         this.setState({ "hideSpinner": true });
 
-                console.log('Result in Traductor Page');
-                let data = parseResponse(resp);
+        //         console.log('Result in Traductor Page');
+        //         let data = parseResponse(resp);
 
-                console.log(data);
-                //Here we update the data for the ObjectTable
-                if (data && data.length > 0 && typeof data[0] === 'object') {
-                    this.setState({
-                        "data": data,
-                        "hideResultMessage": true,
-                    });
+        //         console.log(data);
+        //         //Here we update the data for the ObjectTable
+        //         if (data && data.length > 0 && typeof data[0] === 'object') {
+        //             this.setState({
+        //                 "data": data,
+        //                 "hideResultMessage": true,
+        //             });
 
-                } else {
-                    this.setState({
-                        "data": [],
-                        "hideResultMessage": false,
-                    });
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        //         } else {
+        //             this.setState({
+        //                 "data": [],
+        //                 "hideResultMessage": false,
+        //             });
+        //         }
+        //     })
+        //     .catch((err) => {
+        //         console.log(err);
+        //     });
     }
 
     objectSelectedCallback = (objectSelected) => {
@@ -118,7 +123,7 @@ class TraductorPage extends React.Component {
 }
 //This is just validation of the props
 TraductorPage.propTypes = {
-    translate: PropTypes.func.isRequired
+    TranslateFirebaseAction: PropTypes.func.isRequired
 };
 
-export default connect(null, { TranslateFirebase })(TraductorPage);
+export default connect(null, { TranslateFirebaseAction })(TraductorPage);

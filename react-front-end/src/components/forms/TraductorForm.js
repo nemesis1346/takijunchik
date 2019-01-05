@@ -13,19 +13,12 @@ class TraductorForm extends React.Component {
         list: []
     }
 
-    translate = () => {
-        const errors = this.validate(this.state.data);
-        this.setState({ errors });
-        if (Object.keys(errors).length === 0) {
+    translate = (e) => {
+        e.preventDefault();
             this.props.submit(this.state.data);
-        }
+        
     }
 
-    validate = (data) => {
-        const errors = {};
-        if (!data.object) errors.object = 'Cant be blank';
-        return errors;
-    }
 
     onChange = e => this.setState({
         data: { ...this.state.data, [e.target.name]: e.target.value }
@@ -43,10 +36,8 @@ class TraductorForm extends React.Component {
                         type='text'
                         id='object'
                         name='object'
-                        value={data.object}
                         onChange={this.onChange}
                     />
-                    {errors.object && <InlineError text={errors.object} />}
                     <Button >Search</Button>
                 </form>
             </div>
