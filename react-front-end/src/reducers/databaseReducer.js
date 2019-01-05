@@ -1,13 +1,18 @@
-import api from "../api";
 
 const databaseReducer = (state, action) => {
     switch (action.type) {
         case 'TRANSLATE_BLOCKCHAIN':
-            api.vocabulary.getObject(input);
+            return {
+                ...state,
+                object: action.object
+            }
         case 'TRANSALTE_FIREBASE':
-            //firebase contact
+        //firebase contact
         case 'UPLOAD_MP3':
-            api.vocabulary.uploadMp3(input)
+            return {
+                ...state,
+                data: action.data
+            }
         default:
             return state;
     }

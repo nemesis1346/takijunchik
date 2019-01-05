@@ -4,6 +4,6 @@ import api from '../api'; //Api is for axios http endpoints
 export const TranslateBlockchain = (input) => {
     return {
         type: 'TRANSLATE_BLOCKCHAIN',
-        input: input
+        object: api.vocabulary.getObject(input)
     }
 };
