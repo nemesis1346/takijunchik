@@ -1,4 +1,4 @@
-import api from '../api'; //Api is for axios http endpoints
+import api from '../api/BlockchainApi'; //Api is for axios http endpoints
 
 //This is just calling to other class of accesing to the rest services 
 export const TranslateBlockchainAction = (input) => {

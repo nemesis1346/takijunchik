@@ -1,4 +1,4 @@
-import api from '../api'; //Api is for axios http endpoints
+import api from '../api/BlockchainApi'; //Api is for axios http endpoints
 
 export const uploadMp3Action = (input) => {
     return {

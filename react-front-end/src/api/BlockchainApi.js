@@ -3,7 +3,7 @@ import axios from 'axios';
 //const instance = axios.create({ baseURL: 'http://35.190.131.104:8888' })
 //const instance = axios.create({ baseURL: 'http://localhost:8888' }) // this is for blockchain
 const instance = axios.create({ baseURL: 'http://localhost:8889' }); // this is for firebase
-const VocabularyFirepoint=require('./endpoints/vocabularyFirepoint');
+const VocabularyFirepoint=require('../endpoints/vocabularyFirepoint');
 export default {
     user: {
         login: credentials => instance.post('/login', { credentials })

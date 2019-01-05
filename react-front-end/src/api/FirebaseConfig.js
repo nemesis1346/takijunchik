@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-const config ={
+export const FirebaseConfig ={
     "type": "service_account",
     "project_id": "media-lengua",
     "private_key_id": "05ba265775ce08584cb4eae6204d9adbea08e7f8",
@@ -18,4 +18,4 @@ const config ={
   // firebase.initializeApp(config);
   // firebase.firestore().settings({timestampsInSnapshots:true});
   
-  export default firebase;
+  //export default firebase;

@@ -1,6 +1,6 @@
 import { USER_LOGGED_IN } from "../constants/types";
 import { USER_SIGNED_IN } from '../constants/types';
-import api from "../api";
+import api from "../api/BlockchainApi";
 
 //Each reducer will have the state of all the application
 export default function user(state = {}, action = {}) {
