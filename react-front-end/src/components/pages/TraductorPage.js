@@ -2,11 +2,12 @@ import React from 'react';
 import TraductorForm from '../forms/TraductorForm';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { translate } from '../../actions/translate';
+import { TranslateFirebase } from '../../actions/TranslateFirebase';
 import ObjectDetailModal from '../tools/ObjectDetailModal';
 import ObjectTable from '../forms/ObjectTable';
 import { Message } from 'semantic-ui-react'
 import MDSpinner from 'react-md-spinner';
+import { parseResponse } from '../../utils/Utils';
 
 class TraductorPage extends React.Component {
     state = {
@@ -28,7 +29,7 @@ class TraductorPage extends React.Component {
     }
     constructor() {
         super();
-       
+
         this.spinnerStyle = { display: 'none' };
     }
 
@@ -47,7 +48,7 @@ class TraductorPage extends React.Component {
                 this.setState({ "hideSpinner": true });
 
                 console.log('Result in Traductor Page');
-                let data = this.parseResponse(resp);
+                let data = parseResponse(resp);
 
                 console.log(data);
                 //Here we update the data for the ObjectTable
@@ -69,10 +70,10 @@ class TraductorPage extends React.Component {
             });
     }
 
-    objectSelectedCallback=(objectSelected)=>{
+    objectSelectedCallback = (objectSelected) => {
         this.setState({
-            "objectDetailOpen":true,
-            "objectDetailData":objectSelected
+            "objectDetailOpen": true,
+            "objectDetailData": objectSelected
         });
 
     }
@@ -91,10 +92,11 @@ class TraductorPage extends React.Component {
                 </Message>
 
                 <ObjectTable
-                    objectList={this.state.data} 
-                    objectSelectedCallback = {this.objectSelectedCallback}/>
+                    objectList={this.state.data}
+                    objectSelectedCallback={this.objectSelectedCallback} />
                 <MDSpinner style={this.spinnerStyle} />
 
+                {/* This is the component that pops up to show the detail and reproduce the song*/}
                 <ObjectDetailModal
                     objectDetailSize={this.state.objectDetailSize}
                     objectDetailOpen={this.state.objectDetailOpen}
@@ -104,19 +106,19 @@ class TraductorPage extends React.Component {
         );
     }
 
-    parseResponse(response) {
-        let body = JSON.parse(response);
+    // parseResponse(response) {
+    //     let body = JSON.parse(response);
 
-        if (body.status == '200') {
-            return body.data;
-        } else {
-            return body.message;
-        }
-    }
+    //     if (body.status == '200') {
+    //         return body.data;
+    //     } else {
+    //         return body.message;
+    //     }
+    // }
 }
 //This is just validation of the props
 TraductorPage.propTypes = {
     translate: PropTypes.func.isRequired
 };
 
-export default connect(null, { translate })(TraductorPage);
+export default connect(null, { TranslateFirebase })(TraductorPage);
