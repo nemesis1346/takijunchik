@@ -6,7 +6,7 @@ import {ERROR_MIDDLEWARE} from '../constants/types';
 //This is just calling to other class of accesing to the rest services 
 export const TranslateBlockchainAction = (input) => {
     return {
-        type: 'TRANSLATE_BLOCKCHAIN',
+        type:TRANSLATE_SUCCESS,
         object: api.vocabulary.getObject(input)
     }
 }
@@ -16,7 +16,7 @@ export const TranslateFirebaseAction = (input)=>{
     console.log(input);
 
     return (dispatch)=>{
-        FirebaseApi.getValueByKey('/test',input)
+        FirebaseApi.getValueByKey('/objectModel',input)
         .then((res)=>{
             dispatch(getObjectSuccess(res.data))
         })

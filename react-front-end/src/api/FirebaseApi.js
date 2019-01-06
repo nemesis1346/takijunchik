@@ -11,5 +11,12 @@ class FirebaseApi {
             .equalTo(key)
             .once('child_added');
     }
+
+    static setValue(path, value) {
+        return firebase
+          .database()
+          .ref(path)
+          .set(value);
+      }
 }
 export default FirebaseApi;
