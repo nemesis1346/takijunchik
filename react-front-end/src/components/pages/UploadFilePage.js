@@ -3,7 +3,7 @@ import AlertMessageModal from '../tools/AlertMessageModal';
 //You can use prop-types to document the intended types of properties passed to components. 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { uploadMp3Action } from '../../actions/UploadMp3Action';
+import { uploadMp3Action } from '../../actions/SoundActions';
 import { parseResponse } from '../../utils/Utils';
 import { VocabularyFirepoint } from '../../endpoints/vocabularyFirepoint';
 class UploadFilePage extends React.Component {

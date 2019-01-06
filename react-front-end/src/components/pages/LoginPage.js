@@ -4,7 +4,7 @@ import AlertMessageModal from '../tools/AlertMessageModal';
 //You can use prop-types to document the intended types of properties passed to components. 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { AuthAction } from '../../actions/AuthAction';
+import { AuthAction } from '../../actions/UserActions';
 class LoginPage extends React.Component {
 
     constructor() {

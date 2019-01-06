@@ -5,3 +5,10 @@ export const AuthAction =(credentials)=>{
         credentials:credentials
     }
 }
+
+export const SignupAction = (params) => {
+    return {
+        type: 'SIGNUP',
+        params: params
+    }
+};//Here it makes the call to the server

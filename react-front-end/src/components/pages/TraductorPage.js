@@ -2,7 +2,7 @@ import React from 'react';
 import TraductorForm from '../forms/TraductorForm';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { TranslateFirebaseAction } from '../../actions/TranslateFirebaseAction';
+import { TranslateFirebaseAction } from '../../actions/TranslateActions';
 import ObjectDetailModal from '../tools/ObjectDetailModal';
 import ObjectTable from '../forms/ObjectTable';
 import { Message } from 'semantic-ui-react'

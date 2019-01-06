@@ -3,7 +3,7 @@ import SignupForm from '../forms/SignupForm';
 //You can use prop-types to document the intended types of properties passed to components. 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { SignupAction } from '../../actions/SignupAction';
+import { SignupAction } from '../../actions/UserActions';
 import AlertMessageModal from '../tools/AlertMessageModal';
 
 class SignupPage extends React.Component {
