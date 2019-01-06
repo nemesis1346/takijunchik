@@ -1,6 +1,4 @@
-import * as firebase from 'firebase';
-import { FirebaseConfig } from './FirebaseConfig';
-import { Ref } from 'semantic-ui-react';
+import firebase from '../api/FirebaseConfig' //this is mandatory, must come from the setup
 
 class FirebaseApi {
     static getValueByKey(path, key) {

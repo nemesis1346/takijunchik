@@ -5,7 +5,7 @@ import  {SAVE_OBJECT_SUCCESS} from '../constants/types';
 
 export const saveObject = (object) => {
     return (dispatch) => {
-        FirebaseApi.getValueByKey('/objectModel/' + '23424', object)
+        FirebaseApi.setValue('/objectModel/' + '23424', object)
             .then((res) => {
                 console.log(res);
                 dispatch(saveObjectSuccess(res.data))

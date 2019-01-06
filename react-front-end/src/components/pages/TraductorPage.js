@@ -48,9 +48,9 @@ class TraductorPage extends React.Component {
         console.log(data);
 
 // let test = this.props.TranslateFirebaseAction(data.object.trim().toLowerCase());
-console.log(test);
 let test = this.props.saveObject(data.object.trim().toLowerCase());
 
+console.log(test);
 
 // return this.props.TranslateFirebase(data.object.trim().toLowerCase())
         //     .then((resp) => {
@@ -127,7 +127,8 @@ let test = this.props.saveObject(data.object.trim().toLowerCase());
 }
 //This is just validation of the props
 TraductorPage.propTypes = {
-    TranslateFirebaseAction: PropTypes.func.isRequired
+    TranslateFirebaseAction: PropTypes.func.isRequired,
+    saveObject: PropTypes.func.isRequired
 };
 
-export default connect(null, { TranslateFirebaseAction })(TraductorPage);
+export default connect(null, { TranslateFirebaseAction,saveObject })(TraductorPage);

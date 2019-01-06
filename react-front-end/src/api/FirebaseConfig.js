@@ -1,8 +1,10 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import 'firebase/database'
 
-export const FirebaseConfig ={
+//Firestore
+ export const FirestoreConfig ={
     "type": "service_account",
     "project_id": "media-lengua",
     "private_key_id": "05ba265775ce08584cb4eae6204d9adbea08e7f8",
@@ -15,7 +17,17 @@ export const FirebaseConfig ={
     "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-y63jq%40media-lengua.iam.gserviceaccount.com"
   }
 
-  // firebase.initializeApp(config);
-  // firebase.firestore().settings({timestampsInSnapshots:true});
+  //Just firebase
+  export const FirebaseConfig = {
+    apiKey: "AIzaSyD5PNSGg7cBTpuCrZuqmieh6xqOT-iEDOw",
+    authDomain: "media-lengua.firebaseapp.com",
+    databaseURL: "https://media-lengua.firebaseio.com",
+    projectId: "media-lengua",
+    storageBucket: "media-lengua.appspot.com",
+    messagingSenderId: "952281713521"
+  };
+
+  firebase.initializeApp(FirebaseConfig);
+  //firebase.firestore().settings({timestampsInSnapshots:true});
   
-  //export default firebase;
+  export default firebase;
