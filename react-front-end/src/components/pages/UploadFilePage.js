@@ -19,27 +19,34 @@ class UploadFilePage extends React.Component {
         let files = e.target.files;
         console.warn("data: ", files);
         let reader = new FileReader();
-        reader.readAsDataURL(files[0]);
-        reader.onload = (e) => {
-            console.log(e);
-            console.log(this.props);
-            //console.warn("data: ", e.target.result);
-            let data_64 = e.target.result;
-            console.log('above');
-            //let vocabularyFirepoint=new VocabularyFirepoint();
-            console.log('below');
-            //  console.log(vocabularyFirepoint);
+       // reader.readAsDataURL(files[0]);
+       
+        // reader.readAsDataURL('/home/nemesis1346/Documents/UniversityProjects/takijunchik/react-front-end/data/audioFiles/audio.mp3');
 
-            // return this.props.uploadMp3(data_64)
-            //     .then((resp) => {
-            //         console.log(resp);
-            //         let result = this.parseResponse(resp);
-            //         console.log(result);
-            //     })
-            //     .catch((err) => {
-            //         console.log(err);
-            //     });;
-        }
+        // reader.onload = (e) => {
+        //     console.log(e);
+        //     console.log(this.props);
+        //     //console.warn("data: ", e.target.result);
+        //     let data_64 = e.target.result;
+        //     console.log('above');
+        //     //let vocabularyFirepoint=new VocabularyFirepoint();
+        //     console.log('below');
+        //     //  console.log(vocabularyFirepoint);
+        //     this.props.uploadMp3Action(data_64);
+
+        //     // return this.props.uploadMp3(data_64)
+        //     //     .then((resp) => {
+        //     //         console.log(resp);
+        //     //         let result = this.parseResponse(resp);
+        //     //         console.log(result);
+        //     //     })
+        //     //     .catch((err) => {
+        //     //         console.log(err);
+        //     //     });;
+        // }
+
+        this.props.uploadMp3Action('test');
+  
     }
 
     render() {
@@ -56,6 +63,6 @@ class UploadFilePage extends React.Component {
 
 }
 UploadFilePage.propTypes = {
-    uploadMp3: PropTypes.func.isRequired
+    uploadMp3Action: PropTypes.func.isRequired
 }
 export default connect(null, { uploadMp3Action })(UploadFilePage);
