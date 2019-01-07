@@ -2,18 +2,19 @@ import firebase from '../api/FirebaseConfig' //this is mandatory, must come from
 
 class FirebaseApi {
 
-    static getValues(path){
+    static getValues(path,getObjectsCallback) {
         return firebase
-        .database()
-        .ref(path)
-        .once('value', function(snapshot) {
-            snapshot.forEach(function(childSnapshot) {
-              var childKey = childSnapshot.key;
-              var childData = childSnapshot.val();
-              console.log(childKey);
-              console.log(childData);
+            .database()
+            .ref(path)
+            .once('value', function (snapshot) {
+                let objectList= [];
+                snapshot.forEach(function (childSnapshot) {
+                    let childData = childSnapshot.val();
+                    objectList.push(childData);
+                });
+                getObjectsCallback(objectList);
             });
-          });
+            
     }
 
     static getValueByKey(path, key) {
@@ -27,9 +28,9 @@ class FirebaseApi {
 
     static setValue(path, value) {
         return firebase
-          .database()
-          .ref(path)
-          .set(value);
-      }
+            .database()
+            .ref(path)
+            .set(value);
+    }
 }
 export default FirebaseApi;

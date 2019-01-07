@@ -19,12 +19,18 @@ export const saveObject = (object) => {
     }
 }
 
+const getObjectsCallback = (objects) => {
+    console.log('Data :');
+    console.log(objects);
+    getObjectsSuccess(objects)
+}
+
 export const getObjects = () => {
     return (dispatch) => {
-        FirebaseApi.getValues('/objectModel')
+        FirebaseApi.getValues('/objectModel', getObjectsCallback)
             .then((res) => {
                 console.log(res);
-                dispatch(getObjectsSuccess(res.data))
+                //need to solve the dispatch
             })
             .catch((err) => {
                 console.log(err);
