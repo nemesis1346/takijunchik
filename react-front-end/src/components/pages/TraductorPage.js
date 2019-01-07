@@ -3,7 +3,7 @@ import TraductorForm from '../forms/TraductorForm';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { TranslateFirebaseAction } from '../../actions/TranslateActions';
-import { saveObject, getObjects } from '../../actions/FirebaseDatabaseActions'
+import { saveObjectDatabase, getObjects,saveObjectFirestore } from '../../actions/FirebaseDatabaseActions'
 import ObjectDetailModal from '../tools/ObjectDetailModal';
 import ObjectTable from '../forms/ObjectTable';
 import { Message } from 'semantic-ui-react'
@@ -128,8 +128,9 @@ class TraductorPage extends React.Component {
 //This is just validation of the props
 TraductorPage.propTypes = {
     TranslateFirebaseAction: PropTypes.func.isRequired,
-    saveObject: PropTypes.func.isRequired,
-    getObjects: PropTypes.func.isRequired
+    saveObjectDatabase: PropTypes.func.isRequired,
+    getObjects: PropTypes.func.isRequired,
+    saveObjectFirestore:PropTypes.func.isRequired
 };
 
-export default connect(null, { TranslateFirebaseAction, saveObject, getObjects })(TraductorPage);
+export default connect(null, { TranslateFirebaseAction, saveObjectDatabase, getObjects ,saveObjectFirestore})(TraductorPage);

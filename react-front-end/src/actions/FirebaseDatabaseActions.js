@@ -4,7 +4,7 @@ import { ERROR_MIDDLEWARE } from '../constants/types';
 import { SAVE_OBJECT_SUCCESS } from '../constants/types';
 import { GET_OBJECTS_SUCCESS } from '../constants/types';
 
-export const saveObject = (object) => {
+export const saveObjectDatabase = (object) => {
     return (dispatch) => {
         FirebaseApi.setValue('/objectModel/' + '23424', object)
             .then((res) => {
@@ -18,6 +18,13 @@ export const saveObject = (object) => {
 
     }
 }
+/**
+ * This function is a test for firestore
+ * @param {object} object 
+ */
+export const saveObjectFirestore =(object)=>{
+    
+}
 
 const getObjectsCallback = (objects) => {
     console.log('Data :');
@@ -26,7 +33,8 @@ const getObjectsCallback = (objects) => {
 }
 
 export const getObjects = () => {
-    return (dispatch) => {
+    return (dispatch,getState, {getFirebase,getFirestore}) => {
+     
         FirebaseApi.getValues('/objectModel', getObjectsCallback)
             .then((res) => {
                 console.log(res);
