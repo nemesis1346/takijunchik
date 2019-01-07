@@ -1,7 +1,8 @@
 import api from '../api/BlockchainApi'; //Api is for axios http endpoints
 import FirebaseApi from '../api/FirebaseApi';
-import {ERROR_MIDDLEWARE} from '../constants/types';
-import  {SAVE_OBJECT_SUCCESS} from '../constants/types';
+import { ERROR_MIDDLEWARE } from '../constants/types';
+import { SAVE_OBJECT_SUCCESS } from '../constants/types';
+import { GET_OBJECTS_SUCCESS } from '../constants/types';
 
 export const saveObject = (object) => {
     return (dispatch) => {
@@ -15,6 +16,27 @@ export const saveObject = (object) => {
                 dispatch(handleError(err.message))
             })
 
+    }
+}
+
+export const getObjects = () => {
+    return (dispatch) => {
+        FirebaseApi.getValues('/objectModel')
+            .then((res) => {
+                console.log(res);
+                dispatch(getObjectsSuccess(res.data))
+            })
+            .catch((err) => {
+                console.log(err);
+                dispatch(handleError(err.message))
+            })
+    }
+}
+
+const getObjectsSuccess = (objects) => {
+    return {
+        type: GET_OBJECTS_SUCCESS,
+        objects: objects
     }
 }
 const saveObjectSuccess = (object) => {

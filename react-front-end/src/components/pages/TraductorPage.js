@@ -3,7 +3,7 @@ import TraductorForm from '../forms/TraductorForm';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { TranslateFirebaseAction } from '../../actions/TranslateActions';
-import {saveObject} from '../../actions/FirebaseDatabaseActions'
+import { saveObject, getObjects } from '../../actions/FirebaseDatabaseActions'
 import ObjectDetailModal from '../tools/ObjectDetailModal';
 import ObjectTable from '../forms/ObjectTable';
 import { Message } from 'semantic-ui-react'
@@ -47,12 +47,12 @@ class TraductorPage extends React.Component {
         console.log('submit on traductor Page: ');
         console.log(data);
 
-// let test = this.props.TranslateFirebaseAction(data.object.trim().toLowerCase());
-let test = this.props.saveObject(data.object.trim().toLowerCase());
+        // let test = this.props.TranslateFirebaseAction(data.object.trim().toLowerCase());
+        //let test = this.props.saveObject(data.object.trim().toLowerCase());
+        let test = this.props.getObjects();
+        console.log(test);
 
-console.log(test);
-
-// return this.props.TranslateFirebase(data.object.trim().toLowerCase())
+        // return this.props.TranslateFirebase(data.object.trim().toLowerCase())
         //     .then((resp) => {
         //         this.setState({ "hideSpinner": true });
 
@@ -128,7 +128,8 @@ console.log(test);
 //This is just validation of the props
 TraductorPage.propTypes = {
     TranslateFirebaseAction: PropTypes.func.isRequired,
-    saveObject: PropTypes.func.isRequired
+    saveObject: PropTypes.func.isRequired,
+    getObjects: PropTypes.func.isRequired
 };
 
-export default connect(null, { TranslateFirebaseAction,saveObject })(TraductorPage);
+export default connect(null, { TranslateFirebaseAction, saveObject, getObjects })(TraductorPage);
