@@ -26,19 +26,17 @@ export const saveObjectFirestore =(object)=>{
     
 }
 
-const getObjectsCallback = (objects) => {
-    console.log('Data :');
-    console.log(objects);
-    getObjectsSuccess(objects)
-}
-
 export const getObjects = () => {
     return (dispatch,getState, {getFirebase,getFirestore}) => {
-     
-        FirebaseApi.getValues('/objectModel', getObjectsCallback)
+        FirebaseApi.getValues('/objectModel')
             .then((res) => {
                 console.log(res);
-                //need to solve the dispatch
+                let objectList= [];
+                res.forEach(function (childSnapshot) {
+                    let childData = childSnapshot.val();
+                    objectList.push(childData);
+                });
+                dispatch(getObjectsSuccess(objectList));
             })
             .catch((err) => {
                 console.log(err);

@@ -1,7 +1,9 @@
 //with {} we initialize the action and state
 import {GET_OBJECTS_SUCCESS} from '../constants/types';
-
-const databaseReducer = (state={}, action={}) => {
+const initState = {
+    test:"test"
+}
+const databaseReducer = (state=initState, action={}) => {
     switch (action.type) {
         case GET_OBJECTS_SUCCESS:
         console.log(action);

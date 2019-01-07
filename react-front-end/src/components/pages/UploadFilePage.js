@@ -33,16 +33,6 @@ class UploadFilePage extends React.Component {
         //     console.log('below');
         //     //  console.log(vocabularyFirepoint);
         //     this.props.uploadMp3Action(data_64);
-
-        //     // return this.props.uploadMp3(data_64)
-        //     //     .then((resp) => {
-        //     //         console.log(resp);
-        //     //         let result = this.parseResponse(resp);
-        //     //         console.log(result);
-        //     //     })
-        //     //     .catch((err) => {
-        //     //         console.log(err);
-        //     //     });;
         // }
 
         this.props.uploadMp3Action('test');

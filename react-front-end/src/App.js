@@ -10,7 +10,10 @@ import AboutPage from './components/pages/AboutPage';
 import { BrowserRouter } from 'react-router-dom';
 
 class App extends Component {
+  
   render() {
+    console.log(this.state);
+    console.log(this.props);
     return (
       <BrowserRouter>
         <div className="App">

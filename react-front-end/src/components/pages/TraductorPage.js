@@ -49,7 +49,7 @@ class TraductorPage extends React.Component {
 
         // let test = this.props.TranslateFirebaseAction(data.object.trim().toLowerCase());
         //let test = this.props.saveObject(data.object.trim().toLowerCase());
-        let test = this.props.getObjects();
+        //let test = this.props.getObjects();
         console.log(test);
 
         // return this.props.TranslateFirebase(data.object.trim().toLowerCase())
@@ -88,6 +88,7 @@ class TraductorPage extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         this.spinnerStyle = this.state.hideSpinner ? { display: 'none' } : {};
 
         return (
@@ -115,22 +116,22 @@ class TraductorPage extends React.Component {
         );
     }
 
-    // parseResponse(response) {
-    //     let body = JSON.parse(response);
-
-    //     if (body.status == '200') {
-    //         return body.data;
-    //     } else {
-    //         return body.message;
-    //     }
-    // }
 }
 //This is just validation of the props
 TraductorPage.propTypes = {
     TranslateFirebaseAction: PropTypes.func.isRequired,
     saveObjectDatabase: PropTypes.func.isRequired,
     getObjects: PropTypes.func.isRequired,
-    saveObjectFirestore:PropTypes.func.isRequired
+    saveObjectFirestore:PropTypes.func.isRequired,
 };
 
-export default connect(null, { TranslateFirebaseAction, saveObjectDatabase, getObjects ,saveObjectFirestore})(TraductorPage);
+const mapStateToPropsTraductorPage =(state)=>{
+    console.log(state)
+    //In this case objects is gonna be applied to the props of the component
+    return{
+        objectsTest:state.test
+    }
+} 
+
+ export default connect(mapStateToPropsTraductorPage, { TranslateFirebaseAction, saveObjectDatabase, getObjects ,saveObjectFirestore})(TraductorPage);
+//export default connect(mapStateToPropsTraductorPage)(TraductorPage);
