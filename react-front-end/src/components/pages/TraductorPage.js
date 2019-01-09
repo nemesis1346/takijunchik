@@ -47,34 +47,7 @@ class TraductorPage extends React.Component {
 
 
     submit = (data) => {
-        this.setState({ "hideSpinner": false });
-
-
         // return this.props.TranslateFirebase(data.object.trim().toLowerCase())
-        //     .then((resp) => {
-        //         this.setState({ "hideSpinner": true });
-
-        //         console.log('Result in Traductor Page');
-        //         let data = parseResponse(resp);
-
-        //         console.log(data);
-        //         //Here we update the data for the ObjectTable
-        //         if (data && data.length > 0 && typeof data[0] === 'object') {
-        //             this.setState({
-        //                 "data": data,
-        //                 "hideResultMessage": true,
-        //             });
-
-        //         } else {
-        //             this.setState({
-        //                 "data": [],
-        //                 "hideResultMessage": false,
-        //             });
-        //         }
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //     });
     }
 
     objectSelectedCallback = (objectSelected) => {
@@ -82,21 +55,19 @@ class TraductorPage extends React.Component {
             "objectDetailOpen": true,
             "objectDetailData": objectSelected
         });
-
     }
 
     render() {
-
         this.spinnerStyle = this.state.hideSpinner ? { display: 'none' } : {};
-        const { objects } = this.props;
-        console.log(objects);
+        const { objects ,hideResultMessage} = this.props;
+        console.log(hideResultMessage);
         return (
 
             <div>
                 {/* Submit is the callback */}
                 <TraductorForm submit={this.submit} objectList={objects} />
 
-                <Message hidden={this.state.hideResultMessage}>
+                <Message hidden={hideResultMessage}>
                     <Message.Header>Error</Message.Header>
                     <p>There is no results</p>
                 </Message>

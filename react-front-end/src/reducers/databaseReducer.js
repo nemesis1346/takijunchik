@@ -10,7 +10,8 @@ const databaseReducer = (state=initState, action={}) => {
         console.log(action);
             return {
                 ...state,
-                objects: action.objects
+                objects: action.objects,
+                hideResultMessage:true
             }
         default:
             return state;
