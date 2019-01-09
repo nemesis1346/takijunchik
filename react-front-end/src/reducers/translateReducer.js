@@ -1,5 +1,8 @@
 
 import { TRASLATE_SUCCESS } from '../constants/types';
+const initState = {
+    test:"test"
+}
 const translateReducer = (state = {}, action = {}) => {
     switch (action.type) {
         case TRASLATE_SUCCESS:

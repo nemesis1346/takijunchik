@@ -2,8 +2,8 @@ import React from 'react';
 import TraductorForm from '../forms/TraductorForm';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { TranslateFirebaseAction } from '../../actions/TranslateActions';
-import { saveObjectDatabase, getObjects,saveObjectFirestore } from '../../actions/FirebaseDatabaseActions'
+import { translateFirebaseAction } from '../../actions/TranslateActions';
+import { saveObjectDatabase, getObjects, saveObjectFirestore } from '../../actions/FirebaseDatabaseActions'
 import ObjectDetailModal from '../tools/ObjectDetailModal';
 import ObjectTable from '../forms/ObjectTable';
 import { Message } from 'semantic-ui-react'
@@ -30,9 +30,14 @@ class TraductorPage extends React.Component {
     }
     constructor() {
         super();
-
         this.spinnerStyle = { display: 'none' };
     }
+    componentWillMount() {
+        console.log('PROPS: ');
+        console.log(this.props);
+        this.props.getObjects();
+    }
+
 
     objectDetailCloseCallback = (closeAlert) => {
         this.setState({
@@ -43,14 +48,7 @@ class TraductorPage extends React.Component {
 
     submit = (data) => {
         this.setState({ "hideSpinner": false });
-        console.log(this.props);
-        console.log('submit on traductor Page: ');
-        console.log(data);
 
-        // let test = this.props.TranslateFirebaseAction(data.object.trim().toLowerCase());
-        //let test = this.props.saveObject(data.object.trim().toLowerCase());
-        //let test = this.props.getObjects();
-        console.log(test);
 
         // return this.props.TranslateFirebase(data.object.trim().toLowerCase())
         //     .then((resp) => {
@@ -88,13 +86,15 @@ class TraductorPage extends React.Component {
     }
 
     render() {
-        console.log(this.props);
-        this.spinnerStyle = this.state.hideSpinner ? { display: 'none' } : {};
 
+        this.spinnerStyle = this.state.hideSpinner ? { display: 'none' } : {};
+        const { objects } = this.props;
+        console.log(objects);
         return (
+
             <div>
                 {/* Submit is the callback */}
-                <TraductorForm submit={this.submit} objectList={this.state.data} />
+                <TraductorForm submit={this.submit} objectList={objects} />
 
                 <Message hidden={this.state.hideResultMessage}>
                     <Message.Header>Error</Message.Header>
@@ -102,7 +102,7 @@ class TraductorPage extends React.Component {
                 </Message>
 
                 <ObjectTable
-                    objectList={this.state.data}
+                    objectList={objects}
                     objectSelectedCallback={this.objectSelectedCallback} />
                 <MDSpinner style={this.spinnerStyle} />
 
@@ -119,19 +119,17 @@ class TraductorPage extends React.Component {
 }
 //This is just validation of the props
 TraductorPage.propTypes = {
-    TranslateFirebaseAction: PropTypes.func.isRequired,
-    saveObjectDatabase: PropTypes.func.isRequired,
+    translateFirebaseAction: PropTypes.func.isRequired,
     getObjects: PropTypes.func.isRequired,
-    saveObjectFirestore:PropTypes.func.isRequired,
 };
 
-const mapStateToPropsTraductorPage =(state)=>{
+const mapStateToPropsTraductorPage = (state) => {
     console.log(state)
     //In this case objects is gonna be applied to the props of the component
-    return{
-        objectsTest:state.test
+    return {
+        objects: state.databaseReducer.objects,
+        hideResultMessage: state.databaseReducer.hideResultMessage
     }
-} 
+}
 
- export default connect(mapStateToPropsTraductorPage, { TranslateFirebaseAction, saveObjectDatabase, getObjects ,saveObjectFirestore})(TraductorPage);
-//export default connect(mapStateToPropsTraductorPage)(TraductorPage);
+export default connect(mapStateToPropsTraductorPage, { translateFirebaseAction, getObjects })(TraductorPage);

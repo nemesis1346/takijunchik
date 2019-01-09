@@ -2,7 +2,6 @@ import React from 'react';
 import {Link, NavLink, withRouter} from 'react-router-dom';
 
 const NavBar = (props) => {
-    console.log(props);
     return (
         <nav className="nav wrapper blue darken-3">
             <div className="container">

@@ -4,14 +4,14 @@ import {TRANSLATE_SUCCESS} from '../constants/types';
 import {ERROR_MIDDLEWARE} from '../constants/types';
 
 //This is just calling to other class of accesing to the rest services 
-export const TranslateBlockchainAction = (input) => {
+export const translateBlockchainAction = (input) => {
     return {
         type:TRANSLATE_SUCCESS,
         object: api.vocabulary.getObject(input)
     }
 }
 
-export const TranslateFirebaseAction = (input)=>{
+export const translateFirebaseAction = (input)=>{
     console.log('Action Translate Firebase');
     console.log(input);
 
