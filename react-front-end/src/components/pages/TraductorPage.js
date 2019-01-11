@@ -24,7 +24,6 @@ class TraductorPage extends React.Component {
         },
         objectDetailOpen: false,
         objectDetailSize: "tiny",
-        hideResultMessage: true,
         hideSpinner: true,
         hideObjectDetail: true
     }
@@ -33,8 +32,7 @@ class TraductorPage extends React.Component {
         this.spinnerStyle = { display: 'none' };
     }
     componentWillMount() {
-        console.log('PROPS: ');
-        console.log(this.props);
+        //Here we can call to the props
         this.props.getObjects();
     }
 
@@ -59,8 +57,7 @@ class TraductorPage extends React.Component {
 
     render() {
         this.spinnerStyle = this.state.hideSpinner ? { display: 'none' } : {};
-        const { objects ,hideResultMessage} = this.props;
-        console.log(hideResultMessage);
+        const { objects, hideResultMessage } = this.props;
         return (
 
             <div>
@@ -95,7 +92,6 @@ TraductorPage.propTypes = {
 };
 
 const mapStateToPropsTraductorPage = (state) => {
-    console.log(state)
     //In this case objects is gonna be applied to the props of the component
     return {
         objects: state.databaseReducer.objects,
