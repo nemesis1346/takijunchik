@@ -34,6 +34,8 @@ export const getObjects = () => {
                 let objectList= [];
                 res.forEach(function (childSnapshot) {
                     let childData = childSnapshot.val();
+                    childData["key"]=childSnapshot.key;
+                    
                     objectList.push(childData);
                 });
                 dispatch(getObjectsSuccess(objectList));

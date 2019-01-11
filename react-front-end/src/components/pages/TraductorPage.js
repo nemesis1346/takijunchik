@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { translateFirebaseAction } from '../../actions/TranslateActions';
 import { saveObjectDatabase, getObjects, saveObjectFirestore } from '../../actions/FirebaseDatabaseActions'
-import ObjectDetailModal from '../tools/ObjectDetailModal';
+import ObjectDetailModal from '../modals/ObjectDetailModal';
 import ObjectTable from '../forms/ObjectTable';
 import { Message } from 'semantic-ui-react'
 import MDSpinner from 'react-md-spinner';
