@@ -1,11 +1,10 @@
 'use strict';
+//In some point must to get rid of this page 
 const ObjectModel = require('../models/objectModel.js');
 
 const firebase = require("firebase-admin");
-const serviceAccount = require("../credentials/media-lengua-firebase-adminsdk-y63jq-05ba265775.json");
 
 const defaultApp = firebase.initializeApp({
-    credential: firebase.credential.cert(serviceAccount),
     databaseURL: "https://media-lengua.firebaseio.com",
     storageBucket: "gs://media-lengua.appspot.com"
 });
@@ -50,26 +49,7 @@ export class VocabularyFirepoint {
             throw new Error(error);
         }
     }
-    /**
-     * @description It returns a detailed object of the database
-     * @return {Promise} A promise that returns the object detail
-     */
-    async getObject(objectId) {
 
-        console.log('************************************');
-        console.log('Request get Object in Composer: ');
-        console.log(objectId);
-        try {
-
-           
-           
-
-            return "test";
-        } catch (error) {
-            console.error(error);
-            throw new Error(error);
-        }
-    }
 
     /**
      * @description It returns a detailed object of the database
