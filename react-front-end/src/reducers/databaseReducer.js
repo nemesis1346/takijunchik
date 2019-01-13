@@ -2,7 +2,8 @@
 import {GET_OBJECTS_SUCCESS} from '../constants/types';
 const initState = {
     objects:[],
-    hideResultMessage:false
+    hideResultMessage:false,
+    hideSpinner:false
 }
 const databaseReducer = (state=initState, action={}) => {
     switch (action.type) {
@@ -11,7 +12,8 @@ const databaseReducer = (state=initState, action={}) => {
             return {
                 ...state,
                 objects: action.objects,
-                hideResultMessage:true
+                hideResultMessage:true,
+                hideSpinner:true
             }
         default:
             return state;

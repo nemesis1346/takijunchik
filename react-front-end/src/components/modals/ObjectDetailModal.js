@@ -1,7 +1,11 @@
 import React from 'react';
 import { Modal, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-
+const style = {
+    marginLeft: '30%',
+    padding:'16px'
+  };
+  
 class ObjectDetailModal extends React.Component {
 
     constructor() {
@@ -25,9 +29,9 @@ class ObjectDetailModal extends React.Component {
 
     render() {
         console.log(this.props);
+        
         return (
-            <div>
-                <Modal size={this.props.objectDetailSize} open={this.props.objectDetailOpen} onClose={this.close}>
+                <Modal style={style} size={this.props.objectDetailSize} open={this.props.objectDetailOpen} onClose={this.close}>
                     <Modal.Header>Detalle</Modal.Header>
                     <Modal.Content>
                         <div>
@@ -51,7 +55,6 @@ class ObjectDetailModal extends React.Component {
                         <Button positive icon='checkmark' labelPosition='right' content='Close' onClick={this.close} />
                     </Modal.Actions>
                 </Modal>
-            </div>
         );
     }
 }

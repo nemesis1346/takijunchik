@@ -4,7 +4,7 @@ import SignupForm from '../forms/SignupForm';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { SignupAction } from '../../actions/UserActions';
-import AlertMessageModal from '../tools/AlertMessageModal';
+import AlertMessageModal from '../modals/AlertMessageModal';
 
 class SignupPage extends React.Component {
 

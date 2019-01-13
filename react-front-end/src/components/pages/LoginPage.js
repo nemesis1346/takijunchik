@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from '../forms/LoginForm';
-import AlertMessageModal from '../tools/AlertMessageModal';
+import AlertMessageModal from '../modals/AlertMessageModal';
 //You can use prop-types to document the intended types of properties passed to components. 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
