@@ -9,10 +9,10 @@ import ObjectTable from '../forms/ObjectTable';
 import { Message } from 'semantic-ui-react'
 import MDSpinner from 'react-md-spinner';
 import { parseResponse } from '../../utils/Utils';
+import '../styles/traductorPageStyle.css';
 
 class TraductorPage extends React.Component {
     state = {
-        data: [],
         loading: false,
         errors: {},
         objectDetailData: {
@@ -24,7 +24,6 @@ class TraductorPage extends React.Component {
         },
         objectDetailOpen: false,
         objectDetailSize: "tiny",
-        hideSpinner: true,
         hideObjectDetail: true
     }
     constructor() {
@@ -56,11 +55,12 @@ class TraductorPage extends React.Component {
     }
 
     render() {
-        this.spinnerStyle = this.state.hideSpinner ? { display: 'none' } : {};
-        const { objects, hideResultMessage } = this.props;
+        const { objects, hideResultMessage, hideSpinner } = this.props;
+        this.spinnerStyle = hideSpinner? { display: 'none' } : {};
+
         return (
 
-            <div>
+            <div className="traductor-page-container">
                 {/* Submit is the callback */}
                 <TraductorForm submit={this.submit} objectList={objects} />
 
@@ -95,7 +95,8 @@ const mapStateToPropsTraductorPage = (state) => {
     //In this case objects is gonna be applied to the props of the component
     return {
         objects: state.databaseReducer.objects,
-        hideResultMessage: state.databaseReducer.hideResultMessage
+        hideResultMessage: state.databaseReducer.hideResultMessage,
+        hideSpinner:state.databaseReducer.hideSpinner
     }
 }
 

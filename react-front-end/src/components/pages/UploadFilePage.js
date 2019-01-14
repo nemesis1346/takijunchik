@@ -1,11 +1,12 @@
 import React from 'react';
-import AlertMessageModal from '../tools/AlertMessageModal';
+import AlertMessageModal from '../modals/AlertMessageModal';
 //You can use prop-types to document the intended types of properties passed to components. 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { uploadMp3Action } from '../../actions/SoundActions';
 import { parseResponse } from '../../utils/Utils';
 import { VocabularyFirepoint } from '../../endpoints/vocabularyFirepoint';
+import '../styles/uploadFilePageStyle.css'
 class UploadFilePage extends React.Component {
 
     constructor(props) {
@@ -41,7 +42,7 @@ class UploadFilePage extends React.Component {
 
     render() {
         return (
-            <div className="container" >
+            <div className="container upload-file-page-container" >
                 <h4 className="center">Upload File</h4>
                 <p>This function let the researcher to upload and ipa and mp3 file to process the data</p>
                 <div onSubmit={this.onFormSubmit} className="file-path-wrapper">
