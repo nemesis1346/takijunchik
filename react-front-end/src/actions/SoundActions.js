@@ -5,7 +5,7 @@ import FirebaseApi from '../api/FirebaseApi';
 
 export const uploadMp3Action = (input) => {
     return (dispatch) => {
-        FirebaseApi.saveFile('/mp3Files', 'test', input)
+        FirebaseApi.saveFile('/mp3Files', 'test2', input)
             .then((res) => {
                 console.log(res)
                 dispatch(uploadMp3Success(res.data))
