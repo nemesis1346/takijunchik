@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "firebase": "^5.7.2",
     "firebase-admin": "^6.4.0",
+    "fs": "^0.0.1-security",
     "http2": "^3.3.7",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
@@ -25,7 +26,8 @@
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.3.3",
     "semantic-ui-react": "^0.82.1",
-    "validator": "^10.4.0"
+    "validator": "^10.4.0",
+    "xml2js": "^0.4.19"
   },
   "scripts": {
     "start": "react-scripts start",
