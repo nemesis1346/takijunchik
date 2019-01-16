@@ -3,7 +3,7 @@ const ObjectModel = require('../models/objectModel.js');
 const DataModel = require('../models/dataModel.js');
 
 const firebase = require('../firebaseSetup/firebaseConfig.js');
-
+//This must be deleted 
 class VocabularyFirepoint {
     constructor() {
         this.database = firebase.database();

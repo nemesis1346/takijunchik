@@ -105,10 +105,11 @@ const handlerDefault = async (request, response) => {
 
 const handlerFiles = async (request, response) => {
     let eafFile = request.files.eafFile
-    console.log(eafFile.data.toString());
+ //   console.log(eafFile.data.toString());
     let mp3File = request.files.mp3File;
-    console.log(mp3File.data.toString());
+   // console.log(mp3File.data.toString());
     await this.filesFirepoint.processingFiles(eafFile, mp3File);
+    
     response.send("hello");
 }
 
@@ -125,7 +126,7 @@ app.post('/createUser', handlerDefault);
 app.post('/getObjectsByQuery', handlerDefault);
 app.post('/getObject', handlerDefault);
 app.post('/streamTrack', handlerDefault);
-app.post('/uploadFiles', handlerDefault);
+app.post('/uploadFiles', handlerFiles);
 
 app.listen(port, async (err) => {
     if (err) {
