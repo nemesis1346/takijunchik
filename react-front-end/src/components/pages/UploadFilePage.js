@@ -3,60 +3,56 @@ import AlertMessageModal from '../modals/AlertMessageModal';
 //You can use prop-types to document the intended types of properties passed to components. 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { uploadMp3Action ,uploadEafAction} from '../../actions/SoundActions';
-import { parseResponse } from '../../utils/Utils';
+import {uploadFilesAction } from '../../actions/SoundActions';
 import '../styles/uploadFilePageStyle.css'
-import {processData} from '../../utils/ProcessData';
 
-const style = {
-    'display': 'none'
-}
-const callaback = (result) => {
-    console.log(result);
-}
-const callabackError = (result) => {
-    console.log(result);
-}
 class UploadFilePage extends React.Component {
 
-    constructor(props) {
-        super(props);
-        console.log(this.props);
-        this.state = {
-        }
-    }
-    onChange = (e) => {
-        console.log(e)
-        let files = e.target.files;
-        //This is the file
-        console.log(files);
-        let reader = new FileReader();
-        reader.readAsDataURL(files[0]);
-        reader.onload = (e) => {
-            console.log('ON LOAD');
-            console.log(e);
-            //let data_64 = e.target.result;
-           // this.props.uploadMp3Action(data_64);
-            this.props.uploadEafAction('test');
-        }
-        //processData(null, callaback, callabackError);
+    state = {
+        eafFile: null,
+        mp3File: null
     }
 
+    onChangeEaf = (e) => {
+        this.setState({
+            eafFile: e.target.files[0]
+        });
+    }
+    onChangeMp3 = (e) => {
+        this.setState({
+            mp3File: e.target.files[0]
+        });
+    }
 
+    onClickButton = () => {
+        if (this.state.eafFile != null && this.state.mp3File != null) {
+
+            const data = new FormData();
+            data.append('eafFile', this.state.eafFile, this.state.eafFile.name);
+            data.append('mp3File', this.state.mp3File, this.state.mp3File.name);
+
+            this.props.uploadFilesAction(data);
+        } else {
+            console.log('something is missing ');
+        }
+    }
     render() {
         return (
             <div className="container upload-file-page-container" >
                 <h4 className="center">Upload File</h4>
                 <p>This function let the researcher to upload and ipa and mp3 file to process the data</p>
                 <div onSubmit={this.onFormSubmit} className="file-path-wrapper">
-                    <input className="file-path validate" type="file" name="file" onChange={this.onChange} accept=".eaf"></input>
+                    <input className="file-path validate" type="file" name="file" onChange={this.onChangeEaf} accept=".eaf"></input>
                 </div>
+                <div onSubmit={this.onFormSubmit} className="file-path-wrapper">
+                    <input className="file-path validate" type="file" name="file" onChange={this.onChangeMp3} accept=".mp3"></input>
+                </div>
+                <button onClick={this.onClickButton}>Submit</button>
             </div>
         );
     }
-
 }
 UploadFilePage.propTypes = {
-    uploadMp3Action: PropTypes.func.isRequired
+    uploadFilesAction: PropTypes.func.isRequired
 }
-export default connect(null, { uploadMp3Action,uploadEafAction })(UploadFilePage);
+export default connect(null, { uploadFilesAction })(UploadFilePage);

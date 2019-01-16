@@ -16,7 +16,6 @@ const defaultApp = firebase.initializeApp({
 
 class VocabularyFirepoint {
     constructor() {
-        console.log('gets here');
         this.database = defaultApp.database();
         this.storage = defaultApp.storage();
     }

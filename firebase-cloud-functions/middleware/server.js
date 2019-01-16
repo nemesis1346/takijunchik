@@ -7,13 +7,15 @@ const cors = require('cors');
 const VocabularyFirepoint = require('../endpoints/vocabularyFirepoint.js');
 const app = express();
 const DataModel = require('../models/dataModel.js');
+const fileUpload = require('express-fileupload');
 
-const handler = async (request, response) => {
+const handlerDefault = async (request, response) => {
     const { headers, method, url } = request;
     let buffer = [];
     request.on('error', (err) => {
         console.log("Error", err);
     }).on('data', (chunk) => {
+        console.log(chunk);
         buffer.push(chunk);
     }).on('end', async () => {
         let bufferContent = Buffer.concat(buffer).toString();
@@ -40,6 +42,10 @@ const handler = async (request, response) => {
                     break;
                 case '/streamTrack':
                     //promise = this.soundChaincode.streamTrack();
+                    promise = null;
+                    break;
+                case '/uploadEaf':
+                    console.log(JSON.parse(bufferContent));
                     promise = null;
                     break;
                 default:
@@ -99,17 +105,28 @@ const handler = async (request, response) => {
     });
 }
 
-app.post('/login', handler);
-app.post('/saveObject', handler);
-app.get('/getAllObjects', handler);
-app.post('/createUser', handler);
-app.post('/getObjectsByQuery', handler);
-app.post('/getObject', handler);
-app.post('/streamTrack',handler);
-app.post('/uploadMp3',handler);
+const handlerFiles = async (request, response) => {
+    let eafFile = request.files.eafFile
+    console.log(eafFile.data.toString());
+    let mp3File = request.files.mp3File;
+    console.log(mp3File.data.toString());
+    response.send("hello");
+}
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(fileUpload());
+
+app.post('/uploadEaf', handlerFiles);
+app.post('/login', handlerDefault);
+app.post('/saveObject', handlerDefault);
+app.get('/getAllObjects', handlerDefault);
+app.post('/createUser', handlerDefault);
+app.post('/getObjectsByQuery', handlerDefault);
+app.post('/getObject', handlerDefault);
+app.post('/streamTrack', handlerDefault);
+app.post('/uploadMp3', handlerDefault);
 
 
 app.listen(port, async (err) => {

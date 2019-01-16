@@ -3,38 +3,18 @@ import { UPLOAD_MP3_SUCCESS, ERROR_MIDDLEWARE } from '../constants/types';
 import FirebaseApi from '../api/FirebaseApi';
 import httpApi from '../api/httpApi';
 
-export const uploadMp3Action = (input) => {
+export const uploadFilesAction = (input) => {
     return (dispatch) => {
-        FirebaseApi.saveFile('/mp3Files', 'test2', input)
+       httpApi.files.uploadFiles(input)
             .then((res) => {
                 console.log(res)
-                dispatch(uploadMp3Success(res.data))
             })
             .catch((err) => {
                 console.log(err);
                 dispatch(handleError(err.message))
             })
     }
-
 };
-
-export const uploadEafAction = (input) => {
-    return (dispatch) => {
-        let variable= FirebaseApi.getFunction('mediaLenguaServer');
-        console.log(variable);
-        variable('mediaLenguaServer')
-            .then((res) => {
-                console.log(res)
-
-            })
-            .catch((err) => {
-                console.log(err);
-                dispatch(handleError(err.message))
-            })
-    }
-
-};
-
 
 const uploadMp3Success = (data) => {
     return {
