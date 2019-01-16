@@ -46,7 +46,7 @@ export default {
                 let result = parseResponse(res);
                 return result;
             }),
-        uploadEafFile: input => instance.post('/endpoint', { input })
+        uploadEafFile: input => instance.post('https://us-central1-media-lengua.cloudfunctions.net/mediaLenguaServer', { input })
     },
 
 }

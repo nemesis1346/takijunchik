@@ -3,6 +3,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/database'
 import 'firebase/storage'
+import 'firebase/functions';
 //Firestore
  export const FirestoreConfig ={
     "type": "service_account",

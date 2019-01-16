@@ -2,6 +2,12 @@ import firebase from '../api/FirebaseConfig' //this is mandatory, must come from
 
 class FirebaseApi {
 
+    static getFunction(methodName){
+        return firebase
+        .functions()
+        .httpsCallable(methodName)
+    }
+
     static getValues(path) {
         return firebase
             .database()

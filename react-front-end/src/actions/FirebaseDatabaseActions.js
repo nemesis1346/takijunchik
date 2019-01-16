@@ -1,4 +1,4 @@
-import api from '../api/BlockchainApi'; //Api is for axios http endpoints
+import api from '../api/httpApi'; //Api is for axios http endpoints
 import FirebaseApi from '../api/FirebaseApi';
 import { ERROR_MIDDLEWARE } from '../constants/types';
 import { SAVE_OBJECT_SUCCESS } from '../constants/types';

@@ -3,7 +3,7 @@ import AlertMessageModal from '../modals/AlertMessageModal';
 //You can use prop-types to document the intended types of properties passed to components. 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { uploadMp3Action } from '../../actions/SoundActions';
+import { uploadMp3Action ,uploadEafAction} from '../../actions/SoundActions';
 import { parseResponse } from '../../utils/Utils';
 import '../styles/uploadFilePageStyle.css'
 import {processData} from '../../utils/ProcessData';
@@ -37,7 +37,7 @@ class UploadFilePage extends React.Component {
             console.log(e);
             //let data_64 = e.target.result;
            // this.props.uploadMp3Action(data_64);
-
+            this.props.uploadEafAction('test');
         }
         //processData(null, callaback, callabackError);
     }
@@ -59,4 +59,4 @@ class UploadFilePage extends React.Component {
 UploadFilePage.propTypes = {
     uploadMp3Action: PropTypes.func.isRequired
 }
-export default connect(null, { uploadMp3Action })(UploadFilePage);
+export default connect(null, { uploadMp3Action,uploadEafAction })(UploadFilePage);

@@ -1,5 +1,5 @@
 import api from '../api/httpApi'; //Api is for axios http endpoints
-import { UPLOAD_MP3_SUCCESS, ERROR_MIDDLEWARE} from '../constants/types';
+import { UPLOAD_MP3_SUCCESS, ERROR_MIDDLEWARE } from '../constants/types';
 import FirebaseApi from '../api/FirebaseApi';
 import httpApi from '../api/httpApi';
 
@@ -20,10 +20,17 @@ export const uploadMp3Action = (input) => {
 
 export const uploadEafAction = (input) => {
     return (dispatch) => {
-        httpApi.vocabulary.uploadEafFile(input)
-        .then((res)=>{
-            console.log(res)
-        })
+        let variable= FirebaseApi.getFunction('mediaLenguaServer');
+        console.log(variable);
+        variable('mediaLenguaServer')
+            .then((res) => {
+                console.log(res)
+
+            })
+            .catch((err) => {
+                console.log(err);
+                dispatch(handleError(err.message))
+            })
     }
 
 };
