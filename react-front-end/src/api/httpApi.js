@@ -43,7 +43,7 @@ export default {
     files:{
         uploadFiles: input => {
             let headersFiles = { 'Content-Type': 'multipart/form-data' }
-            return instanceDefault.post('/uploadEaf', input , { headers: headersFiles })
+            return instanceDefault.post('/uploadFiles', input , { headers: headersFiles })
         }
     }
 }

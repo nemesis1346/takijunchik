@@ -5,6 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const VocabularyFirepoint = require('../endpoints/vocabularyFirepoint.js');
+const FilesFirepoint = require('../endpoints/filesFirepoint.js');
 const app = express();
 const DataModel = require('../models/dataModel.js');
 const fileUpload = require('express-fileupload');
@@ -36,9 +37,6 @@ const handlerDefault = async (request, response) => {
             switch (url) {
                 case '/saveObject':
                     promise = this.vocabularyFirepoint.saveObject(JSON.parse(bufferContent));
-                    break;
-                case '/uploadMp3':
-                    promise = this.vocabularyFirepoint.uploadMp3(JSON.parse(bufferContent));
                     break;
                 case '/streamTrack':
                     //promise = this.soundChaincode.streamTrack();
@@ -110,6 +108,7 @@ const handlerFiles = async (request, response) => {
     console.log(eafFile.data.toString());
     let mp3File = request.files.mp3File;
     console.log(mp3File.data.toString());
+    await this.filesFirepoint.processingFiles(eafFile, mp3File);
     response.send("hello");
 }
 
@@ -126,8 +125,7 @@ app.post('/createUser', handlerDefault);
 app.post('/getObjectsByQuery', handlerDefault);
 app.post('/getObject', handlerDefault);
 app.post('/streamTrack', handlerDefault);
-app.post('/uploadMp3', handlerDefault);
-
+app.post('/uploadFiles', handlerDefault);
 
 app.listen(port, async (err) => {
     if (err) {
@@ -136,7 +134,7 @@ app.listen(port, async (err) => {
     try {
         //Instance of the network and transactions
         this.vocabularyFirepoint = new VocabularyFirepoint();
-
+        this.filesFirepoint = new FilesFirepoint();
         // setTimeout(clientTest, 1500);
     } catch (error) {
         console.log("Error Composer instance: ", error);

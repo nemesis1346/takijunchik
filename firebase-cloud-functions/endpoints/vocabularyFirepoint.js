@@ -2,22 +2,12 @@
 const ObjectModel = require('../models/objectModel.js');
 const DataModel = require('../models/dataModel.js');
 
-const firebase = require("firebase-admin");
-
-const serviceAccount = require("../credentials/media-lengua-firebase-adminsdk-y63jq-05ba265775.json");
-
-const defaultApp = firebase.initializeApp({
-    credential: firebase.credential.cert(serviceAccount),
-    databaseURL: "https://media-lengua.firebaseio.com",
-    storageBucket: "gs://media-lengua.appspot.com"
-});
-
-//const database = defaultApp.database();
+const firebase = require('../firebaseSetup/firebaseConfig.js');
 
 class VocabularyFirepoint {
     constructor() {
-        this.database = defaultApp.database();
-        this.storage = defaultApp.storage();
+        this.database = firebase.database();
+        this.storage = firebase.storage();
     }
 
     /** 
@@ -25,32 +15,6 @@ class VocabularyFirepoint {
      * @return {Promise} A promise whose fullfillment means the initialization has completed
      */
     async init() {
-       // this.database = defaultApp.database();
-
-    }
-    async uploadMp3(stringData) {
-        let dataModel = new DataModel(null, null, null);
-
-        console.log('************************************');
-        console.log('Request Upload Mp3 in Composer: ');
-        console.log(stringData);
-        try {
-            let reference = this.storage.child('test.jpg');
-            reference.putString(stringData, 'data_url')
-                .then((resp) => {
-                    dataModel.data = JSON.stringify(resp);
-                    dataModel.status = '200';
-                    return dataModel;
-                })
-                .catch((error) => {
-                    console.error(error);
-                    throw new Error(error);
-                });
-
-        } catch (error) {
-            console.error(error);
-            throw new Error(error);
-        }
     }
 
     /**
