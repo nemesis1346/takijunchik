@@ -1,7 +1,7 @@
-import api from '../api/BlockchainApi'; //Api is for axios http endpoints
+import api from '../api/httpApi'; //Api is for axios http endpoints
 import { UPLOAD_MP3_SUCCESS, ERROR_MIDDLEWARE} from '../constants/types';
 import FirebaseApi from '../api/FirebaseApi';
-
+import httpApi from '../api/httpApi';
 
 export const uploadMp3Action = (input) => {
     return (dispatch) => {
@@ -14,6 +14,16 @@ export const uploadMp3Action = (input) => {
                 console.log(err);
                 dispatch(handleError(err.message))
             })
+    }
+
+};
+
+export const uploadEafAction = (input) => {
+    return (dispatch) => {
+        httpApi.vocabulary.uploadEafFile(input)
+        .then((res)=>{
+            console.log(res)
+        })
     }
 
 };
