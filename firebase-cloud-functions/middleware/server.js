@@ -5,7 +5,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const VocabularyFirepoint = require('../endpoints/vocabularyFirepoint.js');
-const UserFirepoint= require('../endpoints/userFirepoint.js');
 const app = express();
 const DataModel = require('../models/dataModel.js');
 
@@ -33,23 +32,8 @@ const handler = async (request, response) => {
 
         try {
             switch (url) {
-                case '/createUser':
-                    promise = this.userFirepoint.createUser(JSON.parse(bufferContent));
-                    break;
-                case '/login':
-                    promise = this.userFirepoint.login(JSON.parse(bufferContent));
-                    break;
-                case '/getAllObjects':
-                    promise = this.vocabularyFirepoint.getAllObjects();
-                    break;
-                case '/getObject':
-                    promise = this.vocabularyFirepoint.getObject(JSON.parse(bufferContent));
-                    break;
                 case '/saveObject':
                     promise = this.vocabularyFirepoint.saveObject(JSON.parse(bufferContent));
-                    break;
-                case '/getObjectsByQuery':
-                    promise = this.vocabularyFirepoint.getObjectsByQuery(JSON.parse(bufferContent));
                     break;
                 case '/uploadMp3':
                     promise = this.vocabularyFirepoint.uploadMp3(JSON.parse(bufferContent));
@@ -135,7 +119,6 @@ app.listen(port, async (err) => {
     try {
         //Instance of the network and transactions
         this.vocabularyFirepoint = new VocabularyFirepoint();
-        this.userFirepoint = new UserFirepoint();
 
         // setTimeout(clientTest, 1500);
     } catch (error) {
