@@ -19,7 +19,8 @@ react-front-end/~
 react-front-end/yarn.lock
 firebase/yarn.lock
 tinkunakuy/soundProcessing/~
-cloud-functions-firebase/node_modules
-cloud-functions-firebase/yarn.lock
-cloud-functions-firebase/functions/node_modules
-cloud-functions-firebase/functions/package-lock.json
+firebase-cloud-functions/node_modules
+firebase-cloud-functions/yarn.lock
+firebase-cloud-functions/functions/node_modules
+firebase-cloud-functions/functions/package-lock.json
+firebase-cloud-functions/functions/yarn.lock
