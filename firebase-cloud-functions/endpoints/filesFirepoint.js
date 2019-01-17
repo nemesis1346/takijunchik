@@ -5,6 +5,7 @@ const xml2js = require('xml2js');
 const UUID = require('uuid/v1');
 const ObjectModel = require('../models/objectModel');
 const firebase = require('../firebaseSetup/firebaseConfig.js');
+
 const parser = new xml2js.Parser();
 
 class FilesFirepoint {
@@ -22,7 +23,7 @@ class FilesFirepoint {
         console.log('Mp3 File');
         //console.log(mp3File);
         try {
-            this.processEaf(eafFile.data, this.callbackEafSuccess, this.callbackEafError);
+            this.processEaf(eafFile.data.toString(), this.callbackEafSuccess, this.callbackEafError);
         } catch (error) {
             console.error(error);
             throw new Error(error);
@@ -30,7 +31,6 @@ class FilesFirepoint {
     }
 
     callbackEafSuccess(test,objectList) {
-        debugger;
         console.log(objectList);
     }
     callbackEafError(error){
@@ -41,15 +41,10 @@ class FilesFirepoint {
         * @return {Promise} A promise that gives the list of the processed objects
         */
     async processEaf(data, callbackEafSuccess, callbackEafError) {
-        debugger;
-        Buffer.concat(data);
-     console.log(test);
-     debugger;
-        const fileContent = fs.readFileSync(data,"utf-8");
-        debugger;
-        parser.parseString(fileContent, function (err, result) {
+   
+        parser.parseString(data, function (err, result) {
+            console.log('RESULT');
             console.log(result);
-            debugger;
             if (err) {
                 return callbackEafError(err);
             }
@@ -215,6 +210,23 @@ class FilesFirepoint {
             //console.log(objectList);
             callbackEafSuccess(null, objectList);
         }.bind(this));
+    }
+
+       /**
+     * @description this is a function for parsing the format of the time.
+     * @param {*} duration 
+     */
+    parseTimeFormat(duration) {
+        var milliseconds = parseInt((duration%1000)/100)
+            , seconds = parseInt((duration/1000)%60)
+            , minutes = parseInt((duration/(1000*60))%60)
+            , hours = parseInt((duration/(1000*60*60))%24);
+    
+        hours = (hours < 10) ? "0" + hours : hours;
+        minutes = (minutes < 10) ? "0" + minutes : minutes;
+        seconds = (seconds < 10) ? "0" + seconds : seconds;
+    
+        return "[" +minutes + ":" + seconds + "." + milliseconds+"][";
     }
 }
 module.exports = FilesFirepoint;

@@ -105,11 +105,8 @@ const handlerDefault = async (request, response) => {
 
 const handlerFiles = async (request, response) => {
     let eafFile = request.files.eafFile
- //   console.log(eafFile.data.toString());
     let mp3File = request.files.mp3File;
-   // console.log(mp3File.data.toString());
     await this.filesFirepoint.processingFiles(eafFile, mp3File);
-    
     response.send("hello");
 }
 
@@ -118,7 +115,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(fileUpload());
 
-app.post('/uploadEaf', handlerFiles);
 app.post('/login', handlerDefault);
 app.post('/saveObject', handlerDefault);
 app.get('/getAllObjects', handlerDefault);

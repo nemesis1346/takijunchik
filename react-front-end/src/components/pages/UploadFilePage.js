@@ -30,7 +30,6 @@ class UploadFilePage extends React.Component {
             const data = new FormData();
             data.append('eafFile', this.state.eafFile, this.state.eafFile.name);
             data.append('mp3File', this.state.mp3File, this.state.mp3File.name);
-
             this.props.uploadFilesAction(data);
         } else {
             console.log('something is missing ');
