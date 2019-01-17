@@ -17,6 +17,7 @@
     "firebase-tools": "^6.3.0",
     "mp3-parser": "^0.3.0",
     "node-lame": "^1.2.0",
+    "shelljs": "^0.8.3",
     "superagent": "^4.0.0",
     "xml2js": "^0.4.19"
   }

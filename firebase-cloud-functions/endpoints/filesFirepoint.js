@@ -6,7 +6,7 @@ const UUID = require('uuid/v1');
 const ObjectModel = require('../models/objectModel');
 const firebase = require('../firebaseSetup/firebaseConfig.js');
 const Lame = require("node-lame").Lame;
-
+const exec = require('shelljs').exec;
 const parser = new xml2js.Parser();
 
 class FilesFirepoint {
@@ -42,18 +42,29 @@ class FilesFirepoint {
             }).setBuffer(mp3File.data);
 
             decoder.decode()
-                .then(() => {
+                .then(async () => {
+                    const shellexec = async (command, checkStderrForError = true, parseOutput = true) => {
+                        const {code, stdout, stderr} = await exec(command, {silent:true});
+                        if (code !== 0 || (checkStderrForError && stderr)) {
+                          throw new Error(`Command ${command} resulted in code: ${code}, stderr: ${stderr}`);
+                        }
+                        // console.log(stdout);
+                        return parseOutput ? splitTrimFilter(stdout) : stdout;
+                    }
+
+
                     // Encoding finished
                     console.log('encoding success');
                     //This is just for testing
                     let newobjectList = objectList.slice(0, 5);
 
-                    // let listMp3TimeParts = [];
-                    // newobjectList.forEach(element => {
-                    //     listMp3TimeParts({mp3Id:element.objectId,});
-
-                    //     console.log(element);
-                    // });
+                    for (let element of newobjectList) {
+                        let currentCommand = 'ffmpeg -i '+'../temporal/' + mp3File.name+' -acodec copy -ss '+element.timeValue1Format+' -t '+element.timeValue2Format+' ../temporal/'+element.objectId+".mp3";
+                       console.log(currentCommand);
+                        await shellexec(currentCommand);
+                        // shell.exec('ffmpeg -i '+'../temporal/' + mp3File.name+' -acodec copy -ss '+element.timeValue1Format+' -t '+element.timeValue2Format+' ../temporal/'+element.objectId);
+                        console.log(element);
+                    }
 
                 })
                 .catch((error) => {
@@ -259,7 +270,7 @@ class FilesFirepoint {
         minutes = (minutes < 10) ? "0" + minutes : minutes;
         seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-        return "[" + minutes + ":" + seconds + "." + milliseconds + "][";
+        return minutes + ":" + seconds + ":" + milliseconds;
     }
 }
 module.exports = FilesFirepoint;
