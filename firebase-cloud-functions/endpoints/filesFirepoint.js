@@ -5,6 +5,7 @@ const xml2js = require('xml2js');
 const UUID = require('uuid/v1');
 const ObjectModel = require('../models/objectModel');
 const firebase = require('../firebaseSetup/firebaseConfig.js');
+const mp3Parser = require("mp3-parser");
 
 const parser = new xml2js.Parser();
 
@@ -19,19 +20,26 @@ class FilesFirepoint {
         console.log('************************************');
         console.log('Request Upload Files in Composer: ');
         console.log('Eaf File');
-       console.log(eafFile.data.toString());
+        console.log(eafFile.data.toString());
         console.log('Mp3 File');
         //console.log(mp3File);
         try {
-            this.processEaf(eafFile.data.toString(), this.callbackEafSuccess, this.callbackEafError);
+            this.processEaf(eafFile,mp3File, this.callbackEafSuccess, this.callbackEafError);
         } catch (error) {
             console.error(error);
             throw new Error(error);
         }
     }
 
-    callbackEafSuccess(test,objectList) {
+    callbackEafSuccess(objectList,mp3File) {
         console.log(objectList);
+        console.log(mp3File);
+        //About to test, check split testing 
+        let mp3Tags = mp3Parser.readTags(mp3File);
+
+        objectList.forEach(element => {
+            
+        });
     }
     callbackEafError(error){
         console.log(error);
@@ -40,9 +48,9 @@ class FilesFirepoint {
         * @description Initializes the processing of the data in eaf
         * @return {Promise} A promise that gives the list of the processed objects
         */
-    async processEaf(data, callbackEafSuccess, callbackEafError) {
+    async processEaf(eafFile,mp3File, callbackEafSuccess, callbackEafError) {
    
-        parser.parseString(data, function (err, result) {
+        parser.parseString(eafFile.data.toString(), function (err, result) {
             console.log('RESULT');
             console.log(result);
             if (err) {
@@ -208,7 +216,7 @@ class FilesFirepoint {
                 }
             }
             //console.log(objectList);
-            callbackEafSuccess(null, objectList);
+            callbackEafSuccess(objectList,mp3File);
         }.bind(this));
     }
 
