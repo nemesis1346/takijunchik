@@ -5,7 +5,7 @@ const xml2js = require('xml2js');
 const UUID = require('uuid/v1');
 const ObjectModel = require('../models/objectModel');
 const firebase = require('../firebaseSetup/firebaseConfig.js');
-const mp3Parser = require("mp3-parser");
+const Lame = require("node-lame").Lame;
 
 const parser = new xml2js.Parser();
 
@@ -24,32 +24,57 @@ class FilesFirepoint {
         console.log('Mp3 File');
         //console.log(mp3File);
         try {
-            this.processEaf(eafFile,mp3File, this.callbackEafSuccess, this.callbackEafError);
+            this.processEaf(eafFile, mp3File, this.callbackEafSuccess, this.callbackEafError);
         } catch (error) {
             console.error(error);
             throw new Error(error);
         }
     }
 
-    callbackEafSuccess(objectList,mp3File) {
-        console.log(objectList);
-        console.log(mp3File);
-        //About to test, check split testing 
-        let mp3Tags = mp3Parser.readTags(mp3File);
+    callbackEafSuccess(objectList, mp3File) {
+        try {
+            console.log(objectList);
+            console.log(mp3File);
+            //About to test, check split testing 
+            //WARNING: Be aware of installing lame with sudo apt-get install lame
+            const decoder = new Lame({
+                "output": "../temporal/" + mp3File.name,
+            }).setBuffer(mp3File.data);
 
-        objectList.forEach(element => {
-            
-        });
+            decoder.decode()
+                .then(() => {
+                    // Encoding finished
+                    console.log('encoding success');
+                    //This is just for testing
+                    let newobjectList = objectList.slice(0, 5);
+
+                    // let listMp3TimeParts = [];
+                    // newobjectList.forEach(element => {
+                    //     listMp3TimeParts({mp3Id:element.objectId,});
+
+                    //     console.log(element);
+                    // });
+
+                })
+                .catch((error) => {
+                    console.log('Something went wrong');
+                    console.log(error);
+                });
+
+        } catch (error) {
+            console.log(error);
+        }
+
     }
-    callbackEafError(error){
+    callbackEafError(error) {
         console.log(error);
     }
     /**
         * @description Initializes the processing of the data in eaf
         * @return {Promise} A promise that gives the list of the processed objects
         */
-    async processEaf(eafFile,mp3File, callbackEafSuccess, callbackEafError) {
-   
+    async processEaf(eafFile, mp3File, callbackEafSuccess, callbackEafError) {
+
         parser.parseString(eafFile.data.toString(), function (err, result) {
             console.log('RESULT');
             console.log(result);
@@ -58,7 +83,7 @@ class FilesFirepoint {
             }
 
             let objectList = [];
-            
+
             //New Processing
             let TIER_ANNOTATION = result['ANNOTATION_DOCUMENT']['TIER'];
             //Process the MEDIA LENGUA List 
@@ -216,25 +241,25 @@ class FilesFirepoint {
                 }
             }
             //console.log(objectList);
-            callbackEafSuccess(objectList,mp3File);
+            callbackEafSuccess(objectList, mp3File);
         }.bind(this));
     }
 
-       /**
-     * @description this is a function for parsing the format of the time.
-     * @param {*} duration 
-     */
+    /**
+  * @description this is a function for parsing the format of the time.
+  * @param {*} duration 
+  */
     parseTimeFormat(duration) {
-        var milliseconds = parseInt((duration%1000)/100)
-            , seconds = parseInt((duration/1000)%60)
-            , minutes = parseInt((duration/(1000*60))%60)
-            , hours = parseInt((duration/(1000*60*60))%24);
-    
+        var milliseconds = parseInt((duration % 1000) / 100)
+            , seconds = parseInt((duration / 1000) % 60)
+            , minutes = parseInt((duration / (1000 * 60)) % 60)
+            , hours = parseInt((duration / (1000 * 60 * 60)) % 24);
+
         hours = (hours < 10) ? "0" + hours : hours;
         minutes = (minutes < 10) ? "0" + minutes : minutes;
         seconds = (seconds < 10) ? "0" + seconds : seconds;
-    
-        return "[" +minutes + ":" + seconds + "." + milliseconds+"][";
+
+        return "[" + minutes + ":" + seconds + "." + milliseconds + "][";
     }
 }
 module.exports = FilesFirepoint;
