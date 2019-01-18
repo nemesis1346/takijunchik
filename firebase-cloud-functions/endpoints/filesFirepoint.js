@@ -8,6 +8,8 @@ const firebase = require('../firebaseSetup/firebaseConfig.js');
 const Lame = require("node-lame").Lame;
 const exec = require('shelljs').exec;
 const parser = new xml2js.Parser();
+const shell2 = require('shelljs');
+
 
 class FilesFirepoint {
     constructor() {
@@ -59,10 +61,11 @@ class FilesFirepoint {
                     let newobjectList = objectList.slice(0, 5);
 
                     for (let element of newobjectList) {
+                        console.log('NEW ENCODING **********************************');
                         let currentCommand = 'ffmpeg -i '+'../temporal/' + mp3File.name+' -acodec copy -ss '+element.timeValue1Format+' -t '+element.timeValue2Format+' ../temporal/'+element.objectId+".mp3";
                        console.log(currentCommand);
                         await shellexec(currentCommand);
-                        // shell.exec('ffmpeg -i '+'../temporal/' + mp3File.name+' -acodec copy -ss '+element.timeValue1Format+' -t '+element.timeValue2Format+' ../temporal/'+element.objectId);
+                        //shell2.exec('ffmpeg -i '+'../temporal/' + mp3File.name+' -acodec copy -ss '+element.timeValue1Format+' -t '+element.timeValue2Format+' ../temporal/'+element.objectId);
                         console.log(element);
                     }
 
