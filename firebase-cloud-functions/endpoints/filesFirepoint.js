@@ -80,10 +80,9 @@ class FilesFirepoint {
                     let split = mp3Split(options);
                     split.parse().then((sections) => {
                         for (let section of sections) {
-                            console.log(section.name);      // filename
-                            console.log(section.start);     // section start
-                            console.log(section.end);       // section end
-                            console.log(section.trackName); // track name
+                            console.log("Name: "+section.name);      // filename
+                            console.log("Start Time: "+section.start);     // section start
+                            console.log("End Time: "+section.end);       // section end
                         }
                     });
 
@@ -291,7 +290,9 @@ class FilesFirepoint {
         minutes = (minutes < 10) ? "0" + minutes : minutes;
         seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-        return minutes + ":" + seconds + ":" + milliseconds;
+        //return minutes + ":" + seconds + ":" + milliseconds;
+        return  "00:"+seconds + "." + milliseconds;
+
     }
 }
 module.exports = FilesFirepoint;

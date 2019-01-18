@@ -22,10 +22,10 @@ async function divideMP3() {
         // });
         // let options = { input: '/home/nemesis1346/Documents/UniversityProjects/takijunchik/tinkunakuy/soundProcessing/41-Elicitations-2010.mp3', audios: ['[00:00] audio', '[00:02.5] audio2','[00:06.1] audio3'] };
         let options = { input: './41-Elicitations-2010.mp3', 
-        sections: ['[00:00] audio'] ,
+        sections: ['[00:00] audio1','[10:00] audio2'] ,
     output:'.'};
 
-    shell.exec('ffmpeg -i /home/nemesis1346/Documents/UniversityProjects/takijunchik/blockchain/data/audioFiles/41-Elicitations-2010.mp3 -acodec copy -ss 00:00:00 -t 00:30:00 half1.mp3');
+   // shell.exec('ffmpeg -i /home/nemesis1346/Documents/UniversityProjects/takijunchik/blockchain/data/audioFiles/41-Elicitations-2010.mp3 -acodec copy -ss 00:00:00 -t 00:30:00 half1.mp3');
 
         let split = mp3Split(options);
         split.parse().then((sections) => {
