@@ -16,6 +16,7 @@
     "firebase-admin": "^6.4.0",
     "firebase-tools": "^6.3.0",
     "mp3-parser": "^0.3.0",
+    "mp3-split": "^4.1.0",
     "node-lame": "^1.2.0",
     "shelljs": "^0.8.3",
     "superagent": "^4.0.0",

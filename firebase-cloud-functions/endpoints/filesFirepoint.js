@@ -9,6 +9,7 @@ const Lame = require("node-lame").Lame;
 const exec = require('shelljs').exec;
 const parser = new xml2js.Parser();
 const shell2 = require('shelljs');
+const mp3Split = require('mp3-split');
 
 
 class FilesFirepoint {
@@ -59,15 +60,32 @@ class FilesFirepoint {
                     console.log('encoding success');
                     //This is just for testing
                     let newobjectList = objectList.slice(0, 5);
-
+                    let timeSlots= [];
                     for (let element of newobjectList) {
                         console.log('NEW ENCODING **********************************');
-                        let currentCommand = 'ffmpeg -i '+'../temporal/' + mp3File.name+' -acodec copy -ss '+element.timeValue1Format+' -t '+element.timeValue2Format+' ../temporal/'+element.objectId+".mp3";
-                       console.log(currentCommand);
-                        await shellexec(currentCommand);
+                        // let currentCommand = 'ffmpeg -i '+'../temporal/' + mp3File.name+' -acodec copy -ss '+element.timeValue1Format+' -t '+element.timeValue2Format+' ../temporal/'+element.objectId+".mp3";
+                        console.log(element.timeValue1Format);
+                       //console.log(currentCommand);
+                       // await shellexec(currentCommand);
                         //shell2.exec('ffmpeg -i '+'../temporal/' + mp3File.name+' -acodec copy -ss '+element.timeValue1Format+' -t '+element.timeValue2Format+' ../temporal/'+element.objectId);
-                        console.log(element);
+                        //console.log(element);
+                        timeSlots.push('['+element.timeValue1Format+'] '+element.objectId);
+                        
                     }
+                    console.log(timeSlots);
+                    let options = { input: '../temporal/' + mp3File.name, 
+                        sections:timeSlots ,
+                    output:'../temporal/'};
+
+                    let split = mp3Split(options);
+                    split.parse().then((sections) => {
+                        for (let section of sections) {
+                            console.log(section.name);      // filename
+                            console.log(section.start);     // section start
+                            console.log(section.end);       // section end
+                            console.log(section.trackName); // track name
+                        }
+                    });
 
                 })
                 .catch((error) => {

@@ -21,7 +21,7 @@ async function divideMP3() {
         //     console.log('Error: ' + err);
         // });
         // let options = { input: '/home/nemesis1346/Documents/UniversityProjects/takijunchik/tinkunakuy/soundProcessing/41-Elicitations-2010.mp3', audios: ['[00:00] audio', '[00:02.5] audio2','[00:06.1] audio3'] };
-        let options = { input: '/home/nemesis1346/Documents/UniversityProjects/takijunchik/blockchain/data/audioFiles/41-Elicitations-2010.mp3', 
+        let options = { input: './41-Elicitations-2010.mp3', 
         sections: ['[00:00] audio'] ,
     output:'.'};
 
