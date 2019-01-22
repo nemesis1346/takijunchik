@@ -1,5 +1,9 @@
 import api from "../api/httpApi"; //Api is for axios http endpoints
-import { UPLOAD_MP3_SUCCESS, ERROR_MIDDLEWARE } from "../constants/types";
+import {
+  UPLOAD_MP3_SUCCESS,
+  ERROR_MIDDLEWARE,
+  GET_URL_AUDIO_SUCCESS
+} from "../constants/types";
 import FirebaseApi from "../api/FirebaseApi";
 import httpApi from "../api/httpApi";
 
@@ -18,17 +22,25 @@ export const uploadFilesAction = input => {
 };
 
 export const getUrlSoundAction = filename => {
-    console.log('ACTIONS');
-
   return dispatch => {
     FirebaseApi.getUrlHttp(filename)
       .then(res => {
         console.log(res);
+        dispatch(getUrlSoundSuccess(res));
       })
       .catch(err => {
         console.log(err);
-        //dispatch(handleError(err.message));
+        dispatch(handleError(err.message));
       });
+  };
+};
+
+const getUrlSoundSuccess = url => {
+  console.log("ACTIONS");
+  console.log(url);
+  return {
+    type: GET_URL_AUDIO_SUCCESS,
+    urlAudio: url
   };
 };
 

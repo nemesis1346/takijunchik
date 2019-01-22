@@ -24,7 +24,7 @@ componentWillMount(){
         this.props.objectDetailData.objectId != null &&
         this.props.objectDetailData.objectId != ""
       ) {
-        this.props.getUrlSoundAction(this.state.objectDetailData.audioUrl);
+        this.props.getUrlSoundAction(this.props.objectDetailData.audioUrl);
       }
 }
 
