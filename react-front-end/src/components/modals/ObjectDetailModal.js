@@ -3,6 +3,7 @@ import { Modal, Button } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getUrlSoundAction } from "../../actions/SoundActions";
+import AudioPlayer from "react-h5-audio-player";
 
 const style = {
   marginLeft: "30%",
@@ -28,10 +29,11 @@ class ObjectDetailModal extends React.Component {
     ) {
       nextProps.getUrlSoundAction(nextProps.objectDetailData.objectId);
     }
-//      // You don't have to do this check first, but it can help prevent an unneeded render
-//   if (nextProps.audioUrl !== this.state.audioUrl) {
-//     this.setState({ startTime: nextProps.startTime });
-//   }
+    
+     // You don't have to do this check first, but it can help prevent an unneeded render
+  if (nextProps.audioUrl !== this.state.audioUrl) {
+    console.log('CHANGED');
+  }
   }
 
   show = size => () => this.setState({ size });
@@ -41,6 +43,7 @@ class ObjectDetailModal extends React.Component {
   };
 
   render() {
+    console.log('RENDER');
     const { objectDetailSize, objectDetailOpen, objectDetailData,audioUrl } = this.props;
     return (
       <Modal
@@ -69,9 +72,12 @@ class ObjectDetailModal extends React.Component {
               <b>Ipa Content: </b> {objectDetailData.ipaContent}
             </div>
           </div>
-          <audio controls>
-              <source src={audioUrl} type="audio/mp3" />
-          </audio>
+          <AudioPlayer
+            autoPlay
+            src={audioUrl}
+            onPlay={e => console.log("onPlay")}
+            // other props here
+          />
         </Modal.Content>
         <Modal.Actions>
           <Button
