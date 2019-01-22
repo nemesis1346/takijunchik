@@ -1,4 +1,3 @@
-import api from '../api/httpApi'; //Api is for axios http endpoints
 import FirebaseApi from '../api/FirebaseApi';
 import { ERROR_MIDDLEWARE } from '../constants/types';
 import { SAVE_OBJECT_SUCCESS } from '../constants/types';
@@ -27,15 +26,13 @@ export const saveObjectFirestore =(object)=>{
 }
 
 export const getObjects = () => {
-    return (dispatch,getState, {getFirebase,getFirestore}) => {
+    return (dispatch) => {
         FirebaseApi.getValues('/objectModel')
             .then((res) => {
-                console.log(res);
                 let objectList= [];
                 res.forEach(function (childSnapshot) {
                     let childData = childSnapshot.val();
                     childData["key"]=childSnapshot.key;
-                    
                     objectList.push(childData);
                 });
                 dispatch(getObjectsSuccess(objectList));

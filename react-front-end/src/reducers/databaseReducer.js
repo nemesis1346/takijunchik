@@ -9,7 +9,7 @@ const initState = {
   hideResultMessage: false,
   hideSpinner: false,
   objectDetailData: {
-    mediaLengua: "",
+    mediaLenguaContent: "",
     spanishContent: "",
     kichwaContent: "",
     elicitSentenceContent: "",
@@ -21,7 +21,6 @@ const initState = {
 const databaseReducer = (state = initState, action = {}) => {
   switch (action.type) {
     case GET_OBJECTS_SUCCESS:
-      console.log(action);
       return {
         ...state,
         objects: action.objects,
@@ -32,7 +31,7 @@ const databaseReducer = (state = initState, action = {}) => {
       return {
         ...state,
         objectDetailData: {
-          mediaLengua: action.object.mediaLengua,
+          mediaLenguaContent: action.object.mediaLenguaContent,
           spanishContent: action.object.spanishContent,
           kichwaContent: action.object.kichwaContent,
           elicitSentenceContent: action.object.elicitSentenceContent,

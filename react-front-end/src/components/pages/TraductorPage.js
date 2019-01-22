@@ -9,7 +9,7 @@ import {
   saveObjectFirestore,
 } from "../../actions/FirebaseDatabaseActions";
 import ObjectDetailModal from "../modals/ObjectDetailModal";
-import ObjectTable from "../forms/ObjectTable";
+import ObjectTable from "../tables/ObjectTable";
 import { Message } from "semantic-ui-react";
 import MDSpinner from "react-md-spinner";
 import "../styles/traductorPageStyle.css";
@@ -93,8 +93,6 @@ TraductorPage.propTypes = {
 };
 
 const mapStateToPropsTraductorPage = state => {
-    console.log('STATE');
-    console.log(state);
   //In this case objects is gonna be applied to the props of the component
   return {
     objects: state.databaseReducer.objects,

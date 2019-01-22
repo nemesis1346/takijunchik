@@ -1,4 +1,3 @@
-import api from "../api/httpApi"; //Api is for axios http endpoints
 import {
   UPLOAD_MP3_SUCCESS,
   ERROR_MIDDLEWARE,
@@ -36,8 +35,6 @@ export const getUrlSoundAction = filename => {
 };
 
 const getUrlSoundSuccess = url => {
-  console.log("ACTIONS");
-  console.log(url);
   return {
     type: GET_URL_AUDIO_SUCCESS,
     audioUrl: url

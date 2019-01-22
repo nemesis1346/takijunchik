@@ -21,12 +21,17 @@ class ObjectDetailModal extends React.Component {
 
 
   componentWillReceiveProps(nextProps) {
+      console.log('NEXT PROPS');
     if (
       nextProps.objectDetailData.objectId != null &&
       nextProps.objectDetailData.objectId != ""
     ) {
       nextProps.getUrlSoundAction(nextProps.objectDetailData.objectId);
     }
+//      // You don't have to do this check first, but it can help prevent an unneeded render
+//   if (nextProps.audioUrl !== this.state.audioUrl) {
+//     this.setState({ startTime: nextProps.startTime });
+//   }
   }
 
   show = size => () => this.setState({ size });
@@ -37,7 +42,6 @@ class ObjectDetailModal extends React.Component {
 
   render() {
     const { objectDetailSize, objectDetailOpen, objectDetailData,audioUrl } = this.props;
-
     return (
       <Modal
         style={style}
@@ -49,7 +53,7 @@ class ObjectDetailModal extends React.Component {
         <Modal.Content>
           <div>
             <div>
-              <b>Media Lengua: </b> {objectDetailData.mediaLenguaContent}
+              <b>Media Lengua Content: </b> {objectDetailData.mediaLenguaContent}
             </div>
             <div>
               <b>Spanish Content: </b> {objectDetailData.spanishContent}
@@ -58,7 +62,7 @@ class ObjectDetailModal extends React.Component {
               <b>Kichwa Content: </b> {objectDetailData.kichwaContent}
             </div>
             <div>
-              <b>Elicit Sentence Content: </b>{" "}
+              <b>Elicit Sentence Content: </b>
               {objectDetailData.elicitSentenceContent}
             </div>
             <div>
