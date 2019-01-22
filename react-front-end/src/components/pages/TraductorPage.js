@@ -93,6 +93,8 @@ TraductorPage.propTypes = {
 };
 
 const mapStateToPropsTraductorPage = state => {
+    console.log('STATE');
+    console.log(state);
   //In this case objects is gonna be applied to the props of the component
   return {
     objects: state.databaseReducer.objects,

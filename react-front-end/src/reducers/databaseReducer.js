@@ -37,7 +37,7 @@ const databaseReducer = (state = initState, action = {}) => {
           elicitSentenceContent: action.object.elicitSentenceContent,
           ipaContent: action.object.ipaContent,
           audioUrl: action.object.audioUrl,
-          objectId: action.objectId
+          objectId: action.object.objectId
         },
       };
     default:

@@ -24,6 +24,7 @@ componentWillMount(){
         this.props.objectDetailData.objectId != null &&
         this.props.objectDetailData.objectId != ""
       ) {
+          console.log('DEBUGGING');
         this.props.getUrlSoundAction(this.props.objectDetailData.audioUrl);
       }
 }
