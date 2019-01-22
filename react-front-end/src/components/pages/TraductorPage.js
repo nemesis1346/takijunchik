@@ -2,11 +2,11 @@ import React from "react";
 import TraductorForm from "../forms/TraductorForm";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { translateFirebaseAction } from "../../actions/TranslateActions";
+import { translateFirebaseAction,setObjectDetail } from "../../actions/TranslateActions";
 import {
   saveObjectDatabase,
   getObjects,
-  saveObjectFirestore
+  saveObjectFirestore,
 } from "../../actions/FirebaseDatabaseActions";
 import ObjectDetailModal from "../modals/ObjectDetailModal";
 import ObjectTable from "../forms/ObjectTable";
@@ -45,8 +45,9 @@ class TraductorPage extends React.Component {
     console.log(objectSelected);
     this.setState({
       objectDetailOpen: true,
-      objectDetailData: objectSelected
+     // objectDetailData: objectSelected
     });
+    this.props.setObjectDetail(objectSelected);
   };
 
   render() {
@@ -96,11 +97,12 @@ const mapStateToPropsTraductorPage = state => {
   return {
     objects: state.databaseReducer.objects,
     hideResultMessage: state.databaseReducer.hideResultMessage,
-    hideSpinner: state.databaseReducer.hideSpinner
+    hideSpinner: state.databaseReducer.hideSpinner,
+    objectDetailData:state.databaseReducer.objectDetailData
   };
 };
 
 export default connect(
   mapStateToPropsTraductorPage,
-  { translateFirebaseAction, getObjects }
+  { translateFirebaseAction, getObjects,setObjectDetail }
 )(TraductorPage);

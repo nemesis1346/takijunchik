@@ -38,7 +38,7 @@ const databaseReducer = (state = initState, action = {}) => {
           ipaContent: action.object.ipaContent,
           audioUrl: action.object.audioUrl,
           objectId: action.objectId
-        }
+        },
       };
     default:
       return state;
