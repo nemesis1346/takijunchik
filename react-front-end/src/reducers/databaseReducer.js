@@ -2,7 +2,8 @@
 import {
   GET_OBJECTS_SUCCESS,
   GET_OBJECT_DETAIL_SUCCESS,
-  GET_URL_AUDIO_SUCCESS
+  GET_URL_AUDIO_SUCCESS,
+  TRANSLATE_SUCCESS
 } from "../constants/types";
 const initState = {
   objects: [],
@@ -43,6 +44,12 @@ const databaseReducer = (state = initState, action = {}) => {
       return {
         ...state,
         audioUrl: action.audioUrl
+      };
+    case TRANSLATE_SUCCESS:
+      console.log(action);
+      return {
+        ...state,
+        object: action.object
       };
     default:
       return state;

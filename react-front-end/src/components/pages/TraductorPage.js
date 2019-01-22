@@ -2,11 +2,9 @@ import React from "react";
 import TraductorForm from "../forms/TraductorForm";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { translateFirebaseAction,setObjectDetail } from "../../actions/TranslateActions";
 import {
-  saveObjectDatabase,
   getObjects,
-  saveObjectFirestore,
+  translateFirebaseAction,setObjectDetail 
 } from "../../actions/FirebaseDatabaseActions";
 import ObjectDetailModal from "../modals/ObjectDetailModal";
 import ObjectTable from "../tables/ObjectTable";
@@ -37,7 +35,7 @@ class TraductorPage extends React.Component {
   };
 
   submit = data => {
-    // return this.props.TranslateFirebase(data.object.trim().toLowerCase())
+     return this.props.translateFirebaseAction(data.object.trim().toLowerCase())
   };
 
   objectSelectedCallback = objectSelected => {
