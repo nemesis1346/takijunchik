@@ -88,7 +88,7 @@ const uploadMp3Files = async (pathSoundFile, fileName) => {
     await firebase.storage().bucket().upload(pathSoundFile, {
         destination: "soundFiles/" + fileName + ".mp3",
         public: true,
-        metadata: { contentType: "audio/mp3" }
+        metadata: { contentType: "audio/mp3"  }
     }, function (err, file) {
         if (err) {
             console.log('UPLOAD MP3 FILES ERROR:');
@@ -224,7 +224,7 @@ class FilesFirepoint {
                                 ipaContentArray: parseContent(element.ipaContent),
                                 glossesContentArray: parseContent(element.glossesContent),
                                 segmentedContentArray: parseContent(element.segmentedContent),
-                                audioUrl:"soundFiles/" + element.objectId + ".mp3" //TODO: something else here
+                                audioUrl:"https://media-lengua.appspot.com/soundFiles/" + element.objectId + ".mp3" //TODO: something else here
                             });
                     }
                     await shellexec('exec rm ../temporal/*.mp3');

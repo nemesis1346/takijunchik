@@ -13,14 +13,15 @@ import '../styles/traductorPageStyle.css';
 
 class TraductorPage extends React.Component {
     state = {
-        loading: false,
         errors: {},
         objectDetailData: {
             mediaLengua: "",
             spanishContent: "",
             kichwaContent: "",
             elicitSentenceContent: "",
-            ipaContent: ""
+            ipaContent: "",
+            audioUrl:"",
+            objectId:""
         },
         objectDetailOpen: false,
         objectDetailSize: "tiny",
@@ -48,6 +49,8 @@ class TraductorPage extends React.Component {
     }
 
     objectSelectedCallback = (objectSelected) => {
+        console.log('PAGE');
+        console.log(objectSelected);
         this.setState({
             "objectDetailOpen": true,
             "objectDetailData": objectSelected
