@@ -223,7 +223,8 @@ class FilesFirepoint {
                                 ),
                                 ipaContentArray: parseContent(element.ipaContent),
                                 glossesContentArray: parseContent(element.glossesContent),
-                                segmentedContentArray: parseContent(element.segmentedContent)
+                                segmentedContentArray: parseContent(element.segmentedContent),
+                                audioUrl:"soundFiles/" + element.objectId + ".mp3" //TODO: something else here
                             });
                     }
                     await shellexec('exec rm ../temporal/*.mp3');
