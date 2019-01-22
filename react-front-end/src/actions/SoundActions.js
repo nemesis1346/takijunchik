@@ -17,7 +17,7 @@ export const uploadFilesAction = input => {
   };
 };
 
-export const getUrlSound = filename => {
+export const getUrlSoundAction = filename => {
     console.log('ACTIONS');
 
   return dispatch => {

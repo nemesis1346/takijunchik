@@ -2,7 +2,7 @@ import React from "react";
 import { Modal, Button } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getUrlSound } from "../../actions/SoundActions";
+import { getUrlSoundAction } from "../../actions/SoundActions";
 
 const style = {
   marginLeft: "30%",
@@ -19,6 +19,15 @@ class ObjectDetailModal extends React.Component {
     };
   }
 
+componentWillMount(){
+    if (
+        this.props.objectDetailData.objectId != null &&
+        this.props.objectDetailData.objectId != ""
+      ) {
+        this.props.getUrlSoundAction(this.state.objectDetailData.audioUrl);
+      }
+}
+
   show = size => () => this.setState({ size });
 
   close = () => {
@@ -33,12 +42,7 @@ class ObjectDetailModal extends React.Component {
     console.log(this.props);
     const { objectDetailSize, objectDetailOpen, objectDetailData } = this.props;
     console.log(objectDetailData.audioUrl);
-    if (
-      objectDetailData.objectId != null &&
-      objectDetailData.objectId != ""
-    ) {
-      this.props.getUrlSound(objectDetailData.audioUrl);
-    }
+    
     return (
       <Modal
         style={style}
@@ -100,5 +104,5 @@ ObjectDetailModal.propTypes = {
 
 export default connect(
   null,
-  { getUrlSound }
+  { getUrlSoundAction }
 )(ObjectDetailModal);
