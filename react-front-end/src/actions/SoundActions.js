@@ -40,7 +40,7 @@ const getUrlSoundSuccess = url => {
   console.log(url);
   return {
     type: GET_URL_AUDIO_SUCCESS,
-    urlAudio: url
+    audioUrl: url
   };
 };
 

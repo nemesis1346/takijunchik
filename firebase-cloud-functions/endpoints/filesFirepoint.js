@@ -224,7 +224,6 @@ class FilesFirepoint {
                                 ipaContentArray: parseContent(element.ipaContent),
                                 glossesContentArray: parseContent(element.glossesContent),
                                 segmentedContentArray: parseContent(element.segmentedContent),
-                                audioUrl:"https://media-lengua.appspot.com/soundFiles/" + element.objectId + ".mp3" //TODO: something else here
                             });
                     }
                     await shellexec('exec rm ../temporal/*.mp3');

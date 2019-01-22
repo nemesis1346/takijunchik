@@ -1,7 +1,8 @@
 //with {} we initialize the action and state
 import {
   GET_OBJECTS_SUCCESS,
-  GET_OBJECT_DETAIL_SUCCESS
+  GET_OBJECT_DETAIL_SUCCESS,
+  GET_URL_AUDIO_SUCCESS
 } from "../constants/types";
 const initState = {
   objects: [],
@@ -13,9 +14,9 @@ const initState = {
     kichwaContent: "",
     elicitSentenceContent: "",
     ipaContent: "",
-    audioUrl: "",
     objectId: ""
-  }
+  },
+  audioUrl: ""
 };
 const databaseReducer = (state = initState, action = {}) => {
   switch (action.type) {
@@ -36,9 +37,13 @@ const databaseReducer = (state = initState, action = {}) => {
           kichwaContent: action.object.kichwaContent,
           elicitSentenceContent: action.object.elicitSentenceContent,
           ipaContent: action.object.ipaContent,
-          audioUrl: action.object.audioUrl,
           objectId: action.object.objectId
-        },
+        }
+      };
+    case GET_URL_AUDIO_SUCCESS:
+      return {
+        ...state,
+        audioUrl: action.audioUrl
       };
     default:
       return state;

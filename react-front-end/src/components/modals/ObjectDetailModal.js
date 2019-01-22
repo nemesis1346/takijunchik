@@ -19,15 +19,15 @@ class ObjectDetailModal extends React.Component {
     };
   }
 
-componentWillMount(){
+
+  componentWillReceiveProps(nextProps) {
     if (
-        this.props.objectDetailData.objectId != null &&
-        this.props.objectDetailData.objectId != ""
-      ) {
-          console.log('DEBUGGING');
-        this.props.getUrlSoundAction(this.props.objectDetailData.audioUrl);
-      }
-}
+      nextProps.objectDetailData.objectId != null &&
+      nextProps.objectDetailData.objectId != ""
+    ) {
+      nextProps.getUrlSoundAction(nextProps.objectDetailData.objectId);
+    }
+  }
 
   show = size => () => this.setState({ size });
 
@@ -35,15 +35,9 @@ componentWillMount(){
     this.props.objectDetailCloseCallback(false);
   };
 
-  onPlay = () => {
-    console.log("play");
-  };
-
   render() {
-    console.log(this.props);
-    const { objectDetailSize, objectDetailOpen, objectDetailData } = this.props;
-    console.log(objectDetailData.audioUrl);
-    
+    const { objectDetailSize, objectDetailOpen, objectDetailData,audioUrl } = this.props;
+
     return (
       <Modal
         style={style}
@@ -72,19 +66,10 @@ componentWillMount(){
             </div>
           </div>
           <audio controls>
-          {/* <source src="https://firebasestorage.googleapis.com/v0/b/media-lengua.appspot.com/o/soundFiles%2Fe0cbdcf2-1e04-11e9-ba81-c5eb05e90385.mp3?alt=media&token=23c62de0-6a69-4d8b-888c-6db45c46c920" type="audio/mp3" /> */}
-
-            <source src={objectDetailData.audioUrl} type="audio/mp3" />
+              <source src={audioUrl} type="audio/mp3" />
           </audio>
         </Modal.Content>
         <Modal.Actions>
-          <Button
-            positive
-            icon="checkmark"
-            labelPosition="right"
-            content="Play"
-            onClick={this.onPlay}
-          />
           <Button
             positive
             icon="checkmark"
@@ -103,7 +88,14 @@ ObjectDetailModal.propTypes = {
   objectDetailData: PropTypes.object.isRequired
 };
 
+const mapStateToPropsObjectDetailModal = state => {
+  //In this case objects is gonna be applied to the props of the component
+  return {
+    audioUrl: state.databaseReducer.audioUrl,
+  };
+};
+
 export default connect(
-  null,
+    mapStateToPropsObjectDetailModal,
   { getUrlSoundAction }
 )(ObjectDetailModal);
