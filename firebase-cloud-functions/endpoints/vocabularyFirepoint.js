@@ -17,6 +17,24 @@ class VocabularyFirepoint {
     async init() {
     }
 
+
+    async getObjectQuery(requestObjectQuery){
+        let dataModel = new DataModel(null, null, null);
+        console.log('************************************');
+        console.log('Request Save Object: ');
+        console.log(requestObject);
+        try{
+            this.database.ref('objectModel/')
+            .orderByChild("mediaLenguaContent")
+            .once("value", function(snapshot) {
+              console.log(snapshot.val());
+              //console.log(snapshot.key());
+            });
+        }catch(error){
+            console.log(error);
+        }
+    }
+
     /**
     * @description It creates a new object for storing linguistics project
     * @return {Promise} A promise that creates a object for storing linguistics project
