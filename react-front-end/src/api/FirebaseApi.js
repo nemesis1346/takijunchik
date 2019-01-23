@@ -21,22 +21,23 @@ class FirebaseApi {
       .once("child_added");
   }
 
-  static getValueByQuery(path, key) {
-    console.log('HERE FIREBASE API');
-
-   return firebase
+  static getValueByQuery(path, key, callback) {
+    let listResult = [];
+    firebase
       .database()
       .ref(path)
-    //  .orderByChild("segmentedContentArray")
-      //.orderByChild("mediaLenguaContent")
-      .orderByKey()
-      .startAt(key)
-      .endAt(key+"\uf8ff")
-      .once("value", function(snapshot) {
+      .orderByChild("mediaLenguaContent")
+      .on("child_added", function(snapshot) {
+        console.log("ONCE");
         console.log(snapshot.val());
-        //console.log(snapshot.key());
+        let currentObject = snapshot.val();
+        if (currentObject.mediaLenguaContent.includes(key)) {
+          console.log(currentObject.mediaLenguaContent);
+         // listResult.push(currentObject);
+          callback(currentObject);
+        }
       });
-
+    return;
   }
 
   static setValue(path, value) {
@@ -51,7 +52,5 @@ class FirebaseApi {
       .ref("soundFiles/" + fileName + ".mp3")
       .getDownloadURL();
   }
-
-
 }
 export default FirebaseApi;
