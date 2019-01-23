@@ -35,8 +35,10 @@ class TraductorPage extends React.Component {
   };
 
   submit = data => {
-     return this.props.translateFirebaseAction(data.object.trim().toLowerCase())
-  };
+ //    return this.props.translateFirebaseAction(data.object.trim().toLowerCase())
+     return this.props.translateFirebaseAction(data.object.trim())
+
+    };
 
   objectSelectedCallback = objectSelected => {
     console.log("PAGE");

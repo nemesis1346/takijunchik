@@ -22,12 +22,21 @@ class FirebaseApi {
   }
 
   static getValueByQuery(path, key) {
-    return firebase
+    console.log('HERE FIREBASE API');
+
+   return firebase
       .database()
       .ref(path)
+    //  .orderByChild("segmentedContentArray")
+      //.orderByChild("mediaLenguaContent")
       .orderByKey()
-      .equalTo(key)
-      .once("child_added");
+      .startAt(key)
+      .endAt(key+"\uf8ff")
+      .once("value", function(snapshot) {
+        console.log(snapshot.val());
+        //console.log(snapshot.key());
+      });
+
   }
 
   static setValue(path, value) {

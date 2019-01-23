@@ -7,7 +7,6 @@ import {
   GET_OBJECT_DETAIL_SUCCESS
 } from "../constants/types";
 
-
 /**
  * This is for the search query
  * @param {*} input
@@ -15,13 +14,14 @@ import {
 export const translateFirebaseAction = input => {
   console.log("Action Translate Firebase");
   console.log(input);
-
   return dispatch => {
-    FirebaseApi.getValueByKey("/objectModel", input)
+    FirebaseApi.getValueByQuery("/objectModel", input)
       .then(res => {
+        console.log(res);
         dispatch(getObjectSuccess(res.data));
       })
       .catch(err => {
+        console.log(err);
         dispatch(handleError(err.message));
       });
   };
