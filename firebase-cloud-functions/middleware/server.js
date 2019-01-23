@@ -18,10 +18,10 @@ const handlerDefault = async (request, response) => {
       console.log("Error", err);
     })
     .on("data", chunk => {
-      console.log(chunk);
       buffer.push(chunk);
     })
     .on("end", async () => {
+        console.log('END');
       let bufferContent = Buffer.concat(buffer).toString();
       //Set response
       response.statusCode = 200;
@@ -49,11 +49,7 @@ const handlerDefault = async (request, response) => {
               JSON.parse(bufferContent)
             );
             break;
-          case "/streamTrack":
-            //promise = this.soundChaincode.streamTrack();
-            promise = null;
-            break;
-          case "/getObjectQuery":
+          case "/getObjectsByQuery":
             promise = this.vocabularyFirepoint.getObjectQuery(
               JSON.parse(bufferContent)
             );
@@ -122,6 +118,7 @@ const handlerFiles = async (request, response) => {
   await this.filesFirepoint.processingFiles(eafFile, mp3File);
   response.send("hello");
 };
+app.post("/getObjectsByQuery", handlerDefault);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -132,11 +129,9 @@ app.post("/login", handlerDefault);
 app.post("/saveObject", handlerDefault);
 app.get("/getAllObjects", handlerDefault);
 app.post("/createUser", handlerDefault);
-app.post("/getObjectsByQuery", handlerDefault);
 app.post("/getObject", handlerDefault);
 app.post("/streamTrack", handlerDefault);
 app.post("/uploadFiles", handlerFiles);
-app.post("/getObjectQuery", handlerDefault);
 
 app.listen(port, async err => {
   if (err) {

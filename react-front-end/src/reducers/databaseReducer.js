@@ -3,7 +3,7 @@ import {
   GET_OBJECTS_SUCCESS,
   GET_OBJECT_DETAIL_SUCCESS,
   GET_URL_AUDIO_SUCCESS,
-  TRANSLATE_SUCCESS
+  ITEM_QUERY_SUCCESS
 } from "../constants/types";
 const initState = {
   objects: [],
@@ -45,12 +45,13 @@ const databaseReducer = (state = initState, action = {}) => {
         ...state,
         audioUrl: action.audioUrl
       };
-    case TRANSLATE_SUCCESS:
+    case ITEM_QUERY_SUCCESS:
+    console.log('REDUCER');
       console.log(action);
-      return {
-        ...state,
-        object: action.object
-      };
+      // return {
+      //   ...state,
+      //   object: action.object
+      // };
     default:
       return state;
   }

@@ -18,19 +18,27 @@ class VocabularyFirepoint {
     }
 
 
-    async getObjectQuery(requestObjectQuery){
+    async getObjectQuery(requestObjectQuery) {
         let dataModel = new DataModel(null, null, null);
         console.log('************************************');
         console.log('Request Save Object: ');
-        console.log(requestObject);
-        try{
+        console.log(requestObjectQuery);
+        try {
             this.database.ref('objectModel/')
-            .orderByChild("mediaLenguaContent")
-            .once("value", function(snapshot) {
-              console.log(snapshot.val());
-              //console.log(snapshot.key());
-            });
-        }catch(error){
+                .orderByChild("mediaLenguaContent")
+                .once("value", function (snapshot) {
+                    let responseList = snapshot.val();
+                    let resultList = [];
+                    for (var i in responseList) {
+                        console.log(responseList[i].mediaLenguaContent);
+                        resultList.push(responseList[i]);
+                        //   }
+                    }
+                    dataModel.data = JSON.stringify(resultList);
+                    dataModel.status = '200';
+                    return dataModel;
+                });
+        } catch (error) {
             console.log(error);
         }
     }

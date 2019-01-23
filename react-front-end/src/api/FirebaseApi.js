@@ -21,19 +21,13 @@ class FirebaseApi {
       .once("child_added");
   }
 
+  //TODO: In the future this method could be used
   static getValueByQuery(path, key, callback) {
-    let listResult = [];
-    firebase
-      .database()
-      .ref(path)
-      .orderByChild("mediaLenguaContent")
-      .on("child_added", function(snapshot) {
-        console.log("ONCE");
-        console.log(snapshot.val());
+    let reference = firebase.database().ref(path);
+      reference.orderByChild("mediaLenguaContent").on("child_added", function(snapshot) {
         let currentObject = snapshot.val();
         if (currentObject.mediaLenguaContent.includes(key)) {
           console.log(currentObject.mediaLenguaContent);
-         // listResult.push(currentObject);
           callback(currentObject);
         }
       });

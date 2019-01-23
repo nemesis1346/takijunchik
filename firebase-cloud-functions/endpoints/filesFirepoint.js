@@ -213,17 +213,17 @@ class FilesFirepoint {
                                 timeValue1: element.timeValue1,
                                 timeValue2: element.timeValue2,
                                 //Arrays
-                                mediaLenguaContentArray: parseContent(
-                                    element.mediaLenguaContent
-                                ),
-                                spanishContentArray: parseContent(element.spanishContent),
-                                kichwaContentArray: parseContent(element.kichwaContent),
-                                elicitSentenceContentArray: parseContent(
-                                    element.elicitSentenceContent
-                                ),
-                                ipaContentArray: parseContent(element.ipaContent),
-                                glossesContentArray: parseContent(element.glossesContent),
-                                segmentedContentArray: parseContent(element.segmentedContent),
+                                // mediaLenguaContentArray: parseContent(
+                                //     element.mediaLenguaContent
+                                // ),
+                                // spanishContentArray: parseContent(element.spanishContent),
+                                // kichwaContentArray: parseContent(element.kichwaContent),
+                                // elicitSentenceContentArray: parseContent(
+                                //     element.elicitSentenceContent
+                                // ),
+                                // ipaContentArray: parseContent(element.ipaContent),
+                                // glossesContentArray: parseContent(element.glossesContent),
+                                // segmentedContentArray: parseContent(element.segmentedContent),
                             });
                     }
                     await shellexec('exec rm ../temporal/*.mp3');

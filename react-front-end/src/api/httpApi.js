@@ -32,18 +32,16 @@ export default {
                 console.log('Response in Api Translate');
                 res.data
             }),
-        getObject: input => instanceDefault.post('/getObjectsByQuery', { input })
-            .then(res => {
-                console.log('Response in GetObject Login:');
-                let result = parseResponse(res);
-                //console.log(result);
-                return result;
-            }),
+        getValueByQuery: input => {
+            console.log('Http Api');
+            console.log(input);
+            return instanceDefault.post('/getObjectsByQuery', { input })
+        }
     },
-    files:{
+    files: {
         uploadFiles: input => {
             let headersFiles = { 'Content-Type': 'multipart/form-data' }
-            return instanceDefault.post('/uploadFiles', input , { headers: headersFiles })
+            return instanceDefault.post('/uploadFiles', input, { headers: headersFiles })
         }
     }
 }
