@@ -14,7 +14,7 @@ export default {
             .then((res) => {
                 console.log('Response in Api Login:');
                 let result = parseResponse(res);
-                //console.log(result);
+                console.log(result);
                 return result;
             }),
 
@@ -22,7 +22,7 @@ export default {
             .then((res) => {
                 console.log('Response in Api Signup');
                 let result = parseResponse(res);
-                //console.log(result);
+                console.log(result);
                 return result;
             })
     },
@@ -33,8 +33,6 @@ export default {
                 res.data
             }),
         getValueByQuery: input => {
-            console.log('Http Api');
-            console.log(input);
             return instanceDefault.post('/getObjectsByQuery', { input });
         }
     },

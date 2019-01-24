@@ -45,13 +45,7 @@ const databaseReducer = (state = initState, action = {}) => {
         ...state,
         audioUrl: action.audioUrl
       };
-    case ITEM_QUERY_SUCCESS:
-    console.log('REDUCER');
-      console.log(action);
-      // return {
-      //   ...state,
-      //   object: action.object
-      // };
+
     default:
       return state;
   }

@@ -11,7 +11,13 @@ import ObjectTable from "../tables/ObjectTable";
 import { Message } from "semantic-ui-react";
 import MDSpinner from "react-md-spinner";
 import "../styles/traductorPageStyle.css";
-
+const  isEmpty=(obj)=> {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
 class TraductorPage extends React.Component {
   state = {
     errors: {},
@@ -35,17 +41,16 @@ class TraductorPage extends React.Component {
   };
 
   submit = data => {
- //    return this.props.translateFirebaseAction(data.object.trim().toLowerCase())
-     return this.props.translateFirebaseAction(data.object.trim())
-
+      if(!isEmpty(data)){
+        return this.props.translateFirebaseAction(data.object.trim().toLowerCase())
+      }else{
+        return this.props.getObjects();
+      }
     };
 
   objectSelectedCallback = objectSelected => {
-    console.log("PAGE");
-    console.log(objectSelected);
     this.setState({
       objectDetailOpen: true,
-     // objectDetailData: objectSelected
     });
     this.props.setObjectDetail(objectSelected);
   };
@@ -61,7 +66,6 @@ class TraductorPage extends React.Component {
 
     return (
       <div className="traductor-page-container">
-        {/* Submit is the callback */}
         <TraductorForm submit={this.submit} objectList={objects} />
 
         <Message hidden={hideResultMessage}>
