@@ -24,20 +24,21 @@ class VocabularyFirepoint {
         console.log('Request Save Object: ');
         console.log(requestObjectQuery);
         try {
-            this.database.ref('objectModel/')
+            let input = requestObjectQuery.input;
+            const snapshot = await this.database.ref('objectModel/')
                 .orderByChild("mediaLenguaContent")
-                .once("value", function (snapshot) {
-                    let responseList = snapshot.val();
-                    let resultList = [];
-                    for (var i in responseList) {
-                        console.log(responseList[i].mediaLenguaContent);
-                        resultList.push(responseList[i]);
-                        //   }
-                    }
-                    dataModel.data = JSON.stringify(resultList);
-                    dataModel.status = '200';
-                    return dataModel;
-                });
+                .once("value");
+            let responseList = snapshot.val();
+            let resultList = [];
+            for (var i in responseList) {
+                if (responseList[i].mediaLenguaContent.includes(input)) {
+                    resultList.push(responseList[i]);
+                }
+            }
+            console.log(resultList)
+            dataModel.data = JSON.stringify(resultList);
+            dataModel.status = '200';
+            return dataModel;
         } catch (error) {
             console.log(error);
         }

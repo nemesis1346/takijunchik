@@ -27,8 +27,9 @@ export const translateFirebaseAction = input => {
         httpApi.vocabulary.getValueByQuery(input)
         .then(res => {
             console.log(res);
+            let result = parseResponse(res.data.body);
             console.log('Response in GetObject Login:');
-            let result = parseResponse(res);
+            //let result = parseResponse(res);
             console.log(result);
         })
     }

@@ -35,7 +35,7 @@ export default {
         getValueByQuery: input => {
             console.log('Http Api');
             console.log(input);
-            return instanceDefault.post('/getObjectsByQuery', { input })
+            return instanceDefault.post('/getObjectsByQuery', { input });
         }
     },
     files: {

@@ -77,7 +77,7 @@ const handlerDefault = async (request, response) => {
               let body = JSON.stringify(result);
 
               console.log("STATUS 200: ");
-              console.log(result);
+              console.log(body);
               const responseBody = { headers, method, url, body };
 
               response.statusCode = 200;
