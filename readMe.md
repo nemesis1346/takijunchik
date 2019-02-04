@@ -16,4 +16,8 @@ We are using Google Cloud Services(such as Firebase) and Blockchain Technologies
 
 -The source code has the capacity of compiling in android, os and in the web browser. 
 
+## Architecture
 ![alt text](resources/architecture.png)
+
+## Processing of Files
+![alt text](resources/processing.png)
