@@ -16,4 +16,4 @@ We are using Google Cloud Services(such as Firebase) and Blockchain Technologies
 
 -The source code has the capacity of compiling in android, os and in the web browser. 
 
-![alt text](/home/nemesis1346/Documents/UniversityProjects/takijunchik-react-firebase-hyperledger/resources/architecture.png)
+![alt text](resources/architecture.png)
