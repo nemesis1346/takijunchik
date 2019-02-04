@@ -1,4 +1,4 @@
-#Overview of Media Lengua
+## Overview of Media Lengua
 
 This project has as goal to preserve an indigenous language that is dying by storing its relevant linguistic characteristics in the cloud as well as in a dedicated server. 
 
@@ -6,7 +6,7 @@ Moreover, this app facilitates the researcher the processing of data stored in e
 
 We are using Google Cloud Services(such as Firebase) and Blockchain Technologies(such as Hyperledger Composer) as backend systems. Ultimately, we are using React and React Native for the UI and Redux-Thunk for Data Modeling-Middleware.
 
-#Objectives
+## Objectives
 
 -Upload files by browsing in the computer a eaf file and an mp3 file to save it in the cloud and in a remote server
 
