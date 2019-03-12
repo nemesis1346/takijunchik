@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import TraductorPage from './components/pages/TraductorPage';
 import UploadFilePage from './components/pages/UploadFilePage';
 import NavBar from './components/navigation/NavBar';
