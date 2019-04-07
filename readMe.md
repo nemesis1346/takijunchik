@@ -23,3 +23,6 @@ The data is saved in firebase database. Although should be moved to a local host
 ## Processing of Files
 ![alt text](resources/processing.png)
 
+*Firebase Cloud functions is not being used yet. So far the react front end is the most advanced. 
+
+

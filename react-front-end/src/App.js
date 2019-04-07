@@ -9,10 +9,10 @@ class App extends Component {
   
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="App">
           <NavBar></NavBar>
-          <Route path="/" exact component={AboutPage}></Route>
+          <Route path="/" exact component={TraductorPage}></Route>
           <Route path='/DatabasePage' component={TraductorPage} />
           <Route path='/UploadFilePage' component={UploadFilePage} />
           <Route path='/AboutPage' component={AboutPage}></Route>
