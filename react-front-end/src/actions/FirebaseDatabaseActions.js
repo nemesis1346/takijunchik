@@ -47,7 +47,18 @@ export const getObjects = () => {
             });
     };
 };
-
+export const getObjectsByQuery=input=>{
+    return dispatch => {
+        FirebaseApi.getValueByQuery('/objectModel',input,null)
+        .then(res=>{
+            dispatch(getObjectsSuccess(res));
+        })
+        .catch(err=>{
+            console.log(err);
+            dispatch(handleError(err.message));
+        });
+    }
+}
 export const setObjectDetail = object => {
     return {
         type: GET_OBJECT_DETAIL_SUCCESS,

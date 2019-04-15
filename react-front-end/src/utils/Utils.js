@@ -51,3 +51,9 @@ export const removeDuplicates = (arr) => {
     }
     return unique_array
 }
+
+export const removeDuplicates2=(myArr, prop)=> {
+    return myArr.filter((obj, pos, arr) => {
+        return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+    });
+}

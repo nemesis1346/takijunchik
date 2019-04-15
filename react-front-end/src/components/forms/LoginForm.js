@@ -19,30 +19,14 @@ class LoginForm extends React.Component {
     }
 
     onSubmit = () => {
-        //TODO: Resolve the validation
-        const errors = this.validate(this.state.data);
-        this.setState({ errors });
-
-        //TODO: send actual data
-        //The condition is that if there is no methods on errors, it is validated
-        if (Object.keys(errors).length === 0) {
             this.props.submit(this.state.data);
-        }
-    }
-    //This methos is a series of validations on errors object
-    validate = (data) => {
-
-        const errors = {};
-        if (!Validator.isEmail(data.email)) errors.email = "Invalid email";
-        if (!data.password) errors.password = "Cant be blank";
-        if (!data.email) errors.email = 'Cant be blank';
-
-        return errors;
+            console.log(this.state.data);
     }
     //e stands for event
     //... is a property spread anotation. It spreads out the properties in props as discrete properties on the Input element
     //So then onChange is universal
     onChange = e => {
+        console.log(e);
         this.setState({
             data: { ...this.state.data, [e.target.name]: e.target.value }
         })
@@ -51,9 +35,8 @@ class LoginForm extends React.Component {
         //This makes this.state common to all values
         const { data, errors } = this.state;
         return (
-
             <Form onSubmit={this.onSubmit}>
-                <Form.Field error={!!errors.email}>
+                <Form.Field>
                     <label htmlFor="email">Email</label>
                     <input
                         type="email"
@@ -61,11 +44,9 @@ class LoginForm extends React.Component {
                         name="email"
                         placeholder="example@example.com"
                         value={data.email}
-                        onChange={this.onChange} />
-                    {/* && in this context means 'then' */}
-                    {errors.email && <InlineError text={errors.email} />}
+                         />                    
                 </Form.Field>
-                <Form.Field error={!!errors.password}>
+                <Form.Field>
                     <label htmlFor="password">Password</label>
                     <input
                         type="password"
@@ -73,23 +54,13 @@ class LoginForm extends React.Component {
                         name="password"
                         placeholder="Make it secure"
                         value={data.password}
-                        onChange={this.onChange} />
-                    {errors.password && <InlineError text={errors.password} />}
-
+                       />
                 </Form.Field>
                 <Button primary>Login</Button>
-                <Link to="/signup">
-                    <Button primary>
-                        Signup
-                    </Button>
-                </Link>
             </Form>
 
         );
     }
 }
-//The parent of the component will pass that function 
-LoginForm.propTypes = {
-    submit: PropTypes.func.isRequired
-};
+
 export default LoginForm;

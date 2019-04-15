@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   getObjects,
-  translateFirebaseAction,setObjectDetail 
+  getObjectsByQuery,setObjectDetail 
 } from "../../actions/FirebaseDatabaseActions";
 import ObjectDetailModal from "../modals/ObjectDetailModal";
 import ObjectTable from "../tables/ObjectTable";
@@ -42,7 +42,7 @@ class TraductorPage extends React.Component {
 
   submit = data => {
       if(!isEmpty(data)){
-        return this.props.translateFirebaseAction(data.object.trim().toLowerCase())
+        return this.props.getObjectsByQuery(data.object.trim().toLowerCase())
       }else{
         return this.props.getObjects();
       }
@@ -92,7 +92,7 @@ class TraductorPage extends React.Component {
 }
 //This is just validation of the props
 TraductorPage.propTypes = {
-  translateFirebaseAction: PropTypes.func.isRequired,
+  getObjectsByQuery: PropTypes.func.isRequired,
   getObjects: PropTypes.func.isRequired
 };
 
@@ -108,5 +108,5 @@ const mapStateToPropsTraductorPage = state => {
 
 export default connect(
   mapStateToPropsTraductorPage,
-  { translateFirebaseAction, getObjects,setObjectDetail }
+  { getObjectsByQuery, getObjects,setObjectDetail }
 )(TraductorPage);

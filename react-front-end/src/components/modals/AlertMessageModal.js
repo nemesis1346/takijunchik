@@ -35,13 +35,6 @@ class AlertMessageModal extends React.Component {
         );
     }
 }
-
-AlertMessageModal.propTypes = {
-    modalSize: PropTypes.string.isRequired,
-    modalMessage: PropTypes.string.isRequired,
-    modalCallback:PropTypes.string.isRequired
-}
-
 export default AlertMessageModal;
 
 //THE PROPS ARE THE WAY HOW TO PASS DATA FROM PARENT TO CHILD

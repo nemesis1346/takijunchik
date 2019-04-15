@@ -2,7 +2,6 @@ import React from 'react';
 import LoginForm from '../forms/LoginForm';
 import AlertMessageModal from '../modals/AlertMessageModal';
 //You can use prop-types to document the intended types of properties passed to components. 
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AuthAction } from '../../actions/UserActions';
 class LoginPage extends React.Component {
@@ -25,26 +24,19 @@ class LoginPage extends React.Component {
         });
     }
     submit = (data) => {
-        return this.props.AuthAction(data)
-            .then((resp) => {
-                console.log('Result in LoginPage');
-                console.log(resp);
-                let errorMessage = this.parseResponse(resp);
-                console.log(errorMessage);
-                if (errorMessage) {
-                    this.setState({
-                        "modalMessage": errorMessage,
-                        "modalOpen": true
-                    });
-                } else {
-                    this.props.history.push("/mainMenu")
-                }
-            });
-    }//Then is the function that executes after the promise
-    
+        console.log(data);
+                // if (data) {
+                //     this.setState({
+                //         "modalMessage": errorMessage,
+                //         "modalOpen": true
+                //     });
+                // } else {
+                //     this.props.history.push("/mainMenu")
+                // }
+    } 
     render() {
         return (
-            <div>
+            <div className='main-menu-container about-page-container'>
                 <h1>Login Page</h1>
                 <LoginForm submit={this.submit} />
                 <AlertMessageModal
@@ -56,26 +48,5 @@ class LoginPage extends React.Component {
             </div>
         );
     }
-    parseResponse(response) {
-        let body = JSON.parse(response);
-
-        if (body.status == '200') {
-            return null;
-        } else {
-            return body.message;
-        }
-    }
-
 }
-
-//The PropTypes is for validating the props when being passed to the component
-//The inside properties are the props
-LoginPage.propTypes = {
-    history: PropTypes.shape({
-        push: PropTypes.func.isRequired
-    }).isRequired,
-    login: PropTypes.func.isRequired
-};
-
-
 export default connect(null, { AuthAction })(LoginPage);
