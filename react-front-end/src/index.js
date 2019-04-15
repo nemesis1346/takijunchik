@@ -12,6 +12,7 @@ import { reduxFirestore, getFirestore } from 'redux-firestore';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 import FirestoreConfig from './api/FirebaseConfig';
 import FirebaseConfig from './api/FirebaseConfig';
+import MainPage from './components/pages/MainPage';
 
 const store = createStore(
     rootReducer,
@@ -22,6 +23,6 @@ const store = createStore(
         reactReduxFirebase(FirebaseConfig)
     )
 );
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><MainPage /></Provider>, document.getElementById('root'));
 
 
