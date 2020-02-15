@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import TraductorPage from './components/pages/TraductorPage';
-import UploadFilePage from './components/pages/UploadFilePage';
-import NavBar from './components/navigation/NavBar';
-import AboutPage from './components/pages/AboutPage';
 import { BrowserRouter ,Route} from 'react-router-dom';
 import LoginPage from './components/pages/LoginPage'
 import MainPage from './components/pages/MainPage';

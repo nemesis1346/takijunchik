@@ -4,7 +4,6 @@ import UploadFilePage from './UploadFilePage';
 import NavBar from '../navigation/NavBar';
 import AboutPage from './AboutPage';
 import { BrowserRouter ,Route} from 'react-router-dom';
-import LoginPage from './LoginPage'
 
 class MainPage extends Component {
   

@@ -1,10 +1,6 @@
 import React from 'react';
 import { Form, Button } from 'semantic-ui-react';
-import Validator from "validator";
-import InlineError from "../messages/InlineError";
-import { PropTypes } from 'prop-types';
 //import {UserModel} from '../../models/userModel.js';
-import { Link } from "react-router-dom"
 
 class LoginForm extends React.Component {
     //The following variables are being initialized
