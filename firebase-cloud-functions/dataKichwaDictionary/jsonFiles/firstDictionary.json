@@ -1,0 +1,2984 @@
+ [
+        {
+            "kichwa": "achi mama",
+            "spanish": "madrina"
+        },
+        {
+            "kichwa": "achi tayta",
+            "spanish": "padrino"
+        },
+        {
+            "kichwa": "achikta japichipay",
+            "spanish": "enciende la luz porfavor"
+        },
+        {
+            "kichwa": "akcha",
+            "spanish": "pelo"
+        },
+        {
+            "kichwa": "alalay",
+            "spanish": "feo, fea"
+        },
+        {
+            "kichwa": "allana puncha",
+            "spanish": "dia de la cosecha"
+        },
+        {
+            "kichwa": "alli",
+            "spanish": "bueno, buena"
+        },
+        {
+            "kichwa": "alli",
+            "spanish": "sano"
+        },
+        {
+            "kichwa": "alli chishi",
+            "spanish": "buenas tardes"
+        },
+        {
+            "kichwa": "alli puncha",
+            "spanish": "buenos dias"
+        },
+        {
+            "kichwa": "alli tuta",
+            "spanish": "buenas noches"
+        },
+        {
+            "kichwa": "allichina",
+            "spanish": "numero"
+        },
+        {
+            "kichwa": "allitukuna",
+            "spanish": "mejorar"
+        },
+        {
+            "kichwa": "allku",
+            "spanish": "perro"
+        },
+        {
+            "kichwa": "allkuyuk",
+            "spanish": "dueño de perro"
+        },
+        {
+            "kichwa": "allpa",
+            "spanish": "tierra, terreno"
+        },
+        {
+            "kichwa": "allpa",
+            "spanish": "tierra"
+        },
+        {
+            "kichwa": "almuza",
+            "spanish": "almuerzo"
+        },
+        {
+            "kichwa": "anaku",
+            "spanish": "falda"
+        },
+        {
+            "kichwa": "anchuchina",
+            "spanish": "quitar"
+        },
+        {
+            "kichwa": "anchuna",
+            "spanish": "quitarse"
+        },
+        {
+            "kichwa": "ankana",
+            "spanish": "volar"
+        },
+        {
+            "kichwa": "ankas",
+            "spanish": "azul"
+        },
+        {
+            "kichwa": "antawa",
+            "spanish": "carro, auto"
+        },
+        {
+            "kichwa": "apachina",
+            "spanish": "hacer cargar"
+        },
+        {
+            "kichwa": "apamuna",
+            "spanish": "traer"
+        },
+        {
+            "kichwa": "apana",
+            "spanish": "llevar"
+        },
+        {
+            "kichwa": "api",
+            "spanish": "colada"
+        },
+        {
+            "kichwa": "apunchik",
+            "spanish": "dios"
+        },
+        {
+            "kichwa": "apunchikpa wasi",
+            "spanish": "casa de dios"
+        },
+        {
+            "kichwa": "ari",
+            "spanish": "si"
+        },
+        {
+            "kichwa": "arinina",
+            "spanish": "aceptar"
+        },
+        {
+            "kichwa": "armachina",
+            "spanish": "hacer bañar"
+        },
+        {
+            "kichwa": "armana uku",
+            "spanish": "baño"
+        },
+        {
+            "kichwa": "arrendashka",
+            "spanish": "arrendado"
+        },
+        {
+            "kichwa": "asha ",
+            "spanish": "poco"
+        },
+        {
+            "kichwa": "asha ",
+            "spanish": "poco"
+        },
+        {
+            "kichwa": "asha muspa",
+            "spanish": "poco loco o loca"
+        },
+        {
+            "kichwa": "ashtaka",
+            "spanish": "bastante"
+        },
+        {
+            "kichwa": "ashtakashkaman",
+            "spanish": "hasta luego"
+        },
+        {
+            "kichwa": "asichina",
+            "spanish": "hacer reir"
+        },
+        {
+            "kichwa": "asina",
+            "spanish": "reirse"
+        },
+        {
+            "kichwa": "aspirina",
+            "spanish": "rascarse"
+        },
+        {
+            "kichwa": "aswa",
+            "spanish": "chicha"
+        },
+        {
+            "kichwa": "atallpa",
+            "spanish": "gallina"
+        },
+        {
+            "kichwa": "awak kari",
+            "spanish": "tejedora "
+        },
+        {
+            "kichwa": "awak warmi",
+            "spanish": "tejedora "
+        },
+        {
+            "kichwa": "awana",
+            "spanish": "tejer"
+        },
+        {
+            "kichwa": "aycha",
+            "spanish": "carne"
+        },
+        {
+            "kichwa": "ayllu",
+            "spanish": "familia"
+        },
+        {
+            "kichwa": "ayllu",
+            "spanish": "familia"
+        },
+        {
+            "kichwa": "aysana",
+            "spanish": "halar"
+        },
+        {
+            "kichwa": "balun",
+            "spanish": "pantalon"
+        },
+        {
+            "kichwa": "banca",
+            "spanish": "banca"
+        },
+        {
+            "kichwa": "bloque",
+            "spanish": "bloque"
+        },
+        {
+            "kichwa": "cafe",
+            "spanish": "cafe"
+        },
+        {
+            "kichwa": "camisa",
+            "spanish": "blusa"
+        },
+        {
+            "kichwa": "capilla",
+            "spanish": "capilla"
+        },
+        {
+            "kichwa": "carro",
+            "spanish": "carro, auto"
+        },
+        {
+            "kichwa": "casa comunal",
+            "spanish": "casa comunal"
+        },
+        {
+            "kichwa": "casado",
+            "spanish": "casado"
+        },
+        {
+            "kichwa": "casarana",
+            "spanish": "casaarse"
+        },
+        {
+            "kichwa": "cebolla",
+            "spanish": "cebolla"
+        },
+        {
+            "kichwa": "chakana",
+            "spanish": "escalera"
+        },
+        {
+            "kichwa": "chaki",
+            "spanish": "patas"
+        },
+        {
+            "kichwa": "chaki",
+            "spanish": "pie"
+        },
+        {
+            "kichwa": "chaki ñan",
+            "spanish": "sendero"
+        },
+        {
+            "kichwa": "chakina",
+            "spanish": "secar"
+        },
+        {
+            "kichwa": "challwa",
+            "spanish": "pescado"
+        },
+        {
+            "kichwa": "challwa",
+            "spanish": "pescado"
+        },
+        {
+            "kichwa": "chapa",
+            "spanish": "burro"
+        },
+        {
+            "kichwa": "chapakrirka",
+            "spanish": "fue a vigilar"
+        },
+        {
+            "kichwa": "chapana",
+            "spanish": "espiar"
+        },
+        {
+            "kichwa": "chaquishka",
+            "spanish": "secar"
+        },
+        {
+            "kichwa": "charijayak",
+            "spanish": "rico amargado"
+        },
+        {
+            "kichwa": "charik",
+            "spanish": "rico, millonario"
+        },
+        {
+            "kichwa": "charina",
+            "spanish": "tener"
+        },
+        {
+            "kichwa": "chaskina",
+            "spanish": "recibir"
+        },
+        {
+            "kichwa": "chawa",
+            "spanish": "crudo"
+        },
+        {
+            "kichwa": "chawpi puncha mikuna",
+            "spanish": "almuerzo"
+        },
+        {
+            "kichwa": "chay",
+            "spanish": "esa, ese, eso"
+        },
+        {
+            "kichwa": "chay shuk ",
+            "spanish": "otro u otros"
+        },
+        {
+            "kichwa": "chay shuk punchakuna",
+            "spanish": "otros dias"
+        },
+        {
+            "kichwa": "chayachina",
+            "spanish": "hacer llegar"
+        },
+        {
+            "kichwa": "chayana",
+            "spanish": "llegar"
+        },
+        {
+            "kichwa": "chayana",
+            "spanish": "llegar"
+        },
+        {
+            "kichwa": "chaymanta",
+            "spanish": "por eso"
+        },
+        {
+            "kichwa": "chaypak",
+            "spanish": "para eso"
+        },
+        {
+            "kichwa": "chaypi",
+            "spanish": "alli"
+        },
+        {
+            "kichwa": "chinpa",
+            "spanish": "en/ al frente"
+        },
+        {
+            "kichwa": "chiri",
+            "spanish": "frio"
+        },
+        {
+            "kichwa": "chishi",
+            "spanish": "tarde"
+        },
+        {
+            "kichwa": "chishi",
+            "spanish": "tarde"
+        },
+        {
+            "kichwa": "chukrichina",
+            "spanish": "lastimar, herir"
+        },
+        {
+            "kichwa": "chumpak",
+            "spanish": "invitados, acompañantes"
+        },
+        {
+            "kichwa": "chunka",
+            "spanish": "diez"
+        },
+        {
+            "kichwa": "chunkana",
+            "spanish": "jugar a las planchas"
+        },
+        {
+            "kichwa": "chunpi",
+            "spanish": "faja"
+        },
+        {
+            "kichwa": "churachina",
+            "spanish": "hacer vestir"
+        },
+        {
+            "kichwa": "churakuna",
+            "spanish": "vestimenta"
+        },
+        {
+            "kichwa": "churana",
+            "spanish": "poner"
+        },
+        {
+            "kichwa": "churi",
+            "spanish": "hija"
+        },
+        {
+            "kichwa": "chusku",
+            "spanish": "cuatro"
+        },
+        {
+            "kichwa": "chuya",
+            "spanish": "limpio"
+        },
+        {
+            "kichwa": "culantro",
+            "spanish": "culantro"
+        },
+        {
+            "kichwa": "culis",
+            "spanish": "col"
+        },
+        {
+            "kichwa": "cumpana",
+            "spanish": "acompañar"
+        },
+        {
+            "kichwa": "fanga",
+            "spanish": "papel"
+        },
+        {
+            "kichwa": "gas",
+            "spanish": "gas"
+        },
+        {
+            "kichwa": "grano",
+            "spanish": "grano"
+        },
+        {
+            "kichwa": "halaw",
+            "spanish": "agradable"
+        },
+        {
+            "kichwa": "hallu",
+            "spanish": "lengua"
+        },
+        {
+            "kichwa": "hanak",
+            "spanish": "arriba"
+        },
+        {
+            "kichwa": "hanan",
+            "spanish": "arriba inclinado"
+        },
+        {
+            "kichwa": "hanpi wasi",
+            "spanish": "centro de salud"
+        },
+        {
+            "kichwa": "hanpik tayta ",
+            "spanish": "curandero"
+        },
+        {
+            "kichwa": "hanpina",
+            "spanish": "curar"
+        },
+        {
+            "kichwa": "hatun",
+            "spanish": "alto"
+        },
+        {
+            "kichwa": "hatun",
+            "spanish": "alto, grande"
+        },
+        {
+            "kichwa": "hatun mama",
+            "spanish": "abuela"
+        },
+        {
+            "kichwa": "hatun tayta",
+            "spanish": "abuelo"
+        },
+        {
+            "kichwa": "hatun tayta",
+            "spanish": "abuelo"
+        },
+        {
+            "kichwa": "hatun yachana wasi",
+            "spanish": "colegio"
+        },
+        {
+            "kichwa": "hawa pacha",
+            "spanish": "cielo"
+        },
+        {
+            "kichwa": "hawa pacha",
+            "spanish": "arriba"
+        },
+        {
+            "kichwa": "hunu",
+            "spanish": "mullon"
+        },
+        {
+            "kichwa": "ima",
+            "spanish": "porque"
+        },
+        {
+            "kichwa": "ima colortak?",
+            "spanish": "de que color?"
+        },
+        {
+            "kichwa": "ima punchatatak?",
+            "spanish": "que dia?"
+        },
+        {
+            "kichwa": "ima shutitak?",
+            "spanish": "que nombre?"
+        },
+        {
+            "kichwa": "ima tunutatak ?",
+            "spanish": "que musica?"
+        },
+        {
+            "kichwa": "imachik",
+            "spanish": "verbo"
+        },
+        {
+            "kichwa": "imamantak?",
+            "spanish": "porque?"
+        },
+        {
+            "kichwa": "imanallatak?",
+            "spanish": "como?"
+        },
+        {
+            "kichwa": "imapatak?",
+            "spanish": "para que?"
+        },
+        {
+            "kichwa": "imapitak?",
+            "spanish": "en que?"
+        },
+        {
+            "kichwa": "imatak?",
+            "spanish": "que?"
+        },
+        {
+            "kichwa": "imatapash",
+            "spanish": "algo"
+        },
+        {
+            "kichwa": "imatatak?",
+            "spanish": "que?"
+        },
+        {
+            "kichwa": "imawantak?",
+            "spanish": "con que?"
+        },
+        {
+            "kichwa": "inina",
+            "spanish": "creer"
+        },
+        {
+            "kichwa": "iñina",
+            "spanish": "creer"
+        },
+        {
+            "kichwa": "irki",
+            "spanish": "debil"
+        },
+        {
+            "kichwa": "ishkay",
+            "spanish": "dos"
+        },
+        {
+            "kichwa": "ishtirana",
+            "spanish": "esterar"
+        },
+        {
+            "kichwa": "iskun",
+            "spanish": "nueve"
+        },
+        {
+            "kichwa": "jallmana",
+            "spanish": "deshierbar"
+        },
+        {
+            "kichwa": "janpik doctora",
+            "spanish": "medica"
+        },
+        {
+            "kichwa": "japina",
+            "spanish": "pescar"
+        },
+        {
+            "kichwa": "japina",
+            "spanish": "cojer"
+        },
+        {
+            "kichwa": "japirina",
+            "spanish": "encenderse"
+        },
+        {
+            "kichwa": "jatarina",
+            "spanish": "levantarse"
+        },
+        {
+            "kichwa": "jawapi",
+            "spanish": "sobre"
+        },
+        {
+            "kichwa": "jichana",
+            "spanish": "regar"
+        },
+        {
+            "kichwa": "jichana",
+            "spanish": "regar"
+        },
+        {
+            "kichwa": "jirru",
+            "spanish": "hierro"
+        },
+        {
+            "kichwa": "jugo",
+            "spanish": "jugo"
+        },
+        {
+            "kichwa": "kachi ",
+            "spanish": "sal"
+        },
+        {
+            "kichwa": "kallana",
+            "spanish": "tiesto, sarten"
+        },
+        {
+            "kichwa": "kallana",
+            "spanish": "tiesto, sarten"
+        },
+        {
+            "kichwa": "kallarina",
+            "spanish": "empezar"
+        },
+        {
+            "kichwa": "kallarina",
+            "spanish": "comenzar"
+        },
+        {
+            "kichwa": "kallarina",
+            "spanish": "comenzar"
+        },
+        {
+            "kichwa": "kallpana",
+            "spanish": "correr"
+        },
+        {
+            "kichwa": "kaman",
+            "spanish": "hasta"
+        },
+        {
+            "kichwa": "kamcha",
+            "spanish": "tostado"
+        },
+        {
+            "kichwa": "kamchana",
+            "spanish": "tostar"
+        },
+        {
+            "kichwa": "kamchana",
+            "spanish": "tostar"
+        },
+        {
+            "kichwa": "kamchashka",
+            "spanish": "tostado"
+        },
+        {
+            "kichwa": "kamuti",
+            "spanish": "libro"
+        },
+        {
+            "kichwa": "kan",
+            "spanish": "tu"
+        },
+        {
+            "kichwa": "kana",
+            "spanish": "ser, estar"
+        },
+        {
+            "kichwa": "kancha",
+            "spanish": "afuera, fuera"
+        },
+        {
+            "kichwa": "kancha",
+            "spanish": "patio"
+        },
+        {
+            "kichwa": "kanchis",
+            "spanish": "siete"
+        },
+        {
+            "kichwa": "kankuna",
+            "spanish": "vosotros, vosotras"
+        },
+        {
+            "kichwa": "kanllaka",
+            "spanish": "solamente tu"
+        },
+        {
+            "kichwa": "kara",
+            "spanish": "cueros"
+        },
+        {
+            "kichwa": "karana",
+            "spanish": "compartir"
+        },
+        {
+            "kichwa": "karana",
+            "spanish": "regalar"
+        },
+        {
+            "kichwa": "kari",
+            "spanish": "hombra"
+        },
+        {
+            "kichwa": "kari wawa",
+            "spanish": "niño, niña"
+        },
+        {
+            "kichwa": "karipa churakuna",
+            "spanish": "ropa de hombre"
+        },
+        {
+            "kichwa": "karu",
+            "spanish": "lejos"
+        },
+        {
+            "kichwa": "kashpallata"
+        },
+        {
+            "kichwa": "kasilla",
+            "spanish": "quietos"
+        },
+        {
+            "kichwa": "kaspana",
+            "spanish": "chamuscar"
+        },
+        {
+            "kichwa": "kaspi",
+            "spanish": "madera, palo"
+        },
+        {
+            "kichwa": "kaspi",
+            "spanish": "palo"
+        },
+        {
+            "kichwa": "kati",
+            "spanish": "seguido"
+        },
+        {
+            "kichwa": "katina",
+            "spanish": "seguir, perseguir"
+        },
+        {
+            "kichwa": "katuk warmi",
+            "spanish": "vendedora"
+        },
+        {
+            "kichwa": "katuku",
+            "spanish": "abuelo, abuela"
+        },
+        {
+            "kichwa": "katuna",
+            "spanish": "vender"
+        },
+        {
+            "kichwa": "katuna pamba",
+            "spanish": "mercado"
+        },
+        {
+            "kichwa": "kawsana",
+            "spanish": "vivir"
+        },
+        {
+            "kichwa": "kay",
+            "spanish": "este, esto"
+        },
+        {
+            "kichwa": "kayakaman",
+            "spanish": "hasta mañana"
+        },
+        {
+            "kichwa": "kayana",
+            "spanish": "llamar"
+        },
+        {
+            "kichwa": "kayanti",
+            "spanish": "dia siguiente"
+        },
+        {
+            "kichwa": "kayka",
+            "spanish": "toma!"
+        },
+        {
+            "kichwa": "kaynana",
+            "spanish": "permanecer"
+        },
+        {
+            "kichwa": "kaynana",
+            "spanish": "pasar el dia"
+        },
+        {
+            "kichwa": "kaynanik",
+            "spanish": "el otro dia"
+        },
+        {
+            "kichwa": "kaypi",
+            "spanish": "aqui"
+        },
+        {
+            "kichwa": "kichki",
+            "spanish": "estrecho"
+        },
+        {
+            "kichwa": "kichuna",
+            "spanish": "quitar, arranchar"
+        },
+        {
+            "kichwa": "kikin",
+            "spanish": "usted"
+        },
+        {
+            "kichwa": "kikinkuna",
+            "spanish": "ustedes"
+        },
+        {
+            "kichwa": "killa",
+            "spanish": "mes"
+        },
+        {
+            "kichwa": "killa",
+            "spanish": "mes"
+        },
+        {
+            "kichwa": "killkana",
+            "spanish": "escribir"
+        },
+        {
+            "kichwa": "killpana",
+            "spanish": "cubrirse"
+        },
+        {
+            "kichwa": "killpana",
+            "spanish": "cubrir"
+        },
+        {
+            "kichwa": "killu",
+            "spanish": "amarrillo"
+        },
+        {
+            "kichwa": "killu",
+            "spanish": "amarillo"
+        },
+        {
+            "kichwa": "kimsa",
+            "spanish": "tres"
+        },
+        {
+            "kichwa": "kinkray",
+            "spanish": "interseccion"
+        },
+        {
+            "kichwa": "kipa",
+            "spanish": "leuego, despues"
+        },
+        {
+            "kichwa": "kipa churi",
+            "spanish": "hijo menor"
+        },
+        {
+            "kichwa": "kipi",
+            "spanish": "maleta"
+        },
+        {
+            "kichwa": "kipi",
+            "spanish": "maleta"
+        },
+        {
+            "kichwa": "kishpirina",
+            "spanish": "libertad"
+        },
+        {
+            "kichwa": "kiwana",
+            "spanish": "limpiar hierbas"
+        },
+        {
+            "kichwa": "kiwu",
+            "spanish": "hierba"
+        },
+        {
+            "kichwa": "kucha",
+            "spanish": "laguna, lago"
+        },
+        {
+            "kichwa": "kuchi",
+            "spanish": "chancho"
+        },
+        {
+            "kichwa": "kuchu",
+            "spanish": "rincon"
+        },
+        {
+            "kichwa": "kuchu",
+            "spanish": "cerca"
+        },
+        {
+            "kichwa": "kuliarana",
+            "spanish": "enojarse"
+        },
+        {
+            "kichwa": "kullki",
+            "spanish": "dinero"
+        },
+        {
+            "kichwa": "kulta",
+            "spanish": "pato"
+        },
+        {
+            "kichwa": "kuna",
+            "spanish": "dar"
+        },
+        {
+            "kichwa": "kuna",
+            "spanish": "dar"
+        },
+        {
+            "kichwa": "kunan",
+            "spanish": "ahora, hoy"
+        },
+        {
+            "kichwa": "kunuchina",
+            "spanish": "calentar, recalentar"
+        },
+        {
+            "kichwa": "kunuk",
+            "spanish": "caliente"
+        },
+        {
+            "kichwa": "kurina",
+            "spanish": "importar"
+        },
+        {
+            "kichwa": "kusa",
+            "spanish": "esposo"
+        },
+        {
+            "kichwa": "kusa",
+            "spanish": "esposo"
+        },
+        {
+            "kichwa": "kusa",
+            "spanish": "espso"
+        },
+        {
+            "kichwa": "kusa tukuna",
+            "spanish": "enamorado"
+        },
+        {
+            "kichwa": "kusana",
+            "spanish": "asar, freir"
+        },
+        {
+            "kichwa": "kusashka aycha",
+            "spanish": "carne asada, carne frita"
+        },
+        {
+            "kichwa": "kushma",
+            "spanish": "chaleco"
+        },
+        {
+            "kichwa": "kutana",
+            "spanish": "moler"
+        },
+        {
+            "kichwa": "kutin",
+            "spanish": "en cambio"
+        },
+        {
+            "kichwa": "kutin nipay",
+            "spanish": "repetir"
+        },
+        {
+            "kichwa": "kuyana",
+            "spanish": "querer"
+        },
+        {
+            "kichwa": "kuytsa",
+            "spanish": "joven mujer"
+        },
+        {
+            "kichwa": "kuytsa",
+            "spanish": "cuy, cobayo"
+        },
+        {
+            "kichwa": "ladrillo",
+            "spanish": "ladrillo"
+        },
+        {
+            "kichwa": "lampa",
+            "spanish": "pala"
+        },
+        {
+            "kichwa": "leche",
+            "spanish": "leche"
+        },
+        {
+            "kichwa": "llachu",
+            "spanish": "pico"
+        },
+        {
+            "kichwa": "llaki",
+            "spanish": "triste"
+        },
+        {
+            "kichwa": "llakilla",
+            "spanish": "triste"
+        },
+        {
+            "kichwa": "llakta",
+            "spanish": "comundiad, pueblo, ciudad"
+        },
+        {
+            "kichwa": "llama",
+            "spanish": "oveja"
+        },
+        {
+            "kichwa": "llanada",
+            "spanish": "llanura"
+        },
+        {
+            "kichwa": "llapishka",
+            "spanish": "aplastado"
+        },
+        {
+            "kichwa": "llapishka papa",
+            "spanish": "tortilla"
+        },
+        {
+            "kichwa": "llukchana",
+            "spanish": "resbalar"
+        },
+        {
+            "kichwa": "llukshina",
+            "spanish": "salir"
+        },
+        {
+            "kichwa": "llukshina",
+            "spanish": "sacar"
+        },
+        {
+            "kichwa": "llukshirka",
+            "spanish": "salio"
+        },
+        {
+            "kichwa": "llullana",
+            "spanish": "mentir"
+        },
+        {
+            "kichwa": "llullu",
+            "spanish": "berro"
+        },
+        {
+            "kichwa": "llunchina",
+            "spanish": "estucar"
+        },
+        {
+            "kichwa": "llunchiska",
+            "spanish": "estucado"
+        },
+        {
+            "kichwa": "lukru",
+            "spanish": "locro"
+        },
+        {
+            "kichwa": "lulun",
+            "spanish": "huevo"
+        },
+        {
+            "kichwa": "machana",
+            "spanish": "emborracharse"
+        },
+        {
+            "kichwa": "machana yaku",
+            "spanish": "alcochol"
+        },
+        {
+            "kichwa": "machana yaku",
+            "spanish": "licor"
+        },
+        {
+            "kichwa": "machashka",
+            "spanish": "borracho"
+        },
+        {
+            "kichwa": "makanakuna",
+            "spanish": "pelearse"
+        },
+        {
+            "kichwa": "makanakuna runpa",
+            "spanish": "guantes de pelea"
+        },
+        {
+            "kichwa": "maki",
+            "spanish": "manos"
+        },
+        {
+            "kichwa": "maki watana",
+            "spanish": "manilla"
+        },
+        {
+            "kichwa": "mallichiway",
+            "spanish": "hazme probar"
+        },
+        {
+            "kichwa": "mallina",
+            "spanish": "probar"
+        },
+        {
+            "kichwa": "mallki",
+            "spanish": "rama"
+        },
+        {
+            "kichwa": "malta kallana",
+            "spanish": "tiesto mediano"
+        },
+        {
+            "kichwa": "malta manka",
+            "spanish": "olla mediana"
+        },
+        {
+            "kichwa": "mama",
+            "spanish": "mama"
+        },
+        {
+            "kichwa": "mama kallana",
+            "spanish": "tiesto grande"
+        },
+        {
+            "kichwa": "mama manka",
+            "spanish": "olla grande"
+        },
+        {
+            "kichwa": "mana",
+            "spanish": "no"
+        },
+        {
+            "kichwa": "mana pipash",
+            "spanish": "nadie"
+        },
+        {
+            "kichwa": "mana yachanichu",
+            "spanish": "no entiendo"
+        },
+        {
+            "kichwa": "mañana",
+            "spanish": "pedir"
+        },
+        {
+            "kichwa": "mananinar",
+            "spanish": "rechazar"
+        },
+        {
+            "kichwa": "manka",
+            "spanish": "olla"
+        },
+        {
+            "kichwa": "manka",
+            "spanish": "olla"
+        },
+        {
+            "kichwa": "manña ",
+            "spanish": "borde"
+        },
+        {
+            "kichwa": "mapa",
+            "spanish": "sucio"
+        },
+        {
+            "kichwa": "mapa",
+            "spanish": "sucio"
+        },
+        {
+            "kichwa": "maquina",
+            "spanish": "maquina"
+        },
+        {
+            "kichwa": "marka",
+            "spanish": "provincia"
+        },
+        {
+            "kichwa": "mashi",
+            "spanish": "amigo-compañero"
+        },
+        {
+            "kichwa": "mashkana",
+            "spanish": "buscar"
+        },
+        {
+            "kichwa": "mashna..tak?",
+            "spanish": "cuanto?"
+        },
+        {
+            "kichwa": "maskana",
+            "spanish": "buscar"
+        },
+        {
+            "kichwa": "mawka",
+            "spanish": "viejo, inanimado"
+        },
+        {
+            "kichwa": "maykan...tak?",
+            "spanish": "cual?"
+        },
+        {
+            "kichwa": "maykunatapash",
+            "spanish": "por doquier"
+        },
+        {
+            "kichwa": "maymantatak?",
+            "spanish": "de donde?"
+        },
+        {
+            "kichwa": "maymutsurik",
+            "spanish": "importante"
+        },
+        {
+            "kichwa": "maypipash",
+            "spanish": "en doquier"
+        },
+        {
+            "kichwa": "maypitak?",
+            "spanish": "en donde?"
+        },
+        {
+            "kichwa": "maytatak?",
+            "spanish": "por donde?"
+        },
+        {
+            "kichwa": "mayu",
+            "spanish": "rio"
+        },
+        {
+            "kichwa": "mesa",
+            "spanish": "mesa"
+        },
+        {
+            "kichwa": "michik kari",
+            "spanish": "pastor"
+        },
+        {
+            "kichwa": "michik warmi",
+            "spanish": "pastora"
+        },
+        {
+            "kichwa": "michina",
+            "spanish": "pastar"
+        },
+        {
+            "kichwa": "mikuna",
+            "spanish": "dinero"
+        },
+        {
+            "kichwa": "mikuna",
+            "spanish": "comer"
+        },
+        {
+            "kichwa": "mikuna uku",
+            "spanish": "comedor"
+        },
+        {
+            "kichwa": "minishtina",
+            "spanish": "necesitar"
+        },
+        {
+            "kichwa": "minka",
+            "spanish": "trabajo comunal"
+        },
+        {
+            "kichwa": "mishki",
+            "spanish": "tayta galan"
+        },
+        {
+            "kichwa": "mishki",
+            "spanish": "sabroso"
+        },
+        {
+            "kichwa": "mishki pacha",
+            "spanish": "delicioso"
+        },
+        {
+            "kichwa": "mishu",
+            "spanish": "misho"
+        },
+        {
+            "kichwa": "misi",
+            "spanish": "gato"
+        },
+        {
+            "kichwa": "moleshtana",
+            "spanish": "molestar"
+        },
+        {
+            "kichwa": "muchana",
+            "spanish": "adorar"
+        },
+        {
+            "kichwa": "muchiku",
+            "spanish": "sombrero"
+        },
+        {
+            "kichwa": "munana",
+            "spanish": "desear, querer"
+        },
+        {
+            "kichwa": "munaywan",
+            "spanish": "con gusto"
+        },
+        {
+            "kichwa": "muru",
+            "spanish": "grano"
+        },
+        {
+            "kichwa": "mushuk",
+            "spanish": "nuevo"
+        },
+        {
+            "kichwa": "mushuk",
+            "spanish": "nuevo"
+        },
+        {
+            "kichwa": "muspa",
+            "spanish": "loco"
+        },
+        {
+            "kichwa": "muti",
+            "spanish": "mote"
+        },
+        {
+            "kichwa": "mutshuska",
+            "spanish": "necesitado"
+        },
+        {
+            "kichwa": "mutsuna",
+            "spanish": "necesitar"
+        },
+        {
+            "kichwa": "muyu",
+            "spanish": "semilla"
+        },
+        {
+            "kichwa": "muyuna",
+            "spanish": "girar"
+        },
+        {
+            "kichwa": "muyuna",
+            "spanish": "rodear"
+        },
+        {
+            "kichwa": "muyuntin",
+            "spanish": "alrededor"
+        },
+        {
+            "kichwa": "muyuntin",
+            "spanish": "rodear"
+        },
+        {
+            "kichwa": "ña",
+            "spanish": "ya!"
+        },
+        {
+            "kichwa": "ñan",
+            "spanish": "camino"
+        },
+        {
+            "kichwa": "ñaña",
+            "spanish": "hermana-hermana"
+        },
+        {
+            "kichwa": "nanana",
+            "spanish": "doler"
+        },
+        {
+            "kichwa": "ñanta mañachi",
+            "spanish": "prestame el camino"
+        },
+        {
+            "kichwa": "ñatak",
+            "spanish": "en este momento"
+        },
+        {
+            "kichwa": "ñawi",
+            "spanish": "cara, faz"
+        },
+        {
+            "kichwa": "ñawpa",
+            "spanish": "adelante"
+        },
+        {
+            "kichwa": "nima",
+            "spanish": "cero"
+        },
+        {
+            "kichwa": "nina",
+            "spanish": "decir"
+        },
+        {
+            "kichwa": "nina",
+            "spanish": "decir"
+        },
+        {
+            "kichwa": "nina japirirka ",
+            "spanish": "se encendio"
+        },
+        {
+            "kichwa": "nishpa",
+            "spanish": "diciendo"
+        },
+        {
+            "kichwa": "ñuka",
+            "spanish": "yo"
+        },
+        {
+            "kichwa": "ñukanchik",
+            "spanish": "nosostros, nosotras"
+        },
+        {
+            "kichwa": "ñukashina",
+            "spanish": "como yo"
+        },
+        {
+            "kichwa": "ñutuchina",
+            "spanish": "pulverizar"
+        },
+        {
+            "kichwa": "pacha",
+            "spanish": "hora"
+        },
+        {
+            "kichwa": "pacha",
+            "spanish": "tierra"
+        },
+        {
+            "kichwa": "pachallina",
+            "spanish": "chal corto"
+        },
+        {
+            "kichwa": "pachan pachan",
+            "spanish": "tiempo en tiempo"
+        },
+        {
+            "kichwa": "pakakuna",
+            "spanish": "esconderse"
+        },
+        {
+            "kichwa": "pakarina",
+            "spanish": "amanecerse"
+        },
+        {
+            "kichwa": "pakcha",
+            "spanish": "cascada"
+        },
+        {
+            "kichwa": "pakina",
+            "spanish": "romper, quebrar"
+        },
+        {
+            "kichwa": "paku",
+            "spanish": "cafe"
+        },
+        {
+            "kichwa": "pakuana"
+        },
+        {
+            "kichwa": "pallana",
+            "spanish": "cosechar"
+        },
+        {
+            "kichwa": "pana",
+            "spanish": "pagar"
+        },
+        {
+            "kichwa": "pani",
+            "spanish": "hermano-hermana"
+        },
+        {
+            "kichwa": "panka",
+            "spanish": "pagina"
+        },
+        {
+            "kichwa": "pargati",
+            "spanish": "alpargate"
+        },
+        {
+            "kichwa": "parkati",
+            "spanish": "alpargate"
+        },
+        {
+            "kichwa": "parlana",
+            "spanish": "conversar"
+        },
+        {
+            "kichwa": "paskana",
+            "spanish": "abrir"
+        },
+        {
+            "kichwa": "patakunawan wasi",
+            "spanish": "edificio con muchos pisos"
+        },
+        {
+            "kichwa": "patsak",
+            "spanish": "cien"
+        },
+        {
+            "kichwa": "pay",
+            "spanish": "el, ella"
+        },
+        {
+            "kichwa": "pay",
+            "spanish": "gracias"
+        },
+        {
+            "kichwa": "paykuna",
+            "spanish": "ellos, ellas"
+        },
+        {
+            "kichwa": "pichana",
+            "spanish": "limpiar hierbas"
+        },
+        {
+            "kichwa": "pichana",
+            "spanish": "limpiar"
+        },
+        {
+            "kichwa": "pichka",
+            "spanish": "cinco"
+        },
+        {
+            "kichwa": "pillurka",
+            "spanish": "envolvio"
+        },
+        {
+            "kichwa": "pimantatak?",
+            "spanish": "por quien?"
+        },
+        {
+            "kichwa": "piña",
+            "spanish": "enojado, enojada"
+        },
+        {
+            "kichwa": "piñachina",
+            "spanish": "hacer enojar"
+        },
+        {
+            "kichwa": "piñachina",
+            "spanish": "hacer enojar"
+        },
+        {
+            "kichwa": "pintu",
+            "spanish": "tela"
+        },
+        {
+            "kichwa": "pipash",
+            "spanish": "alguien"
+        },
+        {
+            "kichwa": "pishku",
+            "spanish": "pajaro"
+        },
+        {
+            "kichwa": "pitak?",
+            "spanish": "quien?"
+        },
+        {
+            "kichwa": "pitatak?",
+            "spanish": "a quien?"
+        },
+        {
+            "kichwa": "piwantak?",
+            "spanish": "con quien?"
+        },
+        {
+            "kichwa": "plituna",
+            "spanish": "molestar"
+        },
+        {
+            "kichwa": "puka",
+            "spanish": "rojo"
+        },
+        {
+            "kichwa": "pukllana",
+            "spanish": "jugar"
+        },
+        {
+            "kichwa": "pukru",
+            "spanish": "loma"
+        },
+        {
+            "kichwa": "puku",
+            "spanish": "plato"
+        },
+        {
+            "kichwa": "pukuna",
+            "spanish": "madurar, soplar"
+        },
+        {
+            "kichwa": "pukuna",
+            "spanish": "madurar, fermentarse"
+        },
+        {
+            "kichwa": "pukushka",
+            "spanish": "madurado"
+        },
+        {
+            "kichwa": "pukyu",
+            "spanish": "vertiente"
+        },
+        {
+            "kichwa": "puncha",
+            "spanish": "dialogo"
+        },
+        {
+            "kichwa": "puñuna",
+            "spanish": "dormir"
+        },
+        {
+            "kichwa": "puñuna",
+            "spanish": "dormir"
+        },
+        {
+            "kichwa": "puñuna uku",
+            "spanish": "dormitorio"
+        },
+        {
+            "kichwa": "purina",
+            "spanish": "andar"
+        },
+        {
+            "kichwa": "purishpa",
+            "spanish": "caminando"
+        },
+        {
+            "kichwa": "pusak",
+            "spanish": "ocho"
+        },
+        {
+            "kichwa": "pushak",
+            "spanish": "presidente"
+        },
+        {
+            "kichwa": "pushana",
+            "spanish": "llevar"
+        },
+        {
+            "kichwa": "pusharkakuna",
+            "spanish": "llevaron"
+        },
+        {
+            "kichwa": "pushtu",
+            "spanish": "sector"
+        },
+        {
+            "kichwa": "pushtupi",
+            "spanish": "en el sector"
+        },
+        {
+            "kichwa": "pusu",
+            "spanish": "plomo"
+        },
+        {
+            "kichwa": "putsuku yaku",
+            "spanish": "cerveza"
+        },
+        {
+            "kichwa": "puyo",
+            "spanish": "niebla"
+        },
+        {
+            "kichwa": "rakina",
+            "spanish": "repartir"
+        },
+        {
+            "kichwa": "raku",
+            "spanish": "grueso"
+        },
+        {
+            "kichwa": "ranti",
+            "spanish": "comprar"
+        },
+        {
+            "kichwa": "rantina",
+            "spanish": "comprar"
+        },
+        {
+            "kichwa": "rasu",
+            "spanish": "nieve"
+        },
+        {
+            "kichwa": "rikchari",
+            "spanish": "despiertate"
+        },
+        {
+            "kichwa": "rikra",
+            "spanish": "brazo"
+        },
+        {
+            "kichwa": "riksik",
+            "spanish": "amigo conocido"
+        },
+        {
+            "kichwa": "riksina",
+            "spanish": "conocer"
+        },
+        {
+            "kichwa": "riksishka",
+            "spanish": "amigo nuevo"
+        },
+        {
+            "kichwa": "riksishka",
+            "spanish": "amigo, amiga"
+        },
+        {
+            "kichwa": "rikuchiway",
+            "spanish": "muestrame"
+        },
+        {
+            "kichwa": "rikuna",
+            "spanish": "ver, mirar"
+        },
+        {
+            "kichwa": "rimanakuy",
+            "spanish": "dialogo"
+        },
+        {
+            "kichwa": "rimashka katina",
+            "spanish": "seguir hablando"
+        },
+        {
+            "kichwa": "rina",
+            "spanish": "ir"
+        },
+        {
+            "kichwa": "rinri",
+            "spanish": "oreja"
+        },
+        {
+            "kichwa": "ruka",
+            "spanish": "dedo"
+        },
+        {
+            "kichwa": "ruku",
+            "spanish": "viejo"
+        },
+        {
+            "kichwa": "rumi",
+            "spanish": "piedra"
+        },
+        {
+            "kichwa": "rumi",
+            "spanish": "rumi"
+        },
+        {
+            "kichwa": "rumilla pamba",
+            "spanish": "pedregroso"
+        },
+        {
+            "kichwa": "rumpa",
+            "spanish": "pelotas, canicas"
+        },
+        {
+            "kichwa": "runpa",
+            "spanish": "guantes"
+        },
+        {
+            "kichwa": "rurana",
+            "spanish": "deber"
+        },
+        {
+            "kichwa": "rurana",
+            "spanish": "aplicar"
+        },
+        {
+            "kichwa": "rurana",
+            "spanish": "hacer"
+        },
+        {
+            "kichwa": "ruwana",
+            "spanish": "poncho"
+        },
+        {
+            "kichwa": "sacha kuchi",
+            "spanish": "cerdo salvaje"
+        },
+        {
+            "kichwa": "sakina",
+            "spanish": "dejar"
+        },
+        {
+            "kichwa": "sakina",
+            "spanish": "extraer, sacar"
+        },
+        {
+            "kichwa": "sakirina",
+            "spanish": "quedarse"
+        },
+        {
+            "kichwa": "sakiway",
+            "spanish": "me deje"
+        },
+        {
+            "kichwa": "samana",
+            "spanish": "descansar"
+        },
+        {
+            "kichwa": "samarina uku",
+            "spanish": "sala"
+        },
+        {
+            "kichwa": "sara chakra",
+            "spanish": "sementeria maiz"
+        },
+        {
+            "kichwa": "sara panka",
+            "spanish": "hojas de maiz"
+        },
+        {
+            "kichwa": "sarantanu",
+            "spanish": "de varios colores"
+        },
+        {
+            "kichwa": "sarcillo",
+            "spanish": "arete"
+        },
+        {
+            "kichwa": "shamuna",
+            "spanish": "venir"
+        },
+        {
+            "kichwa": "shamupasha",
+            "spanish": "me permite venir"
+        },
+        {
+            "kichwa": "shamupaylla",
+            "spanish": "venga no mas"
+        },
+        {
+            "kichwa": "shayachina",
+            "spanish": "hacer parar"
+        },
+        {
+            "kichwa": "shayana",
+            "spanish": "para"
+        },
+        {
+            "kichwa": "shaykuna",
+            "spanish": "cansarse"
+        },
+        {
+            "kichwa": "shaykushka",
+            "spanish": "cansado, cansada, estresado"
+        },
+        {
+            "kichwa": "shikra",
+            "spanish": "mochila"
+        },
+        {
+            "kichwa": "shila",
+            "spanish": "vaso"
+        },
+        {
+            "kichwa": "shilla",
+            "spanish": "vaso"
+        },
+        {
+            "kichwa": "shimi",
+            "spanish": "lengua"
+        },
+        {
+            "kichwa": "shina shinalla",
+            "spanish": "mas o menos"
+        },
+        {
+            "kichwa": "shinallatak",
+            "spanish": "asi mismo"
+        },
+        {
+            "kichwa": "shinapash",
+            "spanish": "sin embargo, pero"
+        },
+        {
+            "kichwa": "shitana",
+            "spanish": "botar, arrojar"
+        },
+        {
+            "kichwa": "shitona",
+            "spanish": "botar"
+        },
+        {
+            "kichwa": "shuk",
+            "spanish": "uno"
+        },
+        {
+            "kichwa": "shunku",
+            "spanish": "corazon"
+        },
+        {
+            "kichwa": "shunku",
+            "spanish": "corazon"
+        },
+        {
+            "kichwa": "shunkuna",
+            "spanish": "desayuno"
+        },
+        {
+            "kichwa": "shunsho",
+            "spanish": "idiota"
+        },
+        {
+            "kichwa": "shuti",
+            "spanish": "nombre"
+        },
+        {
+            "kichwa": "shutichikuna",
+            "spanish": "pronombres"
+        },
+        {
+            "kichwa": "shuwak",
+            "spanish": "ladron"
+        },
+        {
+            "kichwa": "shuyana",
+            "spanish": "esperar"
+        },
+        {
+            "kichwa": "sirana",
+            "spanish": "coser"
+        },
+        {
+            "kichwa": "sirina",
+            "spanish": "acostarse"
+        },
+        {
+            "kichwa": "sisa",
+            "spanish": "flor"
+        },
+        {
+            "kichwa": "soltera",
+            "spanish": "soltera"
+        },
+        {
+            "kichwa": "sukta",
+            "spanish": "seis"
+        },
+        {
+            "kichwa": "sumak",
+            "spanish": "excelente"
+        },
+        {
+            "kichwa": "surkuna",
+            "spanish": "sacar"
+        },
+        {
+            "kichwa": "tabacu",
+            "spanish": "tabaco, cigarrillo"
+        },
+        {
+            "kichwa": "taki",
+            "spanish": "musica"
+        },
+        {
+            "kichwa": "takina",
+            "spanish": "hacer musica"
+        },
+        {
+            "kichwa": "takshak kari",
+            "spanish": "lavandero"
+        },
+        {
+            "kichwa": "takshak warmi",
+            "spanish": "lavandera"
+        },
+        {
+            "kichwa": "takshana",
+            "spanish": "lavar"
+        },
+        {
+            "kichwa": "tamiana",
+            "spanish": "llover"
+        },
+        {
+            "kichwa": "tanta",
+            "spanish": "pan"
+        },
+        {
+            "kichwa": "tantanakuna",
+            "spanish": "reunirse"
+        },
+        {
+            "kichwa": "tantanakuy",
+            "spanish": "reunion"
+        },
+        {
+            "kichwa": "tarina",
+            "spanish": "encontrar"
+        },
+        {
+            "kichwa": "tarishka",
+            "spanish": "encontrado"
+        },
+        {
+            "kichwa": "tarpuk warmi",
+            "spanish": "agricultora"
+        },
+        {
+            "kichwa": "tarpuna",
+            "spanish": "sembrar"
+        },
+        {
+            "kichwa": "tarpuy",
+            "spanish": "siembra"
+        },
+        {
+            "kichwa": "taspurshka",
+            "spanish": "sembrio"
+        },
+        {
+            "kichwa": "tawka",
+            "spanish": "varios"
+        },
+        {
+            "kichwa": "tawka",
+            "spanish": "muchos"
+        },
+        {
+            "kichwa": "tawri",
+            "spanish": "chochos"
+        },
+        {
+            "kichwa": "tayta",
+            "spanish": "señor, papa"
+        },
+        {
+            "kichwa": "tayta cura",
+            "spanish": "papa cura"
+        },
+        {
+            "kichwa": "tayta yaya",
+            "spanish": "padre biologico"
+        },
+        {
+            "kichwa": "telar",
+            "spanish": "telar"
+        },
+        {
+            "kichwa": "tikrana",
+            "spanish": "regresar, volver"
+        },
+        {
+            "kichwa": "tinpuna",
+            "spanish": "hervir"
+        },
+        {
+            "kichwa": "tio",
+            "spanish": "señor"
+        },
+        {
+            "kichwa": "tiyana",
+            "spanish": "haber, existir"
+        },
+        {
+            "kichwa": "tiyarina",
+            "spanish": "silla, silleta"
+        },
+        {
+            "kichwa": "tiyarina",
+            "spanish": "sentarse"
+        },
+        {
+            "kichwa": "trabajana",
+            "spanish": "trabajar"
+        },
+        {
+            "kichwa": "tukuna",
+            "spanish": "hacerse"
+        },
+        {
+            "kichwa": "tukuy",
+            "spanish": "todos"
+        },
+        {
+            "kichwa": "tukuylla",
+            "spanish": "todos"
+        },
+        {
+            "kichwa": "tullpa",
+            "spanish": "fogon"
+        },
+        {
+            "kichwa": "tullpa",
+            "spanish": "fogon"
+        },
+        {
+            "kichwa": "tullpuna ",
+            "spanish": "colorear"
+        },
+        {
+            "kichwa": "tullpuyuk",
+            "spanish": "colorido"
+        },
+        {
+            "kichwa": "tullu",
+            "spanish": "flaco"
+        },
+        {
+            "kichwa": "tunu",
+            "spanish": "musica"
+        },
+        {
+            "kichwa": "tupana",
+            "spanish": "encontrarse"
+        },
+        {
+            "kichwa": "turi",
+            "spanish": "hermana-hermano"
+        },
+        {
+            "kichwa": "turu",
+            "spanish": "lodo"
+        },
+        {
+            "kichwa": "tushuna",
+            "spanish": "bailar"
+        },
+        {
+            "kichwa": "tushuna",
+            "spanish": "bailar"
+        },
+        {
+            "kichwa": "tuta mikuna",
+            "spanish": "cena"
+        },
+        {
+            "kichwa": "tutamanta",
+            "spanish": "la mañana"
+        },
+        {
+            "kichwa": "tyarina",
+            "spanish": "sentarse"
+        },
+        {
+            "kichwa": "ucha",
+            "spanish": "pronto"
+        },
+        {
+            "kichwa": "uchilla",
+            "spanish": "pequeño"
+        },
+        {
+            "kichwa": "uchilla",
+            "spanish": "pequeño"
+        },
+        {
+            "kichwa": "uchilla pacha",
+            "spanish": "minuto"
+        },
+        {
+            "kichwa": "ukllana",
+            "spanish": "abrazar"
+        },
+        {
+            "kichwa": "uksha",
+            "spanish": "pajaro"
+        },
+        {
+            "kichwa": "uksha",
+            "spanish": "paja"
+        },
+        {
+            "kichwa": "uku",
+            "spanish": "adentro, dentro"
+        },
+        {
+            "kichwa": "uku",
+            "spanish": "cuarto"
+        },
+        {
+            "kichwa": "uku",
+            "spanish": "cuarto, habitacion"
+        },
+        {
+            "kichwa": "uku pacha",
+            "spanish": "infierno"
+        },
+        {
+            "kichwa": "ukucha",
+            "spanish": "raton"
+        },
+        {
+            "kichwa": "ullana",
+            "spanish": "oir"
+        },
+        {
+            "kichwa": "uma",
+            "spanish": "cabeza"
+        },
+        {
+            "kichwa": "uma pachallina",
+            "spanish": "tla para cubrirse la cabeza"
+        },
+        {
+            "kichwa": "umana",
+            "spanish": "mentir"
+        },
+        {
+            "kichwa": "unkuna",
+            "spanish": "enfermarse"
+        },
+        {
+            "kichwa": "upalla",
+            "spanish": "callado"
+        },
+        {
+            "kichwa": "upallana",
+            "spanish": "callar"
+        },
+        {
+            "kichwa": "upyana",
+            "spanish": "beber"
+        },
+        {
+            "kichwa": "ura",
+            "spanish": "abajo"
+        },
+        {
+            "kichwa": "urku",
+            "spanish": "montaña, monte"
+        },
+        {
+            "kichwa": "urpi",
+            "spanish": "tortola"
+        },
+        {
+            "kichwa": "usa",
+            "spanish": "piojo"
+        },
+        {
+            "kichwa": "ushana",
+            "spanish": "poder"
+        },
+        {
+            "kichwa": "ushana",
+            "spanish": "poder"
+        },
+        {
+            "kichwa": "ushana",
+            "spanish": "poder"
+        },
+        {
+            "kichwa": "ushushi",
+            "spanish": "hijo"
+        },
+        {
+            "kichwa": "ushuta",
+            "spanish": "calzado"
+        },
+        {
+            "kichwa": "utiya",
+            "spanish": "rapido"
+        },
+        {
+            "kichwa": "utya",
+            "spanish": "pronto"
+        },
+        {
+            "kichwa": "uyana",
+            "spanish": "escuchar"
+        },
+        {
+            "kichwa": "uyay",
+            "spanish": "atento"
+        },
+        {
+            "kichwa": "valina",
+            "spanish": "valer, costar"
+        },
+        {
+            "kichwa": "wachuna",
+            "spanish": "formar surcos"
+        },
+        {
+            "kichwa": "wakana",
+            "spanish": "llorar"
+        },
+        {
+            "kichwa": "wakaychina",
+            "spanish": "guardar"
+        },
+        {
+            "kichwa": "wakcha",
+            "spanish": "pobre"
+        },
+        {
+            "kichwa": "wakcha",
+            "spanish": "pobre"
+        },
+        {
+            "kichwa": "wakin",
+            "spanish": "alguno"
+        },
+        {
+            "kichwa": "wakin",
+            "spanish": "algun"
+        },
+        {
+            "kichwa": "wakinpi",
+            "spanish": "rara vez"
+        },
+        {
+            "kichwa": "waklli",
+            "spanish": "dañado"
+        },
+        {
+            "kichwa": "wakllina",
+            "spanish": "dañarse"
+        },
+        {
+            "kichwa": "wakra",
+            "spanish": "toro"
+        },
+        {
+            "kichwa": "wallka",
+            "spanish": "collar"
+        },
+        {
+            "kichwa": "wampra",
+            "spanish": "joven hombre"
+        },
+        {
+            "kichwa": "wankipi",
+            "spanish": "a veces"
+        },
+        {
+            "kichwa": "wañuchina",
+            "spanish": "hacer apagar"
+        },
+        {
+            "kichwa": "wanuna",
+            "spanish": "abonar"
+        },
+        {
+            "kichwa": "wañushka",
+            "spanish": "muerto"
+        },
+        {
+            "kichwa": "waranka",
+            "spanish": "mil"
+        },
+        {
+            "kichwa": "warmi",
+            "spanish": "mujer"
+        },
+        {
+            "kichwa": "warmi",
+            "spanish": "esposa"
+        },
+        {
+            "kichwa": "warmi tukuna",
+            "spanish": "enamorada"
+        },
+        {
+            "kichwa": "warmi wawa",
+            "spanish": "niña"
+        },
+        {
+            "kichwa": "warmikunayuk",
+            "spanish": "dueño de mujeres"
+        },
+        {
+            "kichwa": "warmipa churakuna",
+            "spanish": "ropa de mujer"
+        },
+        {
+            "kichwa": "warmiyuk",
+            "spanish": "dueño de una warmi"
+        },
+        {
+            "kichwa": "washa",
+            "spanish": "atras, tras"
+        },
+        {
+            "kichwa": "wasi",
+            "spanish": "casado"
+        },
+        {
+            "kichwa": "wasichina ",
+            "spanish": "construir casa"
+        },
+        {
+            "kichwa": "wasiyuk",
+            "spanish": "dueño de casa"
+        },
+        {
+            "kichwa": "wata",
+            "spanish": "año"
+        },
+        {
+            "kichwa": "watarka",
+            "spanish": "amarro"
+        },
+        {
+            "kichwa": "wawa",
+            "spanish": "niño, niña"
+        },
+        {
+            "kichwa": "wawa kallana",
+            "spanish": "tiesto pequeño"
+        },
+        {
+            "kichwa": "wawa manka",
+            "spanish": "olla pequeña"
+        },
+        {
+            "kichwa": "wawa pacha",
+            "spanish": "segundo"
+        },
+        {
+            "kichwa": "wawa unkuchik",
+            "spanish": "partera"
+        },
+        {
+            "kichwa": "wawki",
+            "spanish": "hermano-hermano"
+        },
+        {
+            "kichwa": "waylla",
+            "spanish": "verde"
+        },
+        {
+            "kichwa": "wayra",
+            "spanish": "viento"
+        },
+        {
+            "kichwa": "wichayman",
+            "spanish": "hacia arriba"
+        },
+        {
+            "kichwa": "willana",
+            "spanish": "avisar"
+        },
+        {
+            "kichwa": "wira",
+            "spanish": "manteca"
+        },
+        {
+            "kichwa": "wirwila",
+            "spanish": "guitarra"
+        },
+        {
+            "kichwa": "wisha",
+            "spanish": "cucharon"
+        },
+        {
+            "kichwa": "yachachik",
+            "spanish": "profesor"
+        },
+        {
+            "kichwa": "yachachina",
+            "spanish": "enseñar"
+        },
+        {
+            "kichwa": "yachakuk",
+            "spanish": "estudiante"
+        },
+        {
+            "kichwa": "yachakuna",
+            "spanish": "aprender"
+        },
+        {
+            "kichwa": "yachana wasi",
+            "spanish": "escuela"
+        },
+        {
+            "kichwa": "yacharina",
+            "spanish": "acostumbrarse, enseñarse"
+        },
+        {
+            "kichwa": "yaku",
+            "spanish": "agua"
+        },
+        {
+            "kichwa": "yaku",
+            "spanish": "agua"
+        },
+        {
+            "kichwa": "yaku wira",
+            "spanish": "aceite"
+        },
+        {
+            "kichwa": "yallina",
+            "spanish": "pasarse"
+        },
+        {
+            "kichwa": "yana shina",
+            "spanish": "parecido al negro"
+        },
+        {
+            "kichwa": "yana shina",
+            "spanish": "negro"
+        },
+        {
+            "kichwa": "yanapana",
+            "spanish": "ayudar"
+        },
+        {
+            "kichwa": "yanta",
+            "spanish": "leña"
+        },
+        {
+            "kichwa": "yanuk kari",
+            "spanish": "cocinero"
+        },
+        {
+            "kichwa": "yanuk warmi",
+            "spanish": "cocinera"
+        },
+        {
+            "kichwa": "yanuna ",
+            "spanish": "cocinar"
+        },
+        {
+            "kichwa": "yanuna ",
+            "spanish": "cocina"
+        },
+        {
+            "kichwa": "yanuna ",
+            "spanish": "cocinar"
+        },
+        {
+            "kichwa": "yanuna uku",
+            "spanish": "cocina"
+        },
+        {
+            "kichwa": "yapuna",
+            "spanish": "harar"
+        },
+        {
+            "kichwa": "yaykuna",
+            "spanish": "entrar"
+        },
+        {
+            "kichwa": "yupaychini",
+            "spanish": "gracias"
+        },
+        {
+            "kichwa": "yura",
+            "spanish": "planta o matorral"
+        },
+        {
+            "kichwa": "yurak",
+            "spanish": "blanco"
+        },
+        {
+            "kichwa": "yuyana",
+            "spanish": "intentar"
+        },
+        {
+            "kichwa": "winkulak",
+            "spanish": "col"
+        },
+        {
+            "kichwa": "nanana",
+            "spanish": "dolor"
+        },
+        {
+            "kichwa": "ashnana",
+            "spanish": "oler"
+        },
+        {
+            "kichwa": "mayllana",
+            "spanish": "lavar(excepto ropa)"
+        },
+        {
+            "kichwa": "akllana",
+            "spanish": "escojer"
+        },
+        {
+            "kichwa": "mana kullkita kurin",
+            "spanish": "gratis"
+        },
+        {
+            "kichwa": "chaytallatak",
+            "spanish": "lo mismo"
+        },
+        {
+            "kichwa": "kuna",
+            "spanish": "dar"
+        },
+        {
+            "kichwa": "junka",
+            "spanish": "semana"
+        },
+        {
+            "kichwa": "yanapana",
+            "spanish": "ayudar"
+        },
+        {
+            "kichwa": "imashtawan",
+            "spanish": "que mas?"
+        },
+        {
+            "kichwa": "chapuna",
+            "spanish": "revolver"
+        },
+        {
+            "kichwa": "sapi",
+            "spanish": "raiz"
+        },
+        {
+            "kichwa": "hawa",
+            "spanish": "arriba"
+        },
+        {
+            "kichwa": "yalli alli",
+            "spanish": "pasa bien"
+        },
+        {
+            "kichwa": "taripay",
+            "spanish": "investigacion"
+        },
+        {
+            "kichwa": "wachachik",
+            "spanish": "partera"
+        },
+        {
+            "kichwa": "arawi",
+            "spanish": "poema"
+        },
+        {
+            "kichwa": "chinkachina",
+            "spanish": "perder"
+        },
+        {
+            "kichwa": "yanka",
+            "spanish": "envano"
+        },
+        {
+            "kichwa": "puyu",
+            "spanish": "nube"
+        },
+        {
+            "kichwa": "uyllana",
+            "spanish": "aviso"
+        },
+        {
+            "kichwa": "wiñana",
+            "spanish": "crecer"
+        },
+        {
+            "kichwa": "kara",
+            "spanish": "cuero"
+        },
+        {
+            "kichwa": "mañana",
+            "spanish": "pedido, ceremonia"
+        },
+        {
+            "kichwa": "kunkana",
+            "spanish": "olvidar"
+        },
+        {
+            "kichwa": "ninanta",
+            "spanish": "demasiado"
+        },
+        {
+            "kichwa": "paktachispa",
+            "spanish": "hacer alcanzar, hacer unir"
+        },
+        {
+            "kichwa": "paktana",
+            "spanish": "unir, alcanzar"
+        },
+        {
+            "kichwa": "kuyana",
+            "spanish": "amando"
+        },
+        {
+            "kichwa": "yallina",
+            "spanish": "pasarse"
+        },
+        {
+            "kichwa": "tipina",
+            "spanish": "cosechar sara"
+        },
+        {
+            "kichwa": "shuyana",
+            "spanish": "esperar"
+        },
+        {
+            "kichwa": "chuya",
+            "spanish": "limpio"
+        },
+        {
+            "kichwa": "chayamuna",
+            "spanish": "llegar"
+        },
+        {
+            "kichwa": "yala",
+            "spanish": "igual que shina"
+        },
+        {
+            "kichwa": "shina",
+            "spanish": "por ejemplo"
+        },
+        {
+            "kichwa": "llamkay uku",
+            "spanish": "oficina"
+        },
+        {
+            "kichwa": "mashkana",
+            "spanish": "buscar"
+        },
+        {
+            "kichwa": "tantanakuna",
+            "spanish": "reunirse"
+        },
+        {
+            "kichwa": "shinchitapacha",
+            "spanish": "fuertisimo"
+        },
+        {
+            "kichwa": "puchka",
+            "spanish": "hilar"
+        },
+        {
+            "kichwa": "kururu",
+            "spanish": "cono de hilo"
+        },
+        {
+            "kichwa": "awllina",
+            "spanish": "extramar, hurdir"
+        },
+        {
+            "kichwa": "kawa",
+            "spanish": "balsa de madera para tejer hilo"
+        },
+        {
+            "kichwa": "chayana",
+            "spanish": "llegar"
+        },
+        {
+            "kichwa": "kawpuna",
+            "spanish": "desenredar hilo"
+        },
+        {
+            "kichwa": "kawpuk",
+            "spanish": "el que desenreda"
+        },
+        {
+            "kichwa": "pilluna",
+            "spanish": "envolver"
+        },
+        {
+            "kichwa": "aswana kaspi",
+            "spanish": "palo para tejer"
+        },
+        {
+            "kichwa": "illana",
+            "spanish": "no habe, no existir"
+        },
+        {
+            "kichwa": "illarka",
+            "spanish": "no hubo"
+        },
+        {
+            "kichwa": "tukuchina",
+            "spanish": "terminar"
+        },
+        {
+            "kichwa": "tukuna",
+            "spanish": "transformarse"
+        },
+        {
+            "kichwa": "apamuna",
+            "spanish": "traer"
+        },
+        {
+            "kichwa": "apachina",
+            "spanish": "cargar"
+        },
+        {
+            "kichwa": "apana",
+            "spanish": "llevar"
+        },
+        {
+            "kichwa": "aparina",
+            "spanish": "cargar"
+        },
+        {
+            "kichwa": "larka",
+            "spanish": "sequia"
+        },
+        {
+            "kichwa": "yaykuna",
+            "spanish": "entrar"
+        },
+        {
+            "kichwa": "awanakaspi",
+            "spanish": "madera para tejer"
+        },
+        {
+            "kichwa": "manchaklla",
+            "spanish": "temerosamente"
+        },
+        {
+            "kichwa": "manchana",
+            "spanish": "asustar"
+        },
+        {
+            "kichwa": "manchak",
+            "spanish": "el que teme"
+        },
+        {
+            "kichwa": "jananik",
+            "spanish": "subida inclinada"
+        },
+        {
+            "kichwa": "uranik",
+            "spanish": "hacia abajo en digonal"
+        },
+        {
+            "kichwa": "washanik",
+            "spanish": "hacia atras"
+        },
+        {
+            "kichwa": "rikurina",
+            "spanish": "aparecerse, verse"
+        },
+        {
+            "kichwa": "shuktak shina",
+            "spanish": "como otro(diferente)"
+        },
+        {
+            "kichwa": "millma",
+            "spanish": "lana"
+        },
+        {
+            "kichwa": "mañana",
+            "spanish": "pedir"
+        },
+        {
+            "kichwa": "paypak",
+            "spanish": "para el"
+        },
+        {
+            "kichwa": "chinkana",
+            "spanish": "perder"
+        },
+        {
+            "kichwa": "rikunakuna",
+            "spanish": "vistas, paisajes"
+        },
+        {
+            "kichwa": "chinkarina",
+            "spanish": "perderse"
+        },
+        {
+            "kichwa": "llapina",
+            "spanish": "aplastar"
+        },
+        {
+            "kichwa": "kayta chayta",
+            "spanish": "por aqui, por alla"
+        },
+        {
+            "kichwa": "mana pipash",
+            "spanish": "nadie"
+        },
+        {
+            "kichwa": "machalla",
+            "spanish": "medio ebrio"
+        },
+        {
+            "kichwa": "shuyana",
+            "spanish": "esperar"
+        },
+        {
+            "kichwa": "shayana",
+            "spanish": "detenerse"
+        },
+        {
+            "kichwa": "kachana",
+            "spanish": "mandar"
+        },
+        {
+            "kichwa": "mashkakrishpa",
+            "spanish": "yendo a buscar"
+        },
+        {
+            "kichwa": "kipikunantin",
+            "spanish": "conjuntamente con las maletas"
+        },
+        {
+            "kichwa": "iñina",
+            "spanish": "creencia"
+        },
+        {
+            "kichwa": "llullu",
+            "spanish": "tierno"
+        },
+        {
+            "kichwa": "junta",
+            "spanish": "llena"
+        },
+        {
+            "kichwa": "pura killa",
+            "spanish": "luna llena"
+        },
+        {
+            "kichwa": "ismuna",
+            "spanish": "podrir"
+        },
+        {
+            "kichwa": "wasichina ",
+            "spanish": "construir"
+        },
+        {
+            "kichwa": "wirayana",
+            "spanish": "engordar"
+        },
+        {
+            "kichwa": "surkuna",
+            "spanish": "sacar, cortar"
+        },
+        {
+            "kichwa": "tukurina",
+            "spanish": "termino(algo interno)"
+        },
+        {
+            "kichwa": "utka",
+            "spanish": "rapido"
+        },
+        {
+            "kichwa": "pukuna",
+            "spanish": "madurar"
+        },
+        {
+            "kichwa": "imatapash",
+            "spanish": "cualquier cosa"
+        },
+        {
+            "kichwa": "wallinku",
+            "spanish": "conejo"
+        },
+        {
+            "kichwa": "tukuna",
+            "spanish": "hacerse volverse"
+        },
+        {
+            "kichwa": "tunkuri",
+            "spanish": "garganta, cuello"
+        },
+        {
+            "kichwa": "kashtuna",
+            "spanish": "mandibula"
+        },
+        {
+            "kichwa": "chukchuna",
+            "spanish": "temblor"
+        },
+        {
+            "kichwa": "amuklla",
+            "spanish": "sabe no mas"
+        }
+    ]
