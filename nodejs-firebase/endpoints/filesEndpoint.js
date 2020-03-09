@@ -12,37 +12,6 @@ const mp3Split = require("mp3-split");
 const ObjectModel = require("../models/objectModel");
 
 /**
- * @description Remove duplicates
- */
-const removeDuplicates = arr => {
-  let unique_array = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (unique_array.indexOf(arr[i]) == -1) {
-      unique_array.push(arr[i]);
-    }
-  }
-  return unique_array;
-};
-
-/**
- * @description this is a function for parsing the format of the time.
- * @param {*} duration
- */
-const parseTimeFormat = duration => {
-  var milliseconds = parseInt((duration % 1000) / 100),
-    seconds = parseInt((duration / 1000) % 60),
-    minutes = parseInt((duration / (1000 * 60)) % 60),
-    hours = parseInt((duration / (1000 * 60 * 60)) % 24);
-
-  hours = hours < 10 ? "0" + hours : hours;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
-
-  //return minutes + ":" + seconds + ":" + milliseconds;
-  return minutes+":" + seconds + "." + milliseconds;
-};
-
-/**
  * This is a function for executing linux commands with nodejs
  * @param {command} command
  * @param {checkStderrForError} checkStderrForError
@@ -64,28 +33,6 @@ const shellexec = async (
 };
 
 /**
- * This function is for spliting the string in individual letters
- * @param {object} content
- */
-const parseContent = content => {
-  // console.log(content);
-  let entireContent = content;
-  let finalResult = [];
-
-  //Processing for the entire sentence
-  for (let index = 0; index <= entireContent.length; index++) {
-    for (let j = index; j <= entireContent.length; j++) {
-      const currentResult = entireContent.slice(index, j).trim();
-      if (currentResult) {
-        finalResult.push(currentResult.toLowerCase());
-      }
-    }
-  }
-  finalResult = removeDuplicates(finalResult);
-  return finalResult;
-};
-
-/**
  * This function is for uploading just the file to the cloud
  * @param {*} pathSoundFile
  * @param {*} fileName
@@ -101,7 +48,7 @@ const uploadMp3Files = async (pathSoundFile, fileName) => {
         public: true,
         metadata: { contentType: "audio/mp3" }
       },
-      function(err, file) {
+      function (err, file) {
         if (err) {
           console.log("UPLOAD MP3 FILES ERROR:");
           console.log(err);
@@ -112,7 +59,7 @@ const uploadMp3Files = async (pathSoundFile, fileName) => {
     );
 };
 
-class FilesFirepoint {
+class FilesEndpoint {
   constructor() {
     this.database = firebase.database();
     this.storage = firebase.storage();
@@ -151,7 +98,7 @@ class FilesFirepoint {
           console.log("encoding success");
 
           //We create a list for the times where the file will be splited
-       //   let newobjectList = objectList.slice(0, 5);
+          //   let newobjectList = objectList.slice(0, 5);
           let timeSlots = [];
           for (let element of objectList) {
             console.log("NEW ENCODING **********************************");
@@ -267,7 +214,7 @@ class FilesFirepoint {
   async processEaf(eafFile, mp3File, callbackEafSuccess, callbackEafError) {
     parser.parseString(
       eafFile.data.toString(),
-      function(err, result) {
+      function (err, result) {
         if (err) {
           return callbackEafError(err);
         }
@@ -341,32 +288,32 @@ class FilesFirepoint {
           //Defining Variables for AnnotationId
           let annotationIdMediaLengua = TIER_MEDIA_LENGUA_LIST[index]
             ? TIER_MEDIA_LENGUA_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .ANNOTATION_ID
+              .ANNOTATION_ID
             : "";
           let annotationIdSpanish = TIER_ESPANOL_LIST[index]
             ? TIER_ESPANOL_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .ANNOTATION_ID
+              .ANNOTATION_ID
             : "";
           let annotationIdKichwa = TIER_KICHWA_LIST[index]
             ? TIER_KICHWA_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .ANNOTATION_ID
+              .ANNOTATION_ID
             : "";
           let annotationIdElicitSentence = TIER_ORACION_ELICITADA_LIST[index]
             ? TIER_ORACION_ELICITADA_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .ANNOTATION_ID
+              .ANNOTATION_ID
             : "";
           let annotationIdIpa = TIER_IPA_LIST[index]
             ? TIER_IPA_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"].ANNOTATION_ID
             : "";
           let annotationIdGlosses = TIER_GLOSSES_LIST[index]
             ? TIER_GLOSSES_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .ANNOTATION_ID
+              .ANNOTATION_ID
             : "";
           let annotationIdSegmented = TIER_SEGMENTED_LIST[index][
             "ALIGNABLE_ANNOTATION"
           ]
             ? TIER_SEGMENTED_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .ANNOTATION_ID
+              .ANNOTATION_ID
             : "";
 
           //Assigning Variables for annotation id
@@ -381,33 +328,33 @@ class FilesFirepoint {
           //Defining Variables for Time slot 1
           let timeSlotId1MediaLengua = TIER_MEDIA_LENGUA_LIST[index]
             ? TIER_MEDIA_LENGUA_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .TIME_SLOT_REF1
+              .TIME_SLOT_REF1
             : "";
           let timeSlotId1Spanish = TIER_ESPANOL_LIST[index]
             ? TIER_ESPANOL_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .TIME_SLOT_REF1
+              .TIME_SLOT_REF1
             : "";
           let timeSlotId1Kichwa = TIER_KICHWA_LIST[index]
             ? TIER_KICHWA_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .TIME_SLOT_REF1
+              .TIME_SLOT_REF1
             : "";
           let timeSlotId1ElicitSentence = TIER_ORACION_ELICITADA_LIST[index]
             ? TIER_ORACION_ELICITADA_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .TIME_SLOT_REF1
+              .TIME_SLOT_REF1
             : "";
           let timeSlotId1Ipa = TIER_IPA_LIST[index]
             ? TIER_IPA_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .TIME_SLOT_REF1
+              .TIME_SLOT_REF1
             : "";
           let timeSlotId1Glosses = TIER_GLOSSES_LIST[index]
             ? TIER_GLOSSES_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .TIME_SLOT_REF1
+              .TIME_SLOT_REF1
             : "";
           let timeSlotId1Segmented = TIER_SEGMENTED_LIST[index][
             "ALIGNABLE_ANNOTATION"
           ]
             ? TIER_SEGMENTED_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .TIME_SLOT_REF1
+              .TIME_SLOT_REF1
             : "";
 
           //Assigning  Variables for Time slot 1
@@ -422,33 +369,33 @@ class FilesFirepoint {
           //Defining Variables for Time slot 2
           let timeSlotId2MediaLengua = TIER_MEDIA_LENGUA_LIST[index]
             ? TIER_MEDIA_LENGUA_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .TIME_SLOT_REF2
+              .TIME_SLOT_REF2
             : "";
           let timeSlotId2Spanish = TIER_ESPANOL_LIST[index]
             ? TIER_ESPANOL_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .TIME_SLOT_REF2
+              .TIME_SLOT_REF2
             : "";
           let timeSlotId2Kichwa = TIER_KICHWA_LIST[index]
             ? TIER_KICHWA_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .TIME_SLOT_REF2
+              .TIME_SLOT_REF2
             : "";
           let timeSlotId2ElicitSentence = TIER_ORACION_ELICITADA_LIST[index]
             ? TIER_ORACION_ELICITADA_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .TIME_SLOT_REF2
+              .TIME_SLOT_REF2
             : "";
           let timeSlotId2Ipa = TIER_IPA_LIST[index]
             ? TIER_IPA_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .TIME_SLOT_REF2
+              .TIME_SLOT_REF2
             : "";
           let timeSlotId2Glosses = TIER_GLOSSES_LIST[index]
             ? TIER_GLOSSES_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .TIME_SLOT_REF2
+              .TIME_SLOT_REF2
             : "";
           let timeSlotId2Segmented = TIER_SEGMENTED_LIST[index][
             "ALIGNABLE_ANNOTATION"
           ]
             ? TIER_SEGMENTED_LIST[index]["ALIGNABLE_ANNOTATION"][0]["$"]
-                .TIME_SLOT_REF2
+              .TIME_SLOT_REF2
             : "";
 
           //Assigning  Variables for Time slot 2
@@ -463,40 +410,40 @@ class FilesFirepoint {
           //Defining Variables for content
           let mediaLenguaContent = TIER_MEDIA_LENGUA_LIST[index]
             ? TIER_MEDIA_LENGUA_LIST[index]["ALIGNABLE_ANNOTATION"][0][
-                "ANNOTATION_VALUE"
-              ][0]
+            "ANNOTATION_VALUE"
+            ][0]
             : "";
           let spanishContent = TIER_ESPANOL_LIST[index]
             ? TIER_ESPANOL_LIST[index]["ALIGNABLE_ANNOTATION"][0][
-                "ANNOTATION_VALUE"
-              ][0]
+            "ANNOTATION_VALUE"
+            ][0]
             : "";
           let kichwaContent = TIER_KICHWA_LIST[index]
             ? TIER_KICHWA_LIST[index]["ALIGNABLE_ANNOTATION"][0][
-                "ANNOTATION_VALUE"
-              ][0]
+            "ANNOTATION_VALUE"
+            ][0]
             : "";
           let elicitSentenceContent = TIER_ORACION_ELICITADA_LIST[index]
             ? TIER_ORACION_ELICITADA_LIST[index]["ALIGNABLE_ANNOTATION"][0][
-                "ANNOTATION_VALUE"
-              ][0]
+            "ANNOTATION_VALUE"
+            ][0]
             : "";
           let ipaContent = TIER_IPA_LIST[index]
             ? TIER_IPA_LIST[index]["ALIGNABLE_ANNOTATION"][0][
-                "ANNOTATION_VALUE"
-              ][0]
+            "ANNOTATION_VALUE"
+            ][0]
             : "";
           let glossesContent = TIER_GLOSSES_LIST[index]
             ? TIER_GLOSSES_LIST[index]["ALIGNABLE_ANNOTATION"][0][
-                "ANNOTATION_VALUE"
-              ][0]
+            "ANNOTATION_VALUE"
+            ][0]
             : "";
           let segmentedContent = TIER_SEGMENTED_LIST[index][
             "ALIGNABLE_ANNOTATION"
           ]
             ? TIER_SEGMENTED_LIST[index]["ALIGNABLE_ANNOTATION"][0][
-                "ANNOTATION_VALUE"
-              ][0]
+            "ANNOTATION_VALUE"
+            ][0]
             : "";
 
           //Assigning  Variables for content
@@ -558,4 +505,4 @@ class FilesFirepoint {
     );
   }
 }
-module.exports = FilesFirepoint;
+module.exports = FilesEndpoint;

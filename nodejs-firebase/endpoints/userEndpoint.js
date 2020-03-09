@@ -37,32 +37,15 @@ class UserEndpoint {
         console.log(requestLogin);
         let request = requestLogin.credentials;
         try {
-            let businessNetworkConnection = new BusinessNetworkConnection();
             let email = request.email;
             let pwd = request.password;
-            await businessNetworkConnection.connect(cardname)
 
-            let query = businessNetworkConnection.buildQuery('SELECT org.nemesis1346.tinkunakuy.User WHERE (email==_$email AND pwd==_$pwd)');
-            let userQuery = await businessNetworkConnection.query(query, { email: email, pwd: pwd });
-            if (userQuery.length > 0) {
-                let participantRegistry = await businessNetworkConnection.getParticipantRegistry(networkNamespace + '.User');
-                let userResult = await participantRegistry.get(userQuery[0].$identifier);
+            //We set the result of for the response
+            dataModel.data = JSON.stringify(userModel);
+            dataModel.status = '200';
 
-                let userModel = new UserModel(
-                    userResult.name,
-                    userResult.email,
-                    userResult.userType
-                );
-                //We set the result of for the response
-                dataModel.data = JSON.stringify(userModel);
-                dataModel.status = '200';
+            return dataModel;
 
-                return dataModel;
-            } else {
-                dataModel.message = 'User with email ' + email + ' doesnt exist';
-                dataModel.status = '300';
-                return dataModel;
-            }
         } catch (error) {
             console.error(error);
             throw new Error(error);
@@ -86,20 +69,6 @@ class UserEndpoint {
                 request.password,
                 request.userType
             );
-
-            let businessNetworkConnection = new BusinessNetworkConnection();
-            let connection = await businessNetworkConnection.connect(cardname);
-            let participantRegistry = await businessNetworkConnection.getParticipantRegistry(networkNamespace + '.User');
-            let factory = connection.getFactory();
-
-            let user = factory.newResource(networkNamespace, "User", userModel.email);
-            user.email = userModel.email;
-            user.name = userModel.name;
-            user.userType = userModel.userType;
-            user.pwd = userModel.pwd;
-
-            await participantRegistry.add(user);
-            await businessNetworkConnection.disconnect();
 
             dataModel.data = 'User ' + userModel.email + ' saved successfully'
             dataModel.status = '200';
