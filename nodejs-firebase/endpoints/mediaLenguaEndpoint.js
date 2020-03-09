@@ -1,8 +1,8 @@
 "use strict";
-const ObjectModel = require("../models/objectModel.js");
-const DataModel = require("../models/dataModel.js");
+const ObjectModel = require("../models/objectModel.js.js.js");
+const DataModel = require("../models/dataModel.js.js.js");
 
-const firebase = require("../firebaseSetup/firebaseConfig.js");
+const firebase = require("../firebaseSetup/firebaseConfig.js.js.js");
 //This must be deleted
 class VocabularyFirepoint {
   constructor() {
@@ -14,7 +14,7 @@ class VocabularyFirepoint {
    * @description Initalizes the Hyperstate Network by making a connection to the Composer runtime. Could be for ping?
    * @return {Promise} A promise whose fullfillment means the initialization has completed
    */
-  async init() {}
+  async init() { }
 
   async getObjectQuery(requestObjectQuery) {
     let dataModel = new DataModel(null, null, null);
@@ -85,7 +85,7 @@ class VocabularyFirepoint {
       console.log('PRE FILTERED');
       console.log(resultList);
 
-      let filteredResult = this.removeDuplicates2(resultList,'objectId');
+      let filteredResult = this.removeDuplicates2(resultList, 'objectId');
 
       console.log('FILTERED');
       console.log(filteredResult);
@@ -216,6 +216,79 @@ class VocabularyFirepoint {
     }
   }
 
+  /**
+    * @description It returns a detailed object of the database
+    * @return {Promise} A promise that returns the object detail
+    */
+  async getObject(objectId) {
+    let dataModel = new DataModel(null, null, null);
+
+    console.log('************************************');
+    console.log('Request get Object in Composer: ');
+    console.log(objectId);
+    try {
+
+
+      dataModel.data = JSON.stringify(currentObject);
+      dataModel.status = '200';
+
+      return dataModel;
+    } catch (error) {
+      console.error(error);
+      throw new Error(error);
+    }
+  }
+
+  /**
+     * @description It creates a new word
+     * @return {Promise} A promise that creates a word
+     */
+  async saveWord(requestWord) {
+    let dataModel = new DataModel(null, null, null);
+    console.log('************************************');
+    console.log('Request Save Word: ');
+    console.log(requestWord);
+    try {
+      let wordModel = new WordModel(
+        requestWord.wordId,
+        requestWord.spanish,
+        requestWord.english,
+        requestWord.kichwa,
+        requestWord.descriptionSpanish,
+        requestWord.descriptionEnglish,
+        requestWord.descriptionKichwa
+      );
+
+      await assetRegistry.add(word);
+      await businessNetworkConnection.disconnect();
+
+      dataModel.data = 'Word ' + word.wordId + ' saved successfully'
+      dataModel.status = '200';
+      return dataModel;
+    } catch (error) {
+      console.error(error);
+      throw new Error(error);
+    }
+  }
+  /**
+   * @description It returns the list of all the words
+   * @return {Promise} A promise that returns the list of all the words
+   */
+  async getAllObjects() {
+    let dataModel = new DataModel(null, null, null);
+    console.log('************************************');
+    console.log('Request Get All Objects in Composer: ');
+    try {
+      let objectList = [];
+
+      dataModel.data = JSON.stringify(objectList);
+      dataModel.status = '200';
+      return dataModel;
+    } catch (error) {
+      console.error(error);
+      throw new Error(error);
+    }
+  }
   //  MORE EFFICIENT, BUT LESS FUN
   /**
    * @description Remove duplicates from an array of objects in javascript
@@ -264,8 +337,8 @@ class VocabularyFirepoint {
   }
   removeDuplicates2(myArr, prop) {
     return myArr.filter((obj, pos, arr) => {
-        return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+      return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
     });
-}
+  }
 }
 module.exports = VocabularyFirepoint;
