@@ -26,3 +26,40 @@ The data is saved in firebase database. Although should be moved to a local host
 *Firebase Cloud functions is not being used yet. So far the react front end is the most advanced. 
 
 
+## New architecture
+Its mainly going to use mysql and best practices of deployment, the database must be very well structured and the following is the best modeling possible:
+
+Vocabulary(must be a modal that shows up in the screen, an extra component):
+-id
+-kichwa1
+-kichwa2
+-kichwa3
+-Spanish
+-English
+
+Conversation Active:
+-id
+-belongsto
+-text
+-order
+
+Conversation Passive:
+-id
+-belongsto
+-text
+-order
+
+Conversation:
+-id
+-description
+
+Gramatic Rules:
+-id
+-title 
+-examples
+-description
+
+### TODO:
+-fix apache configuration to just fit the front end deployment
+-create tables of the schema proposed above
+-create backup services of the database

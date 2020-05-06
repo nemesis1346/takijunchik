@@ -1,5 +1,5 @@
 import firebase from "../api/FirebaseConfig"; //this is mandatory, must come from the setup
-import {removeDuplicates2} from '../utils/Utils';
+import { removeDuplicates2 } from '../utils/Utils';
 class FirebaseApi {
   static getFunction(methodName) {
     return firebase.functions().httpsCallable(methodName);
@@ -71,17 +71,6 @@ class FirebaseApi {
     console.log(filteredResult);
     return filteredResult;
   }
-  //TODO: Must work with on child added because filtering is gonna be costly on real time
-  // firebase.database().ref(path).on("child_added", function(snapshot) {
-  //   let currentObject = snapshot.val();
-  //  // console.log('DATA SNAPSHOT');
-  //   //console.log(snapshot.numChildren.length);
-  //   if (currentObject.mediaLenguaContent.includes(key)) {
-  //     console.log(currentObject.mediaLenguaContent);
-  //     //callback(currentObject);
-  //   }
-  // });
-
   static setValue(path, value) {
     return firebase
       .database()
