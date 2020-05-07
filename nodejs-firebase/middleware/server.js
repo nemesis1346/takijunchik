@@ -9,6 +9,7 @@ const FilesFirepoint = require("../endpoints/filesEndpoint.js");
 const app = express();
 const DataModel = require("../models/dataModel.js");
 const fileUpload = require("express-fileupload");
+require('../api/connection');
 
 const handlerDefault = async (request, response) => {
   const { headers, method, url } = request;

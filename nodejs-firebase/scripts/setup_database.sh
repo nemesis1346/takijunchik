@@ -2,7 +2,7 @@
 
 BASEDIR=$(cd $(dirname $0); pwd)
 echo $BASEDIR
-cd $BASEDIR/../nodejs-firebase
+cd $BASEDIR/../
 
 sudo npx sequelize-cli db:migrate:undo --env=production
 sudo npx sequelize-cli db:drop --env=production

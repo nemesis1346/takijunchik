@@ -15,6 +15,9 @@ fi
 
 #permissions
 sudo chmod -R 777 ${BASEDIR}
+cd ${BASEDIR}/nodejs-firebase/scripta
+sudo sh extraSoftware.sh
+
 #installing dependencies of the front end
 cd  ${BASEDIR}/react-front-end/
 sudo npm install 

@@ -59,6 +59,11 @@ Gramatic Rules:
 -examples
 -description
 
+History short:
+-id
+-description kichwa
+-description spanish
+
 ### TODO:
 -fix apache configuration to just fit the front end deployment
 -create tables of the schema proposed above

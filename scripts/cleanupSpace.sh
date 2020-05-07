@@ -23,3 +23,10 @@ sudo rm -rf /home/apps/seoslidepresenter/.vscode-server/
 sudo rm -rf /home/apps/seoslidepresenter/.npm/
 sudo rm -rf /home/apps/seoslidepresenter/tmp/
 sudo rm -rf /home/apps/seoslidepresenter/node_modules/
+
+#remove mariadb and mysql
+apt-get remove --purge mysql*
+apt-get remove --purge mysql
+apt-get remove --purge mariadb
+apt-get remove --purge mariadb*
+apt-get --purge remove mariadb-server
