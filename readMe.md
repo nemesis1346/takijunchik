@@ -68,3 +68,6 @@ History short:
 -fix apache configuration to just fit the front end deployment
 -create tables of the schema proposed above
 -create backup services of the database
+
+### mysql troubbleshooting
+https://stackoverflow.com/questions/37879448/mysql-fails-on-mysql-error-1524-hy000-plugin-auth-socket-is-not-loaded
