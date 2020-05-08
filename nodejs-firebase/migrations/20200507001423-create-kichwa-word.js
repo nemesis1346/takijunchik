@@ -8,20 +8,21 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true
       },
+      spanish: {
+        type: Sequelize.STRING(300),
+        allowNull: true,
+      },
       kichwa1: {
         type: Sequelize.STRING(300),
-        allowNull: false,
-        unique:true
+        allowNull: true,
       },
       kichwa2: {
         type: Sequelize.STRING(300),
-        allowNull: false,
-        unique:true
+        allowNull: true,
       },
       kichwa3: {
         type: Sequelize.STRING(300),
-        allowNull: false,
-        unique:true
+        allowNull: true,
       },
       description:Sequelize.TEXT(),
       createdAt: Sequelize.DATE,
