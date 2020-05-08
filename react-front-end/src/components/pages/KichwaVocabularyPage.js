@@ -4,10 +4,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   getObjects,
-  getObjectsByQuery,setObjectDetail 
+  getObjectsByQuery,
+  setObjectDetail 
 } from "../../actions/FirebaseDatabaseActions";
-import ObjectDetailModal from "../modals/ObjectDetailModal";
-import ObjectTable from "../tables/ObjectTable";
+import KichwaVocabularyDetailModal from "../modals/MediaLenguaDetailModal";
+import KichwaVocabularyTable from "../tables/KichwaVocabularyTable";
 import { Message } from "semantic-ui-react";
 import MDSpinner from "react-md-spinner";
 import "../styles/traductorPageStyle.css";
@@ -18,7 +19,7 @@ const  isEmpty=(obj)=> {
     }
     return true;
 }
-class TraductorPage extends React.Component {
+class KichwaVocabularyPage extends React.Component {
   state = {
     errors: {},
     objectDetailOpen: false,
@@ -73,14 +74,14 @@ class TraductorPage extends React.Component {
           <p>There is no results</p>
         </Message>
 
-        <ObjectTable
+        <KichwaVocabularyTable
           objectList={objects}
           objectSelectedCallback={this.objectSelectedCallback}
         />
         <MDSpinner style={this.spinnerStyle} />
 
         {/* This is the component that pops up to show the detail and reproduce the song*/}
-        <ObjectDetailModal
+        <KichwaVocabularyDetailModal
           objectDetailSize={this.state.objectDetailSize}
           objectDetailOpen={this.state.objectDetailOpen}
           objectDetailData={objectDetailData}
@@ -91,7 +92,7 @@ class TraductorPage extends React.Component {
   }
 }
 //This is just validation of the props
-TraductorPage.propTypes = {
+KichwaVocabularyPage.propTypes = {
   getObjectsByQuery: PropTypes.func.isRequired,
   getObjects: PropTypes.func.isRequired
 };
@@ -109,4 +110,4 @@ const mapStateToPropsTraductorPage = state => {
 export default connect(
   mapStateToPropsTraductorPage,
   { getObjectsByQuery, getObjects,setObjectDetail }
-)(TraductorPage);
+)(KichwaVocabularyPage);

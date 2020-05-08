@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import TraductorPage from './TraductorPage';
+import MediaLenguaPage from './MediaLenguaPage';
 import UploadFilePage from './UploadFilePage';
+import KichwaVocabularyPage from './KichwaVocabularyPage';
 import NavBar from '../navigation/NavBar';
 import AboutPage from './AboutPage';
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -13,8 +14,9 @@ class MainPage extends Component {
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="App">
           <NavBar></NavBar>
-          <Route path={ROUTES.ROUTE_DEFAULT} exact component={TraductorPage}></Route>
-          <Route path={ROUTES.ROUTE_DATABASE_MEDIA_LENGUA_PAGE} component={TraductorPage} />
+          <Route path={ROUTES.ROUTE_DEFAULT} exact component={MediaLenguaPage}></Route>
+          <Route path={ROUTES.ROUTE_DATABASE_MEDIA_LENGUA_PAGE} component={MediaLenguaPage} />
+          <Route path={ROUTES.ROUTE_VOCABULARY} component={KichwaVocabularyPage} />
           <Route path={ROUTES.ROUTE_UPLOADFILE_PAGE} component={UploadFilePage} />
           <Route path={ROUTES.ROUTE_ABOUT_PAGE} component={AboutPage}></Route>
         </div>

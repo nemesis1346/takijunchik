@@ -9,8 +9,9 @@ const NavBar = (props) => {
                 <a className="brand-logo">Media Lengua</a>
                 <ul className="right">
                     {/* LINK do the same as event.preventDefault */}
-                    <li><Link to={ROUTES.ROUTE_DATABASE_MEDIA_LENGUA_PAGE}>Database Media Lengua</Link></li>
-                    <li><Link to={ROUTES.ROUTE_UPLOADFILE_PAGE}>Upload File</Link></li>
+                    <li><Link to={ROUTES.ROUTE_DATABASE_MEDIA_LENGUA_PAGE}>Media Lengua</Link></li>
+                    <li><Link to={ROUTES.ROUTE_VOCABULARY}>Vocabulario</Link></li>
+                    {/* <li><Link to={ROUTES.ROUTE_UPLOADFILE_PAGE}>Upload File</Link></li> */}
                     <li><Link to={ROUTES.ROUTE_ABOUT_PAGE}>About</Link></li>
                 </ul>
             </div>

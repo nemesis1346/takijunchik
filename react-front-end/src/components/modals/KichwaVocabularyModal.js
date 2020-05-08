@@ -10,7 +10,7 @@ const style = {
   padding: "16px"
 };
 
-class ObjectDetailModal extends React.Component {
+class MediaLenguaDetailModal extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -22,18 +22,18 @@ class ObjectDetailModal extends React.Component {
 
 
   componentWillReceiveProps(nextProps) {
-      console.log('NEXT PROPS');
+    console.log('NEXT PROPS');
     if (
       nextProps.objectDetailData.objectId != null &&
       nextProps.objectDetailData.objectId != ""
     ) {
       nextProps.getUrlSoundAction(nextProps.objectDetailData.objectId);
     }
-    
-     // You don't have to do this check first, but it can help prevent an unneeded render
-  if (nextProps.audioUrl !== this.state.audioUrl) {
-    console.log('CHANGED');
-  }
+
+    // You don't have to do this check first, but it can help prevent an unneeded render
+    if (nextProps.audioUrl !== this.state.audioUrl) {
+      console.log('CHANGED');
+    }
   }
 
   show = size => () => this.setState({ size });
@@ -44,7 +44,7 @@ class ObjectDetailModal extends React.Component {
 
   render() {
     console.log('RENDER');
-    const { objectDetailSize, objectDetailOpen, objectDetailData,audioUrl } = this.props;
+    const { objectDetailSize, objectDetailOpen, objectDetailData, audioUrl } = this.props;
     return (
       <Modal
         style={style}
@@ -76,7 +76,7 @@ class ObjectDetailModal extends React.Component {
             autoPlay
             src={audioUrl}
             onPlay={e => console.log("onPlay")}
-            // other props here
+          // other props here
           />
         </Modal.Content>
         <Modal.Actions>
@@ -93,12 +93,12 @@ class ObjectDetailModal extends React.Component {
   }
 }
 
-ObjectDetailModal.propTypes = {
+MediaLenguaDetailModal.propTypes = {
   objectDetailSize: PropTypes.string.isRequired,
   objectDetailData: PropTypes.object.isRequired
 };
 
-const mapStateToPropsObjectDetailModal = state => {
+const mapStateToPropsMediaLenguaDetailModal = state => {
   //In this case objects is gonna be applied to the props of the component
   return {
     audioUrl: state.databaseReducer.audioUrl,
@@ -106,6 +106,6 @@ const mapStateToPropsObjectDetailModal = state => {
 };
 
 export default connect(
-    mapStateToPropsObjectDetailModal,
+  mapStateToPropsMediaLenguaDetailModal,
   { getUrlSoundAction }
-)(ObjectDetailModal);
+)(MediaLenguaDetailModal);
