@@ -19,7 +19,7 @@ const initState = {
   },
   audioUrl: ""
 };
-const databaseReducer = (state = initState, action = {}) => {
+const mediaLenguaDatabaseReducer = (state = initState, action = {}) => {
   switch (action.type) {
     case GET_OBJECTS_SUCCESS:
       return {
@@ -51,4 +51,4 @@ const databaseReducer = (state = initState, action = {}) => {
   }
 };
 
-export default databaseReducer;
+export default mediaLenguaDatabaseReducer;

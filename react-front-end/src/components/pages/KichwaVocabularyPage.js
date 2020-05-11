@@ -3,11 +3,11 @@ import TraductorForm from "../forms/TraductorForm";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
-  getObjects,
-  getObjectsByQuery,
-  setObjectDetail 
-} from "../../actions/FirebaseDatabaseActions";
-import KichwaVocabularyDetailModal from "../modals/MediaLenguaDetailModal";
+  getKichwaWords,
+  getKichwaWordsByQuery,
+  setKichwaWordDetail 
+} from "../../actions/KichwaVocabularyActions";
+import KichwaVocabularyDetailModal from "../modals/KichwaVocabularyDetailModal";
 import KichwaVocabularyTable from "../tables/KichwaVocabularyTable";
 import { Message } from "semantic-ui-react";
 import MDSpinner from "react-md-spinner";
@@ -22,7 +22,7 @@ const  isEmpty=(obj)=> {
 class KichwaVocabularyPage extends React.Component {
   state = {
     errors: {},
-    objectDetailOpen: false,
+    kichwaVocabularyDetailOpen: false,
     objectDetailSize: "tiny",
     hideObjectDetail: true
   };
@@ -32,26 +32,26 @@ class KichwaVocabularyPage extends React.Component {
   }
   componentWillMount() {
     //Here we can call to the props
-    this.props.getObjects();
+    this.props.getKichwaWords();
   }
 
   objectDetailCloseCallback = closeAlert => {
     this.setState({
-      objectDetailOpen: closeAlert
+      kichwaVocabularyDetailOpen: closeAlert
     });
   };
 
   submit = data => {
       if(!isEmpty(data)){
-        return this.props.getObjectsByQuery(data.object.trim().toLowerCase())
+        return this.props.getKichwaWordsByQuery(data.object.trim().toLowerCase())
       }else{
-        return this.props.getObjects();
+        return this.props.getKichwaWords();
       }
     };
 
   objectSelectedCallback = objectSelected => {
     this.setState({
-      objectDetailOpen: true,
+      kichwaVocabularyDetailOpen: true,
     });
     this.props.setObjectDetail(objectSelected);
   };
@@ -61,7 +61,7 @@ class KichwaVocabularyPage extends React.Component {
       objects,
       hideResultMessage,
       hideSpinner,
-      objectDetailData
+      kichwaVocabularyDetailData
     } = this.props;
     this.spinnerStyle = hideSpinner ? { display: "none" } : {};
 
@@ -82,10 +82,10 @@ class KichwaVocabularyPage extends React.Component {
 
         {/* This is the component that pops up to show the detail and reproduce the song*/}
         <KichwaVocabularyDetailModal
-          objectDetailSize={this.state.objectDetailSize}
-          objectDetailOpen={this.state.objectDetailOpen}
-          objectDetailData={objectDetailData}
-          objectDetailCloseCallback={this.objectDetailCloseCallback}
+          kichwaVocabularyDetailSize={this.state.objectDetailSize}
+          kichwaVocabularyDetailOpen={this.state.kichwaVocabularyDetailOpen}
+          kichwaVocabularyDetailData={kichwaVocabularyDetailData}
+          kichwaVocabularyDetailCloseCallback={this.kichwaVocabularyDetailCloseCallback}
         />
       </div>
     );
@@ -93,21 +93,21 @@ class KichwaVocabularyPage extends React.Component {
 }
 //This is just validation of the props
 KichwaVocabularyPage.propTypes = {
-  getObjectsByQuery: PropTypes.func.isRequired,
-  getObjects: PropTypes.func.isRequired
+  getKichwaWordsByQuery: PropTypes.func.isRequired,
+  getKichwaWords: PropTypes.func.isRequired
 };
 
-const mapStateToPropsTraductorPage = state => {
+const mapStateToPropsKichwaVocabularyPage = state => {
   //In this case objects is gonna be applied to the props of the component
   return {
-    objects: state.databaseReducer.objects,
-    hideResultMessage: state.databaseReducer.hideResultMessage,
-    hideSpinner: state.databaseReducer.hideSpinner,
-    objectDetailData:state.databaseReducer.objectDetailData
+    objects: state.kichwaVocabularyDatabaseReducer.objects,
+    hideResultMessage: state.kichwaVocabularyDatabaseReducer.hideResultMessage,
+    hideSpinner: state.kichwaVocabularyDatabaseReducer.hideSpinner,
+    kichwaVocabularyDetailData:state.kichwaVocabularyDatabaseReducer.kichwaVocabularyDetailData
   };
 };
 
 export default connect(
-  mapStateToPropsTraductorPage,
-  { getObjectsByQuery, getObjects,setObjectDetail }
+    mapStateToPropsKichwaVocabularyPage,
+  { getKichwaWordsByQuery, getKichwaWords,setKichwaWordDetail }
 )(KichwaVocabularyPage);

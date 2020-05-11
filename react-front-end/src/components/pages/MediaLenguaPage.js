@@ -99,10 +99,10 @@ MediaLenguaPage.propTypes = {
 const mapStateToPropsTraductorPage = state => {
   //In this case objects is gonna be applied to the props of the component
   return {
-    objects: state.databaseReducer.objects,
-    hideResultMessage: state.databaseReducer.hideResultMessage,
-    hideSpinner: state.databaseReducer.hideSpinner,
-    objectDetailData:state.databaseReducer.objectDetailData
+    objects: state.mediaLenguaDatabaseReducer.objects,
+    hideResultMessage: state.mediaLenguaDatabaseReducer.hideResultMessage,
+    hideSpinner: state.mediaLenguaDatabaseReducer.hideSpinner,
+    objectDetailData:state.mediaLenguaDatabaseReducer.objectDetailData
   };
 };
 

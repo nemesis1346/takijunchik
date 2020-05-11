@@ -13,7 +13,7 @@ import {parseResponse} from '../utils/Utils';
  */
 export const translateFirebaseAction = input => {
     return dispatch => {
-        httpApi.vocabulary.getValueByQuery(input)
+        httpApi.mediaLenguaVocabulary.getValueByQuery(input)
         .then(res => {
             let result = parseResponse(res.data.body);
             console.log('Response in GetObject Login:');
@@ -29,6 +29,7 @@ export const translateFirebaseAction = input => {
     }
 };
 
+//This method is taking data from firebase
 export const getObjects = () => {
     return dispatch => {
         FirebaseApi.getValues("/objectModel")
@@ -47,6 +48,7 @@ export const getObjects = () => {
             });
     };
 };
+//This method is taking data from firebase
 export const getObjectsByQuery=input=>{
     return dispatch => {
         FirebaseApi.getValueByQuery('/objectModel',input,null)

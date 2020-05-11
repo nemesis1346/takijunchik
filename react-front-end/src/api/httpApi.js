@@ -2,6 +2,7 @@ import axios from 'axios';
 import { parseResponse } from '../utils/Utils';
 import * as ROUTES from '../constants/endpoints';
 
+
 //TODO: Be aware where the port is going to be
 const instanceDefault = axios.create({ baseURL: 'http://' + ROUTES.SERVER_HOST + ':' + ROUTES.SERVER_PORT }); // this is for firebase
 /**
@@ -9,7 +10,7 @@ const instanceDefault = axios.create({ baseURL: 'http://' + ROUTES.SERVER_HOST +
  */
 export default {
     user: {
-        login: credentials => instanceDefault.post('/login', { credentials })
+        login: credentials => instanceDefault.post(ROUTES.LOGIN_ENDPOINT, { credentials })
             .then((res) => {
                 console.log('Response in Api Login:');
                 let result = parseResponse(res);
@@ -17,7 +18,7 @@ export default {
                 return result;
             }),
 
-        signup: params => instanceDefault.post('/createUser', { params })
+        signup: params => instanceDefault.post(ROUTES.CREATE_USER_ENDPOINT, { params })
             .then((res) => {
                 console.log('Response in Api Signup');
                 let result = parseResponse(res);
@@ -25,20 +26,26 @@ export default {
                 return result;
             })
     },
-    vocabulary: {
-        translate_kichwa_spanish: word_kichwa => instanceDefault.post('/translate_kichwa_spanish', { word_kichwa })
+    mediaLenguaVocabulary: {
+        translate_kichwa_spanish: word_kichwa => instanceDefault.post(ROUTES.TRANSLATE_KICHWA_SPANISH_MEDIA_LENGUA_ENDPOINT, { word_kichwa })
             .then(res => {
                 console.log('Response in Api Translate');
                 res.data
             }),
         getValueByQuery: input => {
-            return instanceDefault.post('/getObjectsByQuery', { input });
+            return instanceDefault.post(ROUTES.GET_OBJECT_BY_QUERY_ENDPOINT, { input });
+        }
+    },
+    kichwaVocabulary:{
+        getKichwaWords: () => {
+            console.log('GETTING TO THIS POINT')
+            return instanceDefault.get(ROUTES.GET_OBJECT_BY_QUERY_ENDPOINT, null);
         }
     },
     files: {
         uploadFiles: input => {
             let headersFiles = { 'Content-Type': 'multipart/form-data' }
-            return instanceDefault.post('/uploadFiles', input, { headers: headersFiles })
+            return instanceDefault.post(ROUTES.UPLOAD_FILES_ENDPOINT, input, { headers: headersFiles })
         }
     }
 }
