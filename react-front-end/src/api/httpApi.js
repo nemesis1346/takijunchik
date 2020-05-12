@@ -39,7 +39,7 @@ export default {
     kichwaVocabulary:{
         getKichwaWords: () => {
             console.log('GETTING TO THIS POINT')
-            return instanceDefault.get(ROUTES.GET_OBJECT_BY_QUERY_ENDPOINT, null);
+            return instanceDefault.get(ROUTES.GET_KICHWA_WORDS_ENDPOINT, null);
         }
     },
     files: {

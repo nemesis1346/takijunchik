@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('GrammaticRules', {
+    return queryInterface.createTable('grammaticRules', {
       id: {
         type: Sequelize.INTEGER(11),
         allowNull: false,
@@ -25,6 +25,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('GrammaticRules');
+    return queryInterface.dropTable('grammaticRules');
   }
 };

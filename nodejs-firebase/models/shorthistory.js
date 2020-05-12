@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const ShortHistory = sequelize.define('ShortHistory', {
+  const ShortHistory = sequelize.define('shortHistory', {
     description_kichwa: DataTypes.TEXT,
     description_spanish: DataTypes.TEXT
   }, {});

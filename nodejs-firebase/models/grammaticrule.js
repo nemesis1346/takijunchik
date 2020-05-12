@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const GrammaticRule = sequelize.define('GrammaticRule', {
+  const GrammaticRule = sequelize.define('grammaticRule', {
     title: DataTypes.STRING,
     description: DataTypes.TEXT
   }, {});

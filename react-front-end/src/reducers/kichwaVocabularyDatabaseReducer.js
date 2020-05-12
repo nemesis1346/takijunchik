@@ -2,14 +2,12 @@
 import {
     GET_OBJECTS_SUCCESS,
     GET_OBJECT_DETAIL_SUCCESS,
-    GET_URL_AUDIO_SUCCESS,
-    ITEM_QUERY_SUCCESS
   } from "../constants/types";
   const initState = {
     objects: [],
     hideResultMessage: false,
     hideSpinner: false,
-    objectDetailData: {
+    kichwaVocabularyDetailData: {
       mediaLenguaContent: "",
       spanishContent: "",
       kichwaContent: "",
@@ -31,21 +29,12 @@ import {
       case GET_OBJECT_DETAIL_SUCCESS:
         return {
           ...state,
-          objectDetailData: {
-            mediaLenguaContent: action.object.mediaLenguaContent,
+          kichwaVocabularyDetailData: {
             spanishContent: action.object.spanishContent,
             kichwaContent: action.object.kichwaContent,
-            elicitSentenceContent: action.object.elicitSentenceContent,
-            ipaContent: action.object.ipaContent,
             objectId: action.object.objectId
           }
         };
-      case GET_URL_AUDIO_SUCCESS:
-        return {
-          ...state,
-          audioUrl: action.audioUrl
-        };
-  
       default:
         return state;
     }

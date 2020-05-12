@@ -101,7 +101,7 @@ MediaLenguaDetailModal.propTypes = {
 const mapStateToPropsMediaLenguaDetailModal = state => {
   //In this case objects is gonna be applied to the props of the component
   return {
-    audioUrl: state.databaseReducer.audioUrl,
+    audioUrl: state.mediaLenguaDatabaseReducer.audioUrl,
   };
 };
 

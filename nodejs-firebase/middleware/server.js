@@ -4,11 +4,13 @@ const port = 8889;
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const VocabularyFirepoint = require("../endpoints/mediaLenguaEndpoint.js");
-const FilesFirepoint = require("../endpoints/filesEndpoint.js");
+const MediaLenguaEndpoint = require("../endpoints/mediaLenguaEndpoint.js");
+const FilesEndpoint = require("../endpoints/filesEndpoint.js");
+const KichwaVocabularyEndpoint = require('../endpoints/kichwaVocabularyEndpoint.js');
 const app = express();
 const DataModel = require("../models/dataModel.js");
 const fileUpload = require("express-fileupload");
+const ENDPOINTS = require('./endpointsConstants.js');
 require('../api/connection');
 
 const handlerDefault = async (request, response) => {
@@ -22,7 +24,7 @@ const handlerDefault = async (request, response) => {
       buffer.push(chunk);
     })
     .on("end", async () => {
-        console.log('END');
+      console.log('END');
       let bufferContent = Buffer.concat(buffer).toString();
       //Set response
       response.statusCode = 200;
@@ -45,15 +47,17 @@ const handlerDefault = async (request, response) => {
 
       try {
         switch (url) {
-          case "/saveObject":
-            promise = this.vocabularyFirepoint.saveObject(
+          case ENDPOINTS.SAVE_OBJECT:
+            promise = this.MediaLenguaEndpoint.saveObject(
               JSON.parse(bufferContent)
             );
             break;
-          case "/getObjectsByQuery":
-            promise = this.vocabularyFirepoint.getObjectQuery(
+          case ENDPOINTS.GET_OBJECTS_BY_QUERY:
+            promise = this.MediaLenguaEndpoint.getObjectQuery(
               JSON.parse(bufferContent)
             );
+          case ENDPOINTS.GET_KICHWA_WORDS:
+            promise = this.KichwaVocabularyEndpoint.getKichwaWords();
             break;
           default:
             dataModel.message = "Method not found";
@@ -73,7 +77,7 @@ const handlerDefault = async (request, response) => {
         //Executing the promise , maybe need POST and GET
         if (promise != null) {
           promise
-            .then(function(result) {
+            .then(function (result) {
               //This is status 200 , everything ok
               let body = JSON.stringify(result);
 
@@ -116,23 +120,24 @@ const handlerDefault = async (request, response) => {
 const handlerFiles = async (request, response) => {
   let eafFile = request.files.eafFile;
   let mp3File = request.files.mp3File;
-  await this.filesFirepoint.processingFiles(eafFile, mp3File);
+  await this.FilesEndpoint.processingFiles(eafFile, mp3File);
   response.send("hello");
 };
-app.post("/getObjectsByQuery", handlerDefault);
+app.post(ENDPOINTS.GET_OBJECTS_BY_QUERY, handlerDefault);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(fileUpload());
 
-app.post("/login", handlerDefault);
-app.post("/saveObject", handlerDefault);
-app.get("/getAllObjects", handlerDefault);
-app.post("/createUser", handlerDefault);
-app.post("/getObject", handlerDefault);
-app.post("/streamTrack", handlerDefault);
-app.post("/uploadFiles", handlerFiles);
+app.get(ENDPOINTS.GET_ALL_OBJECTS, handlerDefault);
+app.get(ENDPOINTS.GET_KICHWA_WORDS, handlerDefault);
+app.post(ENDPOINTS.LOGIN, handlerDefault);
+app.post(ENDPOINTS.SAVE_OBJECT, handlerDefault);
+app.post(ENDPOINTS.CREATE_USER, handlerDefault);
+app.post(ENDPOINTS.GET_OBJECT, handlerDefault);
+app.post(ENDPOINTS.STREAM_TRACK, handlerDefault);
+app.post(ENDPOINTS.UPLOAD_FILE, handlerFiles);
 
 app.listen(port, async err => {
   if (err) {
@@ -140,8 +145,9 @@ app.listen(port, async err => {
   }
   try {
     //Instance of the network and transactions
-    this.vocabularyFirepoint = new VocabularyFirepoint();
-    this.filesFirepoint = new FilesFirepoint();
+    this.MediaLenguaEndpoint = new MediaLenguaEndpoint();
+    this.FilesEndpoint = new FilesEndpoint();
+    this.KichwaVocabularyEndpoint = new KichwaVocabularyEndpoint();
   } catch (error) {
     console.log("Error Composer instance: ", error);
   }

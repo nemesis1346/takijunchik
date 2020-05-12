@@ -7,7 +7,7 @@ import { ERROR_MIDDLEWARE } from "../constants/types";
 
 export const getKichwaWords = () => {
   return dispatch => {
-      httpApi.kichwaVocabulary.getKichwaWords("/objectModel")
+      httpApi.kichwaVocabulary.getKichwaWords()
           .then(res => {
               let objectList = [];
               console.log('RESPONSE KICHWA WORDS')

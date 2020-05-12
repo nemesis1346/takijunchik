@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const ConversationActive = sequelize.define('ConversationActive', {
+  const ConversationActive = sequelize.define('conversationActive', {
     conversation_id: DataTypes.STRING,
     order: DataTypes.INTEGER,
     text: DataTypes.TEXT

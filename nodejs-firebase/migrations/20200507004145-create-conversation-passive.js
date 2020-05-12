@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('ConversationPassives', {
+    return queryInterface.createTable('conversationPassives', {
       id: {
         type: Sequelize.INTEGER(11),
         allowNull: false,
@@ -28,6 +28,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('ConversationPassives');
+    return queryInterface.dropTable('conversationPassives');
   }
 };

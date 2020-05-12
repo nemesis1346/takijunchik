@@ -1,7 +1,5 @@
 "use strict";
-const User = require('../models/user');
-const Speech = require('../models/speech');
-const Record = require('../models/record');
+const kichwaWordObject = require('../models/kichwaword');
 
 class DatabaseApi {
     constructor() {
@@ -11,15 +9,14 @@ class DatabaseApi {
     async init() { }
 
 
-    async saveSpeech(speechObject) {
+    async saveKichwaWord(kichwaWordObject) {
         console.log("************************************");
-        console.log("Request Save Speech in Database Api: ");
-        console.log(speechObject);
+        console.log("Request Save KichwaWord in Database Api: ");
+        console.log(kichwaWordObject);
         try {
-            await Speech.create({
-                uuid: speechObject.uuid,
-                userId: speechObject.userId,
-                converted: speechObject.converted
+            await kichwaWordObject.create({
+                spanish: kichwaWordObject.spanish,
+                kichwa1: kichwaWordObject.kichwa1
             });
 
         } catch (error) {
@@ -33,26 +30,20 @@ class DatabaseApi {
         console.log("Request Update Object in Database Api: ");
         console.log('TABLENAME')
         console.log(tablename)
-        console.log('ID')
-        console.log(id)
-        let uuidInput = id.toString()
+        let idInput = id.toString()
         try {
             let query = null;
 
             switch (tablename) {
-                case 'Record':
-                    query = await Record.findOne({ where: { uuid: uuidInput } })
+                case 'KichwaWord':
+                    query = await KichwaWord.findOne({ where: { id: idInput } })
                     break;
-                case 'Speech':
-                    query = await Speech.findOne({ where: { uuid: uuidInput } })
-                    break;
+              
                 default:
                     query = null;
                     break;
             }
-            console.log('QUERY RESULT');
-            // console.log(query.dataValues)
-          
+            console.log('QUERY RESULT');          
 
             if (query && query != null) {
                 await query.update({ [property]: value })
@@ -65,19 +56,16 @@ class DatabaseApi {
         }
     }
 
-    async getAllSpeeches() {
+    async getAllKichwaWords() {
         console.log("************************************");
-        console.log("Get All Speeches in Database Api: ");
+        console.log("Get All KichwaWords in Database Api: ");
         try {
-            let speeches = await Speech.findAll({
-                // where: {
-                //     userId: 0,
-                // },
-                attributes: ['id', 'uuid', 'converted', 'createdAt', 'updatedAt']
+            let kichwaWords = await kichwaWordObject.findAll({
+                attributes: ['id', 'spanish','kichwa1', 'converted', 'createdAt', 'updatedAt']
             });
 
             let finalList = [];
-            speeches.forEach((resultSetItem) => {
+            kichwaWords.forEach((resultSetItem) => {
                 let current_item = resultSetItem.get({
                     plain: true
                 });
@@ -91,17 +79,17 @@ class DatabaseApi {
 
     }
 
-    async getSpeech(uuid) {
+    async getKichwaWord(id) {
         console.log("************************************");
-        console.log("Get Speech in Database Api: ");
+        console.log("Get KichwaWord in Database Api: ");
         try {
-            let speech = await Speech.findOne({ where: { uuid: uuid } });
-            speech = speech.get({
+            let kichwaWord = await kichwaWord.findOne({ where: { uuid: uuid } });
+            kichwaWord = kichwaWord.get({
                 plain: true
             });
-            console.log('SPEECH RESULT IN DATABASE....')
-            // console.log(speech)
-            return speech
+            console.log('kichwaWord RESULT IN DATABASE....')
+            // console.log(kichwaWord)
+            return kichwaWord
         } catch (error) {
             console.error(error);
             throw new Error(error);
