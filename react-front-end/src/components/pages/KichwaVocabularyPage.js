@@ -35,7 +35,7 @@ class KichwaVocabularyPage extends React.Component {
     this.props.getKichwaWords();
   }
 
-  objectDetailCloseCallback = closeAlert => {
+  kichwaVocabularyDetailCloseCallback = closeAlert => {
     this.setState({
       kichwaVocabularyDetailOpen: closeAlert
     });
@@ -53,10 +53,11 @@ class KichwaVocabularyPage extends React.Component {
     this.setState({
       kichwaVocabularyDetailOpen: true,
     });
-    this.props.setObjectDetail(objectSelected);
+    this.props.setKichwaWordDetail(objectSelected);
   };
 
   render() {
+    
     const {
       objects,
       hideResultMessage,
@@ -64,7 +65,6 @@ class KichwaVocabularyPage extends React.Component {
       kichwaVocabularyDetailData
     } = this.props;
     this.spinnerStyle = hideSpinner ? { display: "none" } : {};
-
     return (
       <div className="traductor-page-container">
         <TraductorForm submit={this.submit} objectList={objects} />

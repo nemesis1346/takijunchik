@@ -8,12 +8,9 @@ import {
     hideResultMessage: false,
     hideSpinner: false,
     kichwaVocabularyDetailData: {
-      mediaLenguaContent: "",
-      spanishContent: "",
-      kichwaContent: "",
-      elicitSentenceContent: "",
-      ipaContent: "",
-      objectId: ""
+      spanish: "",
+      kichwa1: "",
+      id: ""
     },
     audioUrl: ""
   };
@@ -30,9 +27,9 @@ import {
         return {
           ...state,
           kichwaVocabularyDetailData: {
-            spanishContent: action.object.spanishContent,
-            kichwaContent: action.object.kichwaContent,
-            objectId: action.object.objectId
+            spanish: action.object.spanish,
+            kichwa1: action.object.kichwa1,
+            id: action.object.id
           }
         };
       default:

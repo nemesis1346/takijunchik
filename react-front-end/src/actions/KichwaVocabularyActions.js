@@ -4,6 +4,7 @@ import {
   GET_OBJECT_DETAIL_SUCCESS
 } from "../constants/types";
 import { ERROR_MIDDLEWARE } from "../constants/types";
+import { parseResponse } from '../utils/Utils';
 
 export const getKichwaWords = () => {
   return dispatch => {
@@ -11,8 +12,10 @@ export const getKichwaWords = () => {
           .then(res => {
               let objectList = [];
               console.log('RESPONSE KICHWA WORDS')
-              console.log(res)
-              dispatch(getKichwaWordSuccess(objectList));
+              let result = parseResponse(res.data.body);
+              console.log(result)
+
+              dispatch(getKichwaWordSuccess(result));
           })
           .catch(err => {
               console.log(err);

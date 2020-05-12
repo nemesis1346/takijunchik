@@ -20,10 +20,9 @@ class KichwaVocabularyDetailModal extends React.Component {
 
 
   componentWillReceiveProps(nextProps) {
-    console.log('NEXT PROPS');
     if (
-      nextProps.kichwaVocabularyDetailData.objectId != null &&
-      nextProps.kichwaVocabularyDetailData.objectId != ""
+      nextProps.kichwaVocabularyDetailData.id != null &&
+      nextProps.kichwaVocabularyDetailData.id != ""
     ) {
     }
 
@@ -36,7 +35,6 @@ class KichwaVocabularyDetailModal extends React.Component {
   };
 
   render() {
-    console.log('RENDER');
     const { kichwaVocabularyDetailSize, kichwaVocabularyDetailOpen, kichwaVocabularyDetailData } = this.props;
     return (
       <Modal
@@ -49,10 +47,10 @@ class KichwaVocabularyDetailModal extends React.Component {
         <Modal.Content>
           <div>
             <div>
-              <b>Spanish Content: </b> {kichwaVocabularyDetailData.spanishContent}
+              <b>Spanish: </b> {kichwaVocabularyDetailData.spanish}
             </div>
             <div>
-              <b>Kichwa Content: </b> {kichwaVocabularyDetailData.kichwaContent}
+              <b>Kichwa: </b> {kichwaVocabularyDetailData.kichwa1}
             </div>
           </div>
         </Modal.Content>

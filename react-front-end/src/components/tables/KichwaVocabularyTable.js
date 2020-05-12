@@ -22,13 +22,13 @@ class KichwaVocabularyTable extends React.Component {
         data={this.props.objectList}
         selectRow={this.selectRowProp}
       >
-        <TableHeaderColumn width="200" dataField="objectId" isKey={true} hidden={true}>
+        <TableHeaderColumn width="200" dataField="id" isKey={true} hidden={true}>
           Id
         </TableHeaderColumn>
-        <TableHeaderColumn width="200" dataField="mediaLenguaContent">
+        <TableHeaderColumn width="200" dataField="spanish">
           Kichwa
         </TableHeaderColumn>
-        <TableHeaderColumn width="200" dataField="spanishContent">
+        <TableHeaderColumn width="200" dataField="kichwa1">
           Spanish
         </TableHeaderColumn>
       </BootstrapTable>
