@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="App">
-          <Route path={ROUTES.ROUTE_DEFAULT} exact component={LoginPage}></Route>
+          <Route path={ROUTES.ROUTE_LOGIN} exact component={LoginPage}></Route>
           <Route path={ROUTES.ROUTE_MAIN_PAGE} component={MainPage}></Route>
         </div>
       </BrowserRouter>

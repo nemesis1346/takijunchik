@@ -5,3 +5,4 @@ export const ROUTE_MAIN_PAGE = "/MainPage";
 export const ROUTE_DEFAULT = '/';
 export const ROUTE_DICTIONARY = "/DictionaryPage";
 export const ROUTE_VOCABULARY="/VocabularyPage"
+export const ROUTE_LOGIN="/login";

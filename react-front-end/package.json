@@ -5,6 +5,7 @@
   "homepage": "https://nemesis1346.github.io/takijunchik-react-firebase-hyperledger",
   "dependencies": {
     "axios": "^0.18.0",
+    "bcrypt": "^4.0.1",
     "firebase": "^5.7.2",
     "firebase-admin": "^6.4.0",
     "fs": "^0.0.1-security",

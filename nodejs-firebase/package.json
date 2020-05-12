@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@google-cloud/storage": "^2.3.4",
+    "bcrypt": "^4.0.1",
     "blob": "0.0.5",
     "blob-util": "^2.0.2",
     "cors": "^2.8.5",
@@ -19,6 +20,7 @@
     "firebase": "^5.7.1",
     "firebase-admin": "^6.4.0",
     "firebase-tools": "^6.3.0",
+    "mocha": "^7.1.2",
     "mp3-parser": "^0.3.0",
     "mp3-split": "^4.1.0",
     "mysql2": "^2.1.0",
