@@ -61,7 +61,7 @@ class DatabaseApi {
         console.log("Get All KichwaWords in Database Api: ");
         try {
             let kichwaWords = await kichwaWordObject.findAll({
-                attributes: ['id', 'spanish','kichwa1', 'converted', 'createdAt', 'updatedAt']
+                attributes: ['id', 'spanish','kichwa1', 'createdAt', 'updatedAt']
             });
 
             let finalList = [];

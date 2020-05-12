@@ -1,5 +1,7 @@
 "use strict";
 //Imports
+require('../api/connection');
+
 const port = 8889;
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -11,7 +13,6 @@ const app = express();
 const DataModel = require("../models/dataModel.js");
 const fileUpload = require("express-fileupload");
 const ENDPOINTS = require('./endpointsConstants.js');
-require('../api/connection');
 
 const handlerDefault = async (request, response) => {
   const { headers, method, url } = request;
