@@ -2,7 +2,7 @@
   "name": "react-front-end",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nemesis1346.github.io/takijunchik-react-firebase-hyperledger",
+  "homepage": "https://nemesis1346.github.io/takijunchik",
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt": "^4.0.1",
