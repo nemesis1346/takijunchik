@@ -1,7 +1,6 @@
 'use strict';
 
 const Sequelize = require('sequelize');
-console.log('GETTING INTO MODEL')
 
 module.exports = sequelize.define('kichwaword', {
     id: {

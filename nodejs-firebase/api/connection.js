@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 // require('dotenv').config({ path: '../.env.development' })
-require('dotenv').config({ path: '../.env.production' }) // for other environments
+require('dotenv').config({ path: __dirname + '/../.env.production' });
 
 //Maybe options are not doing anything
 var opts = {
@@ -8,6 +8,7 @@ var opts = {
         freezeTableName: true
     }
 }
+
 //TODO: USE CORRECT ENV
 const sequelize = new Sequelize(
     process.env.DB_NAME,

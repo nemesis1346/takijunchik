@@ -3,7 +3,7 @@ const kichwaWordObject = require('../models/kichwaword');
 
 class DatabaseApi {
     constructor() {
-        console.log('DATABASE API INSTANCE')
+        console.log('DatabaseApi class initialized')
     }
 
     async init() { }
