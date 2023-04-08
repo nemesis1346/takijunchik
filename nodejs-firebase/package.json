@@ -27,7 +27,7 @@
     "node-lame": "^1.2.0",
     "sequelize": "^5.21.8",
     "shelljs": "^0.8.3",
-    "superagent": "^4.0.0",
+    "superagent": "^7.0.2",
     "xml2js": "^0.4.19"
   },
   "devDependencies": {

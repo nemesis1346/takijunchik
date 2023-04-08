@@ -48,43 +48,6 @@ const handler = (request, response) => {
             console.error(err);
         });
         response.send("Hello from Firebase!");
-
-        //Call method
-        // let promise;
-        // let body;
-        // let responseBody;
-        // try {
-        //     switch (url) {
-        //         case '/createUser':
-        //             console.log('We did it');
-        //             break;
-        //         default:
-        //             dataModel.message = 'Method not found';
-        //             dataModel.status = '405';
-        //             body = JSON.stringify(dataModel);
-
-        //             console.log('STATUS 405: ');
-        //             console.log('Method not found');
-        //             responseBody = { headers, method, url, body };
-
-        //             response.statusCode = 405;
-        //             response.write(JSON.stringify(responseBody));
-        //             response.end();
-        //             break;
-        //     }
-
-        // } catch (error) {
-        //     dataModel.message = error.message.toString();
-        //     dataModel.status = '500';
-        //     body = JSON.stringify(dataModel);
-        //     console.log('ERROR 500:');
-        //     console.log(error);
-        //     responseBody = { headers, method, url, body };
-
-        //     response.statusCode = 500;
-        //     response.write(JSON.stringify(responseBody));
-        //     response.end();
-        // }
     });
 
 }
