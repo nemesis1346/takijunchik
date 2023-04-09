@@ -1,11 +1,17 @@
 'use strict'
+
+/*
+  TODO: This script needs to be run in the Docker file because populates the database in firebase, but be careful that it wont duplicate firebase already saved items
+
+  TODO: investigate that instead of uuid, Firebase should give you back the ID
+*/
+
 const PORT = '8889';
 const HOST = 'localhost';
 const http = require('http');
-const UUID = require('uuid/v1');
-const ObjectModel = require('../models/objectModel.js.js.js');
+const { v4: uuidv4 } = require('uuid');
+const ObjectModel = require('../models/objectModel.js');
 let fs = require('fs');
-const Async = require('async');
 const superagent = require('superagent');
 
 async function mainDataInputProcess() {
@@ -35,7 +41,7 @@ function streamTrack(){
 }
 
 function saveAllObjects() {
-    let filePath = '../data/jsonFiles/objectJson.json';
+    let filePath = '../data/dataMediaLengua/jsonFiles/objectJson.json';
     debugger;
     fs.readFile(filePath, "utf-8", function (err, data) {
         if (err) {
@@ -43,15 +49,11 @@ function saveAllObjects() {
             throw err;
         }
         let objectList = JSON.parse(data);
-        // objectList=objectList[0-10];
-        //objectList = objectList.slice(0, 20);
-        console.log(objectList);
         
         for (const element of objectList) {
-        // Async.eachSeries(objectList,
-        //     (element, callback) => {
-                console.log(element);
-                let uuid = UUID();
+       
+                let uuid = uuidv4();
+                console.log('Object: '+String(uuid)+" request for storing in firebase");
 
                 let currentObject = new ObjectModel(
                     uuid,
@@ -98,61 +100,10 @@ function saveAllObjects() {
                     null,
                     null
                 );
-                //   console.log(currentObject);
                requestPost('/saveObject', JSON.stringify(currentObject));
             }
         // );
     });
-}
-async function queryObject() {
-    try {
-        let wordsList = [];
-        //TODO: develop method for getting 
-        let response = await requestPost('/getObjectsByQuery', JSON.stringify('mi'));
-        console.log(response);
-    } catch (error) {
-        console.error(error);
-        return new Error(error);
-    }
-}
-
-async function getObject() {
-    try {
-        let wordsList = [];
-        //TODO: develop method for getting 
-        let response = await requestPost('/getObject', JSON.stringify('88131d20-c054-11e8-98aa-ebaeb624bac0'));
-        console.log(response);
-    } catch (error) {
-        console.error(error);
-        return new Error(error);
-    }
-}
-
-
-async function getAllObjects() {
-    try {
-        let wordsList = [];
-        //TODO: develop method for getting 
-        let response = await requestGet('/getAllObjects');
-        console.log(response);
-    } catch (error) {
-        console.error(error);
-        return new Error(error);
-    }
-
-}
-
-async function getAllWords() {
-    try {
-        let wordsList = [];
-        //TODO: develop method for getting 
-        let response = await requestGet('/getAllWords');
-        console.log(response);
-    } catch (error) {
-        console.error(error);
-        return new Error(error);
-    }
-
 }
 
 
@@ -209,4 +160,10 @@ function requestGet(endpoint) {
     });
     get_req.end()
 }
+
+module.exports = {
+    requestPost,
+    requestGet
+  };
+    
 mainDataInputProcess();

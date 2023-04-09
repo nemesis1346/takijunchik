@@ -106,7 +106,7 @@ class MediaLenguaEndpoint {
     let dataModel = new DataModel(null, null, null);
     console.log("************************************");
     console.log("Request Save Object: ");
-    console.log(requestObject);
+    // console.log(requestObject);
 
     try {
       let objectModel = new ObjectModel(

@@ -48,7 +48,7 @@ export const getObjects = () => {
             });
     };
 };
-//This method is taking data from firebase
+//This method is taking data from firebase with an specific input
 export const getObjectsByQuery=input=>{
     return dispatch => {
         FirebaseApi.getValueByQuery('/objectModel',input,null)

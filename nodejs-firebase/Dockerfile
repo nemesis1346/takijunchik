@@ -9,6 +9,8 @@ RUN apt-get update \
     && apt-get install -y mysql-server mariadb-server \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y vim
+
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
