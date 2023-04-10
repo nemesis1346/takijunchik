@@ -25,7 +25,7 @@ const userApi = {
 };
 
 const mediaLenguaApi = {
-  translateKichwaSpanish: wordKichwa => instanceDefault.post(ROUTES.TRANSLATE_KICHWA_SPANISH_MEDIA_LENGUA_ENDPOINT, { word_kichwa })
+  translateKichwaSpanish: word_kichwa => instanceDefault.post(ROUTES.TRANSLATE_KICHWA_SPANISH_MEDIA_LENGUA_ENDPOINT, { word_kichwa })
     .then(res => {
       console.log('Response in Api Translate');
       return res.data;
