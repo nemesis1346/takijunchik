@@ -1,13 +1,11 @@
 "use strict";
 const DataModel = require("../models/dataModel.js");
-const fs = require("fs");
 const xml2js = require("xml2js");
 const UUID = require("uuid");
 const firebase = require("../firebaseSetup/firebaseConfig.js");
 const Lame = require("node-lame").Lame;
 const exec = require("shelljs").exec;
 const parser = new xml2js.Parser();
-const shell2 = require("shelljs");
 const mp3Split = require("mp3-split");
 const ObjectModel = require("../models/objectModel");
 
