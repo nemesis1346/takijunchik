@@ -1,30 +1,16 @@
 'use strict'
-let express = require('express');
-let router = express.Router();
+/*
+This class is working specially it takes the eaf audio file and transofrm it in json objects
+*/
+
 let fs = require('fs');
 let xml2js = require('xml2js');
 let parser = new xml2js.Parser();
 const ObjectModel = require('../../blockchain/models/objectModel.js');
 const UUID = require('uuid/v1');
+const utils = require('../utils/utils.js')
 
 class ProcessorRaw {
-
-    /**
-     * @description this is a function for parsing the format of the time.
-     * @param {*} duration 
-     */
-    parseTimeFormat(duration) {
-        var milliseconds = parseInt((duration%1000)/100)
-            , seconds = parseInt((duration/1000)%60)
-            , minutes = parseInt((duration/(1000*60))%60)
-            , hours = parseInt((duration/(1000*60*60))%24);
-    
-        hours = (hours < 10) ? "0" + hours : hours;
-        minutes = (minutes < 10) ? "0" + minutes : minutes;
-        seconds = (seconds < 10) ? "0" + seconds : seconds;
-    
-        return "[" +minutes + ":" + seconds + "." + milliseconds+"][";
-    }
 
     /**
      * @description Initializes the processing of the data in eaf
@@ -180,7 +166,7 @@ class ProcessorRaw {
                     const element = objectList[index];
                     if (element.timeSlotId1MediaLengua === currentElement.TIME_SLOT_ID) {
                         objectList[index].timeValue1 = currentElement.TIME_VALUE;
-                        objectList[index].timeValue1Format = this.parseTimeFormat(currentElement.TIME_VALUE);
+                        objectList[index].timeValue1Format = utils.parseTimeFormatForRawProcessor(currentElement.TIME_VALUE);
                     }
                 }
             }
@@ -193,30 +179,13 @@ class ProcessorRaw {
                     const element = objectList[index];
                     if (element.timeSlotId2MediaLengua === currentElement.TIME_SLOT_ID) {
                         objectList[index].timeValue2 = currentElement.TIME_VALUE;
-                        objectList[index].timeValue2Format = this.parseTimeFormat(currentElement.TIME_VALUE);
+                        objectList[index].timeValue2Format = utils.parseTimeFormatForRawProcessor(currentElement.TIME_VALUE);
                     }
                 }
             }
             //console.log(objectList);
             callbackProcessData(null, objectList);
         }.bind(this));
-    }
-    
-    /**
-     * @description this is a method for parsing the time input to get the format
-     * @param {*} duration 
-     */
-    parseTime(duration) {
-        var milliseconds = parseInt((duration % 1000) / 100)
-            , seconds = parseInt((duration / 1000) % 60)
-            , minutes = parseInt((duration / (1000 * 60)) % 60)
-            , hours = parseInt((duration / (1000 * 60 * 60)) % 24);
-
-        hours = (hours < 10) ? "0" + hours : hours;
-        minutes = (minutes < 10) ? "0" + minutes : minutes;
-        seconds = (seconds < 10) ? "0" + seconds : seconds;
-
-        return "[" + minutes + ":" + seconds + "." + milliseconds + "]";
     }
 
 }

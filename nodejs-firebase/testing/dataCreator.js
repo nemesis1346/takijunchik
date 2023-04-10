@@ -1,4 +1,7 @@
 'use strict'
+/*
+This class is most likely to be the one that will initiate all the process of the processing of the audio files. 
+*/
 let express = require('express');
 let router = express.Router();
 let fs = require('fs');
@@ -34,7 +37,7 @@ class DataCreator {
         processorInstance.processData(parseIntoJSONCallback, 'hola secont parameter');
     }
     /**
-     * @description This method is the callbaack once we get the object list from the parse of the eaf file
+     * @description This method is the callbaack once we get the object list from the parse of the eaf file and save it into jsonFiles
      * @param {*} err 
      * @param {*} objectList 
      */

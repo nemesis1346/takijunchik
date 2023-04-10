@@ -16,31 +16,17 @@ const superagent = require('superagent');
 
 async function mainDataInputProcess() {
     try {
-        //await saveWord();
-        //await getAllObjects();
-       saveAllObjects();
-         // queryObject();
-       // await getObject();
-      // streamTrack();
+
+       saveAllObjectsToFirebase();
+
     } catch (error) {
         console.error(error);
         return new Error(error);
     }
 }
 
-/**
- * @description This function is for testing the streaming method
- */
-function streamTrack(){
-    try {
-        requestPost('/streamTrack', '');
-    } catch (error) {
-        console.error(error);
-        return new Error(error);
-    }
-}
 
-function saveAllObjects() {
+function saveAllObjectsToFirebase() {
     let filePath = '../data/dataMediaLengua/jsonFiles/objectJson.json';
     debugger;
     fs.readFile(filePath, "utf-8", function (err, data) {
@@ -165,5 +151,5 @@ module.exports = {
     requestPost,
     requestGet
   };
-    
+
 mainDataInputProcess();

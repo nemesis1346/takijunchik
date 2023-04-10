@@ -33,6 +33,7 @@ module.exports = {
         finalResult = this.removeDuplicates(finalResult);
         return finalResult;
     },
+    
     /**
      * @description Remove duplicates
      */
@@ -66,7 +67,49 @@ module.exports = {
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        //return minutes + ":" + seconds + ":" + milliseconds;
         return minutes + ":" + seconds + "." + milliseconds;
+    },
+
+
+    /**
+     * @description this is a function for parsing the format of the time.
+     * @param {*} duration 
+     */
+    parseTimeFormatForRawProcessor(duration) {
+        var milliseconds = parseInt((duration%1000)/100)
+            , seconds = parseInt((duration/1000)%60)
+            , minutes = parseInt((duration/(1000*60))%60)
+            , hours = parseInt((duration/(1000*60*60))%24);
+    
+        hours = (hours < 10) ? "0" + hours : hours;
+        minutes = (minutes < 10) ? "0" + minutes : minutes;
+        seconds = (seconds < 10) ? "0" + seconds : seconds;
+    
+        return "[" +minutes + ":" + seconds + "." + milliseconds+"][";
+    },
+    /**
+     * This method is for testing the splitting 
+     */
+    async  divideMP3() {
+        try {
+            let options = { input: './41-Elicitations-2010.mp3', 
+            sections: ['[00:00] audio1','[10:00] audio2'] ,
+        output:'.'};
+            let split = mp3Split(options);
+            split.parse().then((sections) => {
+                for (let section of sections) {
+                    console.log(section.name);      // filename
+                    console.log(section.start);     // section start
+                    console.log(section.end);       // section end
+                    console.log(section.trackName); // track name
+                }
+            });
+
+        } catch (e) {
+            console.log(e);
+            console.log(e.code);
+            console.log(e.msg);
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 'use strict'
+//TODO: This class needs to be adequated to the main index.js otherwise is making noise
 //Imports
 const express = require('express');
 const bodyParser = require('body-parser');
