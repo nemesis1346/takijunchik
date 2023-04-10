@@ -1,7 +1,7 @@
 "use strict";
 const ObjectModel = require("../models/objectModel.js");
 const DataModel = require("../models/dataModel.js");
-const databaseApi = require('../api/databaseApi');
+const databaseApi = require('../api/databaseApi.js');
 
 //This must be deleted
 class KichwaVocabularyEndpoint {

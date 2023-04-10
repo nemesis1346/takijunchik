@@ -1,4 +1,4 @@
-import firebase from "../api/FirebaseConfig"; //this is mandatory, must come from the setup
+import firebase from "./FirebaseConfig"; //this is mandatory, must come from the setup
 import { removeDuplicates2 } from '../utils/Utils';
 class FirebaseApi {
   static getFunction(methodName) {

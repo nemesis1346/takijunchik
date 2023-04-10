@@ -7,7 +7,7 @@ const Lame = require("node-lame").Lame;
 const exec = require("shelljs").exec;
 const parser = new xml2js.Parser();
 const mp3Split = require("mp3-split");
-const ObjectModel = require("../models/objectModel");
+const ObjectModel = require("../models/objectModel.js");
 
 /**
  * This is a function for executing linux commands with nodejs
