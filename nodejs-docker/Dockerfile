@@ -24,10 +24,8 @@ RUN apt-get update \
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install --save sequelize@5.21.8
-RUN npm install mysql
 RUN npm install -g nodemon
-RUN npm install
+RUN npm install 
 
 # Copy the rest of the application code
 COPY . .
