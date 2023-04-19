@@ -1,20 +1,6 @@
 version: '3.8'
 
 services:
-  db:
-    build:
-      context: ./mariadb-db-docker
-      dockerfile: Dockerfile
-    container_name: takijunchik-db
-    ports:
-      - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: database_production
-    restart: always
-
   api:
     build:
       context: ./nodejs-docker
@@ -23,12 +9,8 @@ services:
     ports:
       - "3000:3000"
       - "9229:9229"
-    depends_on:
-      - db
-    links:
-      - db
     environment:
-      - DATABASE_HOST=db
+      - DATABASE_HOST=127.0.0.1
       - DATABASE_USER=root
       - DATABASE_PASSWORD=root
       - DATABASE_NAME=database_production
