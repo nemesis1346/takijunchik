@@ -1,5 +1,4 @@
 module.exports = {
-    //  MORE EFFICIENT, BUT LESS FUN
     /**
      * @description Remove duplicates from an array of objects in javascript
      * @param arr - Array of objects

@@ -159,7 +159,6 @@ class ProcessorRaw {
 
             //Process slit id 1
             for (const element of TIME_SLOT_LIST) {
-                // TIME_SLOT_LIST.forEach(function (element) {
                 let currentElement = element['$'];
                 // THIS IS FOR TIMESLOTID1 AND TIME VALUE
                 for (let index = 0; index < objectList.length; index++) {
@@ -172,7 +171,6 @@ class ProcessorRaw {
             }
             //Process slit id 2
             for (const element of TIME_SLOT_LIST) {
-                // TIME_SLOT_LIST.forEach(function (element) {
                 let currentElement = element['$'];
                 // THIS IS FOR TIMESLOTID1 AND TIME VALUE
                 for (let index = 0; index < objectList.length; index++) {
