@@ -1,5 +1,5 @@
 # Specify a base image
-FROM node:10
+FROM node:20
 
 # Install MariaDB client tools
 RUN apt-get update && \
@@ -24,7 +24,7 @@ RUN apt-get update \
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install -g nodemon
+RUN npm install -g nodemon@latest
 RUN npm install 
 
 # Copy the rest of the application code
@@ -43,8 +43,8 @@ RUN chmod +x /app/docker-entrypoint.sh
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
 
 
-# Start the server
-# CMD ["node", "index.js", "tail", "-f", "/dev/null"]
+# Expose debug port
+EXPOSE 9229
 
 # nodemon is for monitoring
 CMD ["nodemon", "--inspect=0.0.0.0:9229", "index.js"]

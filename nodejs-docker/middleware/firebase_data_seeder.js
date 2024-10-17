@@ -1,155 +1,134 @@
-'use strict'
+'use strict';
 
-/*
-  TODO: This script needs to be run in the Docker file because populates the database in firebase, but be careful that it wont duplicate firebase already saved items
-
-  TODO: investigate that instead of uuid, Firebase should give you back the ID
-*/
-
-const PORT = '8889';
-const HOST = 'localhost';
-const http = require('http');
+const path = require('path');
+const fs = require('fs').promises;
 const { v4: uuidv4 } = require('uuid');
-const ObjectModel = require('../models/objectModel.js');
-let fs = require('fs');
 const superagent = require('superagent');
+const ObjectModel = require('../models/objectModel.js');
 
+// Configuration
+const CONFIG = {
+    PORT: '8889',
+    HOST: 'localhost',
+    DATA_FILE: path.join(__dirname, '..', 'data', 'dataMediaLengua', 'jsonFiles', 'media_lengua_data.json')
+};
+
+/**
+ * Main function to process and save data to Firebase
+ */
 async function mainDataInputProcess() {
     try {
-
-       saveAllObjectsToFirebase();
-
+        await saveAllObjectsToFirebase();
+        console.log('All projects processed successfully')
     } catch (error) {
-        console.error(error);
-        return new Error(error);
+        console.error('Error in main process:', error);
     }
 }
 
+/**
+ * Reads data from JSON file and saves each object to Firebase
+ */
+async function saveAllObjectsToFirebase() {
+    try {
+        // Read and parse the JSON file
+        const data = await fs.readFile(CONFIG.DATA_FILE, 'utf-8');
+        const objectList = JSON.parse(data);
 
-function saveAllObjectsToFirebase() {
-    let filePath = '../data/dataMediaLengua/jsonFiles/objectJson.json';
-    debugger;
-    fs.readFile(filePath, "utf-8", function (err, data) {
-        if (err) {
-            console.log(err);
-            throw err;
-        }
-        let objectList = JSON.parse(data);
-        
+        // Process each object in the list
         for (const element of objectList) {
-       
-                let uuid = uuidv4();
-                console.log('Object: '+String(uuid)+" request for storing in firebase");
+            const uuid = uuidv4();
+            console.log(`Processing object: ${uuid}`);
 
-                let currentObject = new ObjectModel(
-                    uuid,
-                    //Variables for annotationId
-                    element.annotationIdMediaLengua,
-                    element.annotationIdSpanish,
-                    element.annotationIdKichwa,
-                    element.annotationIdElicitSentence,
-                    element.annotationIdIpa,
-                    element.annotationIdGlosses,
-                    element.annotationIdSegmented,
-                    //Variables for time slot1
-                    element.timeSlotId1MediaLengua,
-                    element.timeSlotId1Spanish,
-                    element.timeSlotId1Kichwa,
-                    element.timeSlotId1ElicitSentence,
-                    element.timeSlotId1Ipa,
-                    element.timeSlotId1Glosses,
-                    element.timeSlotId1Segmented,
-                    //Variables for times slot2
-                    element.timeSlotId2MediaLengua,
-                    element.timeSlotId2Spanish,
-                    element.timeSlotId2Kichwa,
-                    element.timeSlotId2ElicitSentence,
-                    element.timeSlotId2Ipa,
-                    element.timeSlotId2Glosses,
-                    element.timeSlotId2Segmented,
-                    //Variables for the content
-                    element.mediaLenguaContent,
-                    element.spanishContent,
-                    element.kichwaContent,
-                    element.elicitSentenceContent,
-                    element.ipaContent,
-                    element.glossesContent,
-                    element.segmentedContent,
-                    //Time values
-                    element.timeValue1,
-                    element.timeValue2,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null
-                );
-               requestPost('/saveObject', JSON.stringify(currentObject));
-            }
-        // );
-    });
+            const currentObject = createObjectModel(uuid, element);
+            await requestPost('/saveObject', JSON.stringify(currentObject));
+            console.log(`Object ${uuid} processed`);
+        }
+    } catch (error) {
+        console.error('Error in saveAllObjectsToFirebase:', error);
+        throw error;
+    }
 }
 
+/**
+ * Creates an ObjectModel instance from the given data
+ * @param {string} uuid - Unique identifier for the object
+ * @param {Object} element - Data to create the object from
+ * @returns {ObjectModel} - New ObjectModel instance
+ */
+function createObjectModel(uuid, element) {
+    return new ObjectModel(
+        uuid,
+        // Annotation IDs
+        element.annotationIdMediaLengua,
+        element.annotationIdSpanish,
+        element.annotationIdKichwa,
+        element.annotationIdElicitSentence,
+        element.annotationIdIpa,
+        element.annotationIdGlosses,
+        element.annotationIdSegmented,
+        // Time slot 1
+        element.timeSlotId1MediaLengua,
+        element.timeSlotId1Spanish,
+        element.timeSlotId1Kichwa,
+        element.timeSlotId1ElicitSentence,
+        element.timeSlotId1Ipa,
+        element.timeSlotId1Glosses,
+        element.timeSlotId1Segmented,
+        // Time slot 2
+        element.timeSlotId2MediaLengua,
+        element.timeSlotId2Spanish,
+        element.timeSlotId2Kichwa,
+        element.timeSlotId2ElicitSentence,
+        element.timeSlotId2Ipa,
+        element.timeSlotId2Glosses,
+        element.timeSlotId2Segmented,
+        // Content
+        element.mediaLenguaContent,
+        element.spanishContent,
+        element.kichwaContent,
+        element.elicitSentenceContent,
+        element.ipaContent,
+        element.glossesContent,
+        element.segmentedContent,
+        // Time values
+        element.timeValue1,
+        element.timeValue2,
+        // Additional null values
+        ...Array(7).fill(null)
+    );
+}
 
 /**
- * This is a generic method for post request
- * @param {Its the name of the endpoint or method at the end} endpoint 
- * @param {Its the data, usually should be a json object} data 
+ * Sends a POST request to the specified endpoint
+ * @param {string} endpoint - The API endpoint
+ * @param {string} data - The data to send (JSON string)
  */
-async function requestPost(endpoint, data, extraInfo) {
-    let result;
+async function requestPost(endpoint, data) {
     try {
-        const res = await superagent
-            .post(`${HOST}:${PORT}${endpoint}`)
+        const url = `http://${CONFIG.HOST}:${CONFIG.PORT}${endpoint}`;
+        const response = await superagent
+            .post(url)
             .set('Content-Type', 'application/json')
-            .set('Content-Length', Buffer.byteLength(data))
             .send(data);
 
-        result = JSON.parse(res.res.text)
-        console.log('RESPONSE IN: ' + extraInfo);
-        console.log(result);
-
+        console.log('Response:', JSON.parse(response.text));
     } catch (error) {
-        console.log('THERE WAS AN ERROR IN: ' + extraInfo);
+        console.error('Error in POST request:', error.message);
         if (error.response) {
-            result = JSON.parse(error.response.res.text);
-            console.error(result);
-        } else {
-            console.log(error);
+            console.error('Server response:', error.response.text);
         }
+        throw error;
     }
-    // return result;
-}
-/**
- * This is a generic method for get request
- * @param {Its the name of the endpoint or method at the end} endpoint 
- */
-function requestGet(endpoint) {
-    var get_options = {
-        host: HOST,
-        port: PORT,
-        path: endpoint,
-        method: 'GET',
-        headers: {
-            accept: 'application/json'
-        }
-    };
-
-    var get_req = http.request(get_options, function (res) {
-        res.setEncoding('utf8');
-        res.on('data', function (chunk) {
-            console.log('RESPONSE------------');
-            console.log(chunk);
-        });
-    });
-    get_req.end()
 }
 
+// Start the main process
+mainDataInputProcess().then(() => {
+    console.log("Script completed");
+}).catch((error) => {
+    console.error("Script failed:", error);
+});
+// Export functions for potential use in other modules
 module.exports = {
     requestPost,
-    requestGet
-  };
-
-mainDataInputProcess();
+    saveAllObjectsToFirebase
+};

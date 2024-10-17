@@ -16,14 +16,14 @@ services:
       - DATABASE_NAME=database_production
     restart: always
 
-  frontend:
-    build:
-      context: ./react-docker
-      dockerfile: Dockerfile
-    container_name: takijunchik-app
-    ports:
-      - "8080:8080"
-    restart: always
+  # frontend:
+  #   build:
+  #     context: ./react-docker
+  #     dockerfile: Dockerfile
+  #   container_name: takijunchik-app
+  #   ports:
+  #     - "8080:8080"
+  #   restart: always
 
 volumes:
   db_data:

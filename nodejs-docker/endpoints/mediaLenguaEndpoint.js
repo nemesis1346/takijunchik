@@ -1,7 +1,7 @@
 "use strict";
 const ObjectModel = require("../models/objectModel.js");
 const DataModel = require("../models/dataModel.js");
-
+const utils = require('../utils/utils.js')
 const firebase = require("../firebaseSetup/firebaseConfig.js");
 //This must be deleted
 class MediaLenguaEndpoint {
@@ -147,13 +147,13 @@ class MediaLenguaEndpoint {
         requestObject.timeValue1,
         requestObject.timeValue2,
         //Arrays //Maybe not necesarely
-        this.parseContent(requestObject.mediaLenguaContent),
-        this.parseContent(requestObject.spanishContent),
-        this.parseContent(requestObject.kichwaContent),
-        this.parseContent(requestObject.elicitSentenceContent),
-        this.parseContent(requestObject.ipaContent),
-        this.parseContent(requestObject.glossesContent),
-        this.parseContent(requestObject.segmentedContent)
+        utils.parseContent(requestObject.mediaLenguaContent),
+        utils.parseContent(requestObject.spanishContent),
+        utils.parseContent(requestObject.kichwaContent),
+        utils.parseContent(requestObject.elicitSentenceContent),
+        utils.parseContent(requestObject.ipaContent),
+        utils.parseContent(requestObject.glossesContent),
+        utils.parseContent(requestObject.segmentedContent)
       );
 
       this.database.ref("objectModel/" + requestObject.objectId).set({
@@ -194,17 +194,17 @@ class MediaLenguaEndpoint {
         timeValue1: objectModel.timeValue1,
         timeValue2: objectModel.timeValue2,
         //Arrays
-        mediaLenguaContentArray: this.parseContent(
+        mediaLenguaContentArray: utils.parseContent(
           objectModel.mediaLenguaContent
         ),
-        spanishContentArray: this.parseContent(objectModel.spanishContent),
-        kichwaContentArray: this.parseContent(objectModel.kichwaContent),
-        elicitSentenceContentArray: this.parseContent(
+        spanishContentArray: utils.parseContent(objectModel.spanishContent),
+        kichwaContentArray: utils.parseContent(objectModel.kichwaContent),
+        elicitSentenceContentArray: utils.parseContent(
           objectModel.elicitSentenceContent
         ),
-        ipaContentArray: this.parseContent(objectModel.ipaContent),
-        glossesContentArray: this.parseContent(objectModel.glossesContent),
-        segmentedContentArray: this.parseContent(objectModel.segmentedContent)
+        ipaContentArray: utils.parseContent(objectModel.ipaContent),
+        glossesContentArray: utils.parseContent(objectModel.glossesContent),
+        segmentedContentArray: utils.parseContent(objectModel.segmentedContent)
       });
 
       dataModel.data = "Object " + objectModel.objectId + " saved successfully";

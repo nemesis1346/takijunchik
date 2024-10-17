@@ -10,7 +10,6 @@ import rootReducer from './reducers/rootReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { reduxFirestore, getFirestore } from 'redux-firestore';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
-import FirestoreConfig from './api/FirebaseConfig';
 import FirebaseConfig from './api/FirebaseConfig';
 import MainPage from './components/pages/MainPage';
 

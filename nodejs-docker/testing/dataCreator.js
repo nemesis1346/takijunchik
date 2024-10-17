@@ -25,7 +25,7 @@ class DataCreator {
             // console.log(objectList);
             let jsonObjectList = JSON.stringify(objectList);
             //console.log(jsonObjectList);
-            var jsonFilePath = "../data/objectJson2.json";
+            var jsonFilePath = "../data/media_lengua_data.json";
             //For creating and saving some data
             fs.writeFile(jsonFilePath, jsonObjectList, (err) => {
                 if (err) throw err;
@@ -48,7 +48,7 @@ class DataCreator {
         // console.log(objectList);
         let jsonObjectList = JSON.stringify(objectList);
         //console.log(jsonObjectList);
-        var jsonFilePath = "../data/objectJson2.json";
+        var jsonFilePath = "../data/media_lengua_data.json";
         //For creating and saving some data
         fs.writeFile(jsonFilePath, jsonObjectList, (err) => {
             if (err) throw err;
