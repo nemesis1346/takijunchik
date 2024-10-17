@@ -24,3 +24,4 @@ firebase-cloud-functions/functions/node_modules
 firebase-cloud-functions/functions/package-lock.json
 firebase-cloud-functions/functions/yarn.lock
 .vscode
+react-docker/.env
