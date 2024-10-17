@@ -1,6 +1,7 @@
 const firebase = require("firebase-admin");
 
-const serviceAccount = require("./media-lengua-firebase-adminsdk-y63jq-05ba265775.json");
+//TODO: change this to .env configurations
+// const serviceAccount = require("./media-lengua-firebase-adminsdk-y63jq-05ba265775.json");
 
 const config = ({
     credential: firebase.credential.cert(serviceAccount),
