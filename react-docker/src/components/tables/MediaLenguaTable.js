@@ -1,49 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
+import { Table, Form } from "react-bootstrap";
 
-class ObjectTable extends React.Component {
-  constructor() {
-    super();
-    this.selectRowProp = {
-      mode: "radio",
-      clickToSelect: true,
-      onSelect: this.onRowSelect
-    };
-  }
+const ObjectTable = ({ objectList, objectSelectedCallback }) => {
+  const [selectedId, setSelectedId] = useState(null);
 
-  onRowSelect = (row, isSelected, e) => {
-    this.props.objectSelectedCallback(row);
+  const handleRowSelect = (objectId) => {
+    setSelectedId(objectId);
+    const selectedObject = objectList.find(obj => obj.objectId === objectId);
+    objectSelectedCallback(selectedObject);
   };
 
-  render() {
-    return (
-      <BootstrapTable
-        data={this.props.objectList}
-        selectRow={this.selectRowProp}
-      >
-        <TableHeaderColumn width="200" dataField="objectId" isKey={true} hidden={true}>
-          Id
-        </TableHeaderColumn>
-        <TableHeaderColumn width="200" dataField="mediaLenguaContent">
-          Media Lengua
-        </TableHeaderColumn>
-        <TableHeaderColumn width="200" dataField="spanishContent">
-          Spanish
-        </TableHeaderColumn>
-        <TableHeaderColumn width="200" dataField="kichwaContent">
-          Kichwa
-        </TableHeaderColumn>
-        <TableHeaderColumn width="200" dataField="elicitSentenceContent">
-          Elicit Sentence
-        </TableHeaderColumn>
-        <TableHeaderColumn width="200" dataField="ipaContent">
-          Ipa
-        </TableHeaderColumn>
-      </BootstrapTable>
-    );
-  }
-}
+  return (
+    <Table striped bordered hover responsive>
+      <thead>
+        <tr>
+          <th style={{ width: "50px" }}></th>
+          <th>Media Lengua</th>
+          <th>Spanish</th>
+          <th>Kichwa</th>
+          <th>Elicit Sentence</th>
+          <th>IPA</th>
+        </tr>
+      </thead>
+      <tbody>
+        {objectList.map((obj) => (
+          <tr key={obj.objectId} onClick={() => handleRowSelect(obj.objectId)}>
+            <td>
+              <Form.Check
+                type="radio"
+                checked={selectedId === obj.objectId}
+                onChange={() => {}}
+              />
+            </td>
+            <td>{obj.mediaLenguaContent}</td>
+            <td>{obj.spanishContent}</td>
+            <td>{obj.kichwaContent}</td>
+            <td>{obj.elicitSentenceContent}</td>
+            <td>{obj.ipaContent}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  );
+};
 
 ObjectTable.propTypes = {
   objectList: PropTypes.array.isRequired,

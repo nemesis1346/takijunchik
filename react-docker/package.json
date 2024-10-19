@@ -8,12 +8,10 @@
     "bcrypt": "^5.1.1",
     "env-cmd": "^10.1.0",
     "firebase": "^9.23.0",
-    "firebase-admin": "^11.11.1",
-    "fs": "^0.0.1-security",
     "gh-pages": "^6.1.0",
-    "http2": "^3.3.7",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
+    "react-bootstrap": "^2.10.5",
     "react-dom": "^17.0.2",
     "react-h5-audio-player": "^3.9.1",
     "react-md-spinner": "^1.0.0",
@@ -29,8 +27,8 @@
     "redux-thunk": "^2.4.2",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.5",
-    "validator": "^13.11.0",
-    "xml2js": "^0.6.2"
+    "stream-browserify": "^3.0.0",
+    "validator": "^13.11.0"
   },
   "scripts": {
     "start": "PORT=8080 env-cmd -f .env.production react-scripts start",
@@ -51,12 +49,9 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "eslint": "^8.55.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "eslint-plugin-react": "^7.33.2",
-    "prettier": "^3.1.1"
+    "eslint-plugin-react": "^7.33.2"
   },
   "jest": {
     "preset": "react-scripts"

@@ -1,22 +1,25 @@
 import React from 'react';
-import {Link, NavLink, withRouter} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import * as ROUTES from '../../constants/routes';
 
-const NavBar = (props) => {
+const NavBar = () => {
     return (
-        <nav className="nav wrapper blue darken-3">
-            <div className="container">
-                <a className="brand-logo">Media Lengua</a>
-                <ul className="right">
-                    {/* LINK do the same as event.preventDefault */}
-                    <li><Link to={ROUTES.ROUTE_DATABASE_MEDIA_LENGUA_PAGE}>Media Lengua</Link></li>
-                    <li><Link to={ROUTES.ROUTE_VOCABULARY}>Vocabulario</Link></li>
-                    {/* <li><Link to={ROUTES.ROUTE_UPLOADFILE_PAGE}>Upload File</Link></li> */}
-                    <li><Link to={ROUTES.ROUTE_ABOUT_PAGE}>About</Link></li>
-                </ul>
-            </div>
-        </nav>
+        <Navbar bg="primary" variant="dark" expand="lg">
+            <Container>
+                <Navbar.Brand as={Link} to="/">Media Lengua</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="ms-auto">
+                        <Nav.Link as={Link} to={ROUTES.ROUTE_DATABASE_MEDIA_LENGUA_PAGE}>Media Lengua</Nav.Link>
+                        <Nav.Link as={Link} to={ROUTES.ROUTE_VOCABULARY}>Vocabulario</Nav.Link>
+                                            {/* <li><Link to={ROUTES.ROUTE_UPLOADFILE_PAGE}>Upload File</Link></li> */}
+                        <Nav.Link as={Link} to={ROUTES.ROUTE_ABOUT_PAGE}>About</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 }
-//with Router is for givin the navbar the props input as a router
-export default withRouter(NavBar);
+
+export default NavBar;

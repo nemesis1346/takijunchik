@@ -1,40 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
+import { Table, Form } from "react-bootstrap";
 
-class KichwaVocabularyTable extends React.Component {
-  constructor() {
-    super();
-    this.selectRowProp = {
-      mode: "radio",
-      clickToSelect: true,
-      onSelect: this.onRowSelect
-    };
-  }
+const KichwaVocabularyTable = ({ objectList, objectSelectedCallback }) => {
+  const [selectedId, setSelectedId] = useState(null);
 
-  onRowSelect = (row, isSelected, e) => {
-    this.props.objectSelectedCallback(row);
+  const handleRowSelect = (id) => {
+    setSelectedId(id);
+    const selectedObject = objectList.find(obj => obj.id === id);
+    objectSelectedCallback(selectedObject);
   };
 
-  render() {
-    return (
-      <BootstrapTable
-        data={this.props.objectList}
-        selectRow={this.selectRowProp}
-      >
-        <TableHeaderColumn width="200" dataField="id" isKey={true} hidden={true}>
-          Id
-        </TableHeaderColumn>
-        <TableHeaderColumn width="200" dataField="spanish">
-          Kichwa
-        </TableHeaderColumn>
-        <TableHeaderColumn width="200" dataField="kichwa1">
-          Spanish
-        </TableHeaderColumn>
-      </BootstrapTable>
-    );
-  }
-}
+  return (
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th style={{ width: "50px" }}></th>
+          <th>Kichwa</th>
+          <th>Spanish</th>
+        </tr>
+      </thead>
+      <tbody>
+        {objectList.map((obj) => (
+          <tr key={obj.id} onClick={() => handleRowSelect(obj.id)}>
+            <td>
+              <Form.Check
+                type="radio"
+                checked={selectedId === obj.id}
+                onChange={() => {}}
+              />
+            </td>
+            <td>{obj.spanish}</td>
+            <td>{obj.kichwa1}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  );
+};
 
 KichwaVocabularyTable.propTypes = {
   objectList: PropTypes.array.isRequired,
