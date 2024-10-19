@@ -46,7 +46,7 @@ While transitioning to a Firebase-centric architecture, some backend components 
 
 2. Seed Firebase database (if needed):
    ```
-   cd nodejs-docker/middleware
+   cd nodejs-docker/seeders
    node firebase_data_seeder.js
    ```
 

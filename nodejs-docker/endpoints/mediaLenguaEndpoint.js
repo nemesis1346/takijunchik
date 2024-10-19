@@ -98,7 +98,7 @@ class MediaLenguaEndpoint {
   }
 
   /**
-   * @description It creates a new object for storing linguistics project
+   * @description It creates a new object for storing it in the firebase database
    * @return {Promise} A promise that creates a object for storing linguistics project
    * @param object is the model for the object
    */
@@ -106,7 +106,7 @@ class MediaLenguaEndpoint {
     let dataModel = new DataModel(null, null, null);
     console.log("************************************");
     console.log("Request Save Object: ");
-    // console.log(requestObject);
+    console.log(requestObject);
 
     try {
       let objectModel = new ObjectModel(
