@@ -11,7 +11,7 @@ import {
   getObjectsByQuery,
   setObjectDetail 
 } from "../../actions/FirebaseDatabaseActions";
-import "../styles/traductorPageStyle.css";
+import "../styles/media-lengua-page.css";
 
 const isEmpty = (obj) => {
   for (var key in obj) {
@@ -70,7 +70,7 @@ class MediaLenguaPage extends React.Component {
     console.log(this.props);
 
     return (
-      <div className="traductor-page-container">
+      <div className="main-container">
         <TraductorForm submit={this.submit} objectList={objects} />
 
         <Message hidden={hideResultMessage}>

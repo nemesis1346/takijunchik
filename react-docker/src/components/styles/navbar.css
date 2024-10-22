@@ -1,74 +1,59 @@
 /* navbar.css */
 
-.navbar-container {
-    background-color: #1565C0 !important;
-    padding: 0px !important;
+.navbar-container{
+    background-color: #1565C0 !important; 
+    padding: 0px!important;
     position: fixed;
     z-index: 1030;
-    margin: 0px !important;
-    width: 100%;
-    display: flex !important;
-    max-width: none !important;
-}
-
-.navbar-container.container {
-    width: 100% !important;
-}
-
-/* Ensure navbar-collapse takes full width but keeps flex behavior */
-.navbar-collapse {
-    justify-content: center !important;
-}
-
-.navbar {
+    margin: 0px!important;
+    width:100%;
+    display:flex!important;
+    max-width: none!important;
+  }
+  .navbar-container.container{
+    width:100%!important;
+  }
+  /* Ensure navbar-collapse takes full width but keeps flex behavior */
+  .navbar-collapse {
+    justify-content: center!important;
+  }
+  
+  .navbar {
+     padding: 0px;
+     position: relative;
+  }
+  .navbar-brand{
+    margin: 0px!important;
+    padding: 0px!important;
+    padding-left: 3%!important;
+  }
+  
+  .nav-link{
     padding: 0px;
-    position: relative;
-}
-
-.navbar-brand {
-    margin: 0px !important;
-    padding: 0px !important;
-    padding-left: 3% !important;
-}
-
-.nav-link {
-    padding: 0px;
-    display: flex;
-    /* Use flexbox */
-    justify-content: center;
-    /* Center horizontally */
-    align-items: center;
-}
-
-.navbar-brand {
-    color: white !important;
-    /* Use !important to ensure it overrides default styles */
-}
-
-.navbar-nav .nav-link {
-    color: white !important;
-    /* Use !important to ensure it overrides default styles */
-}
-
-.navbar-toggler {
-    border-color: #1565C0 !important;
-}
-
-@media (max-width: 768px) {
+    display: flex;           /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center;  
+  }
+  .navbar-brand {
+    color: white !important; /* Use !important to ensure it overrides default styles */
+  }
+  .navbar-nav .nav-link {
+    color: white !important; /* Use !important to ensure it overrides default styles */
+  }
+  
+  .navbar-toggler {
+    border-color:#1565C0 !important; 
+  }
+  @media (max-width: 768px) {
     .navbar-nav {
-        flex-direction: column;
-        /* Stack links vertically */
-        text-align: center;
-        /* Center align text */
+        flex-direction: column; /* Stack links vertically */
+        text-align: center; /* Center align text */
     }
-
-    .navbar-container {
-        width: 100%;
-        position: static;
+    .navbar-container{
+      width: 100%;
+      position: static;
     }
-
     .navbar-collapse {
-        justify-content: center;
-        /* Push items to the right */
+      justify-content: center; /* Push items to the right */
     }
-}
+  }

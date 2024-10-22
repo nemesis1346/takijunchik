@@ -11,7 +11,7 @@ import KichwaVocabularyDetailModal from "../modals/KichwaVocabularyDetailModal";
 import KichwaVocabularyTable from "../tables/KichwaVocabularyTable";
 import { Message } from "semantic-ui-react";
 import MDSpinner from "react-md-spinner";
-import "../styles/traductorPageStyle.css";
+import "../styles/media-lengua-page.css";
 const  isEmpty=(obj)=> {
     for(var key in obj) {
         if(obj.hasOwnProperty(key))
