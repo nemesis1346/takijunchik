@@ -1,87 +1,70 @@
-import firebase from "./FirebaseConfig"; //this is mandatory, must come from the setup
+import { initializeApp } from 'firebase/app';
+import { getFunctions, httpsCallable } from 'firebase/functions';
+import { getDatabase, ref, get, set, query, orderByChild, equalTo } from 'firebase/database';
+import { getStorage, ref as storageRef, getDownloadURL } from 'firebase/storage';
 import { removeDuplicates2 } from '../utils/Utils';
+import FirebaseConfig from './FirebaseConfig'; // Import your Firebase configuration
+
+// Initialize Firebase
+const app = initializeApp(FirebaseConfig);
+
+// Global instances
+const db = getDatabase(app);
+const storage = getStorage(app);
+const functions = getFunctions(app);
+
 class FirebaseApi {
   static getFunction(methodName) {
-    return firebase.functions().httpsCallable(methodName);
+    return httpsCallable(functions, methodName);
   }
 
-  static getValues(path) {
-    return firebase
-      .database()
-      .ref(path)
-      .once("value");
+  static async getValues(path) {
+    const dbRef = ref(db, path);
+    const snapshot = await get(dbRef);
+    return snapshot.val();
   }
 
-  static getValueByKey(path, key) {
-    return firebase
-      .database()
-      .ref(path)
-      .orderByKey()
-      .equalTo(key)
-      .once("child_added");
+  static async getValueByKey(path, key) {
+    const dbRef = ref(db, path);
+    const q = query(dbRef, orderByChild('key'), equalTo(key));
+    const snapshot = await get(q);
+    return snapshot.val();
   }
 
-  static async getValueByQuery(path, key, callback) {
-    let reference = firebase.database().ref(path);
+  static async getValueByQuery(path, key) {
+    const dbRef = ref(db, path);
     let resultList = [];
-    //We do this for mediaLengua Content
-    let snapshotMediaLengua = await reference.orderByChild("mediaLenguaContent").once('value');
-    let responseListMediaLengua = snapshotMediaLengua.val();
-    for (var i in responseListMediaLengua) {
-      if (responseListMediaLengua[i].mediaLenguaContent.includes(key)) {
-        resultList.push(responseListMediaLengua[i]);
+
+    const fields = ['mediaLenguaContent', 'spanishContent', 'kichwaContent', 'elicitSentenceContent', 'ipaContent'];
+
+    for (const field of fields) {
+      const q = query(dbRef, orderByChild(field));
+      const snapshot = await get(q);
+      const responseList = snapshot.val();
+      
+      if (responseList) {
+        for (const id in responseList) {
+          if (responseList[id][field] && responseList[id][field].includes(key)) {
+            resultList.push(responseList[id]);
+          }
+        }
       }
     }
-    //we do this for spanish
-    const snapshotSpanish = await reference.orderByChild('spanishContent').once('value');
-    let responseListSpanish = snapshotSpanish.val();
-    for (var i in responseListSpanish) {
-      if (responseListSpanish[i].spanishContent.includes(key)) {
-        resultList.push(responseListSpanish[i]);
-      }
-    }
-    //we do this for kichwa content
-    const snapshotKichwa = await reference.orderByChild('kichwaContent').once('value');
-    let responseListKichwa = snapshotKichwa.val();
-    for (var i in responseListKichwa) {
-      if (responseListKichwa[i].kichwaContent.includes(key)) {
-        resultList.push(responseListKichwa[i]);
-      }
-    }
-    //we do this for elicit sentences
-    const snapshotElicitSentence = await reference.orderByChild('elicitSentenceContent').once('value');
-    let responseListElicitSentence = snapshotElicitSentence.val();
-    for (var i in responseListElicitSentence) {
-      if (
-        responseListElicitSentence[i].elicitSentenceContent.includes(key)
-      ) {
-        resultList.push(responseListElicitSentence[i]);
-      }
-    }
-    //We do this for ipa
-    const snapshotIpa = await reference.orderByChild('ipaContent').once('value');
-    let responseListIpa = snapshotIpa.val();
-    for (var i in responseListIpa) {
-      if (responseListIpa[i].ipaContent.includes(key)) {
-        resultList.push(responseListIpa[i]);
-      }
-    }
+
     let filteredResult = removeDuplicates2(resultList, 'objectId');
-    console.log('FILTERED LIST');
-    console.log(filteredResult);
+    console.log('FILTERED LIST', filteredResult);
     return filteredResult;
   }
-  static setValue(path, value) {
-    return firebase
-      .database()
-      .ref(path)
-      .set(value);
+
+  static async setValue(path, value) {
+    const dbRef = ref(db, path);
+    await set(dbRef, value);
   }
-  static getUrlHttp(fileName) {
-    return firebase
-      .storage()
-      .ref("soundFiles/" + fileName + ".mp3")
-      .getDownloadURL();
+
+  static async getUrlHttp(fileName) {
+    const fileRef = storageRef(storage, `soundFiles/${fileName}.mp3`);
+    return await getDownloadURL(fileRef);
   }
 }
+
 export default FirebaseApi;

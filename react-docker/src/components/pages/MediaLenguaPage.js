@@ -63,6 +63,8 @@ class MediaLenguaPage extends React.Component {
       objectDetailData
     } = this.props;
     this.spinnerStyle = hideSpinner ? { display: "none" } : {};
+    console.log('Media Lengua Page')
+    console.log(this.props)
 
     return (
       <div className="traductor-page-container">
