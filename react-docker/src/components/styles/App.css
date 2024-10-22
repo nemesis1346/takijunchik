@@ -1,0 +1,15 @@
+.App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
+  
+  @media (max-width: 768px) {
+    .main-content {
+      padding-top: 0!important; /* Remove top padding on mobile */
+    }
+  }
