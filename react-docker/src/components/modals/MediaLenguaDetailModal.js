@@ -11,8 +11,8 @@ const style = {
 };
 
 class MediaLenguaDetailModal extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       message: "",
       open: false,
@@ -20,18 +20,16 @@ class MediaLenguaDetailModal extends React.Component {
     };
   }
 
-
-  componentWillReceiveProps(nextProps) {
-    console.log('NEXT PROPS');
+  componentDidUpdate(prevProps) {
     if (
-      nextProps.objectDetailData.objectId != null &&
-      nextProps.objectDetailData.objectId != ""
+      this.props.objectDetailData.objectId !== prevProps.objectDetailData.objectId &&
+      this.props.objectDetailData.objectId != null &&
+      this.props.objectDetailData.objectId !== ""
     ) {
-      nextProps.getUrlSoundAction(nextProps.objectDetailData.objectId);
+      this.props.getUrlSoundAction(this.props.objectDetailData.objectId);
     }
 
-    // You don't have to do this check first, but it can help prevent an unneeded render
-    if (nextProps.audioUrl !== this.state.audioUrl) {
+    if (this.props.audioUrl !== prevProps.audioUrl) {
       console.log('CHANGED');
     }
   }
@@ -55,28 +53,16 @@ class MediaLenguaDetailModal extends React.Component {
         <Modal.Header>Detalle</Modal.Header>
         <Modal.Content>
           <div>
-            <div>
-              <b>Media Lengua Content: </b> {objectDetailData.mediaLenguaContent}
-            </div>
-            <div>
-              <b>Spanish Content: </b> {objectDetailData.spanishContent}
-            </div>
-            <div>
-              <b>Kichwa Content: </b> {objectDetailData.kichwaContent}
-            </div>
-            <div>
-              <b>Elicit Sentence Content: </b>
-              {objectDetailData.elicitSentenceContent}
-            </div>
-            <div>
-              <b>Ipa Content: </b> {objectDetailData.ipaContent}
-            </div>
+            <div><b>Media Lengua Content: </b> {objectDetailData.mediaLenguaContent}</div>
+            <div><b>Spanish Content: </b> {objectDetailData.spanishContent}</div>
+            <div><b>Kichwa Content: </b> {objectDetailData.kichwaContent}</div>
+            <div><b>Elicit Sentence Content: </b> {objectDetailData.elicitSentenceContent}</div>
+            <div><b>Ipa Content: </b> {objectDetailData.ipaContent}</div>
           </div>
           <AudioPlayer
             autoPlay
             src={audioUrl}
             onPlay={e => console.log("onPlay")}
-          // other props here
           />
         </Modal.Content>
         <Modal.Actions>
@@ -95,17 +81,18 @@ class MediaLenguaDetailModal extends React.Component {
 
 MediaLenguaDetailModal.propTypes = {
   objectDetailSize: PropTypes.string.isRequired,
-  objectDetailData: PropTypes.object.isRequired
+  objectDetailOpen: PropTypes.bool.isRequired,
+  objectDetailData: PropTypes.object.isRequired,
+  objectDetailCloseCallback: PropTypes.func.isRequired,
+  getUrlSoundAction: PropTypes.func.isRequired,
+  audioUrl: PropTypes.string
 };
 
-const mapStateToPropsMediaLenguaDetailModal = state => {
-  //In this case objects is gonna be applied to the props of the component
-  return {
-    audioUrl: state.mediaLenguaDatabaseReducer.audioUrl,
-  };
-};
+const mapStateToProps = state => ({
+  audioUrl: state.mediaLenguaDatabaseReducer.audioUrl,
+});
 
 export default connect(
-  mapStateToPropsMediaLenguaDetailModal,
+  mapStateToProps,
   { getUrlSoundAction }
 )(MediaLenguaDetailModal);

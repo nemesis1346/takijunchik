@@ -1,36 +1,39 @@
 import React from "react";
-import TraductorForm from "../forms/TraductorForm";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {
-  getObjects,
-  getObjectsByQuery,setObjectDetail 
-} from "../../actions/FirebaseDatabaseActions";
-import MediaLenguaDetailModal from "../modals/MediaLenguaDetailModal";
-import MediaLenguaTable from "../tables/MediaLenguaTable";
 import { Message } from "semantic-ui-react";
 import MDSpinner from "react-md-spinner";
+import TraductorForm from "../forms/TraductorForm";
+import MediaLenguaDetailModal from "../modals/MediaLenguaDetailModal";
+import MediaLenguaTable from "../tables/MediaLenguaTable";
+import {
+  getObjects,
+  getObjectsByQuery,
+  setObjectDetail 
+} from "../../actions/FirebaseDatabaseActions";
 import "../styles/traductorPageStyle.css";
-const  isEmpty=(obj)=> {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
-            return false;
-    }
-    return true;
-}
+
+const isEmpty = (obj) => {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key))
+      return false;
+  }
+  return true;
+};
+
 class MediaLenguaPage extends React.Component {
-  state = {
-    errors: {},
-    objectDetailOpen: false,
-    objectDetailSize: "tiny",
-    hideObjectDetail: true
-  };
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.state = {
+      errors: {},
+      objectDetailOpen: false,
+      objectDetailSize: "tiny",
+      hideObjectDetail: true
+    };
     this.spinnerStyle = { display: "none" };
   }
-  componentWillMount() {
-    //Here we can call to the props
+
+  componentDidMount() {
     this.props.getObjects();
   }
 
@@ -41,12 +44,12 @@ class MediaLenguaPage extends React.Component {
   };
 
   submit = data => {
-      if(!isEmpty(data)){
-        return this.props.getObjectsByQuery(data.object.trim().toLowerCase())
-      }else{
-        return this.props.getObjects();
-      }
-    };
+    if (!isEmpty(data)) {
+      return this.props.getObjectsByQuery(data.object.trim().toLowerCase());
+    } else {
+      return this.props.getObjects();
+    }
+  };
 
   objectSelectedCallback = objectSelected => {
     this.setState({
@@ -63,8 +66,8 @@ class MediaLenguaPage extends React.Component {
       objectDetailData
     } = this.props;
     this.spinnerStyle = hideSpinner ? { display: "none" } : {};
-    console.log('Media Lengua Page')
-    console.log(this.props)
+    console.log('Media Lengua Page');
+    console.log(this.props);
 
     return (
       <div className="traductor-page-container">
@@ -72,7 +75,7 @@ class MediaLenguaPage extends React.Component {
 
         <Message hidden={hideResultMessage}>
           <Message.Header>Error</Message.Header>
-          <p>There is no results</p>
+          <p>There are no results</p>
         </Message>
 
         <MediaLenguaTable
@@ -81,7 +84,6 @@ class MediaLenguaPage extends React.Component {
         />
         <MDSpinner style={this.spinnerStyle} />
 
-        {/* This is the component that pops up to show the detail and reproduce the song*/}
         <MediaLenguaDetailModal
           objectDetailSize={this.state.objectDetailSize}
           objectDetailOpen={this.state.objectDetailOpen}
@@ -92,23 +94,25 @@ class MediaLenguaPage extends React.Component {
     );
   }
 }
-//This is just validation of the props
+
 MediaLenguaPage.propTypes = {
   getObjectsByQuery: PropTypes.func.isRequired,
-  getObjects: PropTypes.func.isRequired
+  getObjects: PropTypes.func.isRequired,
+  setObjectDetail: PropTypes.func.isRequired,
+  objects: PropTypes.array.isRequired,
+  hideResultMessage: PropTypes.bool.isRequired,
+  hideSpinner: PropTypes.bool.isRequired,
+  objectDetailData: PropTypes.object
 };
 
-const mapStateToPropsTraductorPage = state => {
-  //In this case objects is gonna be applied to the props of the component
-  return {
-    objects: state.mediaLenguaDatabaseReducer.objects,
-    hideResultMessage: state.mediaLenguaDatabaseReducer.hideResultMessage,
-    hideSpinner: state.mediaLenguaDatabaseReducer.hideSpinner,
-    objectDetailData:state.mediaLenguaDatabaseReducer.objectDetailData
-  };
-};
+const mapStateToProps = state => ({
+  objects: state.mediaLenguaDatabaseReducer.objects,
+  hideResultMessage: state.mediaLenguaDatabaseReducer.hideResultMessage,
+  hideSpinner: state.mediaLenguaDatabaseReducer.hideSpinner,
+  objectDetailData: state.mediaLenguaDatabaseReducer.objectDetailData
+});
 
 export default connect(
-  mapStateToPropsTraductorPage,
-  { getObjectsByQuery, getObjects,setObjectDetail }
+  mapStateToProps,
+  { getObjectsByQuery, getObjects, setObjectDetail }
 )(MediaLenguaPage);

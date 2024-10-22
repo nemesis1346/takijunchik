@@ -11,6 +11,7 @@ import AboutPage from './components/pages/AboutPage';
 import MediaLenguaPage from './components/pages/MediaLenguaPage';
 import UploadFilePage from './components/pages/UploadFilePage';
 import LoginPage from './components/pages/LoginPage'
+import './components/styles/App.css';
 
 
 class App extends Component {
