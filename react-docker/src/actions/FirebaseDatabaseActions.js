@@ -1,83 +1,66 @@
 import FirebaseApi from "../api/FirebaseApi";
-import { ERROR_MIDDLEWARE } from "../constants/types";
-import {
-    GET_OBJECTS_SUCCESS,
-    GET_OBJECT_DETAIL_SUCCESS,
-} from "../constants/types";
 import httpApi from "../api/httpApi";
-import {parseResponse} from '../utils/Utils';
+import { ERROR_MIDDLEWARE, GET_OBJECTS_SUCCESS, GET_OBJECT_DETAIL_SUCCESS } from "../constants/types";
+import { parseResponse } from '../utils/Utils';
 
 /**
  * This is for the search query
- * @param {*} input
+ * @param {string} input - The search query input
  */
-export const translateFirebaseAction = input => {
-    return dispatch => {
-        httpApi.mediaLenguaVocabulary.getValueByQuery(input)
-        .then(res => {
-            let result = parseResponse(res.data.body);
-            console.log('Response in GetObject Login:');
-            let listObjects= JSON.parse(result);
-
-            console.log(listObjects);
-            dispatch(getObjectsSuccess(listObjects))
-        })
-        .catch(err => {
-            console.log(err);
-            dispatch(handleError(err.message));
-        });
-    }
+export const translateFirebaseAction = (input) => (dispatch) => {
+  httpApi.mediaLenguaVocabulary.getValueByQuery(input)
+    .then((res) => {
+      const result = parseResponse(res.data.body);
+      console.log('Response in GetObject Login:');
+      const listObjects = JSON.parse(result);
+      console.log(listObjects);
+      dispatch(getObjectsSuccess(listObjects));
+    })
+    .catch((err) => {
+      console.error(err);
+      dispatch(handleError(err.message));
+    });
 };
 
-//This method is taking data from firebase
-export const getObjects = () => {
-    return dispatch => {
-        FirebaseApi.getValues("/objectModel")
-            .then(res => {
-                let objectList = [];
-                res.forEach(function (childSnapshot) {
-                    let childData = childSnapshot.val();
-                    childData["key"] = childSnapshot.key;
-                    objectList.push(childData);
-                });
-                dispatch(getObjectsSuccess(objectList));
-            })
-            .catch(err => {
-                console.log(err);
-                dispatch(handleError(err.message));
-            });
-    };
-};
-//This method is taking data from firebase with an specific input
-export const getObjectsByQuery=input=>{
-    return dispatch => {
-        FirebaseApi.getValueByQuery('/objectModel',input,null)
-        .then(res=>{
-            dispatch(getObjectsSuccess(res));
-        })
-        .catch(err=>{
-            console.log(err);
-            dispatch(handleError(err.message));
-        });
-    }
-}
-export const setObjectDetail = object => {
-    return {
-        type: GET_OBJECT_DETAIL_SUCCESS,
-        object: object
-    };
+// This method is taking data from firebase
+export const getObjects = () => (dispatch) => {
+  FirebaseApi.getValues("/objectModel")
+    .then((res) => {
+      console.log('Object Model Action');
+      console.log(typeof res);
+      const dataArray = Object.values(res);
+      const objectListResult = dataArray.map((childSnapshot) => childSnapshot);
+      dispatch(getObjectsSuccess(objectListResult));
+    })
+    .catch((err) => {
+      console.error(err);
+      dispatch(handleError(err.message));
+    });
 };
 
-const getObjectsSuccess = objects => {
-    return {
-        type: GET_OBJECTS_SUCCESS,
-        objects: objects
-    };
+// This method is taking data from firebase with a specific input
+export const getObjectsByQuery = (input) => (dispatch) => {
+  FirebaseApi.getValueByQuery('/objectModel', input, null)
+    .then((res) => {
+      dispatch(getObjectsSuccess(res));
+    })
+    .catch((err) => {
+      console.error(err);
+      dispatch(handleError(err.message));
+    });
 };
 
-const handleError = message => {
-    return {
-        type: ERROR_MIDDLEWARE,
-        message: message
-    };
-};
+export const setObjectDetail = (object) => ({
+  type: GET_OBJECT_DETAIL_SUCCESS,
+  object,
+});
+
+const getObjectsSuccess = (objects) => ({
+  type: GET_OBJECTS_SUCCESS,
+  objects,
+});
+
+const handleError = (message) => ({
+  type: ERROR_MIDDLEWARE,
+  message,
+});
