@@ -13,9 +13,9 @@ const NavBar = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto justify-content-end">
                         <Nav.Link as={Link} to={ROUTES.ROUTE_DATABASE_MEDIA_LENGUA_PAGE}>Media Lengua</Nav.Link>
-                        <Nav.Link as={Link} to={ROUTES.ROUTE_VOCABULARY}>Vocabulario</Nav.Link>
+                        {/* <Nav.Link as={Link} to={ROUTES.ROUTE_VOCABULARY}>Vocabulario</Nav.Link> */}
                         {/* <li><Link to={ROUTES.ROUTE_UPLOADFILE_PAGE}>Upload File</Link></li> */}
-                        <Nav.Link as={Link} to={ROUTES.ROUTE_ABOUT_PAGE}>About</Nav.Link>
+                        {/* <Nav.Link as={Link} to={ROUTES.ROUTE_ABOUT_PAGE}>About</Nav.Link> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
