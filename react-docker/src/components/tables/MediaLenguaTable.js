@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Table, Form } from "react-bootstrap";
+// TODO: figure what I wanted to do with the checkbox
 
 const ObjectTable = ({ objectList, objectSelectedCallback }) => {
   const [selectedId, setSelectedId] = useState(null);
@@ -15,7 +16,7 @@ const ObjectTable = ({ objectList, objectSelectedCallback }) => {
     <Table striped bordered hover responsive>
       <thead>
         <tr>
-          <th style={{ width: "50px" }}></th>
+          {/* <th style={{ width: "50px" }}></th> */}
           <th>Media Lengua</th>
           <th>Spanish</th>
           <th>Kichwa</th>
@@ -26,13 +27,13 @@ const ObjectTable = ({ objectList, objectSelectedCallback }) => {
       <tbody>
         {objectList.map((obj) => (
           <tr key={obj.objectId} onClick={() => handleRowSelect(obj.objectId)}>
-            <td>
+            {/* <td>
               <Form.Check
                 type="radio"
                 checked={selectedId === obj.objectId}
                 onChange={() => {}}
               />
-            </td>
+            </td> */}
             <td>{obj.mediaLenguaContent}</td>
             <td>{obj.spanishContent}</td>
             <td>{obj.kichwaContent}</td>

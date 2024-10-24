@@ -9,7 +9,8 @@ import MediaLenguaTable from "../tables/MediaLenguaTable";
 import {
   getObjects,
   getObjectsByQuery,
-  setObjectDetail 
+  setObjectDetail,
+  setSpinnerVisibility
 } from "../../actions/FirebaseDatabaseActions";
 import "../styles/media-lengua-page.css";
 
@@ -28,9 +29,9 @@ class MediaLenguaPage extends React.Component {
       errors: {},
       objectDetailOpen: false,
       objectDetailSize: "tiny",
-      hideObjectDetail: true
+      hideObjectDetail: true,
+      hideResultMessage: true
     };
-    this.spinnerStyle = { display: "none" };
   }
 
   componentDidMount() {
@@ -43,11 +44,16 @@ class MediaLenguaPage extends React.Component {
     });
   };
 
-  submit = data => {
-    if (!isEmpty(data)) {
-      return this.props.getObjectsByQuery(data.object.trim().toLowerCase());
-    } else {
-      return this.props.getObjects();
+  submit = async (data) => {
+    this.props.setSpinnerVisibility(true);
+    try {
+      if (!isEmpty(data)) {
+        await this.props.getObjectsByQuery(data.object.trim().toLowerCase());
+      } else {
+        await this.props.getObjects();
+      }
+    } finally {
+      this.props.setSpinnerVisibility(false);
     }
   };
 
@@ -65,7 +71,6 @@ class MediaLenguaPage extends React.Component {
       hideSpinner,
       objectDetailData
     } = this.props;
-    this.spinnerStyle = hideSpinner ? { display: "none" } : {};
     console.log('Media Lengua Page');
     console.log(this.props);
 
@@ -82,7 +87,7 @@ class MediaLenguaPage extends React.Component {
           objectList={objects}
           objectSelectedCallback={this.objectSelectedCallback}
         />
-        <MDSpinner style={this.spinnerStyle} />
+        {!hideSpinner && <MDSpinner />}
 
         <MediaLenguaDetailModal
           objectDetailSize={this.state.objectDetailSize}
@@ -114,5 +119,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getObjectsByQuery, getObjects, setObjectDetail }
+  { getObjectsByQuery, getObjects, setObjectDetail ,setSpinnerVisibility}
 )(MediaLenguaPage);

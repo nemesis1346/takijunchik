@@ -1,6 +1,6 @@
 import FirebaseApi from "../api/FirebaseApi";
 import httpApi from "../api/httpApi";
-import { ERROR_MIDDLEWARE, GET_OBJECTS_SUCCESS, GET_OBJECT_DETAIL_SUCCESS } from "../constants/types";
+import { ERROR_MIDDLEWARE, GET_OBJECTS_SUCCESS, SET_SPINNER_VISIBILITY, GET_OBJECT_DETAIL_SUCCESS } from "../constants/types";
 import { parseResponse } from '../utils/Utils';
 
 /**
@@ -63,4 +63,9 @@ const getObjectsSuccess = (objects) => ({
 const handleError = (message) => ({
   type: ERROR_MIDDLEWARE,
   message,
+});
+
+export const setSpinnerVisibility = (isVisible) => ({
+  type: SET_SPINNER_VISIBILITY,
+  hideSpinner: isVisible
 });

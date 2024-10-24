@@ -3,11 +3,12 @@ import {
   GET_OBJECTS_SUCCESS,
   GET_OBJECT_DETAIL_SUCCESS,
   GET_URL_AUDIO_SUCCESS,
-  ITEM_QUERY_SUCCESS
+  ITEM_QUERY_SUCCESS,
+  SET_SPINNER_VISIBILITY
 } from "../constants/types";
 const initState = {
   objects: [],
-  hideResultMessage: false,
+  hideResultMessage: true,
   hideSpinner: false,
   objectDetailData: {
     mediaLenguaContent: "",
@@ -20,7 +21,15 @@ const initState = {
   audioUrl: ""
 };
 const mediaLenguaDatabaseReducer = (state = initState, action = {}) => {
+  console.log('Media lengua reducer')
+  console.log('Action',action)
+  console.log('State', state)
   switch (action.type) {
+    case SET_SPINNER_VISIBILITY:
+      return {
+        ...state,
+        hideSpinner: action.hideSpinner
+      };
     case GET_OBJECTS_SUCCESS:
       return {
         ...state,
