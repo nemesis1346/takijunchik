@@ -82,8 +82,6 @@ class MediaLenguaEndpoint {
           resultList.push(responseListIpa[i]);
         }
       }
-      console.log('PRE FILTERED');
-      console.log(resultList);
 
       let filteredResult = this.removeDuplicates2(resultList, 'objectId');
 

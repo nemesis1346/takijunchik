@@ -5,19 +5,19 @@ import { connect } from "react-redux";
 import {
   getKichwaWords,
   getKichwaWordsByQuery,
-  setKichwaWordDetail 
+  setKichwaWordDetail
 } from "../../actions/KichwaVocabularyActions";
 import KichwaVocabularyDetailModal from "../modals/KichwaVocabularyDetailModal";
 import KichwaVocabularyTable from "../tables/KichwaVocabularyTable";
 import { Message } from "semantic-ui-react";
 import MDSpinner from "react-md-spinner";
 import "../styles/media-lengua-page.css";
-const  isEmpty=(obj)=> {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
-            return false;
-    }
-    return true;
+const isEmpty = (obj) => {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key))
+      return false;
+  }
+  return true;
 }
 class KichwaVocabularyPage extends React.Component {
   state = {
@@ -42,22 +42,24 @@ class KichwaVocabularyPage extends React.Component {
   };
 
   submit = data => {
-      if(!isEmpty(data)){
-        return this.props.getKichwaWordsByQuery(data.object.trim().toLowerCase())
-      }else{
-        return this.props.getKichwaWords();
-      }
-    };
+    if (!isEmpty(data)) {
+      return this.props.getKichwaWordsByQuery(data.object.trim().toLowerCase())
+    } else {
+      return this.props.getKichwaWords();
+    }
+  };
 
   objectSelectedCallback = objectSelected => {
+    console.log('It did click in the search button')
     this.setState({
       kichwaVocabularyDetailOpen: true,
+      hideSpinner: false
     });
     this.props.setKichwaWordDetail(objectSelected);
   };
 
   render() {
-    
+
     const {
       objects,
       hideResultMessage,
@@ -68,6 +70,7 @@ class KichwaVocabularyPage extends React.Component {
     return (
       <div className="traductor-page-container">
         <TraductorForm submit={this.submit} objectList={objects} />
+        <MDSpinner style={this.spinnerStyle} />
 
         <Message hidden={hideResultMessage}>
           <Message.Header>Error</Message.Header>
@@ -78,7 +81,6 @@ class KichwaVocabularyPage extends React.Component {
           objectList={objects}
           objectSelectedCallback={this.objectSelectedCallback}
         />
-        <MDSpinner style={this.spinnerStyle} />
 
         {/* This is the component that pops up to show the detail and reproduce the song*/}
         <KichwaVocabularyDetailModal
@@ -103,11 +105,11 @@ const mapStateToPropsKichwaVocabularyPage = state => {
     objects: state.kichwaVocabularyDatabaseReducer.objects,
     hideResultMessage: state.kichwaVocabularyDatabaseReducer.hideResultMessage,
     hideSpinner: state.kichwaVocabularyDatabaseReducer.hideSpinner,
-    kichwaVocabularyDetailData:state.kichwaVocabularyDatabaseReducer.kichwaVocabularyDetailData
+    kichwaVocabularyDetailData: state.kichwaVocabularyDatabaseReducer.kichwaVocabularyDetailData
   };
 };
 
 export default connect(
-    mapStateToPropsKichwaVocabularyPage,
-  { getKichwaWordsByQuery, getKichwaWords,setKichwaWordDetail }
+  mapStateToPropsKichwaVocabularyPage,
+  { getKichwaWordsByQuery, getKichwaWords, setKichwaWordDetail }
 )(KichwaVocabularyPage);

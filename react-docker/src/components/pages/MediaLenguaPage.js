@@ -58,6 +58,7 @@ class MediaLenguaPage extends React.Component {
   };
 
   objectSelectedCallback = objectSelected => {
+    console.log('On Click search button')
     this.setState({
       objectDetailOpen: true,
     });
@@ -78,16 +79,24 @@ class MediaLenguaPage extends React.Component {
       <div className="main-container">
         <TraductorForm submit={this.submit} objectList={objects} />
 
+        {hideSpinner ? null : (
+          <div className="spinner-container">
+            <MDSpinner />
+            <span style={{ marginLeft: '4%' }}>Searching...</span>
+          </div>
+        )}
+
         <Message hidden={hideResultMessage}>
           <Message.Header>Error</Message.Header>
           <p>There are no results</p>
         </Message>
 
-        <MediaLenguaTable
-          objectList={objects}
-          objectSelectedCallback={this.objectSelectedCallback}
-        />
-        {!hideSpinner && <MDSpinner />}
+        {hideSpinner ? (
+          <MediaLenguaTable
+            objectList={objects}
+            objectSelectedCallback={this.objectSelectedCallback}
+          />
+        ) : null}
 
         <MediaLenguaDetailModal
           objectDetailSize={this.state.objectDetailSize}

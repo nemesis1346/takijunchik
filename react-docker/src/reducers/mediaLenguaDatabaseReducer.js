@@ -21,9 +21,9 @@ const initState = {
   audioUrl: ""
 };
 const mediaLenguaDatabaseReducer = (state = initState, action = {}) => {
-  console.log('Media lengua reducer')
-  console.log('Action',action)
-  console.log('State', state)
+  // console.log('Media lengua reducer')
+  // console.log('Action',action)
+  // console.log('State', state)
   switch (action.type) {
     case SET_SPINNER_VISIBILITY:
       return {

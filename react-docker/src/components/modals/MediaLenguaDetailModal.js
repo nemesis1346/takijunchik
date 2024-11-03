@@ -41,7 +41,6 @@ class MediaLenguaDetailModal extends React.Component {
   };
 
   render() {
-    console.log('RENDER');
     const { objectDetailSize, objectDetailOpen, objectDetailData, audioUrl } = this.props;
     return (
       <Modal
